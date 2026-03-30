@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Investigation — WillemsWorld</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Syne+Mono&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black:   #000000;
+      --ink:     #0A0A0A;
+      --dark:    #111111;
+      --silver:  #A0A0A0;
+      --silver-2:#D0D0D0;
+      --white:   #F5F5F5;
+      --text-2:  rgba(245,245,245,0.5);
+      --text-3:  rgba(245,245,245,0.24);
+      --border:  rgba(255,255,255,0.07);
+      --border-2:rgba(255,255,255,0.14);
+      --green:   #4ADE80;
+      --sans:    'Syne', sans-serif;
+      --serif:   'Instrument Serif', Georgia, serif;
+      --mono:    'Syne Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: var(--sans); -webkit-font-smoothing: antialiased; min-height: 100vh; }
+    a { color: inherit; text-decoration: none; }
+
+    /* BG */
+    #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    .vignette { position: fixed; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.01) 0%, transparent 60%); }
+
+    /* PAGE */
+    .page { position: relative; z-index: 2; min-height: 100vh; }
+
+    /* NAV */
+    .nav {
+      padding: 1.4rem 3rem; display: flex; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.88); backdrop-filter: blur(20px);
+      position: sticky; top: 0; z-index: 50;
+    }
+    .logo { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); }
+    .logo span { color: var(--silver); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; margin-left: auto; }
+    .nav-links a { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--silver-2); }
+
+    /* THREE-COLUMN LAYOUT: black | white center | black */
+    .page-body {
+      display: grid;
+      grid-template-columns: 1fr minmax(0, 680px) 1fr;
+      min-height: calc(100vh - 58px);
+    }
+    .col-left  { background: #C8C8C8; }
+    .col-right { background: #C8C8C8; }
+    .col-center {
+      background: #FAFAFA;
+      color: #111111;
+      border-left: 1px solid #D0D0D0;
+      border-right: 1px solid #D0D0D0;
+    }
+
+    /* HERO inside center */
+    .hero {
+      padding: 4rem 3rem 3rem;
+      border-bottom: 2px solid #111111;
+    }
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: #888888; margin-bottom: 0.7rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: #888888; }
+    .hero-h1 {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.1; margin-bottom: 0.85rem; color: #111111;
+    }
+    .hero-h1 em { font-style: italic; color: #777777; }
+    .hero-p { font-size: 0.86rem; color: #555555; line-height: 1.82; }
+
+    /* SECTIONS with strong visual separation */
+    .section {
+      padding: 0;
+      border-bottom: 1px solid #D0D0D0;
+    }
+    .section:last-child { border-bottom: none; }
+
+    /* Section header band — dark stripe for definition */
+    .section-head {
+      background: #111111;
+      padding: 1.1rem 3rem;
+      display: flex; align-items: baseline; gap: 1rem;
+    }
+    .section-num {
+      font-family: var(--mono); font-size: 0.58rem;
+      letter-spacing: 0.2em; text-transform: uppercase; color: #666666;
+    }
+    .section-head-title {
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 400;
+      color: var(--white);
+    }
+    .section-head-title em { font-style: italic; color: #A0A0A0; }
+
+    /* Section body */
+    .section-body {
+      padding: 2.25rem 3rem 2.5rem;
+      background: #FAFAFA;
+    }
+    .section-desc {
+      font-size: 0.8rem; color: #666666; line-height: 1.78; margin-bottom: 1.75rem;
+    }
+
+    /* ── FORM ─────────────────────────────────────── */
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label {
+      display: block; font-family: var(--mono); font-size: 0.58rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #999999;
+      margin-bottom: 0.45rem;
+    }
+    .form-input, .form-textarea, .form-select {
+      width: 100%; background: #FFFFFF;
+      border: 1px solid #CCCCCC; color: #111111;
+      font-family: var(--sans); font-size: 0.82rem; padding: 0.7rem 1rem;
+      outline: none; transition: border-color 0.2s; resize: none;
+      appearance: none; -webkit-appearance: none;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: #555555;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: #BBBBBB; }
+    .form-textarea { min-height: 110px; line-height: 1.65; }
+    .form-select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem;
+    }
+    .form-select option { background: #FFFFFF; color: #111111; }
+
+    .btn-submit {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.72rem 1.6rem;
+      background: #111111; border: none;
+      font-family: var(--sans); font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #FFFFFF; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-submit:hover { background: #333333; transform: translateY(-1px); }
+    .btn-submit.success { background: #2D7A4A; color: #fff; }
+
+    .confirm-msg {
+      display: none; align-items: center; gap: 0.7rem;
+      margin-top: 1rem; padding: 0.8rem 1rem;
+      background: rgba(45,122,74,0.08); border: 1px solid rgba(45,122,74,0.25);
+      font-size: 0.76rem; color: #2D7A4A;
+    }
+    .confirm-msg.show { display: flex; }
+
+    /* ── TOPIC VOTES ──────────────────────────────── */
+    .topic-list { display: flex; flex-direction: column; gap: 0.55rem; }
+    .topic-item {
+      display: flex; align-items: center; gap: 0.9rem;
+      padding: 1rem 1.15rem;
+      background: #FFFFFF; border: 1px solid #DDDDDD;
+      cursor: pointer; transition: all 0.2s;
+      user-select: none; position: relative; overflow: hidden;
+    }
+    .topic-fill {
+      position: absolute; left: 0; top: 0; bottom: 0;
+      background: rgba(0,0,0,0.04);
+      transition: width 0.5s ease; pointer-events: none;
+    }
+    .topic-item:hover { border-color: #AAAAAA; background: #F5F5F5; }
+    .topic-item.voted { border-color: #555555; background: #F0F0F0; }
+    .topic-item.voted .topic-fill { background: rgba(0,0,0,0.06); }
+    .topic-heart { font-size: 0.85rem; flex-shrink: 0; z-index: 1; transition: transform 0.2s; color: #AAAAAA; }
+    .topic-item.voted .topic-heart { transform: scale(1.25); color: #333333; }
+    .topic-name { font-size: 0.84rem; font-weight: 500; flex: 1; line-height: 1.45; z-index: 1; color: #222222; }
+    .topic-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem; z-index: 1; flex-shrink: 0; }
+    .topic-count { font-family: var(--mono); font-size: 0.65rem; color: #777777; }
+    .topic-domain { font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.08em; text-transform: uppercase; color: #BBBBBB; }
+
+    /* ── SURVEY ───────────────────────────────────── */
+    .survey-qs { display: flex; flex-direction: column; gap: 2rem; }
+    .survey-q-text { font-size: 0.88rem; font-weight: 500; margin-bottom: 0.8rem; line-height: 1.5; color: #222222; }
+    .survey-options { display: flex; flex-direction: column; gap: 0.4rem; }
+    .survey-option {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.62rem 0.9rem;
+      background: #FFFFFF; border: 1px solid #DDDDDD;
+      cursor: pointer; transition: all 0.18s; font-size: 0.8rem; color: #555555;
+    }
+    .survey-option:hover { border-color: #AAAAAA; color: #222222; background: #F8F8F8; }
+    .survey-option.selected { border-color: #333333; background: #F0F0F0; color: #111111; }
+    .s-radio {
+      width: 13px; height: 13px; border: 1.5px solid #CCCCCC;
+      border-radius: 50%; flex-shrink: 0; transition: all 0.18s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .survey-option.selected .s-radio { border-color: #333333; background: #333333; }
+    .survey-option.selected .s-radio::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #fff; }
+
+    .survey-footer { margin-top: 2rem; display: flex; align-items: center; gap: 1.5rem; }
+    .survey-progress { font-family: var(--mono); font-size: 0.6rem; color: #AAAAAA; letter-spacing: 0.08em; }
+    .survey-progress.error { color: #CC3300; }
+
+    @media (max-width: 640px) {
+      .nav { padding: 1.2rem 1.5rem; }
+      .page-body { grid-template-columns: 0 1fr 0; }
+      .col-left, .col-right { display: none; }
+      .col-center { border-left: none; border-right: none; }
+      .hero, .section-body { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+<div class="vignette"></div>
+
+<div class="page">
+  <nav class="nav">
+    <a href="index.html" class="logo">Willems<span>World</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="investigation.html" class="active">Investigation</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-body">
+    <div class="col-left"></div>
+
+    <div class="col-center">
+
+      <!-- HERO -->
+      <div class="hero">
+        <p class="hero-eyebrow">Audience Research</p>
+        <h1 class="hero-h1">Shape the <em>investigation.</em></h1>
+        <p class="hero-p">Tell me what the world needs to understand. Vote on queued topics, submit your own questions, and share how you want data explored. This research is built with you — not just for you.</p>
+      </div>
+
+      <!-- 01 INVESTIGATE -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">// 01</span>
+          <span class="section-head-title">What should I <em>investigate?</em></span>
+        </div>
+        <div class="section-body">
+          <p class="section-desc">Tell me in your own words — a topic, a question, a dataset, or a hunch. No format required.</p>
+          <div class="form-group">
+            <label class="form-label" for="investigate-comment">Your idea</label>
+            <textarea class="form-textarea" id="investigate-comment" style="min-height:140px" placeholder="e.g. I'd love to see a breakdown of job losses by sector during the 2020 recession, compared to 2008…"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="investigate-email">Email — optional, for updates</label>
+            <input class="form-input" id="investigate-email" type="email" placeholder="you@example.com"/>
+          </div>
+          <button class="btn-submit" id="investigate-btn" onclick="submitInvestigate()">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="8" y1="2" x2="8" y2="14"/><polyline points="3,7 8,2 13,7"/></svg>
+            Send Idea
+          </button>
+          <div class="confirm-msg" id="investigate-confirm">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><polyline points="5,8 7,10 11,6"/></svg>
+            Received — thank you. I'll review every submission.
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 SUBMIT -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">// 02</span>
+          <span class="section-head-title">Propose a <em>topic</em></span>
+        </div>
+        <div class="section-body">
+          <p class="section-desc">Is there a dataset, trend, or question you think deserves rigorous analysis? Submit it and I'll consider it for a future project.</p>
+
+          <div class="form-group">
+            <label class="form-label" for="topic-domain">Domain</label>
+            <select class="form-select" id="topic-domain">
+              <option value="">Select a domain…</option>
+              <option value="Economy">Economy</option>
+              <option value="Jobs &amp; Labour">Jobs &amp; Labour</option>
+              <option value="Global Health">Global Health</option>
+              <option value="Other">Other / Suggest new domain</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="topic-title">Topic or Question</label>
+            <input class="form-input" id="topic-title" type="text" placeholder="e.g. How has remote work changed urban job distribution?"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="topic-detail">Why does this matter?</label>
+            <textarea class="form-textarea" id="topic-detail" placeholder="What's the insight you're trying to find? What data might reveal it?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="topic-email">Email — optional, for updates</label>
+            <input class="form-input" id="topic-email" type="email" placeholder="you@example.com"/>
+          </div>
+
+          <button class="btn-submit" id="submit-btn" onclick="submitTopic()">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="8" y1="2" x2="8" y2="14"/><polyline points="3,7 8,2 13,7"/></svg>
+            Submit Topic
+          </button>
+          <div class="confirm-msg" id="submit-confirm">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><polyline points="5,8 7,10 11,6"/></svg>
+            Submitted — I'll review this and add it to the queue.
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 SURVEY -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">// 03</span>
+          <span class="section-head-title">Help shape <em>the approach</em></span>
+        </div>
+        <div class="section-body">
+          <p class="section-desc">Four quick questions. Under 2 minutes. Directly influences what gets built next.</p>
+
+          <div class="survey-qs">
+            <div>
+              <p class="survey-q-text">How do you primarily consume data content?</p>
+              <div class="survey-options" id="sq1">
+                <div class="survey-option" onclick="selectSurvey('sq1',this)"><span class="s-radio"></span>Interactive charts I can explore myself</div>
+                <div class="survey-option" onclick="selectSurvey('sq1',this)"><span class="s-radio"></span>Video walkthroughs with narration</div>
+                <div class="survey-option" onclick="selectSurvey('sq1',this)"><span class="s-radio"></span>Written analysis with supporting charts</div>
+                <div class="survey-option" onclick="selectSurvey('sq1',this)"><span class="s-radio"></span>Raw data I can download and explore</div>
+              </div>
+            </div>
+            <div>
+              <p class="survey-q-text">Which domain interests you most?</p>
+              <div class="survey-options" id="sq2">
+                <div class="survey-option" onclick="selectSurvey('sq2',this)"><span class="s-radio"></span>Global macroeconomics &amp; GDP</div>
+                <div class="survey-option" onclick="selectSurvey('sq2',this)"><span class="s-radio"></span>Labour markets &amp; employment</div>
+                <div class="survey-option" onclick="selectSurvey('sq2',this)"><span class="s-radio"></span>Public health &amp; disease burden</div>
+                <div class="survey-option" onclick="selectSurvey('sq2',this)"><span class="s-radio"></span>All equally — I want the full picture</div>
+              </div>
+            </div>
+            <div>
+              <p class="survey-q-text">How often do you want new projects?</p>
+              <div class="survey-options" id="sq3">
+                <div class="survey-option" onclick="selectSurvey('sq3',this)"><span class="s-radio"></span>Daily updates</div>
+                <div class="survey-option" onclick="selectSurvey('sq3',this)"><span class="s-radio"></span>Weekly deep-dives</div>
+                <div class="survey-option" onclick="selectSurvey('sq3',this)"><span class="s-radio"></span>Bi-weekly — quality over quantity</div>
+                <div class="survey-option" onclick="selectSurvey('sq3',this)"><span class="s-radio"></span>Monthly comprehensive reports</div>
+              </div>
+            </div>
+            <div>
+              <p class="survey-q-text">What would make you subscribe for updates?</p>
+              <div class="survey-options" id="sq4">
+                <div class="survey-option" onclick="selectSurvey('sq4',this)"><span class="s-radio"></span>Email digest of new projects</div>
+                <div class="survey-option" onclick="selectSurvey('sq4',this)"><span class="s-radio"></span>Early access to data &amp; charts</div>
+                <div class="survey-option" onclick="selectSurvey('sq4',this)"><span class="s-radio"></span>Ability to influence research topics</div>
+                <div class="survey-option" onclick="selectSurvey('sq4',this)"><span class="s-radio"></span>I'd subscribe as-is</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="survey-footer">
+            <button class="btn-submit" id="survey-btn" onclick="submitSurvey()">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="2,9 6,13 14,3"/></svg>
+              Submit Survey
+            </button>
+            <span class="survey-progress" id="survey-progress">0 / 4 answered</span>
+          </div>
+          <div class="confirm-msg" id="survey-confirm">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><polyline points="5,8 7,10 11,6"/></svg>
+            Survey submitted — this directly shapes what gets built next. Thank you.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /col-center -->
+    <div class="col-right"></div>
+  </div><!-- /page-body -->
+</div><!-- /page -->
+
+<script>
+/* STARS */
+(function(){
+  const c=document.getElementById('stars'),ctx=c.getContext('2d');
+  let W,H,stars=[];
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;stars=Array.from({length:180},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*0.85+0.1,base:Math.random()*0.35+0.05,phase:Math.random()*Math.PI*2,speed:Math.random()*0.5+0.15}));}
+  function draw(){const t=Date.now()*0.001;ctx.clearRect(0,0,W,H);stars.forEach(s=>{const a=s.base+Math.sin(t*s.speed+s.phase)*0.09;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(220,225,240,${Math.max(0,Math.min(0.65,a))})`;ctx.fill();});requestAnimationFrame(draw);}
+  resize();window.addEventListener('resize',resize);draw();
+})();
+
+/* INVESTIGATE SUBMISSION */
+function submitInvestigate(){
+  const comment=document.getElementById('investigate-comment').value.trim();
+  if(!comment){ document.getElementById('investigate-comment').focus(); return; }
+  const btn=document.getElementById('investigate-btn');
+  btn.textContent='Sent ✓'; btn.classList.add('success');
+  document.getElementById('investigate-confirm').classList.add('show');
+  setTimeout(()=>{
+    document.getElementById('investigate-comment').value='';
+    document.getElementById('investigate-email').value='';
+    btn.innerHTML='<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="8" y1="2" x2="8" y2="14"/><polyline points="3,7 8,2 13,7"/></svg> Send Idea';
+    btn.classList.remove('success');
+  },3500);
+}
+
+/* TOPIC SUBMISSION */
+function submitTopic(){
+  const title=document.getElementById('topic-title').value.trim();
+  if(!title){ document.getElementById('topic-title').focus(); return; }
+  const btn=document.getElementById('submit-btn');
+  btn.textContent='Submitted ✓'; btn.classList.add('success');
+  document.getElementById('submit-confirm').classList.add('show');
+  setTimeout(()=>{
+    ['topic-title','topic-detail','topic-email'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('topic-domain').value='';
+    btn.innerHTML='<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="8" y1="2" x2="8" y2="14"/><polyline points="3,7 8,2 13,7"/></svg> Submit Topic';
+    btn.classList.remove('success');
+  },3500);
+}
+
+/* SURVEY */
+const surveyAnswers={};
+function selectSurvey(qId,el){
+  document.querySelectorAll(`#${qId} .survey-option`).forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  surveyAnswers[qId]=el.textContent.trim();
+  const n=Object.keys(surveyAnswers).length;
+  const prog=document.getElementById('survey-progress');
+  prog.className='survey-progress';
+  prog.textContent=`${n} / 4 answered`;
+}
+
+function submitSurvey(){
+  const n=Object.keys(surveyAnswers).length;
+  if(n<4){
+    const prog=document.getElementById('survey-progress');
+    prog.className='survey-progress error';
+    prog.textContent=`Please answer all 4 (${n}/4 done)`;
+    return;
+  }
+  const btn=document.getElementById('survey-btn');
+  btn.innerHTML='<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="2,9 6,13 14,3"/></svg> Submitted';
+  btn.classList.add('success');
+  document.getElementById('survey-confirm').classList.add('show');
+  document.getElementById('survey-progress').textContent='';
+}
+</script>
+</body>
+</html>
