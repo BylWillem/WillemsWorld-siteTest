@@ -386,25 +386,23 @@
       body { overflow-y: auto; }
       .layout { flex-direction: column; height: auto; }
 
-      /* Globe takes up more screen — more exposure */
-      .globe-side { width: 100%; height: 75vw; min-height: 320px; }
+      /* Globe stays exactly the same size */
+      .globe-side { width: 100%; height: 60vw; min-height: 280px; }
       .feed-side { width: 100%; border-left: none; border-top: 1px solid var(--border); }
-      #globe-canvas { left: -5vw; width: 95vw; height: 95vw; top: 50%; transform: translateY(-48%); }
+      #globe-canvas { left: -15vw; width: 90vw; height: 90vw; }
       .globe-side::after { width: 60px; }
 
-      /* Hide WillemsWorld logo on mobile */
+      /* Hide WillemsWorld logo */
       .logo { display: none; }
       .nav-tag { display: none; }
 
-      /* Nav: horizontal tab bar across bottom of globe */
+      /* Nav becomes horizontal tab bar at bottom of globe */
       .nav {
         padding: 0;
         flex-direction: column;
         gap: 0;
         top: auto;
         bottom: 0;
-        left: 0;
-        right: 0;
         position: absolute;
       }
       .nav-top { display: none; }
@@ -418,14 +416,13 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 0.75rem 0.5rem;
+        padding: 0.7rem 0.5rem;
         min-width: 0;
-        gap: 0.2rem;
-        background: rgba(0,0,0,0.75);
+        gap: 0.15rem;
+        background: rgba(0,0,0,0.78);
         border: none;
         border-top: 1px solid rgba(255,255,255,0.12);
         border-right: 1px solid rgba(255,255,255,0.08);
-        backdrop-filter: blur(20px);
       }
       .globe-link:last-child { border-right: none; }
       .globe-link:hover { transform: none; }
@@ -433,24 +430,12 @@
       .gl-num { display: none; }
       .gl-sub { display: none; }
       .gl-arrow { display: none; }
-      .gl-label {
-        font-size: 0.65rem;
-        letter-spacing: 0.08em;
-        text-align: center;
-      }
+      .gl-label { font-size: 0.62rem; letter-spacing: 0.08em; text-align: center; }
 
-      /* Hero text repositioned */
-      .hero-text {
-        top: 36%;
-        right: 50%;
-        transform: translate(50%, -50%);
-        text-align: center;
-      }
-      .hero-h1 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
-
-      /* Coords hidden on mobile */
+      /* Coords hidden */
       .coords { display: none; }
     }
+  </style>
 </head>
 <body>
 
