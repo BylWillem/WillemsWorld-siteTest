@@ -209,43 +209,22 @@
     .survey-progress.error { color: #CC3300; }
 
     @media (max-width: 640px) {
-      /* Full width single column */
       .nav { padding: 1rem 1.25rem; }
       .nav-links { gap: 1.2rem; }
       .nav-links a { font-size: 0.65rem; }
       .page-body { grid-template-columns: 1fr; }
       .col-left, .col-right { display: none; }
-      .col-center {
-        border-left: none; border-right: none;
-        width: 100%;
-      }
-
-      /* Hero tighter */
+      .col-center { border-left: none; border-right: none; }
       .hero { padding: 2rem 1.25rem 1.5rem; }
       .hero-h1 { font-size: 1.7rem; }
-      .hero-p { font-size: 0.82rem; }
-
-      /* Section heads and bodies full width */
       .section-head { padding: 0.9rem 1.25rem; }
       .section-body { padding: 1.5rem 1.25rem 2rem; }
-      .section-desc { font-size: 0.8rem; }
-
-      /* Forms readable */
-      .form-input, .form-textarea, .form-select {
-        font-size: 0.9rem;
-        padding: 0.8rem 0.9rem;
-      }
-      .form-label { font-size: 0.6rem; }
-      .form-textarea { min-height: 100px; }
-      .btn-submit { width: 100%; justify-content: center; padding: 0.9rem; font-size: 0.78rem; }
-
-      /* Survey options bigger touch targets */
-      .survey-option { padding: 0.8rem 1rem; font-size: 0.82rem; }
-      .survey-footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-
-      /* Topic list */
-      .topic-name { font-size: 0.82rem; }
+      .form-input, .form-textarea, .form-select { font-size: 0.9rem; padding: 0.8rem 0.9rem; }
+      .btn-submit { width: 100%; justify-content: center; }
+      .survey-option { padding: 0.8rem 1rem; }
+      .survey-footer { flex-direction: column; gap: 0.75rem; }
     }
+  </style>
 </head>
 <body>
 
