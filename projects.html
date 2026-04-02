@@ -222,9 +222,33 @@
     }
     @media (max-width: 640px) {
       .projects-grid { grid-template-columns: 1fr; }
-      .filter-chips { flex-wrap: wrap; }
+      /* Hide chip row, show dropdown instead */
+      .filter-chips { display: none; }
+      .filter-dropdown { display: block !important; }
+      .search-bar { flex-wrap: wrap; gap: 0.5rem; padding: 0.5rem 1rem; }
+      .search-wrap { max-width: 100%; }
+      .result-count { margin-left: 0; }
+      /* Nav tighter on mobile */
+      .nav { padding: 0.85rem 1rem; }
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: 0.65rem; }
     }
-  </style>
+
+    /* Filter dropdown — hidden on desktop, shown on mobile */
+    .filter-dropdown {
+      display: none;
+      width: 100%;
+      padding: 0.45rem 0.85rem;
+      border: 1px solid #DDDDDD;
+      background: transparent;
+      font-family: var(--mono); font-size: 0.62rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: #444444; cursor: pointer;
+      appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 0.75rem center;
+      padding-right: 2rem;
+    }
 </head>
 <body>
 
@@ -262,6 +286,12 @@
         <button class="chip" data-filter="jobs">Jobs</button>
         <button class="chip" data-filter="health">Health</button>
       </div>
+      <select class="filter-dropdown" id="filter-dropdown">
+        <option value="all">All Categories</option>
+        <option value="economy">Economy</option>
+        <option value="jobs">Jobs</option>
+        <option value="health">Health</option>
+      </select>
       <span class="result-count" id="result-count">— projects</span>
     </div>
 
@@ -452,7 +482,16 @@ function applyFilters(){
 document.getElementById('filter-chips').addEventListener('click',e=>{
   const chip=e.target.closest('.chip');if(!chip)return;
   document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  chip.classList.add('active');currentFilter=chip.dataset.filter;applyFilters();
+  chip.classList.add('active');currentFilter=chip.dataset.filter;
+  document.getElementById('filter-dropdown').value=currentFilter;
+  applyFilters();
+});
+document.getElementById('filter-dropdown').addEventListener('change',e=>{
+  currentFilter=e.target.value;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  const match=document.querySelector(`.chip[data-filter="${currentFilter}"]`);
+  if(match) match.classList.add('active');
+  applyFilters();
 });
 document.getElementById('search-input').addEventListener('input',e=>{currentSearch=e.target.value;applyFilters();});
 window.addEventListener('scroll',()=>{document.getElementById('search-bar').classList.toggle('scrolled',window.scrollY>60);});
