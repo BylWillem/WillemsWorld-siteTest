@@ -226,6 +226,12 @@
       .filter-dropdown { display: block !important; }
       .search-bar { flex-wrap: wrap; gap: 0.5rem; }
       .result-count { margin-left: 0; }
+      /* Hide logo on mobile */
+      .logo { display: none; }
+      /* Nav links take full width */
+      .nav { padding: 0.85rem 1rem; justify-content: center; }
+      .nav-links { margin-left: 0; gap: 1.5rem; }
+      .nav-links a { font-size: 0.68rem; }
     }
 
     /* Dropdown — hidden desktop, shown mobile */
@@ -255,8 +261,8 @@
     <a href="index.html" class="logo">Willems<span>World</span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="projects.html" class="active">Projects</a></li>
       <li><a href="investigation.html">Investigation</a></li>
+      <li><a href="#">About Me</a></li>
     </ul>
   </nav>
 
