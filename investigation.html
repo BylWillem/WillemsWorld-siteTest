@@ -209,9 +209,11 @@
     .survey-progress.error { color: #CC3300; }
 
     @media (max-width: 640px) {
-      .nav { padding: 1rem 1.25rem; }
-      .nav-links { gap: 1.2rem; }
-      .nav-links a { font-size: 0.65rem; }
+      .nav { padding: 1rem 1.25rem; justify-content: center; }
+      /* Hide logo on mobile */
+      .logo { display: none; }
+      .nav-links { margin-left: 0; gap: 1.5rem; }
+      .nav-links a { font-size: 0.68rem; }
       .page-body { grid-template-columns: 1fr; }
       .col-left, .col-right { display: none; }
       .col-center { border-left: none; border-right: none; }
@@ -236,8 +238,8 @@
     <a href="index.html" class="logo">Willems<span>World</span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="investigation.html" class="active">Investigation</a></li>
+      <li><a href="projects.html">Insights</a></li>
+      <li><a href="#">About Me</a></li>
     </ul>
   </nav>
 
