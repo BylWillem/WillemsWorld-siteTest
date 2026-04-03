@@ -252,6 +252,8 @@
     .card-domain.economy { color: #1A56DB; border: 1px solid rgba(26,86,219,0.25); background: rgba(26,86,219,0.05); }
     .card-domain.jobs    { color: #0E7C4A; border: 1px solid rgba(14,124,74,0.25);  background: rgba(14,124,74,0.05); }
     .card-domain.health  { color: #B84700; border: 1px solid rgba(184,71,0,0.25);   background: rgba(184,71,0,0.05); }
+    .card-domain.sports  { color: #6B21A8; border: 1px solid rgba(107,33,168,0.25); background: rgba(107,33,168,0.05); }
+    .card-domain.nature  { color: #0F766E; border: 1px solid rgba(15,118,110,0.25); background: rgba(15,118,110,0.05); }
     .card-domain.default { color: #555555; border: 1px solid rgba(0,0,0,0.12); }
 
     .card-date {
@@ -272,37 +274,26 @@
     /* ── 3-BLOCK EQUAL ACTIONS ─────────────────────── */
     .card-blocks {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: 1px;
       background: #BBBBBB;
       border: 1px solid #BBBBBB;
     }
     .card-block {
       background: #F2F2F2;
-      padding: 0.7rem 0.6rem;
+      padding: 0.5rem 0.25rem;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      gap: 0.35rem;
+      gap: 0.25rem;
       cursor: pointer;
       transition: background 0.18s;
       text-align: center;
-      min-height: 62px;
+      min-height: 52px;
     }
     .card-block:hover { background: #E6E6E6; }
     .card-block:hover .block-icon { color: #111111; }
-
-    .block-icon {
-      color: #888888;
-      transition: color 0.18s;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .block-label {
-      font-family: var(--mono); font-size: 0.54rem;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: #777777;
-      line-height: 1.3;
-    }
-    /* Chart block — slightly darker to indicate primary */
+    .block-icon { color: #888888; transition: color 0.18s; display: flex; align-items: center; justify-content: center; }
+    .block-label { font-family: var(--mono); font-size: 0.44rem; letter-spacing: 0.08em; text-transform: uppercase; color: #777777; line-height: 1; }
     .card-block.primary { background: #EBEBEB; }
     .card-block.primary .block-icon { color: #333333; }
     .card-block.primary .block-label { color: #444444; }
@@ -870,46 +861,62 @@
 ═══════════════════════════════════════════════ */
 const SAMPLE_PROJECTS = [
   {
-    id: 1, domain: 'Economy',
+    id: 1,
+    tags: ['Sports', 'Nature vs. Nurture'],
+    title: 'Are Pro Athletes born with it? No, they are born at the right time.',
+    desc: 'We evaluated 5,405 athletes across 6 leagues and multiple continents. The hidden pattern about your birth month that no one talks about!',
+    date: '2025-04-03',
+    experienceUrl: 'https://birthdays.willemsworld.fyi',
+    videoUrl: null,
+    summaryUrl: 'https://birthdays.willemsworld.fyi/summary.html',
+    dashboardUrl: null,
+  },
+  {
+    id: 2, tags: ['Economy'],
     title: 'US GDP Growth: Quarterly Breakdown 2020–2024',
     desc: 'Examining the pandemic shock, recovery trajectory, and normalisation of US real GDP across 16 consecutive quarters.',
-    date: '2024-03-15', chartUrl: null, videoUrl: null,
+    date: '2024-03-15', experienceUrl: null, videoUrl: null, summaryUrl: null,
   },
   {
-    id: 2, domain: 'Jobs',
+    id: 3, tags: ['Jobs'],
     title: 'Job Openings vs Unemployment: The Great Mismatch',
     desc: 'JOLTS data reveals a persistent gap between open positions and job seekers — structural or cyclical?',
-    date: '2024-03-08', chartUrl: null, videoUrl: null,
+    date: '2024-03-08', experienceUrl: null, videoUrl: null, summaryUrl: null,
   },
   {
-    id: 3, domain: 'Health',
+    id: 4, tags: ['Health'],
     title: 'Global Disease Burden Shift: NCDs Rising',
     desc: 'WHO DALY data across 20 years shows cardiovascular and metabolic diseases now account for 36% of global burden.',
-    date: '2024-02-28', chartUrl: null, videoUrl: null,
-  },
-  {
-    id: 4, domain: 'Economy',
-    title: 'Unemployment Rate: A 10-Year Retrospective',
-    desc: 'Post-GFC recovery to COVID-19 shock to current tightness — the full story in one chart.',
-    date: '2024-02-15', chartUrl: null, videoUrl: null,
+    date: '2024-02-28', experienceUrl: null, videoUrl: null, summaryUrl: null,
   },
 ];
+
+const TAG_COLORS = {
+  'Economy':           'economy',
+  'Jobs':              'jobs',
+  'Health':            'health',
+  'Sports':            'sports',
+  'Nature vs. Nurture':'nature',
+};
 
 function fmtDate(d) {
   return new Date(d).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
 }
 
 function openModal(type, url, title) {
+  /* Experience and Summary open in new tab */
+  if ((type === 'experience' || type === 'summary') && url) {
+    window.open(url, '_blank'); return;
+  }
   const overlay = document.getElementById(`${type}-modal`);
   document.getElementById(`${type}-modal-title`).textContent = title;
   const body = document.getElementById(`${type}-modal-body`);
-
   if (!url) {
     body.innerHTML = `
       <div class="modal-empty">
-        <div class="modal-empty-icon">${type === 'chart' ? '▦' : '▶'}</div>
-        <div>${type === 'chart' ? 'Chart coming soon' : 'Video walkthrough coming soon'}</div>
-        <div class="modal-empty-sub">Add your ${type === 'chart' ? 'ECharts embed URL' : 'YouTube embed URL'} to activate</div>
+        <div class="modal-empty-icon">${type === 'video' ? '▶' : '◎'}</div>
+        <div>${type === 'video' ? 'Video walkthrough coming soon' : 'Coming soon'}</div>
+        <div class="modal-empty-sub">Check back soon</div>
       </div>`;
   } else {
     const cls = type === 'video' ? 'video-frame' : '';
@@ -935,54 +942,43 @@ document.addEventListener('keydown', e => {
 function renderFeed(projects) {
   document.getElementById('feed-count').textContent = `${projects.length} published`;
 
-  document.getElementById('feed-scroll').innerHTML = projects.map((p, i) => `
+  document.getElementById('feed-scroll').innerHTML = projects.map((p, i) => {
+    const tagsHtml = p.tags.map(t =>
+      `<span class="card-domain ${TAG_COLORS[t] || t.toLowerCase()}">${t}</span>`
+    ).join('');
+    const safeTitle = p.title.replace(/'/g, "\\'");
+    return `
     <div class="project-card" style="animation-delay:${i * 0.07}s">
-
       <div class="card-meta">
-        <span class="card-domain ${p.domain.toLowerCase()}">${p.domain}</span>
+        <div style="display:flex;gap:0.35rem;flex-wrap:wrap;flex:1;">${tagsHtml}</div>
         <span class="card-date">${fmtDate(p.date)}</span>
       </div>
-
       <h3 class="card-title">${p.title}</h3>
       <p class="card-desc">${p.desc}</p>
-
-      <!-- ── 3 EQUAL BLOCKS ── -->
       <div class="card-blocks">
-
-        <div class="card-block primary"
-          onclick="openModal('chart', ${p.chartUrl ? `'${p.chartUrl}'` : 'null'}, '${p.title.replace(/'/g,"\\'")}')">
-          <div class="block-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <rect x="1" y="9" width="3" height="5"/><rect x="6" y="6" width="3" height="8"/><rect x="11" y="2" width="3" height="12"/>
-            </svg>
-          </div>
-          <div class="block-label">Chart</div>
+        <div class="card-block primary" data-tip="Experience"
+          onclick="openModal('experience', ${p.experienceUrl ? `'${p.experienceUrl}'` : 'null'}, '${safeTitle}')">
+          <div class="block-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M6 8 Q8 5 10 8 Q8 11 6 8Z" fill="currentColor" stroke="none"/></svg></div>
+          <div class="block-label">Experience</div>
         </div>
-
-        <div class="card-block"
-          onclick="openModal('video', ${p.videoUrl ? `'${p.videoUrl}'` : 'null'}, '${p.title.replace(/'/g,"\\'")}')">
-          <div class="block-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <circle cx="8" cy="8" r="6"/>
-              <polygon points="6.5,5.5 11,8 6.5,10.5" fill="currentColor" stroke="none"/>
-            </svg>
-          </div>
+        <div class="card-block" data-tip="Walkthrough"
+          onclick="openModal('video', ${p.videoUrl ? `'${p.videoUrl}'` : 'null'}, '${safeTitle}')">
+          <div class="block-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polygon points="6.5,5.5 11,8 6.5,10.5" fill="currentColor" stroke="none"/></svg></div>
           <div class="block-label">Walkthrough</div>
         </div>
-
-        <div class="card-block" onclick="alert('Full project page coming soon')">
-          <div class="block-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <rect x="2" y="2" width="12" height="12" rx="1"/>
-              <line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/>
-            </svg>
-          </div>
+        <div class="card-block" data-tip="Summary"
+          onclick="openModal('summary', ${p.summaryUrl ? `'${p.summaryUrl}'` : 'null'}, '${safeTitle}')">
+          <div class="block-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="1"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg></div>
           <div class="block-label">Summary</div>
         </div>
-
+        <div class="card-block" data-tip="Dashboard"
+          onclick="openModal('dashboard', ${p.dashboardUrl ? `'${p.dashboardUrl}'` : 'null'}, '${safeTitle}')">
+          <div class="block-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="8" width="3" height="6"/><rect x="6" y="4" width="3" height="10"/><rect x="11" y="1" width="3" height="13"/></svg></div>
+          <div class="block-label">Dashboard</div>
+        </div>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 renderFeed(SAMPLE_PROJECTS);
