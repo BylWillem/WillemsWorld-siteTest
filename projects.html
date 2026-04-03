@@ -89,9 +89,11 @@
     }
     .chip:hover { color: #444444; border-color: #AAAAAA; }
     .chip.active { color: #111111; border-color: #555555; background: #F0F0F0; }
-    .chip[data-filter="economy"].active { color: #1A56DB; border-color: rgba(26,86,219,0.4); background: rgba(26,86,219,0.05); }
-    .chip[data-filter="jobs"].active    { color: #0E7C4A; border-color: rgba(14,124,74,0.4);  background: rgba(14,124,74,0.05); }
-    .chip[data-filter="health"].active  { color: #B84700; border-color: rgba(184,71,0,0.4);   background: rgba(184,71,0,0.05); }
+    .chip[data-filter="economy"].active      { color: #1A56DB; border-color: rgba(26,86,219,0.4);  background: rgba(26,86,219,0.05); }
+    .chip[data-filter="jobs"].active         { color: #0E7C4A; border-color: rgba(14,124,74,0.4);  background: rgba(14,124,74,0.05); }
+    .chip[data-filter="health"].active       { color: #B84700; border-color: rgba(184,71,0,0.4);   background: rgba(184,71,0,0.05); }
+    .chip[data-filter="sports"].active       { color: #6B21A8; border-color: rgba(107,33,168,0.4); background: rgba(107,33,168,0.05); }
+    .chip[data-filter="nature-nurture"].active { color: #0F766E; border-color: rgba(15,118,110,0.4); background: rgba(15,118,110,0.05); }
 
     .result-count { font-family: var(--mono); font-size: 0.58rem; color: #BBBBBB; letter-spacing: 0.1em; white-space: nowrap; margin-left: auto; }
 
@@ -136,9 +138,13 @@
       font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.12em;
       text-transform: uppercase; padding: 0.16rem 0.42rem; border: 1px solid;
     }
-    .pc-domain.economy { color: #1A56DB; border-color: rgba(26,86,219,0.3); background: rgba(26,86,219,0.05); }
-    .pc-domain.jobs    { color: #0E7C4A; border-color: rgba(14,124,74,0.3);  background: rgba(14,124,74,0.05); }
-    .pc-domain.health  { color: #B84700; border-color: rgba(184,71,0,0.3);   background: rgba(184,71,0,0.05); }
+    .pc-domain.economy        { color: #1A56DB; border-color: rgba(26,86,219,0.3);  background: rgba(26,86,219,0.05); }
+    .pc-domain.jobs           { color: #0E7C4A; border-color: rgba(14,124,74,0.3);  background: rgba(14,124,74,0.05); }
+    .pc-domain.health         { color: #B84700; border-color: rgba(184,71,0,0.3);   background: rgba(184,71,0,0.05); }
+    .pc-domain.sports         { color: #6B21A8; border-color: rgba(107,33,168,0.3); background: rgba(107,33,168,0.05); }
+    .pc-domain.nature-nurture { color: #0F766E; border-color: rgba(15,118,110,0.3); background: rgba(15,118,110,0.05); }
+
+    .pc-tags { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
 
     .pc-date { font-family: var(--mono); font-size: 0.54rem; color: #AAAAAA; margin-left: auto; }
 
@@ -284,12 +290,16 @@
         <button class="chip" data-filter="economy">Economy</button>
         <button class="chip" data-filter="jobs">Jobs</button>
         <button class="chip" data-filter="health">Health</button>
+        <button class="chip" data-filter="sports">Sports</button>
+        <button class="chip" data-filter="nature-nurture">Nature vs. Nurture</button>
       </div>
       <select class="filter-dropdown" id="filter-dropdown">
         <option value="all">All Categories</option>
         <option value="economy">Economy</option>
         <option value="jobs">Jobs</option>
         <option value="health">Health</option>
+        <option value="sports">Sports</option>
+        <option value="nature-nurture">Nature vs. Nurture</option>
       </select>
       <span class="result-count" id="result-count">— projects</span>
     </div>
@@ -415,27 +425,45 @@ function onLand(lat,lng){return LAND_POLYS.some(p=>ptInPoly(lat,lng,p));}
 
 /* ── PROJECTS ───────────────────────────────────────── */
 const ALL_PROJECTS=[
-  {id:1,domain:'economy',title:'US GDP Growth: Quarterly Breakdown 2020–2024',desc:'Examining the pandemic shock, recovery trajectory, and normalisation of US real GDP across 16 consecutive quarters.',date:'2024-03-15',chartUrl:null,videoUrl:null},
-  {id:2,domain:'jobs',title:'Job Openings vs Unemployment: The Great Mismatch',desc:'JOLTS data reveals a persistent gap between open positions and job seekers — structural or cyclical?',date:'2024-03-08',chartUrl:null,videoUrl:null},
-  {id:3,domain:'health',title:'Global Disease Burden Shift: NCDs Rising',desc:'WHO DALY data across 20 years shows cardiovascular and metabolic diseases now account for 36% of burden.',date:'2024-02-28',chartUrl:null,videoUrl:null},
-  {id:4,domain:'economy',title:'Unemployment Rate: A 10-Year Retrospective',desc:'Post-GFC recovery to COVID-19 shock to current tightness — charted in full with recession overlays.',date:'2024-02-15',chartUrl:null,videoUrl:null},
-  {id:5,domain:'jobs',title:'Hiring Rate vs Quit Rate: Labour Market Momentum',desc:'When people quit voluntarily, it signals confidence. This chart tracks what workers are actually doing.',date:'2024-01-30',chartUrl:null,videoUrl:null},
-  {id:6,domain:'health',title:'Infectious vs Non-Communicable: A Century of Shift',desc:'100 years of mortality data reveals the most dramatic public health transition in human history.',date:'2024-01-15',chartUrl:null,videoUrl:null},
+  {
+    id:1,
+    tags:['sports','nature-nurture'],
+    title:'Are Pro Athletes born with it? No, they are born at the right time.',
+    desc:'We evaluated 5,405 athletes across 6 leagues and multiple continents. The hidden pattern about your birth month that no one talks about!',
+    date:'2025-04-03',
+    experienceUrl:'https://birthdays.willemsworld.fyi',
+    videoUrl:null,
+    summaryUrl:'https://birthdays.willemsworld.fyi/summary.html',
+    dashboardUrl:null
+  },
+  {id:2,tags:['economy'],title:'US GDP Growth: Quarterly Breakdown 2020–2024',desc:'Examining the pandemic shock, recovery trajectory, and normalisation of US real GDP across 16 consecutive quarters.',date:'2024-03-15',experienceUrl:null,videoUrl:null,summaryUrl:null,dashboardUrl:null},
+  {id:3,tags:['jobs'],title:'Job Openings vs Unemployment: The Great Mismatch',desc:'JOLTS data reveals a persistent gap between open positions and job seekers — structural or cyclical?',date:'2024-03-08',experienceUrl:null,videoUrl:null,summaryUrl:null,dashboardUrl:null},
+  {id:4,tags:['health'],title:'Global Disease Burden Shift: NCDs Rising',desc:'WHO DALY data across 20 years shows cardiovascular and metabolic diseases now account for 36% of burden.',date:'2024-02-28',experienceUrl:null,videoUrl:null,summaryUrl:null,dashboardUrl:null},
+  {id:5,tags:['economy'],title:'Unemployment Rate: A 10-Year Retrospective',desc:'Post-GFC recovery to COVID-19 shock to current tightness — charted in full with recession overlays.',date:'2024-02-15',experienceUrl:null,videoUrl:null,summaryUrl:null,dashboardUrl:null},
+  {id:6,tags:['jobs'],title:'Hiring Rate vs Quit Rate: Labour Market Momentum',desc:'When people quit voluntarily, it signals confidence. This chart tracks what workers are actually doing.',date:'2024-01-30',experienceUrl:null,videoUrl:null,summaryUrl:null,dashboardUrl:null},
 ];
+
+const TAG_LABELS = {
+  'economy':'Economy','jobs':'Jobs','health':'Health',
+  'sports':'Sports','nature-nurture':'Nature vs. Nurture'
+};
 
 let currentFilter='all', currentSearch='';
 
 function fmtDate(d){return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
 
 function openModal(type,url,title){
-  const overlay=document.getElementById(`${type}-modal`);
-  document.getElementById(`${type}-modal-title`).textContent=title;
-  const body=document.getElementById(`${type}-modal-body`);
-  if(!url){body.innerHTML=`<div class="modal-empty"><div class="modal-empty-icon">${type==='chart'?'▦':'▶'}</div><div>${type==='chart'?'Chart coming soon':'Video walkthrough coming soon'}</div><div class="modal-empty-sub">Add your ${type==='chart'?'ECharts embed URL':'YouTube embed URL'} to activate</div></div>`;}
-  else{body.innerHTML=`<iframe class="${type==='video'?'video-frame':''}" src="${url}" allowfullscreen allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"></iframe>`;}
+  if((type==='experience'||type==='summary')&&url){ window.open(url,'_blank'); return; }
+  const modalId = type==='experience'?'chart-modal':type==='summary'?'chart-modal':`${type}-modal`;
+  const overlay=document.getElementById(modalId);
+  document.getElementById(`${modalId.replace('-modal','')}-modal-title`).textContent=title;
+  const body=document.getElementById(`${modalId.replace('-modal','')}-modal-body`);
+  const labels={experience:'Data Experience',video:'Video Walkthrough',summary:'Written Summary',dashboard:'Live Dashboard'};
+  if(!url){body.innerHTML=`<div class="modal-empty"><div class="modal-empty-icon">◎</div><div>${labels[type]} coming soon</div><div class="modal-empty-sub">Check back soon</div></div>`;}
+  else{body.innerHTML=`<iframe class="${type==='video'?'video-frame':''}" src="${url}" allowfullscreen></iframe>`;}
   overlay.classList.add('open');
 }
-function closeModal(id){document.getElementById(id).classList.remove('open');document.getElementById(id.replace('-modal','-modal-body')).innerHTML='';}
+function closeModal(id){document.getElementById(id).classList.remove('open');const b=document.getElementById(id.replace('-modal','-modal-body'));if(b)b.innerHTML='';}
 document.querySelectorAll('.modal-overlay').forEach(el=>{el.addEventListener('click',e=>{if(e.target===el)closeModal(el.id);});});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(el=>closeModal(el.id));});
 
@@ -443,36 +471,36 @@ function renderGrid(projects){
   document.getElementById('result-count').textContent=`${projects.length} project${projects.length!==1?'s':''}`;
   const grid=document.getElementById('projects-grid');
   if(!projects.length){grid.innerHTML=`<div class="empty-state"><div class="empty-icon">🌐</div><div>No projects match</div></div>`;return;}
-  grid.innerHTML=projects.map((p,i)=>`
-    <div class="project-card" style="animation-delay:${i*0.05}s">
-      <div class="pc-meta">
-        <span class="pc-domain ${p.domain}">${p.domain.charAt(0).toUpperCase()+p.domain.slice(1)}</span>
-        <span class="pc-date">${fmtDate(p.date)}</span>
-      </div>
+  grid.innerHTML=projects.map((p,i)=>{
+    const tagsHtml = p.tags.map(t=>`<span class="pc-domain ${t}">${TAG_LABELS[t]||t}</span>`).join('');
+    const safeTitle = p.title.replace(/'/g,"\\'");
+    const expBlock = `<div class="pc-block primary" onclick="openModal('experience',${p.experienceUrl?`'${p.experienceUrl}'`:'null'},'${safeTitle}')">
+      <div class="pb-icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M6 8 Q8 5 10 8 Q8 11 6 8Z" fill="currentColor" stroke="none"/></svg></div>
+      <div class="pb-label">Experience</div></div>`;
+    const vidBlock = `<div class="pc-block" onclick="openModal('video',${p.videoUrl?`'${p.videoUrl}'`:'null'},'${safeTitle}')">
+      <div class="pb-icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polygon points="6.5,5.5 11,8 6.5,10.5" fill="currentColor" stroke="none"/></svg></div>
+      <div class="pb-label">Walkthrough</div></div>`;
+    const sumBlock = `<div class="pc-block" onclick="openModal('summary',${p.summaryUrl?`'${p.summaryUrl}'`:'null'},'${safeTitle}')">
+      <div class="pb-icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="1"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg></div>
+      <div class="pb-label">Summary</div></div>`;
+    const dashBlock = p.dashboardUrl!==undefined ? `<div class="pc-block" onclick="openModal('dashboard',${p.dashboardUrl?`'${p.dashboardUrl}'`:'null'},'${safeTitle}')">
+      <div class="pb-icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="8" width="4" height="6"/><rect x="6" y="4" width="4" height="10"/><rect x="11" y="1" width="4" height="13"/></svg></div>
+      <div class="pb-label">Dashboard</div></div>` : '';
+    const cols = p.dashboardUrl!==undefined ? '1fr 1fr 1fr 1fr' : '1fr 1fr 1fr';
+    return `<div class="project-card" style="animation-delay:${i*0.05}s">
+      <div class="pc-tags">${tagsHtml}<span class="pc-date">${fmtDate(p.date)}</span></div>
       <h3 class="pc-title">${p.title}</h3>
       <p class="pc-desc">${p.desc}</p>
-      <div class="pc-blocks">
-        <div class="pc-block primary" onclick="openModal('chart',${p.chartUrl?`'${p.chartUrl}'`:'null'},'${p.title.replace(/'/g,"\\'")}')">
-          <div class="pb-icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="9" width="3" height="5"/><rect x="6" y="6" width="3" height="8"/><rect x="11" y="2" width="3" height="12"/></svg></div>
-          <div class="pb-label">Chart</div>
-        </div>
-        <div class="pc-block" onclick="openModal('video',${p.videoUrl?`'${p.videoUrl}'`:'null'},'${p.title.replace(/'/g,"\\'")}')">
-          <div class="pb-icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polygon points="6.5,5.5 11,8 6.5,10.5" fill="currentColor" stroke="none"/></svg></div>
-          <div class="pb-label">Walkthrough</div>
-        </div>
-        <div class="pc-block" onclick="">
-          <div class="pb-icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="1"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg></div>
-          <div class="pb-label">Summary</div>
-        </div>
-      </div>
-    </div>`).join('');
+      <div class="pc-blocks" style="grid-template-columns:${cols}">${expBlock}${vidBlock}${sumBlock}${dashBlock}</div>
+    </div>`;
+  }).join('');
 }
 
 function applyFilters(){
   const filtered=ALL_PROJECTS.filter(p=>{
-    const dm=currentFilter==='all'||p.domain===currentFilter;
+    const dm=currentFilter==='all'||p.tags.includes(currentFilter);
     const q=currentSearch.toLowerCase();
-    const sr=!q||p.title.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)||p.domain.includes(q);
+    const sr=!q||p.title.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)||p.tags.some(t=>t.includes(q));
     return dm&&sr;
   });
   renderGrid(filtered);
