@@ -254,6 +254,7 @@
     .card-domain.health  { color: #B84700; border: 1px solid rgba(184,71,0,0.25);   background: rgba(184,71,0,0.05); }
     .card-domain.sports  { color: #6B21A8; border: 1px solid rgba(107,33,168,0.25); background: rgba(107,33,168,0.05); }
     .card-domain.nature  { color: #0F766E; border: 1px solid rgba(15,118,110,0.25); background: rgba(15,118,110,0.05); }
+    .card-domain.industry{ color: #9A4F19; border: 1px solid rgba(154,79,25,0.25);  background: rgba(154,79,25,0.05); }
     .card-domain.default { color: #555555; border: 1px solid rgba(0,0,0,0.12); }
 
     .card-date {
@@ -861,6 +862,17 @@
 ═══════════════════════════════════════════════ */
 const SAMPLE_PROJECTS = [
   {
+    id: 0,
+    tags: ['Industry & Supply Chain'],
+    title: 'Why is your Supply Chain Breaking?',
+    desc: "The rippling effects of inconsistency. Supply and Demand is a cat and mouse game, not 2 smooth curves your college professor draws on the board. It's noisy, inconsistent, but predictable.",
+    date: '2026-04-22',
+    experienceUrl: null,
+    videoUrl: null,
+    summaryUrl: 'https://willemsworld.fyi/supply.html',
+    dashboardUrl: null,
+  },
+  {
     id: 1,
     tags: ['Sports', 'Nature vs. Nurture'],
     title: 'Are Pro Athletes born with it? No, they are born at the right time.',
@@ -892,11 +904,12 @@ const SAMPLE_PROJECTS = [
 ];
 
 const TAG_COLORS = {
-  'Economy':           'economy',
-  'Jobs':              'jobs',
-  'Health':            'health',
-  'Sports':            'sports',
-  'Nature vs. Nurture':'nature',
+  'Economy':                'economy',
+  'Jobs':                   'jobs',
+  'Health':                 'health',
+  'Sports':                 'sports',
+  'Nature vs. Nurture':     'nature',
+  'Industry & Supply Chain':'industry',
 };
 
 function fmtDate(d) {
