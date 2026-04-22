@@ -94,6 +94,7 @@
     .chip[data-filter="health"].active       { color: #B84700; border-color: rgba(184,71,0,0.4);   background: rgba(184,71,0,0.05); }
     .chip[data-filter="sports"].active       { color: #6B21A8; border-color: rgba(107,33,168,0.4); background: rgba(107,33,168,0.05); }
     .chip[data-filter="nature-nurture"].active { color: #0F766E; border-color: rgba(15,118,110,0.4); background: rgba(15,118,110,0.05); }
+    .chip[data-filter="industry"].active      { color: #9A4F19; border-color: rgba(154,79,25,0.4);  background: rgba(154,79,25,0.05); }
 
     .result-count { font-family: var(--mono); font-size: 0.58rem; color: #BBBBBB; letter-spacing: 0.1em; white-space: nowrap; margin-left: auto; }
 
@@ -143,6 +144,7 @@
     .pc-domain.health         { color: #B84700; border-color: rgba(184,71,0,0.3);   background: rgba(184,71,0,0.05); }
     .pc-domain.sports         { color: #6B21A8; border-color: rgba(107,33,168,0.3); background: rgba(107,33,168,0.05); }
     .pc-domain.nature-nurture { color: #0F766E; border-color: rgba(15,118,110,0.3); background: rgba(15,118,110,0.05); }
+    .pc-domain.industry       { color: #9A4F19; border-color: rgba(154,79,25,0.3);  background: rgba(154,79,25,0.05); }
 
     .pc-tags { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
 
@@ -292,6 +294,7 @@
         <button class="chip" data-filter="health">Health</button>
         <button class="chip" data-filter="sports">Sports</button>
         <button class="chip" data-filter="nature-nurture">Nature vs. Nurture</button>
+        <button class="chip" data-filter="industry">Industry &amp; Supply Chain</button>
       </div>
       <select class="filter-dropdown" id="filter-dropdown">
         <option value="all">All Categories</option>
@@ -300,6 +303,7 @@
         <option value="health">Health</option>
         <option value="sports">Sports</option>
         <option value="nature-nurture">Nature vs. Nurture</option>
+        <option value="industry">Industry &amp; Supply Chain</option>
       </select>
       <span class="result-count" id="result-count">— projects</span>
     </div>
@@ -426,6 +430,17 @@ function onLand(lat,lng){return LAND_POLYS.some(p=>ptInPoly(lat,lng,p));}
 /* ── PROJECTS ───────────────────────────────────────── */
 const ALL_PROJECTS=[
   {
+    id:0,
+    tags:['industry'],
+    title:'Why is your Supply Chain Breaking?',
+    desc:"The rippling effects of inconsistency. Supply and Demand is a cat and mouse game, not 2 smooth curves your college professor draws on the board. It's noisy, inconsistent, but predictable.",
+    date:'2026-04-22',
+    experienceUrl:null,
+    videoUrl:null,
+    summaryUrl:'https://willemsworld.fyi/supply.html',
+    dashboardUrl:null
+  },
+  {
     id:1,
     tags:['sports','nature-nurture'],
     title:'Are Pro Athletes born with it? No, they are born at the right time.',
@@ -446,7 +461,8 @@ const ALL_PROJECTS=[
 
 const TAG_LABELS = {
   'economy':'Economy','jobs':'Jobs','health':'Health',
-  'sports':'Sports','nature-nurture':'Nature vs. Nurture'
+  'sports':'Sports','nature-nurture':'Nature vs. Nurture',
+  'industry':'Industry & Supply Chain'
 };
 
 let currentFilter='all', currentSearch='';
