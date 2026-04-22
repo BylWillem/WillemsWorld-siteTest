@@ -1673,121 +1673,6 @@
 
   /* ── 5C: same styling as 4B reused ── */
 
-  /* ══════════════ POPOUT SYSTEM — desktop only ══════════════ */
-  .popout-trigger {
-    position: absolute;
-    top: 1rem; right: 1.25rem;
-    z-index: 5;
-    width: 28px; height: 28px;
-    border: 1px solid var(--border);
-    background: var(--white);
-    cursor: pointer;
-    display: none;
-    align-items: center; justify-content: center;
-    color: var(--muted);
-    transition: all 0.2s;
-    padding: 0;
-  }
-  .popout-host { position: relative; }
-  .popout-trigger:hover {
-    color: var(--ink);
-    border-color: var(--ink);
-    background: var(--bg);
-  }
-  .popout-trigger svg {
-    width: 12px; height: 12px;
-    stroke: currentColor; fill: none;
-    stroke-width: 2;
-    stroke-linecap: round; stroke-linejoin: round;
-  }
-  @media (min-width: 741px) {
-    .popout-trigger { display: inline-flex; }
-  }
-  /* If a stage has an absolutely-positioned .stage-caption near the top-right,
-     shove it to the left so our button never collides with it. */
-  .popout-host .stage-caption { right: 4rem; }
-
-  /* The overlay itself */
-  .popout-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: rgba(10, 10, 10, 0.75);
-    backdrop-filter: blur(6px);
-    display: none;
-    align-items: center; justify-content: center;
-    padding: 2.5rem 2rem;
-    opacity: 0;
-    transition: opacity 0.35s ease;
-  }
-  .popout-overlay.open {
-    display: flex;
-    opacity: 1;
-  }
-  .popout-dialog {
-    position: relative;
-    background: var(--bg);
-    width: 100%;
-    max-width: 1600px;
-    max-height: calc(100vh - 5rem);
-    overflow: auto;
-    padding: 2.5rem 2.5rem 2rem;
-    border: 1px solid var(--border);
-    transform: scale(0.96);
-    transition: transform 0.35s cubic-bezier(.25,.1,.25,1);
-  }
-  .popout-overlay.open .popout-dialog {
-    transform: scale(1);
-  }
-  .popout-close {
-    position: absolute;
-    top: 1rem; right: 1rem;
-    z-index: 10;
-    width: 36px; height: 36px;
-    border: 1px solid var(--border);
-    background: var(--white);
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--muted);
-    transition: all 0.2s;
-  }
-  .popout-close:hover {
-    color: var(--ink);
-    border-color: var(--ink);
-  }
-  .popout-close svg {
-    width: 16px; height: 16px;
-    stroke: currentColor; stroke-width: 2;
-    stroke-linecap: round;
-  }
-  .popout-title {
-    font-family: var(--mono);
-    font-size: 0.65rem; letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1.25rem;
-  }
-
-  /* When a stage is inside the popout, it gets more breathing room
-     but still renders with normal layout (we keep the same styles). */
-  .popout-dialog .popout-host {
-    margin: 0 auto 1.5rem;
-    max-width: 100%;
-  }
-  .popout-dialog .popout-host:last-child { margin-bottom: 0; }
-  /* Hide the popout-trigger inside the overlay itself */
-  .popout-dialog .popout-trigger { display: none !important; }
-
-  /* Prevent body scroll when overlay is open */
-  body.popout-open { overflow: hidden; }
-
-  /* Grouped layout: commute cards */
-  .popout-dialog[data-group-layout="city"] .city-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  /* 4A+4B group inherits normal stacked flow */
   .compare-table {
     display: grid;
     grid-template-columns: 1.2fr repeat(3, 1fr);
@@ -1898,7 +1783,7 @@
     Economics 101 promises balance: supply meets demand, the scale sits level, the shelves stay full. The textbook version is beautiful. It's also a lie — or at least, it's only true on average. The moment you watch it in motion, the myth starts to crack.
   </p>
 
-  <div class="stage popout-host" data-popout-group="fig1" data-popout-title="Fig. 01 — Supply &amp; Demand, in motion">
+  <div class="stage">
     <span class="stage-label">Fig. 01 — Supply &amp; Demand<span class="label-detail">, in motion</span></span>
     <span class="stage-caption" id="stageCaption">Equilibrium seeking…</span>
 
@@ -2015,7 +1900,7 @@
     All vendors require a minimum order quantity of 3,000 units. Three vendors submit bids. Same product, same promised lead time, different price. Your procurement software sorts the list. The choice makes itself.
   </p>
 
-  <div class="stage popout-host" data-popout-group="fig2" data-popout-title="Fig. 02 — Request for Quotation · RFQ-2041" style="padding: 2.5rem 1.75rem 2rem;">
+  <div class="stage" style="padding: 2.5rem 1.75rem 2rem;">
     <span class="stage-label">Fig. 02 — Request for Quotation<span class="label-detail"> · RFQ-2041</span></span>
     <span class="stage-caption" id="stageCaption2">Bid summary · 3 vendors</span>
 
@@ -2115,7 +2000,7 @@
     Each vendor promised 120 days. Click a vendor below to overlay their real delivery record. Watch what "averages 120 days" actually looks like in practice.
   </p>
 
-  <div class="chart-stage popout-host" data-popout-group="fig3a" data-popout-title="Fig. 03A — Actual delivery days · 24-month record">
+  <div class="chart-stage">
     <span class="stage-label">Fig. 03A — Actual delivery days<span class="label-detail"> · 24-month record</span></span>
     <span class="stage-caption" id="chartCaption">Toggle a vendor to reveal →</span>
 
@@ -2221,7 +2106,7 @@
     Every Vendor is headed for a 120-day delivery. But the band around that number — the error bar — is what determines whether your facility runs or your facility stops. One of these Vendors is a coin flip. One is a clockwork.
   </p>
 
-  <div class="truck-stage popout-host" data-popout-group="fig3b" data-popout-title="Fig. 03B — Variability envelopes · ±1σ band">
+  <div class="truck-stage">
     <span class="stage-label">Fig. 03B — Variability envelopes<span class="label-detail"> · ±1σ band</span></span>
 
     <!-- TRUCK LANE A -->
@@ -2383,7 +2268,7 @@
     <p><strong style="font-family:var(--sans);font-style:normal;font-weight:600;">Coefficient of Variation</strong> — the number that actually matters — is just the standard deviation divided by the mean. <code>CoV = σ ÷ μ</code>. It measures how noisy a process is <em>relative to its average</em>. A 10-minute swing matters a lot for a 30-minute commute. It barely registers for a transatlantic flight.</p>
   </div>
 
-  <div class="city-grid popout-host" data-popout-group="fig3c" data-popout-title="Fig. 03C — Commute analogy · CoV compared">
+  <div class="city-grid">
 
     <!-- LA — Vendor A profile -->
     <div class="city-card" data-v="A" style="--rb-left: 10%; --rb-width: 80%;">
@@ -2605,7 +2490,7 @@
     Every vendor is committed to the same 39,910 units. Click the button to release the shipments across the year and watch what "13 deliveries" actually looks like in each vendor's calendar.
   </p>
 
-  <div class="bars-stage popout-host" id="barsStage" data-popout-group="fig4ab" data-popout-title="Fig. 04A &amp; 04B — Annual order volume &amp; weekly receipts">
+  <div class="bars-stage" id="barsStage">
     <span class="stage-label">Fig. 04A — Annual order volume<span class="label-detail"> · committed</span></span>
     <span class="stage-caption" id="barsCaption">Three bars · identical · 39,910 units each</span>
 
@@ -2644,7 +2529,7 @@
   </div>
 
   <!-- ── 4B: Timeline buckets (post-shatter) ────────── -->
-  <div class="timeline-stage popout-host" data-popout-group="fig4ab">
+  <div class="timeline-stage">
     <span class="stage-label">Fig. 04B — Weekly receipts<span class="label-detail"> · 52-week year</span></span>
     <span class="stage-caption">Each block = 3,070 units landed</span>
 
@@ -2711,7 +2596,7 @@
     </div>
   </div>
 
-  <div class="inv-stage popout-host" id="invStage" data-popout-group="fig4c" data-popout-title="Fig. 04C — Weekly inventory on hand · 52-week simulation">
+  <div class="inv-stage" id="invStage">
     <span class="stage-label">Fig. 04C — Weekly inventory on hand<span class="label-detail"> · 52-week simulation</span></span>
     <span class="stage-caption">Positive = stock on shelf · Negative = stockout (couldn't fulfill)</span>
 
@@ -2849,7 +2734,7 @@
     Market conditions change — you notice you need about a 29% increase in your forecast to keep up with new demand. You build a new forecast. Then reality happens. Every gap between the black line and the dashed line is a week you were either over-stocked or scrambling.
   </p>
 
-  <div class="fc-stage popout-host" id="fcStage" data-popout-group="fig5a" data-popout-title="Fig. 05A — Forecast vs. actual demand · 52 weeks">
+  <div class="fc-stage" id="fcStage">
     <span class="stage-label">Fig. 05A — Forecast vs. actual demand<span class="label-detail"> · 52 weeks</span></span>
     <span class="stage-caption">Forecast accuracy avg. 88% · worst week 31%</span>
 
@@ -2939,7 +2824,7 @@
     Your old 4-week ordering cadence was built for steady 767/week demand. With demand ~30% higher and noisy, you increase shipment sizes mid-year from <strong style="font-family:var(--sans);font-weight:600;">3,070 to 4,000 units</strong> per order. But you're always one beat behind — you can only raise orders after the shortfalls have already started to show up.
   </p>
 
-  <div class="pp-stage popout-host" id="ppStage" data-popout-group="fig5b" data-popout-title="Fig. 05B — Shipments received per week · per vendor">
+  <div class="pp-stage" id="ppStage">
     <span class="stage-label">Fig. 05B — Shipments received per week<span class="label-detail"> · per vendor</span></span>
     <span class="stage-caption">Order size steps up around Week 25</span>
 
@@ -3019,7 +2904,7 @@
     Same inventory logic as before — but now demand is noisy and the plan is flexing. Watch what happens to the vendor you almost chose versus the vendor you almost didn't.
   </p>
 
-  <div class="inv-stage popout-host" id="invStage5" data-popout-group="fig5c" data-popout-title="Fig. 05C — Weekly inventory on hand · real demand · 52 weeks">
+  <div class="inv-stage" id="invStage5">
     <span class="stage-label">Fig. 05C — Weekly inventory on hand<span class="label-detail"> · real demand · 52 weeks</span></span>
     <span class="stage-caption">Red zone expanded to show the full damage</span>
 
@@ -3179,17 +3064,6 @@
   </div>
 </section>
 
-<!-- ══════════════════ POPOUT OVERLAY ══════════════════ -->
-<div class="popout-overlay" id="popoutOverlay" role="dialog" aria-modal="true" aria-labelledby="popoutTitle">
-  <div class="popout-dialog">
-    <button type="button" class="popout-close" aria-label="Close figure">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 L6 18"/><path d="M6 6 L18 18"/></svg>
-    </button>
-    <div class="popout-title" id="popoutTitle">Figure</div>
-    <div class="popout-content"></div>
-  </div>
-</div>
-
 <script>
   // ══════ Section 1 — balance scale ══════
   const section = document.getElementById('s1');
@@ -3218,7 +3092,7 @@
         play();
       }
     });
-  }, { threshold: 0.35 });
+  }, { threshold: 0.15 });
   io1.observe(section);
 
   replay.addEventListener('click', play);
@@ -3248,7 +3122,7 @@
         playS2();
       }
     });
-  }, { threshold: 0.35 });
+  }, { threshold: 0.15 });
   io2.observe(s2);
 
   // ══════ Progress rail — tracks which section is in view ══════
@@ -3402,7 +3276,7 @@
         setTimeout(() => { setVendor('A', true); updateCaption(); }, 800);
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.15 });
   chartObs.observe(document.querySelector('.chart-stage'));
 
   // ══════ Section 3B — Trucks drive when in view ══════
@@ -3411,7 +3285,7 @@
     entries.forEach(e => {
       if (e.isIntersecting) s3.classList.add('play-3b');
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.15 });
   truckObs.observe(document.querySelector('.truck-stage'));
 
   // ══════ Section 3C — City cards reveal when in view ══════
@@ -3419,7 +3293,7 @@
     entries.forEach(e => {
       if (e.isIntersecting) s3.classList.add('play-3c');
     });
-  }, { threshold: 0.25 });
+  }, { threshold: 0.15 });
   cityObs.observe(document.querySelector('.city-grid'));
 
   // ══════ Section 4 — Shatter bars into weekly buckets ══════
@@ -3598,7 +3472,7 @@
     entries.forEach(e => {
       barsStage.classList.toggle('hover-prime', e.isIntersecting);
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.15 });
   primeObs.observe(barsStage);
 
   // ══════ Section 4B — Inventory-over-time bar charts ══════
@@ -3667,7 +3541,7 @@
         });
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.15 });
   invObs.observe(document.getElementById('invStage'));
 
   // ══════════════════ SECTION 5 ══════════════════
@@ -3704,7 +3578,7 @@
     entries.forEach(e => {
       if (e.isIntersecting) s5.classList.add('play-5a');
     });
-  }, { threshold: 0.35 });
+  }, { threshold: 0.15 });
   fcObs.observe(document.getElementById('fcStage'));
 
   // 5B: purchase plan stacked bars
@@ -3760,7 +3634,7 @@
         });
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.15 });
   ppObs.observe(document.getElementById('ppStage'));
 
   // 5C: Inventory bars (same renderer as 4B, new ranges)
@@ -3822,150 +3696,8 @@
         });
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.15 });
   inv5Obs.observe(document.getElementById('invStage5'));
-
-  // ══════════════════ POPOUT SYSTEM ══════════════════
-  (function initPopout() {
-    // Only run on desktop. The CSS hides triggers below 741px, but we also
-    // skip the JS init for safety on small screens.
-    if (window.matchMedia && window.matchMedia('(max-width: 740px)').matches) {
-      return;
-    }
-
-    const overlay = document.getElementById('popoutOverlay');
-    const dialog = overlay.querySelector('.popout-dialog');
-    const titleEl = overlay.querySelector('.popout-title');
-    const body = document.body;
-
-    // Track open state so we know what to restore on close
-    let active = null; // { group, hosts: [{el, placeholder}], scrollY }
-
-    // Build triggers inside every popout-host
-    const hosts = Array.from(document.querySelectorAll('.popout-host'));
-    // Group by data-popout-group; only the FIRST host in each group gets a trigger
-    const seenGroups = new Set();
-    hosts.forEach(host => {
-      const group = host.dataset.popoutGroup;
-      if (!group || seenGroups.has(group)) return;
-      seenGroups.add(group);
-
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'popout-trigger';
-      btn.setAttribute('aria-label', 'Expand figure');
-      btn.setAttribute('title', 'Expand');
-      btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>';
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        openGroup(group);
-      });
-      host.appendChild(btn);
-    });
-
-    function openGroup(group) {
-      if (active) return;
-      const groupHosts = Array.from(document.querySelectorAll(`.popout-host[data-popout-group="${group}"]`));
-      if (!groupHosts.length) return;
-
-      // Gather title from the first host that has one
-      const title = groupHosts.find(h => h.dataset.popoutTitle)?.dataset.popoutTitle || 'Figure';
-      titleEl.textContent = title;
-
-      // Clear previous dialog content (leave title + close button intact)
-      const contentSlot = dialog.querySelector('.popout-content');
-      contentSlot.innerHTML = '';
-
-      // For each host: drop a placeholder where it sits, then lift it into the dialog
-      const record = [];
-      groupHosts.forEach(host => {
-        const placeholder = document.createElement('div');
-        placeholder.className = 'popout-placeholder';
-        placeholder.style.display = 'none';
-        host.parentNode.insertBefore(placeholder, host);
-        contentSlot.appendChild(host);
-        record.push({ host, placeholder });
-      });
-
-      // Apply a layout hint on the dialog for grouped layouts
-      dialog.setAttribute('data-group-layout', group === 'fig3c' ? 'city' : 'default');
-
-      // Save scroll, lock body
-      const scrollY = window.scrollY;
-      body.classList.add('popout-open');
-      body.style.top = `-${scrollY}px`;
-      body.style.position = 'fixed';
-      body.style.width = '100%';
-
-      active = { group, hosts: record, scrollY };
-
-      // Propagate any animation-state classes from the source section onto the
-      // dialog. Several CSS rules use selectors like ".play .beam-group" or
-      // ".play-4 .v-card" that rely on ancestor classes — without these, moved
-      // stages lose their animation/visual state while inside the popout.
-      // We also add ".scene" so selectors scoped to ".scene.play-X" still match.
-      const stateClasses = ['play', 'play-2', 'play-3b', 'play-3c', 'play-4', 'play-5a', 'play-5b'];
-      const sourceSection = groupHosts[0].closest('section.scene');
-      dialog.classList.add('scene');
-      if (sourceSection) {
-        stateClasses.forEach(c => {
-          if (sourceSection.classList.contains(c)) dialog.classList.add(c);
-        });
-      }
-
-      // Show overlay
-      overlay.classList.add('open');
-
-      // Focus the close button for accessibility
-      setTimeout(() => {
-        const closeBtn = overlay.querySelector('.popout-close');
-        if (closeBtn) closeBtn.focus();
-      }, 100);
-    }
-
-    function closePopout() {
-      if (!active) return;
-      const { hosts, scrollY } = active;
-
-      // Fade out first, then move nodes back after transition
-      overlay.classList.remove('open');
-
-      // Strip any animation-state classes we propagated onto the dialog
-      ['play', 'play-2', 'play-3b', 'play-3c', 'play-4', 'play-5a', 'play-5b', 'scene']
-        .forEach(c => dialog.classList.remove(c));
-
-      // Restore body scroll immediately (the visual fade doesn't need to wait for DOM moves)
-      body.style.position = '';
-      body.style.top = '';
-      body.style.width = '';
-      body.classList.remove('popout-open');
-      window.scrollTo(0, scrollY);
-
-      // Move hosts back after the fade completes (matches CSS transition 0.35s)
-      setTimeout(() => {
-        hosts.forEach(({ host, placeholder }) => {
-          if (placeholder.parentNode) {
-            placeholder.parentNode.insertBefore(host, placeholder);
-            placeholder.remove();
-          }
-        });
-        active = null;
-      }, 360);
-    }
-
-    // Close on X button
-    overlay.querySelector('.popout-close').addEventListener('click', closePopout);
-
-    // Close on backdrop click (but not clicks inside the dialog)
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) closePopout();
-    });
-
-    // Close on Esc
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && active) closePopout();
-    });
-  })();
 </script>
 
 </body>
