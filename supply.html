@@ -159,10 +159,12 @@
   .stage-label {
     position: absolute;
     top: 1rem; left: 1.25rem;
+    right: 1.25rem;
     font-family: var(--mono);
     font-size: 0.6rem; letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--muted);
+    pointer-events: none;
   }
   .stage-caption {
     position: absolute;
@@ -172,8 +174,36 @@
     text-transform: uppercase;
     color: var(--muted);
     transition: color 0.4s;
+    background: var(--white);
+    padding-left: 6px;
+    z-index: 1;
   }
   .stage-caption.warn { color: var(--warn); }
+  /* suffix portions of the figure label that collapse on mobile */
+  .label-detail { color: var(--muted); }
+
+  /* Mobile: stop labels from overlapping — stack them and drop the noise */
+  @media (max-width: 740px) {
+    .wx-hide-mobile { display: none !important; }
+    .stage-label {
+      position: static;
+      display: block;
+      padding: 0 1.25rem;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+    .stage-caption {
+      display: none !important;
+    }
+    .label-detail {
+      display: none;
+    }
+    /* Stages were padded for absolute labels — trim that on mobile */
+    .stage, .chart-stage, .truck-stage, .bars-stage, .timeline-stage,
+    .inv-stage, .fc-stage, .pp-stage {
+      padding-top: 1.5rem !important;
+    }
+  }
 
   .scale-svg {
     display: block; width: 100%; height: auto;
@@ -1036,12 +1066,69 @@
     background: var(--sw);
     opacity: 0;
     transform: translateY(-200px) scale(0.4);
-    transition: transform 0.7s cubic-bezier(.35,.05,.25,1), opacity 0.25s;
+    transition:
+      transform 0.7s cubic-bezier(.35,.05,.25,1),
+      opacity 0.25s,
+      left 0.9s cubic-bezier(.45,.08,.25,1);
   }
   .tr-bucket.land { opacity: 1; transform: translateY(0) scale(1); }
+  /* Give stacked (same-week) buckets a hint of separation */
+  .tr-bucket.stacked {
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.85);
+  }
   .timeline-row[data-v="A"] { --sw: var(--v-a); }
   .timeline-row[data-v="B"] { --sw: var(--v-b); }
   .timeline-row[data-v="C"] { --sw: var(--v-c); }
+
+  /* ── Plan vs Reality pill toggle (4B) ── */
+  .pr-toggle-row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+    margin: 0 0 1.25rem;
+    padding: 0 0.25rem;
+  }
+  .pr-toggle-lbl {
+    font-family: var(--mono);
+    font-size: 0.6rem; letter-spacing: 0.16em;
+    color: var(--muted); text-transform: uppercase;
+  }
+  .pr-pill {
+    display: inline-flex;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 3px;
+    position: relative;
+    user-select: none;
+  }
+  .pr-pill button {
+    position: relative; z-index: 2;
+    font-family: var(--mono);
+    font-size: 0.66rem; letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.55rem 1rem;
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.3s;
+    min-width: 90px;
+  }
+  .pr-pill button.on {
+    color: var(--white);
+  }
+  .pr-pill button:not(.on):hover { color: var(--ink); }
+  .pr-pill .pr-slider {
+    position: absolute;
+    top: 3px; left: 3px;
+    width: calc(50% - 3px);
+    bottom: 3px;
+    background: var(--ink);
+    transition: transform 0.4s cubic-bezier(.5,.1,.25,1);
+    z-index: 1;
+  }
+  .pr-pill.reality .pr-slider {
+    transform: translateX(100%);
+  }
 
   /* Week axis at bottom */
   .tl-axis {
@@ -1586,7 +1673,121 @@
 
   /* ── 5C: same styling as 4B reused ── */
 
-  /* ── Comparison table: 4B vs 5C ── */
+  /* ══════════════ POPOUT SYSTEM — desktop only ══════════════ */
+  .popout-trigger {
+    position: absolute;
+    top: 1rem; right: 1.25rem;
+    z-index: 5;
+    width: 28px; height: 28px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    cursor: pointer;
+    display: none;
+    align-items: center; justify-content: center;
+    color: var(--muted);
+    transition: all 0.2s;
+    padding: 0;
+  }
+  .popout-host { position: relative; }
+  .popout-trigger:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+    background: var(--bg);
+  }
+  .popout-trigger svg {
+    width: 12px; height: 12px;
+    stroke: currentColor; fill: none;
+    stroke-width: 2;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  @media (min-width: 741px) {
+    .popout-trigger { display: inline-flex; }
+  }
+  /* If a stage has an absolutely-positioned .stage-caption near the top-right,
+     shove it to the left so our button never collides with it. */
+  .popout-host .stage-caption { right: 4rem; }
+
+  /* The overlay itself */
+  .popout-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center; justify-content: center;
+    padding: 2.5rem 2rem;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .popout-overlay.open {
+    display: flex;
+    opacity: 1;
+  }
+  .popout-dialog {
+    position: relative;
+    background: var(--bg);
+    width: 100%;
+    max-width: 1600px;
+    max-height: calc(100vh - 5rem);
+    overflow: auto;
+    padding: 2.5rem 2.5rem 2rem;
+    border: 1px solid var(--border);
+    transform: scale(0.96);
+    transition: transform 0.35s cubic-bezier(.25,.1,.25,1);
+  }
+  .popout-overlay.open .popout-dialog {
+    transform: scale(1);
+  }
+  .popout-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    z-index: 10;
+    width: 36px; height: 36px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .popout-close:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  .popout-close svg {
+    width: 16px; height: 16px;
+    stroke: currentColor; stroke-width: 2;
+    stroke-linecap: round;
+  }
+  .popout-title {
+    font-family: var(--mono);
+    font-size: 0.65rem; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  /* When a stage is inside the popout, it gets more breathing room
+     but still renders with normal layout (we keep the same styles). */
+  .popout-dialog .popout-host {
+    margin: 0 auto 1.5rem;
+    max-width: 100%;
+  }
+  .popout-dialog .popout-host:last-child { margin-bottom: 0; }
+  /* Hide the popout-trigger inside the overlay itself */
+  .popout-dialog .popout-trigger { display: none !important; }
+
+  /* Prevent body scroll when overlay is open */
+  body.popout-open { overflow: hidden; }
+
+  /* Grouped layout: commute cards */
+  .popout-dialog[data-group-layout="city"] .city-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* 4A+4B group inherits normal stacked flow */
   .compare-table {
     display: grid;
     grid-template-columns: 1.2fr repeat(3, 1fr);
@@ -1697,8 +1898,8 @@
     Economics 101 promises balance: supply meets demand, the scale sits level, the shelves stay full. The textbook version is beautiful. It's also a lie — or at least, it's only true on average. The moment you watch it in motion, the myth starts to crack.
   </p>
 
-  <div class="stage">
-    <span class="stage-label">Fig. 01 — Supply &amp; demand, in motion</span>
+  <div class="stage popout-host" data-popout-group="fig1" data-popout-title="Fig. 01 — Supply &amp; Demand, in motion">
+    <span class="stage-label">Fig. 01 — Supply &amp; Demand<span class="label-detail">, in motion</span></span>
     <span class="stage-caption" id="stageCaption">Equilibrium seeking…</span>
 
     <div class="stage-svg-wrap">
@@ -1814,8 +2015,8 @@
     All vendors require a minimum order quantity of 3,000 units. Three vendors submit bids. Same product, same promised lead time, different price. Your procurement software sorts the list. The choice makes itself.
   </p>
 
-  <div class="stage" style="padding: 2.5rem 1.75rem 2rem;">
-    <span class="stage-label">Fig. 02 — Request for Quotation · RFQ-2041</span>
+  <div class="stage popout-host" data-popout-group="fig2" data-popout-title="Fig. 02 — Request for Quotation · RFQ-2041" style="padding: 2.5rem 1.75rem 2rem;">
+    <span class="stage-label">Fig. 02 — Request for Quotation<span class="label-detail"> · RFQ-2041</span></span>
     <span class="stage-caption" id="stageCaption2">Bid summary · 3 vendors</span>
 
     <div class="vendor-grid" id="vendorGrid">
@@ -1914,8 +2115,8 @@
     Each vendor promised 120 days. Click a vendor below to overlay their real delivery record. Watch what "averages 120 days" actually looks like in practice.
   </p>
 
-  <div class="chart-stage">
-    <span class="stage-label">Fig. 03A — Actual delivery days · 24-month record</span>
+  <div class="chart-stage popout-host" data-popout-group="fig3a" data-popout-title="Fig. 03A — Actual delivery days · 24-month record">
+    <span class="stage-label">Fig. 03A — Actual delivery days<span class="label-detail"> · 24-month record</span></span>
     <span class="stage-caption" id="chartCaption">Toggle a vendor to reveal →</span>
 
     <div class="vendor-toggle" role="tablist" aria-label="Toggle vendor lines">
@@ -2020,8 +2221,8 @@
     Every Vendor is headed for a 120-day delivery. But the band around that number — the error bar — is what determines whether your facility runs or your facility stops. One of these Vendors is a coin flip. One is a clockwork.
   </p>
 
-  <div class="truck-stage">
-    <span class="stage-label">Fig. 03B — Variability envelopes · ±1σ band</span>
+  <div class="truck-stage popout-host" data-popout-group="fig3b" data-popout-title="Fig. 03B — Variability envelopes · ±1σ band">
+    <span class="stage-label">Fig. 03B — Variability envelopes<span class="label-detail"> · ±1σ band</span></span>
 
     <!-- TRUCK LANE A -->
     <div class="truck-lane" data-v="A">
@@ -2178,11 +2379,11 @@
   </p>
 
   <div class="cov-preamble">
-    <div class="cp-mark">THE MATH, IN ONE LINE</div>
+    <div class="cp-mark">THE MATH<span class="label-detail">, IN ONE LINE</span></div>
     <p><strong style="font-family:var(--sans);font-style:normal;font-weight:600;">Coefficient of Variation</strong> — the number that actually matters — is just the standard deviation divided by the mean. <code>CoV = σ ÷ μ</code>. It measures how noisy a process is <em>relative to its average</em>. A 10-minute swing matters a lot for a 30-minute commute. It barely registers for a transatlantic flight.</p>
   </div>
 
-  <div class="city-grid">
+  <div class="city-grid popout-host" data-popout-group="fig3c" data-popout-title="Fig. 03C — Commute analogy · CoV compared">
 
     <!-- LA — Vendor A profile -->
     <div class="city-card" data-v="A" style="--rb-left: 10%; --rb-width: 80%;">
@@ -2404,8 +2605,8 @@
     Every vendor is committed to the same 39,910 units. Click the button to release the shipments across the year and watch what "13 deliveries" actually looks like in each vendor's calendar.
   </p>
 
-  <div class="bars-stage" id="barsStage">
-    <span class="stage-label">Fig. 04A — Annual order volume · committed</span>
+  <div class="bars-stage popout-host" id="barsStage" data-popout-group="fig4ab" data-popout-title="Fig. 04A &amp; 04B — Annual order volume &amp; weekly receipts">
+    <span class="stage-label">Fig. 04A — Annual order volume<span class="label-detail"> · committed</span></span>
     <span class="stage-caption" id="barsCaption">Three bars · identical · 39,910 units each</span>
 
     <div class="bars-grid">
@@ -2443,9 +2644,18 @@
   </div>
 
   <!-- ── 4B: Timeline buckets (post-shatter) ────────── -->
-  <div class="timeline-stage">
-    <span class="stage-label">Fig. 04B — Weekly receipts · 52-week year</span>
+  <div class="timeline-stage popout-host" data-popout-group="fig4ab">
+    <span class="stage-label">Fig. 04B — Weekly receipts<span class="label-detail"> · 52-week year</span></span>
     <span class="stage-caption">Each block = 3,070 units landed</span>
+
+    <div class="pr-toggle-row">
+      <span class="pr-toggle-lbl">Showing</span>
+      <div class="pr-pill" id="prPill" role="tablist">
+        <div class="pr-slider"></div>
+        <button type="button" data-mode="plan" class="on" aria-pressed="true">Plan</button>
+        <button type="button" data-mode="reality" aria-pressed="false">Reality</button>
+      </div>
+    </div>
 
     <div class="timeline-row" data-v="A">
       <div class="tr-label">
@@ -2479,8 +2689,8 @@
 
   <!-- ── Gap analysis removed per request ──────────── -->
 
-  <!-- ── 4B: Inventory ripple ──────────────────────── -->
-  <div class="sub-tag">04 · B — The ripple into your warehouse</div>
+  <!-- ── 4C: Inventory ripple ──────────────────────── -->
+  <div class="sub-tag">04 · C — The ripple into your warehouse</div>
   <h2 class="sub-title">Same incoming. Very different shelves.</h2>
   <p class="sub-desc">
     Your facility draws down <strong style="font-family:var(--sans);font-weight:600;">767 units every week</strong> from inventory — that's constant, because your customers are constant. You start the year with <strong style="font-family:var(--sans);font-weight:600;">2,733 units on hand</strong>. Now watch what happens when the three vendors' real shipment patterns hit that simple rule.
@@ -2501,8 +2711,8 @@
     </div>
   </div>
 
-  <div class="inv-stage" id="invStage">
-    <span class="stage-label">Fig. 04B — Weekly inventory on hand · 52-week simulation</span>
+  <div class="inv-stage popout-host" id="invStage" data-popout-group="fig4c" data-popout-title="Fig. 04C — Weekly inventory on hand · 52-week simulation">
+    <span class="stage-label">Fig. 04C — Weekly inventory on hand<span class="label-detail"> · 52-week simulation</span></span>
     <span class="stage-caption">Positive = stock on shelf · Negative = stockout (couldn't fulfill)</span>
 
     <div class="inv-row" data-v="A">
@@ -2639,8 +2849,8 @@
     Market conditions change — you notice you need about a 29% increase in your forecast to keep up with new demand. You build a new forecast. Then reality happens. Every gap between the black line and the dashed line is a week you were either over-stocked or scrambling.
   </p>
 
-  <div class="fc-stage" id="fcStage">
-    <span class="stage-label">Fig. 05A — 52-week forecast vs. actual demand</span>
+  <div class="fc-stage popout-host" id="fcStage" data-popout-group="fig5a" data-popout-title="Fig. 05A — Forecast vs. actual demand · 52 weeks">
+    <span class="stage-label">Fig. 05A — Forecast vs. actual demand<span class="label-detail"> · 52 weeks</span></span>
     <span class="stage-caption">Forecast accuracy avg. 88% · worst week 31%</span>
 
     <div class="fc-legend">
@@ -2729,8 +2939,8 @@
     Your old 4-week ordering cadence was built for steady 767/week demand. With demand ~30% higher and noisy, you increase shipment sizes mid-year from <strong style="font-family:var(--sans);font-weight:600;">3,070 to 4,000 units</strong> per order. But you're always one beat behind — you can only raise orders after the shortfalls have already started to show up.
   </p>
 
-  <div class="pp-stage" id="ppStage">
-    <span class="stage-label">Fig. 05B — Shipments received per week · per vendor</span>
+  <div class="pp-stage popout-host" id="ppStage" data-popout-group="fig5b" data-popout-title="Fig. 05B — Shipments received per week · per vendor">
+    <span class="stage-label">Fig. 05B — Shipments received per week<span class="label-detail"> · per vendor</span></span>
     <span class="stage-caption">Order size steps up around Week 25</span>
 
     <div class="pp-row" data-v="A">
@@ -2809,8 +3019,8 @@
     Same inventory logic as before — but now demand is noisy and the plan is flexing. Watch what happens to the vendor you almost chose versus the vendor you almost didn't.
   </p>
 
-  <div class="inv-stage" id="invStage5">
-    <span class="stage-label">Fig. 05C — Weekly inventory on hand · real demand · 52 weeks</span>
+  <div class="inv-stage popout-host" id="invStage5" data-popout-group="fig5c" data-popout-title="Fig. 05C — Weekly inventory on hand · real demand · 52 weeks">
+    <span class="stage-label">Fig. 05C — Weekly inventory on hand<span class="label-detail"> · real demand · 52 weeks</span></span>
     <span class="stage-caption">Red zone expanded to show the full damage</span>
 
     <div class="inv-row" data-v="A">
@@ -2968,6 +3178,17 @@
     <div class="arrow">↑ TOP</div>
   </div>
 </section>
+
+<!-- ══════════════════ POPOUT OVERLAY ══════════════════ -->
+<div class="popout-overlay" id="popoutOverlay" role="dialog" aria-modal="true" aria-labelledby="popoutTitle">
+  <div class="popout-dialog">
+    <button type="button" class="popout-close" aria-label="Close figure">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 L6 18"/><path d="M6 6 L18 18"/></svg>
+    </button>
+    <div class="popout-title" id="popoutTitle">Figure</div>
+    <div class="popout-content"></div>
+  </div>
+</div>
 
 <script>
   // ══════ Section 1 — balance scale ══════
@@ -3207,6 +3428,9 @@
   const scheduleB = [5, 10, 12, 18, 21, 25, 27, 32, 35, 39, 45, 49, 52];
   const scheduleC = [2, 5, 9, 13, 17, 21, 25, 29, 33, 37, 41, 45, 49];
   const schedules = { A: scheduleA, B: scheduleB, C: scheduleC };
+  // Plan: 13 shipments per vendor at 4-week cadence starting W1.
+  // Same for all three vendors — this is the promise.
+  const planSchedule = [1, 5, 9, 13, 17, 21, 25, 29, 33, 37, 41, 45, 49];
   const totalShipments = scheduleA.length + scheduleB.length + scheduleC.length; // 39
 
   // Build the timeline tracks + axis labels
@@ -3215,6 +3439,11 @@
     B: s4.querySelector('.tr-track[data-v="B"]'),
     C: s4.querySelector('.tr-track[data-v="C"]')
   };
+
+  // Helper: left-% for a given week (1-indexed)
+  function weekToLeftPct(wk) {
+    return ((wk - 1) / 52) * 100 + (100 / 52) * 0.1;
+  }
 
   function buildTrackBuckets(vendor) {
     const track = tracks[vendor];
@@ -3229,31 +3458,80 @@
     schedules[vendor].forEach((wk, idx) => {
       const b = document.createElement('div');
       b.className = 'tr-bucket';
-      // center block in week column (each column is 100/52 % wide)
-      const leftPct = ((wk - 1) / 52) * 100 + (100 / 52) * 0.1;
-      b.style.left = `${leftPct}%`;
-      b.dataset.week = wk;
+      // Bucket carries BOTH its real and plan week
+      const planWk = planSchedule[idx];
+      b.dataset.realWeek = wk;
+      b.dataset.planWeek = planWk;
       b.dataset.vendor = vendor;
       b.dataset.idx = idx;
+      // Initial position uses PLAN (default mode)
+      b.style.left = `${weekToLeftPct(planWk)}%`;
       track.appendChild(b);
     });
   }
   ['A','B','C'].forEach(buildTrackBuckets);
 
-  // Axis labels: every 4 weeks
-  const tlx = document.getElementById('tlxLabels');
-  for (let w = 0; w <= 52; w += 4) {
-    const s = document.createElement('span');
-    s.textContent = w === 0 ? 'W1' : `W${w}`;
-    s.style.left = `${(w / 52) * 100}%`;
-    tlx.appendChild(s);
+  // Shared helper for rendering a 4-week axis — tags non-8-week labels
+  // so mobile CSS can hide them for a cleaner scale.
+  function renderWeekAxis(container) {
+    container.innerHTML = '';
+    for (let w = 0; w <= 52; w += 4) {
+      const s = document.createElement('span');
+      s.textContent = w === 0 ? 'W1' : `W${w}`;
+      s.style.left = `${(w / 52) * 100}%`;
+      // Keep W1 (w=0), W52, and every 8th week visible on mobile
+      if (!(w === 0 || w === 52 || w % 8 === 0)) {
+        s.classList.add('wx-hide-mobile');
+      }
+      container.appendChild(s);
+    }
   }
+
+  const tlx = document.getElementById('tlxLabels');
+  renderWeekAxis(tlx);
 
   const fireBtn = document.getElementById('fireBtn');
   const resetBtn = document.getElementById('resetBtn');
   const barsStage = document.getElementById('barsStage');
   const barsCaption = document.getElementById('barsCaption');
   const simStatus = document.getElementById('simStatus');
+
+  // Current display mode — 'plan' or 'reality'
+  let displayMode = 'plan';
+
+  function setDisplayMode(mode) {
+    if (mode === displayMode) return;
+    displayMode = mode;
+
+    const pill = document.getElementById('prPill');
+    pill.classList.toggle('reality', mode === 'reality');
+    pill.querySelectorAll('button').forEach(btn => {
+      const on = btn.dataset.mode === mode;
+      btn.classList.toggle('on', on);
+      btn.setAttribute('aria-pressed', on);
+    });
+
+    // Move every bucket to its new week position
+    const weekAttr = mode === 'plan' ? 'planWeek' : 'realWeek';
+    s4.querySelectorAll('.tr-bucket').forEach(b => {
+      const wk = parseInt(b.dataset[weekAttr]);
+      b.style.left = `${weekToLeftPct(wk)}%`;
+    });
+
+    // Update caption to match the story beat
+    if (s4.classList.contains('play-4')) {
+      if (mode === 'plan') {
+        barsCaption.textContent = 'PLAN · every 4 weeks · what every vendor promised';
+      } else {
+        barsCaption.textContent = 'REALITY · same 39 shipments · three different calendars';
+      }
+    }
+  }
+
+  // Wire the pill buttons
+  document.querySelectorAll('#prPill button').forEach(btn => {
+    btn.addEventListener('click', () => setDisplayMode(btn.dataset.mode));
+  });
 
   let fireTimers = [];
   function fireShipments() {
@@ -3262,28 +3540,38 @@
 
     s4.classList.add('play-4');
     fireBtn.disabled = true;
-    barsCaption.textContent = 'Releasing shipments by actual arrival date…';
+    barsCaption.textContent = displayMode === 'plan'
+      ? 'Releasing shipments by planned cadence…'
+      : 'Releasing shipments by actual arrival date…';
 
-    // Build a unified, chronologically-ordered list of (vendor, week, bucket)
+    // Cascade in order of current mode's week — left-to-right reveal
     const all = [];
     ['A','B','C'].forEach(v => {
-      schedules[v].forEach(wk => {
-        const bucket = tracks[v].querySelector(`.tr-bucket[data-week="${wk}"][data-vendor="${v}"]`);
-        if (bucket) all.push({ v, wk, bucket });
+      schedules[v].forEach((realWk, idx) => {
+        const bucket = tracks[v].querySelector(`.tr-bucket[data-real-week="${realWk}"][data-vendor="${v}"]`);
+        if (bucket) {
+          const orderWk = displayMode === 'plan'
+            ? parseInt(bucket.dataset.planWeek)
+            : parseInt(bucket.dataset.realWeek);
+          all.push({ v, orderWk, bucket });
+        }
       });
     });
-    all.sort((a, b) => a.wk - b.wk);
+    all.sort((a, b) => a.orderWk - b.orderWk);
 
     let landed = 0;
     all.forEach((item, i) => {
-      // stagger drops so the earlier weeks land first — reads naturally left-to-right
-      const delay = 300 + i * 85;
+      const delay = 300 + i * 65;
       const t = setTimeout(() => {
         item.bucket.classList.add('land');
         landed++;
         simStatus.textContent = `${landed} / ${totalShipments} shipments landed`;
         if (landed === totalShipments) {
-          barsCaption.textContent = 'All 39 shipments landed · same total, three different calendars';
+          setTimeout(() => {
+            barsCaption.textContent = displayMode === 'plan'
+              ? 'PLAN · every 4 weeks · what every vendor promised'
+              : 'REALITY · same 39 shipments · three different calendars';
+          }, 400);
         }
       }, delay);
       fireTimers.push(t);
@@ -3297,6 +3585,8 @@
     fireBtn.disabled = false;
     s4.querySelectorAll('.tr-bucket.land').forEach(b => b.classList.remove('land'));
     simStatus.textContent = '0 / 39 shipments landed';
+    // Reset back to plan mode by default on a fresh reset
+    setDisplayMode('plan');
     if (showMsg) barsCaption.textContent = 'Three bars · identical · 39,910 units each';
   }
 
@@ -3352,14 +3642,8 @@
   renderInvChart('invChartB', invB);
   renderInvChart('invChartC', invC);
 
-  // Week axis ticks below the charts
   const ixTicks = document.getElementById('ixTicks');
-  for (let w = 0; w <= 52; w += 4) {
-    const s = document.createElement('span');
-    s.textContent = w === 0 ? 'W1' : `W${w}`;
-    s.style.left = `${(w / 52) * 100}%`;
-    ixTicks.appendChild(s);
-  }
+  renderWeekAxis(ixTicks);
 
   // Animate bars in when chart enters view
   let invPlayed = false;
@@ -3453,14 +3737,8 @@
     m.style.left = `calc((100% / 52) * 24.5)`;
   });
 
-  // Week axis labels for 5B
   const ppxTicks = document.getElementById('ppxTicks');
-  for (let w = 0; w <= 52; w += 4) {
-    const s = document.createElement('span');
-    s.textContent = w === 0 ? 'W1' : `W${w}`;
-    s.style.left = `${(w / 52) * 100}%`;
-    ppxTicks.appendChild(s);
-  }
+  renderWeekAxis(ppxTicks);
 
   let pp5Played = false;
   const ppObs = new IntersectionObserver((entries) => {
@@ -3522,14 +3800,8 @@
   renderInvChart5('invChartB5', invB5);
   renderInvChart5('invChartC5', invC5);
 
-  // Week-axis ticks for 5C
   const ixTicks5 = document.getElementById('ixTicks5');
-  for (let w = 0; w <= 52; w += 4) {
-    const s = document.createElement('span');
-    s.textContent = w === 0 ? 'W1' : `W${w}`;
-    s.style.left = `${(w / 52) * 100}%`;
-    ixTicks5.appendChild(s);
-  }
+  renderWeekAxis(ixTicks5);
 
   let inv5Played = false;
   const inv5Obs = new IntersectionObserver((entries) => {
@@ -3552,6 +3824,148 @@
     });
   }, { threshold: 0.2 });
   inv5Obs.observe(document.getElementById('invStage5'));
+
+  // ══════════════════ POPOUT SYSTEM ══════════════════
+  (function initPopout() {
+    // Only run on desktop. The CSS hides triggers below 741px, but we also
+    // skip the JS init for safety on small screens.
+    if (window.matchMedia && window.matchMedia('(max-width: 740px)').matches) {
+      return;
+    }
+
+    const overlay = document.getElementById('popoutOverlay');
+    const dialog = overlay.querySelector('.popout-dialog');
+    const titleEl = overlay.querySelector('.popout-title');
+    const body = document.body;
+
+    // Track open state so we know what to restore on close
+    let active = null; // { group, hosts: [{el, placeholder}], scrollY }
+
+    // Build triggers inside every popout-host
+    const hosts = Array.from(document.querySelectorAll('.popout-host'));
+    // Group by data-popout-group; only the FIRST host in each group gets a trigger
+    const seenGroups = new Set();
+    hosts.forEach(host => {
+      const group = host.dataset.popoutGroup;
+      if (!group || seenGroups.has(group)) return;
+      seenGroups.add(group);
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'popout-trigger';
+      btn.setAttribute('aria-label', 'Expand figure');
+      btn.setAttribute('title', 'Expand');
+      btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>';
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openGroup(group);
+      });
+      host.appendChild(btn);
+    });
+
+    function openGroup(group) {
+      if (active) return;
+      const groupHosts = Array.from(document.querySelectorAll(`.popout-host[data-popout-group="${group}"]`));
+      if (!groupHosts.length) return;
+
+      // Gather title from the first host that has one
+      const title = groupHosts.find(h => h.dataset.popoutTitle)?.dataset.popoutTitle || 'Figure';
+      titleEl.textContent = title;
+
+      // Clear previous dialog content (leave title + close button intact)
+      const contentSlot = dialog.querySelector('.popout-content');
+      contentSlot.innerHTML = '';
+
+      // For each host: drop a placeholder where it sits, then lift it into the dialog
+      const record = [];
+      groupHosts.forEach(host => {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'popout-placeholder';
+        placeholder.style.display = 'none';
+        host.parentNode.insertBefore(placeholder, host);
+        contentSlot.appendChild(host);
+        record.push({ host, placeholder });
+      });
+
+      // Apply a layout hint on the dialog for grouped layouts
+      dialog.setAttribute('data-group-layout', group === 'fig3c' ? 'city' : 'default');
+
+      // Save scroll, lock body
+      const scrollY = window.scrollY;
+      body.classList.add('popout-open');
+      body.style.top = `-${scrollY}px`;
+      body.style.position = 'fixed';
+      body.style.width = '100%';
+
+      active = { group, hosts: record, scrollY };
+
+      // Propagate any animation-state classes from the source section onto the
+      // dialog. Several CSS rules use selectors like ".play .beam-group" or
+      // ".play-4 .v-card" that rely on ancestor classes — without these, moved
+      // stages lose their animation/visual state while inside the popout.
+      // We also add ".scene" so selectors scoped to ".scene.play-X" still match.
+      const stateClasses = ['play', 'play-2', 'play-3b', 'play-3c', 'play-4', 'play-5a', 'play-5b'];
+      const sourceSection = groupHosts[0].closest('section.scene');
+      dialog.classList.add('scene');
+      if (sourceSection) {
+        stateClasses.forEach(c => {
+          if (sourceSection.classList.contains(c)) dialog.classList.add(c);
+        });
+      }
+
+      // Show overlay
+      overlay.classList.add('open');
+
+      // Focus the close button for accessibility
+      setTimeout(() => {
+        const closeBtn = overlay.querySelector('.popout-close');
+        if (closeBtn) closeBtn.focus();
+      }, 100);
+    }
+
+    function closePopout() {
+      if (!active) return;
+      const { hosts, scrollY } = active;
+
+      // Fade out first, then move nodes back after transition
+      overlay.classList.remove('open');
+
+      // Strip any animation-state classes we propagated onto the dialog
+      ['play', 'play-2', 'play-3b', 'play-3c', 'play-4', 'play-5a', 'play-5b', 'scene']
+        .forEach(c => dialog.classList.remove(c));
+
+      // Restore body scroll immediately (the visual fade doesn't need to wait for DOM moves)
+      body.style.position = '';
+      body.style.top = '';
+      body.style.width = '';
+      body.classList.remove('popout-open');
+      window.scrollTo(0, scrollY);
+
+      // Move hosts back after the fade completes (matches CSS transition 0.35s)
+      setTimeout(() => {
+        hosts.forEach(({ host, placeholder }) => {
+          if (placeholder.parentNode) {
+            placeholder.parentNode.insertBefore(host, placeholder);
+            placeholder.remove();
+          }
+        });
+        active = null;
+      }, 360);
+    }
+
+    // Close on X button
+    overlay.querySelector('.popout-close').addEventListener('click', closePopout);
+
+    // Close on backdrop click (but not clicks inside the dialog)
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closePopout();
+    });
+
+    // Close on Esc
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && active) closePopout();
+    });
+  })();
 </script>
 
 </body>
