@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Earth to Home · Section 3 — Refinement — willemsworld.fyi</title>
+<meta name="description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<link rel="canonical" href="https://willemsworld.fyi/earth-to-home-03-refinement.html">
+<meta name="author" content="willemsworld">
+
+<!-- Open Graph (Facebook, LinkedIn, etc.) -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://willemsworld.fyi/earth-to-home-03-refinement.html">
+<meta property="og:site_name" content="willemsworld.fyi">
+<meta property="og:title" content="Earth to Home — Section 3 — Refinement">
+<meta property="og:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta property="og:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A globe on the left, three colored streams arcing across, converging on a house on the right. Title: Earth to Home.">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Earth to Home — Section 3 — Refinement">
+<meta name="twitter:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta name="twitter:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f1ea;
+    --paper-deep: #ebe5d9;
+    --ink: #1a1614;
+    --ink-soft: #4a4540;
+    --ink-faint: #8a847c;
+    --rule: #d6cfc0;
+
+    --apple: #b8302a;
+    --apple-deep: #7a1a16;
+    --apple-soft: #f5dad8;
+    --apple-mid: #d65c54;
+
+    --lumber: #3d6b3a;
+    --lumber-deep: #1f3d1d;
+    --lumber-soft: #d4dfd2;
+    --lumber-mid: #6a9266;
+
+    --iron: #4a4a4a;
+    --iron-deep: #1f1f1f;
+    --iron-soft: #d8d4d0;
+    --iron-mid: #888;
+
+    --display: 'Fraunces', 'Times New Roman', serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184, 48, 42, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(61, 107, 58, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(74, 74, 74, 0.025) 0%, transparent 40%);
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.25rem 3rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+    z-index: 10; background: rgba(245, 241, 234, 0.92); backdrop-filter: blur(8px);
+    position: sticky; top: 0;
+  }
+  .masthead-brand { font-family: var(--display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em; }
+  .masthead-brand .tld { font-weight: 300; color: var(--ink-faint); }
+  .masthead-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+
+  .stages-strip {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .stage-pill {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.35rem 0.7rem; border: 1px solid var(--rule);
+    color: var(--ink-faint); background: rgba(255, 253, 248, 0.5); white-space: nowrap;
+  }
+  .stage-pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .stage-pill .num { opacity: 0.5; margin-right: 0.4rem; }
+  .stage-pill.active .num { opacity: 0.7; }
+  .stage-pill:not(.active):not(.takeaways):hover {
+    border-color: var(--ink); color: var(--ink); background: rgba(255, 253, 248, 0.9);
+    cursor: pointer;
+  }
+  .stage-pill.takeaways {
+    border-style: dashed;
+    margin-left: auto;
+  }
+  .stage-pill.takeaways.active { border-style: solid; }
+  .stage-pill.takeaways .star { margin-right: 0.4rem; opacity: 0.5; font-style: italic; }
+  .stage-pill.takeaways.active .star { opacity: 0.7; }
+  .stage-pill.takeaways:not(.active):hover {
+    border-color: var(--ink); color: var(--ink); background: rgba(255, 253, 248, 0.9);
+    cursor: pointer;
+  }
+
+  .section { padding: 5rem 3rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .section-marker {
+    display: flex; align-items: baseline; gap: 2rem;
+    margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
+  }
+  .section-number {
+    font-family: var(--display); font-weight: 300; font-size: 6rem; line-height: 1; letter-spacing: -0.04em;
+  }
+  .section-number-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 3rem; letter-spacing: -0.02em;
+  }
+  .section-intro {
+    font-family: var(--display); font-weight: 300; font-size: 1.25rem; line-height: 1.6;
+    max-width: 65ch; color: var(--ink-soft); margin-bottom: 4rem; font-style: italic;
+  }
+  .section-intro::first-letter {
+    font-size: 3.5rem; float: left; line-height: 0.85; padding: 0.3rem 0.5rem 0 0;
+    font-weight: 400; font-style: normal; color: var(--ink);
+  }
+
+  /* Stream cards */
+  .stream-card {
+    background: rgba(255, 253, 248, 0.65);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--ink);
+    padding: 2rem 2.25rem;
+    margin-bottom: 2rem;
+  }
+  .stream-card[data-stream="apple"] { border-top-color: var(--apple); }
+  .stream-card[data-stream="lumber"] { border-top-color: var(--lumber); }
+  .stream-card[data-stream="iron"] { border-top-color: var(--iron); }
+
+  .stream-card-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 0.5rem;
+  }
+  .stream-card-name {
+    font-family: var(--display); font-weight: 600; font-size: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .stream-card[data-stream="apple"] .stream-card-name { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .stream-card-name { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .stream-card-name { color: var(--iron-deep); }
+  .stream-card-symbol { font-family: var(--display); font-size: 1.1rem; opacity: 0.4; }
+  .stream-subtitle {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 1rem;
+  }
+  .stream-location {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 0.95rem; color: var(--ink-soft); line-height: 1.5;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dotted var(--rule);
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  .stream-location-tag {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+    padding-top: 0.05rem;
+  }
+  .stream-location-text {
+    font-style: italic;
+  }
+  .stream-location-text strong {
+    font-weight: 600; font-style: normal; color: var(--ink);
+  }
+
+  /* Sequence row of panels */
+  .refine-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .refine-sequence {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .refine-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 0.5rem;
+    flex: 1 1 0;
+    min-width: 150px;
+    max-width: 320px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+  .refine-panel:hover {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: var(--rule);
+    transform: translateY(-2px);
+  }
+  .refine-panel-svg-wrap {
+    width: 100%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  .refine-panel:hover .refine-panel-svg-wrap {
+    transform: scale(1.04);
+  }
+  .refine-panel-svg-wrap svg {
+    max-width: 100%;
+    height: auto;
+  }
+  .refine-panel-name {
+    font-family: var(--display); font-weight: 600; font-size: 1rem;
+    letter-spacing: -0.005em;
+  }
+  .stream-card[data-stream="apple"] .refine-panel-name { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .refine-panel-name { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .refine-panel-name { color: var(--iron-deep); }
+  .refine-panel-label {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-faint); text-align: center;
+  }
+  .refine-arrow-between {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 1.3rem; color: var(--ink-faint);
+    align-self: center; user-select: none;
+    flex-shrink: 0; padding: 0 0.25rem;
+  }
+
+  /* Detail card */
+  .detail-card {
+    margin-top: 1.25rem;
+    padding: 1.1rem 1.4rem;
+    background: rgba(255, 253, 248, 0.95);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--ink);
+    min-height: 70px;
+    transition: opacity 0.25s ease;
+  }
+  .stream-card[data-stream="apple"] .detail-card { border-left-color: var(--apple); }
+  .stream-card[data-stream="lumber"] .detail-card { border-left-color: var(--lumber); }
+  .stream-card[data-stream="iron"] .detail-card { border-left-color: var(--iron); }
+  .detail-card.empty {
+    background: rgba(0, 0, 0, 0.02);
+    border-left-color: var(--rule);
+  }
+  .detail-card-empty-text {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 0.9rem; color: var(--ink-faint);
+  }
+  .detail-card-name {
+    font-family: var(--display); font-weight: 600; font-size: 1.1rem;
+    letter-spacing: -0.01em; margin-bottom: 0.2rem;
+  }
+  .stream-card[data-stream="apple"] .detail-card-name { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .detail-card-name { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .detail-card-name { color: var(--iron-deep); }
+  .detail-card-stat {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 0.5rem;
+  }
+  .detail-card-stat strong { color: var(--ink); font-weight: 600; }
+  .detail-card-text {
+    font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;
+  }
+
+  /* Outcome line */
+  .stream-outcome {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    border: 2px solid;
+    background: rgba(255, 253, 248, 0.85);
+    text-align: center;
+  }
+  .stream-card[data-stream="apple"] .stream-outcome { border-color: var(--apple); }
+  .stream-card[data-stream="lumber"] .stream-outcome { border-color: var(--lumber); }
+  .stream-card[data-stream="iron"] .stream-outcome { border-color: var(--iron); }
+  .stream-outcome-label {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--ink-faint); display: block; margin-bottom: 0.4rem;
+  }
+  .stream-outcome-result {
+    font-family: var(--display); font-weight: 600;
+    font-size: 1.3rem; letter-spacing: -0.01em;
+  }
+  .stream-card[data-stream="apple"] .stream-outcome-result { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .stream-outcome-result { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .stream-outcome-result { color: var(--iron-deep); }
+  .stream-outcome-detail {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 0.95rem; color: var(--ink-soft); line-height: 1.45;
+    margin-top: 0.4rem; max-width: 55ch; margin-left: auto; margin-right: auto;
+  }
+
+  /* Animated scene controls (iron blast furnace) */
+  .iron-play-controls {
+    display: flex; justify-content: center; margin-top: 0.5rem;
+  }
+  .iron-play-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    padding: 0.5rem 1.1rem;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink); font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  .iron-play-btn:hover { background: var(--ink); color: var(--paper); }
+  .iron-play-btn .play-icon { font-size: 0.85rem; }
+
+  /* Animations */
+  .iron-scene[data-playing="true"] .anim-charge {
+    animation: chargeFall 5s ease-in-out forwards;
+  }
+  .iron-scene[data-playing="true"] .anim-glow {
+    animation: glowBuild 5s ease-in-out forwards;
+  }
+  .iron-scene[data-playing="true"] .anim-pour {
+    animation: ironPour 5s ease-in-out forwards;
+  }
+  .iron-scene[data-playing="true"] .anim-mold {
+    animation: moldFill 5s ease-in-out forwards;
+  }
+  @keyframes chargeFall {
+    0% { opacity: 0; transform: translateY(-25px); }
+    25% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes glowBuild {
+    0% { opacity: 0; }
+    30% { opacity: 0.3; }
+    60% { opacity: 0.85; }
+    100% { opacity: 1; }
+  }
+  @keyframes ironPour {
+    0%, 50% { opacity: 0; }
+    65% { opacity: 1; }
+    100% { opacity: 1; }
+  }
+  @keyframes moldFill {
+    0%, 60% { opacity: 0; }
+    75% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+  /* Pre-animation invisible */
+  .iron-scene .anim-charge,
+  .iron-scene .anim-glow,
+  .iron-scene .anim-pour,
+  .iron-scene .anim-mold { opacity: 0; }
+  .iron-scene[data-playing="true"] .anim-charge,
+  .iron-scene[data-playing="true"] .anim-glow,
+  .iron-scene[data-playing="true"] .anim-pour,
+  .iron-scene[data-playing="true"] .anim-mold,
+  .iron-scene[data-played="true"] .anim-charge,
+  .iron-scene[data-played="true"] .anim-glow,
+  .iron-scene[data-played="true"] .anim-pour,
+  .iron-scene[data-played="true"] .anim-mold { opacity: 1; }
+
+  /* Section footer */
+  .section-footer {
+    margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .next-section {
+    font-family: var(--display); font-style: italic; font-weight: 400;
+    font-size: 1.4rem; text-transform: none; letter-spacing: -0.01em;
+    color: var(--ink); text-align: right;
+  }
+  a.next-section {
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+  a.next-section:hover {
+    opacity: 0.75;
+    transform: translateX(3px);
+  }
+  .next-section span {
+    color: var(--ink-faint); font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; display: block; margin-bottom: 0.25rem; font-style: normal;
+  }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .masthead { padding: 0.9rem 1.25rem; }
+    .stages-strip { padding: 1rem 1.25rem; gap: 0.3rem; }
+    .stage-pill { font-size: 0.58rem; padding: 0.28rem 0.5rem; }
+    .section { padding: 3.5rem 1.25rem; }
+    .stream-card { padding: 1.5rem 1.25rem; }
+    .section-marker { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    .section-number { font-size: 4rem; }
+    .section-title { font-size: 2rem; }
+    .section-intro { font-size: 1.1rem; }
+    .refine-sequence { flex-direction: column; gap: 0.5rem; }
+    .refine-arrow-between { transform: rotate(90deg); }
+    .refine-panel { max-width: 100%; }
+    .stream-outcome-result { font-size: 1.15rem; }
+    .section-footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .next-section { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-brand">willemsworld<span class="tld">.fyi</span></div>
+  <div class="masthead-meta">Insight № 04 · Supply Chain Ecosystems</div>
+</header>
+
+<div class="stages-strip">
+  <a href="earth-to-home.html" class="stage-pill" style="text-decoration: none;"><span class="num">01</span>The Earth</a>
+  <a href="earth-to-home-02-sorting.html" class="stage-pill" style="text-decoration: none;"><span class="num">02</span>Sorting</a>
+  <span class="stage-pill active"><span class="num">03</span>Refinement</span>
+  <a href="earth-to-home-04-transformation.html" class="stage-pill" style="text-decoration: none;"><span class="num">04</span>Transformation</a>
+  <a href="earth-to-home-05-finishing.html" class="stage-pill" style="text-decoration: none;"><span class="num">05</span>Finishing</a>
+  <a href="earth-to-home-06-assembly.html" class="stage-pill" style="text-decoration: none;"><span class="num">06</span>Assembly</a>
+  <a href="earth-to-home-07-distribution.html" class="stage-pill" style="text-decoration: none;"><span class="num">07</span>Distribution</a>
+  <a href="earth-to-home-08-consumption.html" class="stage-pill" style="text-decoration: none;"><span class="num">08</span>Consumption</a>
+  <a href="earth-to-home-takeaways.html" class="stage-pill takeaways" style="text-decoration: none;"><span class="star">✦</span>Takeaways</a>
+</div>
+
+<section class="section">
+  <div class="section-marker reveal">
+    <div class="section-number">03</div>
+    <div>
+      <span class="section-number-meta">Stage Three of Eight</span>
+      <h2 class="section-title">Refinement</h2>
+    </div>
+  </div>
+
+  <p class="section-intro reveal">
+    Sorting decided what was worth keeping. Refinement strips away everything that isn't the
+    raw material itself — peel from flesh, bark from wood, oxygen from iron. Where this happens
+    matters: <em>apples stay close to the orchard, logs travel to a mill, ore travels the world.</em>
+  </p>
+
+  <!-- ============================== -->
+  <!-- APPLE -->
+  <!-- ============================== -->
+  <article class="stream-card reveal" data-stream="apple">
+    <div class="stream-card-header">
+      <div class="stream-card-name">Apple Refinement</div>
+      <div class="stream-card-symbol">○</div>
+    </div>
+    <div class="stream-subtitle">Whole apple → washed, peeled, cored flesh</div>
+    <div class="stream-location">
+      <span class="stream-location-tag">Where</span>
+      <span class="stream-location-text"><strong>Local processing plant</strong>, usually within the same growing region. Apples are perishable, so refinement stays close to the orchard — a Washington apple is washed and peeled in Washington, not shipped raw across the country.</span>
+    </div>
+
+    <div class="refine-stage" id="apple-stage"></div>
+
+    <div class="detail-card empty" id="apple-detail">
+      <div class="detail-card-empty-text">Hover any panel to see what's happening at that step.</div>
+    </div>
+
+    <div class="stream-outcome">
+      <span class="stream-outcome-label">Output</span>
+      <div class="stream-outcome-result">Cored apple flesh</div>
+      <div class="stream-outcome-detail">
+        Roughly <strong>75%</strong> of the original apple weight survives — the rest is peel, core, and seeds.
+        Most of those byproducts go to animal feed, pectin extraction, or compost.
+      </div>
+    </div>
+  </article>
+
+  <!-- ============================== -->
+  <!-- LUMBER -->
+  <!-- ============================== -->
+  <article class="stream-card reveal" data-stream="lumber">
+    <div class="stream-card-header">
+      <div class="stream-card-name">Lumber Refinement</div>
+      <div class="stream-card-symbol">▲</div>
+    </div>
+    <div class="stream-subtitle">Pulpwood log → debarked → wood chips</div>
+    <div class="stream-location">
+      <span class="stream-location-tag">Where</span>
+      <span class="stream-location-text"><strong>The pulp mill</strong>, not the forest. Logs are trucked from the cut block to a fixed mill site — typically <strong>50–200 miles away</strong>. A single mill draws from dozens of forests within its trucking radius.</span>
+    </div>
+
+    <div class="refine-stage" id="lumber-stage"></div>
+
+    <div class="detail-card empty" id="lumber-detail">
+      <div class="detail-card-empty-text">Hover either panel to see what's happening at that step.</div>
+    </div>
+
+    <div class="stream-outcome">
+      <span class="stream-outcome-label">Output</span>
+      <div class="stream-outcome-result">Pulpable wood chips</div>
+      <div class="stream-outcome-detail">
+        About <strong>90%</strong> of the debarked log becomes usable chips. Bark and sawdust are burned
+        on-site as boiler fuel — the mill mostly powers itself with its own waste.
+      </div>
+    </div>
+  </article>
+
+  <!-- ============================== -->
+  <!-- IRON -->
+  <!-- ============================== -->
+  <article class="stream-card reveal" data-stream="iron">
+    <div class="stream-card-header">
+      <div class="stream-card-name">Iron Refinement</div>
+      <div class="stream-card-symbol">◆</div>
+    </div>
+    <div class="stream-subtitle">Iron ore concentrate → blast furnace → pig iron</div>
+    <div class="stream-location">
+      <span class="stream-location-tag">Where</span>
+      <span class="stream-location-text"><strong>The steel mill</strong>, often on a different continent from the mine. Australian ore is smelted in China; Brazilian ore in Europe and Asia. Concentrate travels by rail to a coastal port, then by bulk freighter — sometimes <strong>10,000+ miles</strong> from the pit before it's smelted.</span>
+    </div>
+
+    <div class="refine-stage" id="iron-stage"></div>
+
+    <div class="detail-card empty" id="iron-detail">
+      <div class="detail-card-empty-text">Hover either panel to see what's happening at that step.</div>
+    </div>
+
+    <div class="stream-outcome">
+      <span class="stream-outcome-label">Output</span>
+      <div class="stream-outcome-result">~94% pure pig iron</div>
+      <div class="stream-outcome-detail">
+        The most violent transformation in the supply chain. Solid rock enters the top of the furnace; molten
+        metal flows out the bottom 6–8 hours later. The iron is now usable — but still too brittle to be steel.
+      </div>
+    </div>
+  </article>
+
+  <div class="section-footer">
+    <span>End of Stage 03</span>
+    <a class="next-section" href="earth-to-home-04-transformation.html">
+      <span>Continue ↓</span>
+      Stage 04 — Transformation
+    </a>
+  </div>
+</section>
+
+<script>
+// =============================================================
+// SHARED COLOR HELPERS
+// =============================================================
+function makeRand(seed) {
+  let s = seed;
+  return () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+}
+
+const APPLE_SKIN = '#b8302a';
+const APPLE_SKIN_DEEP = '#7a1a16';
+const APPLE_FLESH = '#f5e8c8';
+const APPLE_FLESH_DARK = '#d9c79a';
+const APPLE_STEM = '#5a3a1f';
+const APPLE_LEAF = '#6a8a4a';
+const APPLE_SEED = '#3d2613';
+
+const WOOD_BARK = '#4a3520';
+const WOOD_BARK_DARK = '#2a1e10';
+const WOOD_LIGHT = '#e8d5a8';
+const WOOD_HEART = '#c9a877';
+const WOOD_RING = '#a08868';
+const WOOD_PITH = '#5a3a1f';
+
+const IRON_DARK = '#1a1614';
+const IRON_METAL = '#34322f';
+const IRON_LIGHT = '#56524e';
+const IRON_GREY = '#7a7570';
+const IRON_RUST = '#7a3a1a';
+const IRON_RUST_LIGHT = '#a85020';
+const IRON_GLOW = '#ff6b1a';
+const IRON_GLOW_INNER = '#ffb340';
+const IRON_GLOW_HOT = '#ffe066';
+
+// =============================================================
+// APPLE — WASHING / PEELING / CORING SVG GENERATORS
+// =============================================================
+
+// Helper: a stylized apple shape used across all three apple panels
+function appleShapePath() {
+  return 'M50 12 C 30 12, 12 30, 12 55 C 12 80, 28 95, 50 95 C 72 95, 88 80, 88 55 C 88 30, 70 12, 50 12 Z';
+}
+
+// PANEL 1a: Washing — apple under falling water droplets, with dirt washing off
+function makeWashing({ uid = 'wash' } = {}) {
+  const W = 180, H = 200;
+  const applePath = appleShapePath();
+  const stemPath = 'M50 12 C 50 8, 52 4, 56 2 L 58 4 C 55 6, 53 9, 52 12 Z';
+  const leafPath = 'M52 8 C 60 4, 72 6, 76 14 C 70 16, 60 14, 54 12 Z';
+
+  // Falling water droplets above the apple
+  let droplets = '';
+  const dropPositions = [
+    { x: 35, y: 18 }, { x: 50, y: 8 }, { x: 65, y: 22 },
+    { x: 28, y: 35 }, { x: 75, y: 38 }, { x: 90, y: 28 },
+    { x: 18, y: 50 }, { x: 100, y: 52 }
+  ];
+  dropPositions.forEach(d => {
+    droplets += `<ellipse cx="${d.x}" cy="${d.y}" rx="2" ry="3" fill="#7ab8d4" opacity="0.75"/>`;
+    droplets += `<ellipse cx="${d.x}" cy="${d.y - 1}" rx="0.8" ry="1.5" fill="#a8d8e8" opacity="0.7"/>`;
+  });
+
+  // Dirt particles being washed off (small dark specks falling from the apple)
+  let dirt = '';
+  const dirtPos = [
+    { x: 20, y: 75 }, { x: 30, y: 90 }, { x: 25, y: 105 },
+    { x: 75, y: 80 }, { x: 80, y: 95 }, { x: 70, y: 110 }
+  ];
+  dirtPos.forEach(d => {
+    dirt += `<circle cx="${d.x}" cy="${d.y}" r="1" fill="#5a3a1f" opacity="0.5"/>`;
+  });
+
+  // Wet sheen on the apple
+  const sheen = `<ellipse cx="35" cy="32" rx="10" ry="14" fill="rgba(255,255,255,0.5)" />
+                 <ellipse cx="33" cy="30" rx="4" ry="6" fill="rgba(255,255,255,0.7)" />`;
+
+  // Showerhead at the top — a thin horizontal bar with small holes
+  const showerhead = `
+    <rect x="20" y="2" width="80" height="3" fill="#7a7570" stroke="#3e3a35" stroke-width="0.5"/>
+    <circle cx="30" cy="6" r="0.6" fill="#3e3a35"/>
+    <circle cx="42" cy="6" r="0.6" fill="#3e3a35"/>
+    <circle cx="54" cy="6" r="0.6" fill="#3e3a35"/>
+    <circle cx="66" cy="6" r="0.6" fill="#3e3a35"/>
+    <circle cx="78" cy="6" r="0.6" fill="#3e3a35"/>
+    <circle cx="90" cy="6" r="0.6" fill="#3e3a35"/>
+  `;
+
+  // Water streams from the showerhead (faint vertical lines)
+  const streams = `
+    <line x1="30" y1="6" x2="30" y2="20" stroke="#7ab8d4" stroke-width="0.5" opacity="0.5"/>
+    <line x1="42" y1="6" x2="42" y2="22" stroke="#7ab8d4" stroke-width="0.5" opacity="0.5"/>
+    <line x1="54" y1="6" x2="54" y2="18" stroke="#7ab8d4" stroke-width="0.5" opacity="0.5"/>
+    <line x1="66" y1="6" x2="66" y2="22" stroke="#7ab8d4" stroke-width="0.5" opacity="0.5"/>
+    <line x1="78" y1="6" x2="78" y2="20" stroke="#7ab8d4" stroke-width="0.5" opacity="0.5"/>
+    <line x1="90" y1="6" x2="90" y2="22" stroke="#7ab8d4" stroke-width="0.5" opacity="0.5"/>
+  `;
+
+  // Water pooling at bottom (a thin puddle the apple sits in)
+  const puddle = `
+    <ellipse cx="50" cy="120" rx="38" ry="4" fill="#7ab8d4" opacity="0.4"/>
+    <ellipse cx="50" cy="120" rx="35" ry="2" fill="#a8d8e8" opacity="0.5"/>
+  `;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+      ${showerhead}
+      ${streams}
+      ${droplets}
+      ${puddle}
+
+      <!-- Apple, slightly offset down to sit in the puddle -->
+      <g transform="translate(0, 12)">
+        <path d="${applePath}" fill="${APPLE_SKIN}" stroke="${APPLE_SKIN_DEEP}" stroke-width="1.2"/>
+        ${sheen}
+        <path d="${applePath}" fill="none" stroke="${APPLE_SKIN_DEEP}" stroke-width="1.2"/>
+        <path d="${stemPath}" fill="${APPLE_STEM}" stroke="#3d2613" stroke-width="0.5"/>
+        <path d="${leafPath}" fill="${APPLE_LEAF}" stroke="#3d5a26" stroke-width="0.5"/>
+      </g>
+
+      ${dirt}
+    </svg>
+  `;
+}
+
+// PANEL 1b: Peeling — apple with a curling spiral of skin coming off, exposing flesh
+function makePeeling({ uid = 'peel' } = {}) {
+  const W = 180, H = 200;
+  // Apple body partly peeled — left half shows skin, right half shows cream flesh.
+  // The skin is "coming off" in a spiral that drapes down to the right.
+
+  // Custom partly-peeled apple: same outline as the standard apple, but the right
+  // upper portion is filled with flesh color
+  const applePath = appleShapePath();
+
+  // The flesh underneath (full apple in flesh color, then skin painted over the unpeeled portion)
+  const skinPortionPath = `
+    M 12 55
+    C 12 30, 30 12, 50 12
+    C 50 30, 50 55, 50 80
+    C 50 95, 30 95, 12 80
+    Z
+  `;
+
+  // Spiral peel hanging off to the right
+  // It's a curling ribbon shape
+  const peelRibbon = `
+    M 88 30
+    C 105 28, 115 38, 110 52
+    C 105 65, 95 70, 90 80
+    C 88 90, 95 100, 105 102
+    C 115 104, 122 98, 120 88
+    L 117 87
+    C 119 95, 113 100, 105 99
+    C 99 98, 95 92, 96 85
+    C 98 78, 108 73, 112 62
+    C 116 50, 110 38, 96 36
+    C 92 36, 89 35, 88 33
+    Z
+  `;
+
+  // Stem and leaf
+  const stemPath = 'M50 12 C 50 8, 52 4, 56 2 L 58 4 C 55 6, 53 9, 52 12 Z';
+  const leafPath = 'M52 8 C 60 4, 72 6, 76 14 C 70 16, 60 14, 54 12 Z';
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+      <!-- Whole apple silhouette filled with flesh color (the underneath) -->
+      <path d="${applePath}" fill="${APPLE_FLESH}" stroke="${APPLE_FLESH_DARK}" stroke-width="1.2"/>
+
+      <!-- Subtle flesh texture (faint grain) -->
+      <path d="M 30 35 Q 50 40 70 35" fill="none" stroke="${APPLE_FLESH_DARK}" stroke-width="0.5" opacity="0.4"/>
+      <path d="M 25 50 Q 50 55 75 50" fill="none" stroke="${APPLE_FLESH_DARK}" stroke-width="0.5" opacity="0.4"/>
+      <path d="M 28 65 Q 50 70 72 65" fill="none" stroke="${APPLE_FLESH_DARK}" stroke-width="0.5" opacity="0.3"/>
+
+      <!-- Left/upper portion still has skin on (the part being peeled from) -->
+      <path d="${skinPortionPath}" fill="${APPLE_SKIN}" stroke="${APPLE_SKIN_DEEP}" stroke-width="1"/>
+      <ellipse cx="25" cy="32" rx="6" ry="9" fill="rgba(255,255,255,0.35)" />
+      <ellipse cx="23" cy="30" rx="2.5" ry="4" fill="rgba(255,255,255,0.5)" />
+
+      <!-- Subtle edge between peeled and unpeeled — a curving line where skin meets flesh -->
+      <path d="M 50 12 C 50 30, 50 55, 50 80 C 50 95, 30 95, 12 80"
+            fill="none" stroke="${APPLE_SKIN_DEEP}" stroke-width="0.8" opacity="0.6"/>
+
+      <!-- Final outline of full apple -->
+      <path d="${applePath}" fill="none" stroke="${APPLE_FLESH_DARK}" stroke-width="1.2"/>
+
+      <!-- Stem and leaf -->
+      <path d="${stemPath}" fill="${APPLE_STEM}" stroke="#3d2613" stroke-width="0.5"/>
+      <path d="${leafPath}" fill="${APPLE_LEAF}" stroke="#3d5a26" stroke-width="0.5"/>
+
+      <!-- Spiral peel coming off the right -->
+      <path d="${peelRibbon}" fill="${APPLE_SKIN}" stroke="${APPLE_SKIN_DEEP}" stroke-width="0.8" stroke-linejoin="round"/>
+      <!-- Inner peel highlight (flesh side of the peel showing through) -->
+      <path d="M 95 38 C 102 38, 108 45, 106 52 C 104 60, 98 64, 96 72 C 94 82, 100 92, 108 95"
+            fill="none" stroke="${APPLE_FLESH}" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+    </svg>
+  `;
+}
+
+// PANEL 1c: Coring — apple from above (cross-section), with circular hole punched through center
+function makeCoring({ uid = 'core' } = {}) {
+  const W = 180, H = 200;
+  // Top-down view: a circular flesh-colored disc with a darker red ring (skin edge),
+  // and a circular hole in the middle. Around the hole: the residual outline of where
+  // the core was, with seeds drawn nearby (already extracted) on a small "tray" beneath.
+
+  // Apple from above: a slightly off-circle shape (apples aren't perfectly round from above)
+  const radius = 50;
+  const cx = 65, cy = 60;
+
+  // The "above" view — the top of the apple from straight up.
+  // Outer = skin outline (deep red ring), middle = flesh (cream), center = hole
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+      <!-- Soft shadow under apple -->
+      <ellipse cx="${cx}" cy="${cy + radius + 4}" rx="${radius - 4}" ry="3" fill="#1a1614" opacity="0.15"/>
+
+      <!-- Apple from above: skin ring -->
+      <ellipse cx="${cx}" cy="${cy}" rx="${radius}" ry="${radius - 5}" fill="${APPLE_SKIN}" stroke="${APPLE_SKIN_DEEP}" stroke-width="1.3"/>
+      <!-- Inner flesh ring (just inside the skin) -->
+      <ellipse cx="${cx}" cy="${cy}" rx="${radius - 6}" ry="${radius - 11}" fill="${APPLE_FLESH}" stroke="${APPLE_FLESH_DARK}" stroke-width="0.6"/>
+
+      <!-- Subtle radial flesh texture -->
+      <line x1="${cx}" y1="${cy - radius + 8}" x2="${cx}" y2="${cy - 12}" stroke="${APPLE_FLESH_DARK}" stroke-width="0.4" opacity="0.4"/>
+      <line x1="${cx + radius - 8}" y1="${cy}" x2="${cx + 12}" y2="${cy}" stroke="${APPLE_FLESH_DARK}" stroke-width="0.4" opacity="0.4"/>
+      <line x1="${cx}" y1="${cy + radius - 8}" x2="${cx}" y2="${cy + 12}" stroke="${APPLE_FLESH_DARK}" stroke-width="0.4" opacity="0.4"/>
+      <line x1="${cx - radius + 8}" y1="${cy}" x2="${cx - 12}" y2="${cy}" stroke="${APPLE_FLESH_DARK}" stroke-width="0.4" opacity="0.4"/>
+
+      <!-- The core hole (a circular punched-through area in the middle, dark to suggest depth) -->
+      <circle cx="${cx}" cy="${cy}" r="11" fill="#3a2515" stroke="${APPLE_FLESH_DARK}" stroke-width="0.8"/>
+      <!-- Inner shadow -->
+      <circle cx="${cx}" cy="${cy}" r="9" fill="#1a1208" opacity="0.7"/>
+      <!-- Glint suggesting depth -->
+      <ellipse cx="${cx - 3}" cy="${cy - 3}" rx="2" ry="1.5" fill="rgba(255,255,255,0.15)"/>
+
+      <!-- Extracted core + seeds laid out below the apple, like a small specimen tray -->
+      <g transform="translate(${cx - 18}, ${cy + radius + 12})">
+        <!-- A few seeds (almond-shaped) -->
+        <ellipse cx="6" cy="4" rx="2.5" ry="1.5" transform="rotate(-15 6 4)" fill="${APPLE_SEED}"/>
+        <ellipse cx="14" cy="2" rx="2.5" ry="1.5" transform="rotate(20 14 2)" fill="${APPLE_SEED}"/>
+        <ellipse cx="22" cy="5" rx="2.5" ry="1.5" transform="rotate(-10 22 5)" fill="${APPLE_SEED}"/>
+        <ellipse cx="30" cy="3" rx="2.5" ry="1.5" transform="rotate(15 30 3)" fill="${APPLE_SEED}"/>
+        <ellipse cx="38" cy="5" rx="2.5" ry="1.5" transform="rotate(-5 38 5)" fill="${APPLE_SEED}"/>
+        <!-- A small piece of core fiber -->
+        <path d="M 8 -2 Q 18 -5 28 -2" fill="none" stroke="${APPLE_FLESH_DARK}" stroke-width="0.8" opacity="0.6"/>
+      </g>
+
+      <!-- Tiny label arrow pointing to the hole -->
+      <line x1="${cx + 14}" y1="${cy - 14}" x2="${cx + 28}" y2="${cy - 28}" stroke="${APPLE_FLESH_DARK}" stroke-width="0.6" opacity="0.5"/>
+      <text x="${cx + 30}" y="${cy - 30}" font-family="JetBrains Mono, monospace" font-size="6" fill="${APPLE_FLESH_DARK}" letter-spacing="1" opacity="0.7">CORE OUT</text>
+    </svg>
+  `;
+}
+
+// =============================================================
+// LUMBER — DEBARKING / CHIPPING SVG GENERATORS
+// =============================================================
+
+// PANEL 2a: Debarking — log half-stripped: bark on left half, clean wood on right
+function makeDebarking({ uid = 'debark' } = {}) {
+  const W = 280, H = 160;
+  // Horizontal log lying on its side, partly debarked. Left end shows bark (rough texture),
+  // right end shows clean light-colored wood (smooth). End cap on the left shows growth rings.
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- Soft ground shadow -->
+      <ellipse cx="140" cy="135" rx="120" ry="6" fill="#1a1614" opacity="0.15"/>
+
+      <!-- Log body (rectangular with rounded ends) -->
+      <!-- Right half (debarked, clean wood) -->
+      <path d="M 140 50 L 250 50 Q 270 50 270 80 Q 270 110 250 110 L 140 110 Z"
+            fill="${WOOD_LIGHT}" stroke="${WOOD_BARK_DARK}" stroke-width="1.2"/>
+
+      <!-- Left half (still has bark) -->
+      <path d="M 30 50 Q 12 50 12 80 Q 12 110 30 110 L 140 110 L 140 50 Z"
+            fill="${WOOD_BARK}" stroke="${WOOD_BARK_DARK}" stroke-width="1.2"/>
+
+      <!-- Bark texture on left half — vertical irregular striations -->
+      <line x1="35" y1="55" x2="38" y2="105" stroke="${WOOD_BARK_DARK}" stroke-width="0.7" opacity="0.6"/>
+      <line x1="48" y1="52" x2="46" y2="108" stroke="${WOOD_BARK_DARK}" stroke-width="0.6" opacity="0.5"/>
+      <line x1="60" y1="55" x2="62" y2="105" stroke="${WOOD_BARK_DARK}" stroke-width="0.7" opacity="0.55"/>
+      <line x1="72" y1="51" x2="70" y2="109" stroke="${WOOD_BARK_DARK}" stroke-width="0.6" opacity="0.5"/>
+      <line x1="85" y1="54" x2="87" y2="106" stroke="${WOOD_BARK_DARK}" stroke-width="0.7" opacity="0.6"/>
+      <line x1="98" y1="52" x2="96" y2="108" stroke="${WOOD_BARK_DARK}" stroke-width="0.6" opacity="0.5"/>
+      <line x1="111" y1="55" x2="113" y2="105" stroke="${WOOD_BARK_DARK}" stroke-width="0.7" opacity="0.55"/>
+      <line x1="124" y1="51" x2="122" y2="109" stroke="${WOOD_BARK_DARK}" stroke-width="0.6" opacity="0.5"/>
+      <!-- Some short horizontal cracks in the bark -->
+      <line x1="42" y1="65" x2="56" y2="66" stroke="${WOOD_BARK_DARK}" stroke-width="0.5" opacity="0.6"/>
+      <line x1="78" y1="78" x2="92" y2="79" stroke="${WOOD_BARK_DARK}" stroke-width="0.5" opacity="0.6"/>
+      <line x1="115" y1="92" x2="128" y2="93" stroke="${WOOD_BARK_DARK}" stroke-width="0.5" opacity="0.6"/>
+
+      <!-- Transition zone at the seam (where bark meets clean wood) — small bark strips peeling off -->
+      <path d="M 140 55 Q 145 58 142 65 Q 138 70 144 75" fill="none" stroke="${WOOD_BARK}" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 140 85 Q 144 88 141 95 Q 137 100 145 105" fill="none" stroke="${WOOD_BARK}" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- Right half: light wood texture (subtle grain lines) -->
+      <line x1="160" y1="60" x2="265" y2="62" stroke="${WOOD_RING}" stroke-width="0.4" opacity="0.5"/>
+      <line x1="160" y1="72" x2="265" y2="74" stroke="${WOOD_RING}" stroke-width="0.4" opacity="0.4"/>
+      <line x1="160" y1="84" x2="265" y2="83" stroke="${WOOD_RING}" stroke-width="0.4" opacity="0.5"/>
+      <line x1="160" y1="96" x2="265" y2="98" stroke="${WOOD_RING}" stroke-width="0.4" opacity="0.4"/>
+
+      <!-- Loose bark strips on the ground beneath the log -->
+      <path d="M 50 130 Q 60 128 75 132 Q 65 135 50 132 Z" fill="${WOOD_BARK}" opacity="0.85" stroke="${WOOD_BARK_DARK}" stroke-width="0.5"/>
+      <path d="M 95 138 Q 110 134 122 140 Q 108 142 95 138 Z" fill="${WOOD_BARK}" opacity="0.85" stroke="${WOOD_BARK_DARK}" stroke-width="0.5"/>
+      <path d="M 25 142 Q 38 140 48 144 Q 36 146 25 142 Z" fill="${WOOD_BARK}" opacity="0.85" stroke="${WOOD_BARK_DARK}" stroke-width="0.5"/>
+
+      <!-- End cap on the LEFT showing growth rings (the end-grain cross-section of the bark side) -->
+      <ellipse cx="12" cy="80" rx="3" ry="30" fill="${WOOD_HEART}" stroke="${WOOD_BARK_DARK}" stroke-width="0.8"/>
+      <ellipse cx="12" cy="80" rx="2" ry="20" fill="none" stroke="${WOOD_RING}" stroke-width="0.4"/>
+      <ellipse cx="12" cy="80" rx="1" ry="10" fill="none" stroke="${WOOD_RING}" stroke-width="0.4"/>
+
+      <!-- End cap on the RIGHT (clean side) -->
+      <ellipse cx="270" cy="80" rx="3" ry="30" fill="${WOOD_LIGHT}" stroke="${WOOD_BARK_DARK}" stroke-width="0.8"/>
+      <ellipse cx="270" cy="80" rx="2" ry="20" fill="none" stroke="${WOOD_RING}" stroke-width="0.4"/>
+
+      <!-- Labels indicating direction -->
+      <text x="60" y="34" font-family="JetBrains Mono, monospace" font-size="8" fill="#8a847c" letter-spacing="2" text-anchor="middle">BARK</text>
+      <text x="210" y="34" font-family="JetBrains Mono, monospace" font-size="8" fill="#8a847c" letter-spacing="2" text-anchor="middle">CLEAN WOOD</text>
+
+      <!-- Arrow showing direction the debarking is moving -->
+      <path d="M 140 24 L 165 24 M 162 21 L 165 24 L 162 27"
+            fill="none" stroke="${WOOD_BARK_DARK}" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+    </svg>
+  `;
+}
+
+// PANEL 2b: Chipping — drum chipper machine with log going in and chips flying out
+function makeChipping({ uid = 'chip' } = {}) {
+  const W = 280, H = 160;
+  // Drum chipper: big rectangular machine in the middle with a circular saw/blade visible.
+  // Log enters from the left through an infeed chute. Chips spray out the top-right
+  // through an exhaust chute, into a small pile.
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- Floor line -->
+      <line x1="0" y1="148" x2="280" y2="148" stroke="${WOOD_BARK_DARK}" stroke-width="0.5" opacity="0.4" stroke-dasharray="3 3"/>
+
+      <!-- Log entering from the left -->
+      <path d="M 8 70 L 90 70 L 90 92 L 8 92 Z" fill="${WOOD_LIGHT}" stroke="${WOOD_BARK_DARK}" stroke-width="1"/>
+      <ellipse cx="8" cy="81" rx="3" ry="11" fill="${WOOD_HEART}" stroke="${WOOD_BARK_DARK}" stroke-width="0.6"/>
+      <ellipse cx="8" cy="81" rx="2" ry="7" fill="none" stroke="${WOOD_RING}" stroke-width="0.4"/>
+      <line x1="20" y1="76" x2="85" y2="76" stroke="${WOOD_RING}" stroke-width="0.3" opacity="0.5"/>
+      <line x1="20" y1="86" x2="85" y2="86" stroke="${WOOD_RING}" stroke-width="0.3" opacity="0.5"/>
+
+      <!-- Infeed chute (slight angled funnel into the chipper) -->
+      <path d="M 90 60 L 105 60 L 105 102 L 90 102 Z"
+            fill="#3e3a35" stroke="${WOOD_BARK_DARK}" stroke-width="1"/>
+
+      <!-- Main chipper body — boxy industrial machine -->
+      <rect x="100" y="40" width="100" height="100" fill="#56524e" stroke="${WOOD_BARK_DARK}" stroke-width="1.5"/>
+      <!-- Body shading -->
+      <rect x="100" y="40" width="100" height="100" fill="#3e3a35" opacity="0.3"/>
+      <!-- Bolts on corners -->
+      <circle cx="106" cy="46" r="1.5" fill="${WOOD_BARK_DARK}"/>
+      <circle cx="194" cy="46" r="1.5" fill="${WOOD_BARK_DARK}"/>
+      <circle cx="106" cy="134" r="1.5" fill="${WOOD_BARK_DARK}"/>
+      <circle cx="194" cy="134" r="1.5" fill="${WOOD_BARK_DARK}"/>
+
+      <!-- Window / cutaway showing the spinning drum + blades inside -->
+      <circle cx="150" cy="90" r="32" fill="#1a1614" stroke="${WOOD_BARK_DARK}" stroke-width="1.5"/>
+      <!-- The drum itself -->
+      <circle cx="150" cy="90" r="26" fill="#7a7570" stroke="${WOOD_BARK_DARK}" stroke-width="0.8"/>
+      <!-- Blades (4 angled blades on the drum) -->
+      <path d="M 150 64 L 148 78 L 152 78 Z" fill="${WOOD_BARK_DARK}" stroke="#1a1614" stroke-width="0.5"/>
+      <path d="M 176 90 L 162 88 L 162 92 Z" fill="${WOOD_BARK_DARK}" stroke="#1a1614" stroke-width="0.5"/>
+      <path d="M 150 116 L 152 102 L 148 102 Z" fill="${WOOD_BARK_DARK}" stroke="#1a1614" stroke-width="0.5"/>
+      <path d="M 124 90 L 138 92 L 138 88 Z" fill="${WOOD_BARK_DARK}" stroke="#1a1614" stroke-width="0.5"/>
+      <!-- Center hub -->
+      <circle cx="150" cy="90" r="4" fill="${WOOD_BARK_DARK}"/>
+      <!-- Small rotation arrow above the drum -->
+      <path d="M 134 70 Q 150 60 166 70" fill="none" stroke="#c95a3a" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M 166 70 L 161 67 M 166 70 L 162 73" fill="none" stroke="#c95a3a" stroke-width="1.2" stroke-linecap="round"/>
+
+      <!-- Exhaust chute going up and to the right -->
+      <path d="M 200 50 L 250 22 L 262 30 L 200 65 Z" fill="#3e3a35" stroke="${WOOD_BARK_DARK}" stroke-width="1"/>
+
+      <!-- Wood chips flying out of the exhaust — irregular small flakes -->
+      <g>
+        <!-- Chips in midair (in a cone / spray pattern) -->
+        <path d="M 248 18 L 254 18 L 256 22 L 250 22 Z" fill="${WOOD_LIGHT}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(-25 252 20)"/>
+        <path d="M 258 12 L 264 12 L 266 16 L 260 16 Z" fill="${WOOD_LIGHT}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(15 262 14)"/>
+        <path d="M 268 18 L 274 18 L 276 22 L 270 22 Z" fill="${WOOD_HEART}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(-10 272 20)"/>
+        <path d="M 252 8 L 258 8 L 260 12 L 254 12 Z" fill="${WOOD_LIGHT}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(35 256 10)"/>
+        <path d="M 262 28 L 268 28 L 270 32 L 264 32 Z" fill="${WOOD_LIGHT}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(-30 266 30)"/>
+        <path d="M 245 32 L 251 32 L 253 36 L 247 36 Z" fill="${WOOD_HEART}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(40 249 34)"/>
+      </g>
+
+      <!-- Pile of wood chips on the ground to the right of the machine -->
+      <g transform="translate(208, 130)">
+        <!-- Pile silhouette -->
+        <ellipse cx="35" cy="14" rx="38" ry="6" fill="#1a1614" opacity="0.18"/>
+        <!-- Individual chips in pile -->
+        <path d="M 10 8 L 18 8 L 20 14 L 12 14 Z" fill="${WOOD_LIGHT}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(-15 14 11)"/>
+        <path d="M 22 10 L 30 10 L 32 16 L 24 16 Z" fill="${WOOD_HEART}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(20 26 13)"/>
+        <path d="M 36 8 L 44 8 L 46 14 L 38 14 Z" fill="${WOOD_LIGHT}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(-10 40 11)"/>
+        <path d="M 48 10 L 56 10 L 58 16 L 50 16 Z" fill="${WOOD_HEART}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(15 52 13)"/>
+        <path d="M 18 4 L 26 4 L 28 10 L 20 10 Z" fill="${WOOD_LIGHT}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(25 22 7)"/>
+        <path d="M 38 2 L 46 2 L 48 8 L 40 8 Z" fill="${WOOD_LIGHT}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(-20 42 5)"/>
+        <path d="M 60 6 L 68 6 L 70 12 L 62 12 Z" fill="${WOOD_HEART}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(10 64 9)"/>
+        <path d="M 28 0 L 36 0 L 38 6 L 30 6 Z" fill="${WOOD_LIGHT}" stroke="${WOOD_BARK_DARK}" stroke-width="0.4" transform="rotate(-30 32 3)"/>
+      </g>
+
+      <!-- Labels -->
+      <text x="50" y="60" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="2">LOG IN →</text>
+      <text x="245" y="50" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="1.5" text-anchor="middle">CHIPS OUT</text>
+
+      <!-- Machine support legs -->
+      <line x1="110" y1="140" x2="110" y2="148" stroke="${WOOD_BARK_DARK}" stroke-width="1.2"/>
+      <line x1="190" y1="140" x2="190" y2="148" stroke="${WOOD_BARK_DARK}" stroke-width="1.2"/>
+    </svg>
+  `;
+}
+
+// =============================================================
+// IRON — BLAST FURNACE (animated) + PIG IRON SVG GENERATORS
+// =============================================================
+
+// PANEL 3a: Blast furnace (animated). Tall vertical shaft, hot blast pipes,
+// glowing interior visible through cutaway, charge on top, tap at bottom.
+function makeBlastFurnace({ uid = 'bf' } = {}) {
+  const W = 240, H = 320;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ground line -->
+      <line x1="0" y1="305" x2="240" y2="305" stroke="${IRON_DARK}" stroke-width="0.5" opacity="0.4" stroke-dasharray="3 3"/>
+
+      <!-- Skip car / charge feed at top (small bucket on rails) -->
+      <g class="anim-charge">
+        <!-- Charge falling into the top of the furnace (mixed pieces) -->
+        <circle cx="115" cy="20" r="3" fill="${IRON_RUST}"/>
+        <circle cx="125" cy="14" r="2.8" fill="${IRON_DARK}"/>
+        <circle cx="120" cy="32" r="3" fill="${IRON_RUST_LIGHT}"/>
+        <circle cx="130" cy="28" r="2.5" fill="${IRON_DARK}"/>
+        <circle cx="118" cy="44" r="2.6" fill="${IRON_RUST}"/>
+      </g>
+
+      <!-- Charge label -->
+      <text x="120" y="9" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="1.5">CHARGE ↓</text>
+      <text x="120" y="0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="0.5">ore + coke + limestone</text>
+
+      <!-- TOP CONE (where charge enters) -->
+      <path d="M 100 50 L 140 50 L 130 70 L 110 70 Z"
+            fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1.2"/>
+
+      <!-- MAIN SHAFT body (tall cylinder, slightly tapered) -->
+      <!-- The shaft is drawn with a cutaway: outer wall on left, inner glow visible -->
+      <!-- Outer wall right side -->
+      <path d="M 175 70 L 175 240 L 165 260 L 165 290 L 145 290 L 145 260
+               L 95 260 L 95 290 L 75 290 L 75 260 L 65 240 L 65 70
+               L 110 70 L 110 90 L 130 90 L 130 70 Z"
+            fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1.5" stroke-linejoin="round"/>
+
+      <!-- Cutaway portion showing interior glow — the hottest part is in the lower middle (bosh) -->
+      <g class="anim-glow">
+        <!-- Outer warm glow filling most of the shaft -->
+        <ellipse cx="120" cy="180" rx="40" ry="80" fill="${IRON_GLOW}" opacity="0.5"/>
+        <!-- Hotter middle -->
+        <ellipse cx="120" cy="200" rx="32" ry="50" fill="${IRON_GLOW_INNER}" opacity="0.7"/>
+        <!-- Hottest center (white-orange) -->
+        <ellipse cx="120" cy="225" rx="22" ry="30" fill="${IRON_GLOW_HOT}" opacity="0.85"/>
+        <!-- Tiny sparks/embers floating up -->
+        <circle cx="105" cy="160" r="1.2" fill="${IRON_GLOW_HOT}"/>
+        <circle cx="135" cy="150" r="1" fill="${IRON_GLOW_HOT}"/>
+        <circle cx="118" cy="130" r="1.4" fill="${IRON_GLOW_INNER}"/>
+        <circle cx="112" cy="110" r="0.9" fill="${IRON_GLOW_INNER}" opacity="0.8"/>
+        <circle cx="128" cy="105" r="1.1" fill="${IRON_GLOW_HOT}"/>
+      </g>
+
+      <!-- Hot blast pipes (tuyeres) entering at the lower section -->
+      <!-- Left tuyere -->
+      <path d="M 30 220 L 65 220 L 65 232 L 30 232 Z"
+            fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1"/>
+      <circle cx="65" cy="226" r="6" fill="${IRON_GLOW_INNER}" opacity="0.8"/>
+      <circle cx="62" cy="224" r="2" fill="${IRON_GLOW_HOT}"/>
+      <!-- Right tuyere -->
+      <path d="M 175 220 L 210 220 L 210 232 L 175 232 Z"
+            fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1"/>
+      <circle cx="175" cy="226" r="6" fill="${IRON_GLOW_INNER}" opacity="0.8"/>
+      <circle cx="178" cy="224" r="2" fill="${IRON_GLOW_HOT}"/>
+
+      <!-- Hot blast labels -->
+      <text x="20" y="216" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1">HOT BLAST</text>
+      <text x="20" y="244" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1">~1100°C</text>
+
+      <!-- Outer shell highlights on furnace body -->
+      <line x1="68" y1="80" x2="68" y2="240" stroke="${IRON_GREY}" stroke-width="0.6" opacity="0.5"/>
+      <line x1="172" y1="80" x2="172" y2="240" stroke="${IRON_GREY}" stroke-width="0.6" opacity="0.5"/>
+
+      <!-- Support beams / structural framing on the sides -->
+      <line x1="50" y1="80" x2="50" y2="290" stroke="${IRON_DARK}" stroke-width="2"/>
+      <line x1="190" y1="80" x2="190" y2="290" stroke="${IRON_DARK}" stroke-width="2"/>
+      <!-- Cross braces -->
+      <line x1="50" y1="120" x2="65" y2="105" stroke="${IRON_DARK}" stroke-width="1"/>
+      <line x1="50" y1="200" x2="65" y2="185" stroke="${IRON_DARK}" stroke-width="1"/>
+      <line x1="190" y1="120" x2="175" y2="105" stroke="${IRON_DARK}" stroke-width="1"/>
+      <line x1="190" y1="200" x2="175" y2="185" stroke="${IRON_DARK}" stroke-width="1"/>
+
+      <!-- Tap-hole / output (the bottom of the hearth where iron pours out) -->
+      <g class="anim-pour">
+        <!-- Stream of molten iron pouring out from the bottom right -->
+        <path d="M 165 270 Q 175 275 185 285 L 195 305 L 178 305 L 168 285 Q 162 280 158 272 Z"
+              fill="${IRON_GLOW_HOT}" opacity="0.9"/>
+        <path d="M 165 270 Q 175 275 185 285 L 195 305"
+              stroke="${IRON_GLOW_HOT}" stroke-width="3" fill="none" opacity="0.95"/>
+      </g>
+
+      <!-- Tap label -->
+      <text x="200" y="280" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1">TAP</text>
+
+      <!-- Title -->
+      <text x="120" y="318" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="2">BLAST FURNACE</text>
+    </svg>
+  `;
+}
+
+// PANEL 3b: Pig iron — molten iron in a runner channel branching off into ingot molds
+// (the classic "sow and piglets" arrangement that gave pig iron its name)
+function makePigIron({ uid = 'pig' } = {}) {
+  const W = 240, H = 200;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ground / sand bed -->
+      <rect x="0" y="100" width="240" height="100" fill="#3e3a35" opacity="0.35"/>
+      <line x1="0" y1="100" x2="240" y2="100" stroke="${IRON_DARK}" stroke-width="0.6" opacity="0.5"/>
+
+      <!-- The MAIN RUNNER ("sow") — a horizontal channel, partly filled with glowing iron -->
+      <rect x="20" y="80" width="200" height="22" fill="${IRON_DARK}" stroke="${IRON_DARK}" stroke-width="1"/>
+      <!-- Iron filling inside the sow -->
+      <rect x="22" y="84" width="196" height="14" fill="${IRON_GLOW_INNER}"/>
+      <rect x="22" y="84" width="196" height="6" fill="${IRON_GLOW_HOT}"/>
+      <!-- Surface shimmer -->
+      <line x1="22" y1="86" x2="218" y2="86" stroke="${IRON_GLOW_HOT}" stroke-width="0.4" opacity="0.8"/>
+
+      <!-- BRANCHES ("piglets") — small ingot molds branching off the bottom of the sow -->
+      <!-- Each piglet is a small rectangular mold filled with iron -->
+      ${[40, 75, 110, 145, 180].map((x, i) => {
+        // Connector from sow to piglet
+        const conn = `<rect x="${x - 2}" y="100" width="6" height="6" fill="${IRON_DARK}"/>
+                      <rect x="${x - 1}" y="101" width="4" height="4" fill="${IRON_GLOW_INNER}"/>`;
+        // Piglet mold
+        const pig = `
+          <rect x="${x - 14}" y="106" width="28" height="34" fill="${IRON_DARK}" stroke="${IRON_DARK}" stroke-width="0.8" rx="2"/>
+          <!-- Iron filling — the first few are still glowing hot, last ones are cooled to grey -->
+          ${i < 2 ? `
+            <rect x="${x - 12}" y="108" width="24" height="30" fill="${IRON_GLOW_INNER}" rx="1"/>
+            <rect x="${x - 12}" y="108" width="24" height="8" fill="${IRON_GLOW_HOT}" opacity="0.9" rx="1"/>
+          ` : i === 2 ? `
+            <rect x="${x - 12}" y="108" width="24" height="30" fill="${IRON_RUST}" rx="1"/>
+            <rect x="${x - 12}" y="108" width="24" height="6" fill="${IRON_RUST_LIGHT}" opacity="0.7" rx="1"/>
+          ` : `
+            <rect x="${x - 12}" y="108" width="24" height="30" fill="${IRON_METAL}" rx="1"/>
+            <rect x="${x - 12}" y="108" width="24" height="3" fill="${IRON_GREY}" opacity="0.5" rx="1"/>
+          `}
+        `;
+        return conn + pig;
+      }).join('')}
+
+      <!-- Heat shimmer above the freshly-poured iron (rising wavy lines) -->
+      <g class="anim-mold">
+        <path d="M 30 78 Q 35 74 40 78" fill="none" stroke="${IRON_GLOW_HOT}" stroke-width="0.8" opacity="0.6"/>
+        <path d="M 60 78 Q 65 74 70 78" fill="none" stroke="${IRON_GLOW_HOT}" stroke-width="0.8" opacity="0.6"/>
+        <path d="M 95 78 Q 100 74 105 78" fill="none" stroke="${IRON_GLOW_HOT}" stroke-width="0.8" opacity="0.5"/>
+        <path d="M 130 78 Q 135 74 140 78" fill="none" stroke="${IRON_GLOW_HOT}" stroke-width="0.8" opacity="0.4"/>
+        <path d="M 165 78 Q 170 74 175 78" fill="none" stroke="${IRON_GLOW_HOT}" stroke-width="0.8" opacity="0.3"/>
+        <!-- A few hot-orange embers above the sow -->
+        <circle cx="55" cy="68" r="0.8" fill="${IRON_GLOW_HOT}" opacity="0.7"/>
+        <circle cx="125" cy="64" r="1" fill="${IRON_GLOW_HOT}" opacity="0.6"/>
+        <circle cx="195" cy="70" r="0.8" fill="${IRON_GLOW_HOT}" opacity="0.5"/>
+      </g>
+
+      <!-- Tap entry from upper-left (where iron pours in from the furnace) -->
+      <path d="M 0 60 L 20 60 L 20 80 L 0 80 Z" fill="${IRON_DARK}"/>
+      <path d="M 2 70 L 18 80" stroke="${IRON_GLOW_HOT}" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+
+      <!-- Labels -->
+      <text x="120" y="20" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="2">MOLTEN IRON · ~1500°C</text>
+      <text x="120" y="34" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1.5">RUNNER ("SOW") + INGOT MOLDS ("PIGLETS")</text>
+
+      <!-- Cooling stages indicator -->
+      <text x="40" y="158" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#a85020" letter-spacing="1">JUST CAST</text>
+      <text x="180" y="158" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1">COOLED</text>
+      <!-- Arrow showing time progression -->
+      <path d="M 60 152 L 160 152 M 156 149 L 160 152 L 156 155"
+            fill="none" stroke="#8a847c" stroke-width="0.6" opacity="0.6" stroke-linecap="round"/>
+    </svg>
+  `;
+}
+
+// PANEL 3c: Finished pig iron ingots — stacked solid blocks of rough cast iron
+// at the foundry yard, ready to be shipped to a steel mill
+function makePigIronIngot({ uid = 'ingot' } = {}) {
+  const W = 240, H = 200;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ground / foundry yard floor -->
+      <rect x="0" y="160" width="240" height="40" fill="#3e3a35" opacity="0.25"/>
+      <line x1="0" y1="160" x2="240" y2="160" stroke="${IRON_DARK}" stroke-width="0.6" opacity="0.5"/>
+
+      <!-- Subtle ground texture (small dust marks) -->
+      <ellipse cx="40" cy="178" rx="8" ry="1.5" fill="${IRON_DARK}" opacity="0.2"/>
+      <ellipse cx="200" cy="183" rx="10" ry="1.5" fill="${IRON_DARK}" opacity="0.2"/>
+
+      <!-- Pile of stacked pig iron ingots (rough cast blocks)
+           Drawn with slight perspective: bottom row visible in front,
+           a second row stacked behind/above. Each ingot has a "rough cast" texture. -->
+
+      <!-- Bottom row: 4 ingots laid front-to-back -->
+      <!-- Ingot 1 (front-left, biggest because closest) -->
+      <g transform="translate(30, 105)">
+        <!-- Front face -->
+        <path d="M 0 30 L 0 55 L 60 55 L 60 30 Z" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1.2"/>
+        <!-- Top face (slight perspective trapezoid) -->
+        <path d="M 0 30 L 12 22 L 72 22 L 60 30 Z" fill="${IRON_GREY}" stroke="${IRON_DARK}" stroke-width="1.2" stroke-linejoin="round"/>
+        <!-- Right side face -->
+        <path d="M 60 30 L 72 22 L 72 47 L 60 55 Z" fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1.2" stroke-linejoin="round"/>
+        <!-- Rough cast surface marks (pit/divot indications) -->
+        <ellipse cx="15" cy="42" rx="3" ry="2" fill="${IRON_DARK}" opacity="0.4"/>
+        <ellipse cx="35" cy="38" rx="2" ry="1.5" fill="${IRON_DARK}" opacity="0.3"/>
+        <ellipse cx="48" cy="48" rx="2.5" ry="1.5" fill="${IRON_DARK}" opacity="0.4"/>
+        <ellipse cx="22" cy="50" rx="2" ry="1" fill="${IRON_DARK}" opacity="0.3"/>
+        <!-- Top-face roughness -->
+        <ellipse cx="32" cy="26" rx="3" ry="1.5" fill="${IRON_DARK}" opacity="0.35" transform="rotate(-5 32 26)"/>
+        <ellipse cx="50" cy="27" rx="2" ry="1" fill="${IRON_DARK}" opacity="0.35"/>
+        <!-- Slight rust patches (because pig iron rusts quickly when stored) -->
+        <ellipse cx="10" cy="36" rx="3" ry="2" fill="${IRON_RUST}" opacity="0.4"/>
+        <ellipse cx="55" cy="44" rx="2" ry="1.5" fill="${IRON_RUST_LIGHT}" opacity="0.4"/>
+      </g>
+
+      <!-- Ingot 2 (front-right) -->
+      <g transform="translate(115, 110)">
+        <path d="M 0 28 L 0 50 L 55 50 L 55 28 Z" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1.2"/>
+        <path d="M 0 28 L 11 21 L 66 21 L 55 28 Z" fill="${IRON_GREY}" stroke="${IRON_DARK}" stroke-width="1.2" stroke-linejoin="round"/>
+        <path d="M 55 28 L 66 21 L 66 43 L 55 50 Z" fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1.2" stroke-linejoin="round"/>
+        <ellipse cx="14" cy="38" rx="2.5" ry="1.5" fill="${IRON_DARK}" opacity="0.4"/>
+        <ellipse cx="32" cy="42" rx="2" ry="1.2" fill="${IRON_DARK}" opacity="0.3"/>
+        <ellipse cx="44" cy="36" rx="2" ry="1.2" fill="${IRON_DARK}" opacity="0.3"/>
+        <ellipse cx="20" cy="46" rx="1.8" ry="1" fill="${IRON_DARK}" opacity="0.3"/>
+        <ellipse cx="40" cy="25" rx="2.5" ry="1" fill="${IRON_DARK}" opacity="0.35"/>
+        <ellipse cx="48" cy="40" rx="2" ry="1.3" fill="${IRON_RUST}" opacity="0.4"/>
+      </g>
+
+      <!-- Ingot 3 (background, behind ingot 1) -->
+      <g transform="translate(50, 90)">
+        <path d="M 0 25 L 0 42 L 50 42 L 50 25 Z" fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1"/>
+        <path d="M 0 25 L 9 19 L 59 19 L 50 25 Z" fill="${IRON_GREY}" stroke="${IRON_DARK}" stroke-width="1" stroke-linejoin="round"/>
+        <path d="M 50 25 L 59 19 L 59 36 L 50 42 Z" fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1" stroke-linejoin="round" opacity="0.85"/>
+        <ellipse cx="14" cy="33" rx="2" ry="1.2" fill="${IRON_DARK}" opacity="0.4"/>
+        <ellipse cx="34" cy="35" rx="2" ry="1.2" fill="${IRON_DARK}" opacity="0.3"/>
+        <ellipse cx="42" cy="30" rx="1.5" ry="1" fill="${IRON_RUST}" opacity="0.45"/>
+      </g>
+
+      <!-- Ingot 4 (top, stacked above the first row) -->
+      <g transform="translate(82, 70)">
+        <path d="M 0 24 L 0 42 L 50 42 L 50 24 Z" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1"/>
+        <path d="M 0 24 L 9 18 L 59 18 L 50 24 Z" fill="${IRON_GREY}" stroke="${IRON_DARK}" stroke-width="1" stroke-linejoin="round"/>
+        <path d="M 50 24 L 59 18 L 59 36 L 50 42 Z" fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1" stroke-linejoin="round"/>
+        <ellipse cx="13" cy="32" rx="2.5" ry="1.5" fill="${IRON_DARK}" opacity="0.4"/>
+        <ellipse cx="35" cy="34" rx="2" ry="1.3" fill="${IRON_DARK}" opacity="0.3"/>
+        <ellipse cx="44" cy="29" rx="1.8" ry="1" fill="${IRON_RUST}" opacity="0.45"/>
+        <!-- Stamp / mark on top suggesting foundry identification -->
+        <text x="20" y="26" font-family="JetBrains Mono, monospace" font-size="4" fill="${IRON_DARK}" opacity="0.6" letter-spacing="0.5">94 Fe</text>
+      </g>
+
+      <!-- Solo ingot off to the right, foreground -->
+      <g transform="translate(168, 115)">
+        <path d="M 0 26 L 0 48 L 50 48 L 50 26 Z" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1.2"/>
+        <path d="M 0 26 L 10 19 L 60 19 L 50 26 Z" fill="${IRON_GREY}" stroke="${IRON_DARK}" stroke-width="1.2" stroke-linejoin="round"/>
+        <path d="M 50 26 L 60 19 L 60 41 L 50 48 Z" fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1.2" stroke-linejoin="round"/>
+        <ellipse cx="13" cy="36" rx="2.5" ry="1.5" fill="${IRON_DARK}" opacity="0.4"/>
+        <ellipse cx="32" cy="40" rx="2" ry="1.2" fill="${IRON_DARK}" opacity="0.3"/>
+        <ellipse cx="40" cy="32" rx="2" ry="1.2" fill="${IRON_RUST}" opacity="0.45"/>
+        <ellipse cx="22" cy="42" rx="1.8" ry="1" fill="${IRON_RUST_LIGHT}" opacity="0.4"/>
+      </g>
+
+      <!-- Ground shadows under each pile -->
+      <ellipse cx="62" cy="166" rx="42" ry="3" fill="${IRON_DARK}" opacity="0.2"/>
+      <ellipse cx="143" cy="166" rx="34" ry="3" fill="${IRON_DARK}" opacity="0.2"/>
+      <ellipse cx="195" cy="170" rx="30" ry="2.5" fill="${IRON_DARK}" opacity="0.2"/>
+
+      <!-- Title -->
+      <text x="120" y="22" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="2">PIG IRON INGOTS</text>
+      <text x="120" y="36" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1.5">~20–50 KG · STACKED FOR SHIPMENT</text>
+    </svg>
+  `;
+}
+
+// =============================================================
+// DATA + RENDER
+// =============================================================
+
+// APPLE
+const APPLE_PANELS = [
+  {
+    key: 'wash',
+    name: 'Washing',
+    label: 'Sprayed clean',
+    stat: 'Cold-water flume + spray bars',
+    detail: 'Apples enter a cold-water flume that floats them gently to the optical sorter. Spray bars wash off field dirt, leaves, pesticide residue, and the natural waxy bloom. The water is recirculated and filtered — most plants reuse the same water for hours.',
+    make: makeWashing
+  },
+  {
+    key: 'peel',
+    name: 'Peeling',
+    label: 'Skin removed',
+    stat: 'Steam or mechanical peel',
+    detail: 'Industrial peelers use either rotating blades that spiral the skin off, or a brief steam blast that loosens the skin so it can be wiped away. The peel itself is a byproduct — sold to pectin manufacturers (apple peel is rich in pectin, the gelling agent in jams).',
+    make: makePeeling
+  },
+  {
+    key: 'core',
+    name: 'Coring',
+    label: 'Core removed',
+    stat: 'Punch-and-extract',
+    detail: 'A circular punch removes the seed core in one motion, ejecting the core from the back of the machine. The cored flesh is now ready to be cooked. Cores go to animal feed or compost. Apple seeds contain trace amygdalin (a cyanogenic compound), which is why they\'re removed before processing.',
+    make: makeCoring
+  }
+];
+
+// LUMBER
+const LUMBER_PANELS = [
+  {
+    key: 'debark',
+    name: 'Debarking',
+    label: 'Bark stripped',
+    stat: 'Drum or ring debarker',
+    detail: 'Logs tumble inside a rotating drum, and friction strips the bark off cleanly. Ring debarkers use stationary blades pressing inward as the log feeds through. Bark must be removed because it contaminates pulp — and bark itself is valuable as boiler fuel or landscaping mulch.',
+    make: makeDebarking
+  },
+  {
+    key: 'chip',
+    name: 'Chipping',
+    label: 'Reduced to chips',
+    stat: 'Drum chipper · ~25mm chips',
+    detail: 'Debarked logs feed into a high-speed drum chipper. Steel blades mounted on the rotating drum slice the wood into small uniform flakes (about an inch on a side). These chips are the new unit of work — everything downstream treats them as the raw material, not logs.',
+    make: makeChipping
+  }
+];
+
+// IRON
+const IRON_PANELS = [
+  {
+    key: 'furnace',
+    name: 'Blast furnace',
+    label: 'Smelting',
+    stat: '~1,500°C · 6–8 hour residence time',
+    detail: 'Iron ore concentrate, coke (purified coal), and limestone are charged into the top of the furnace. Hot air at ~1,100°C is blasted in from below through tuyeres. The coke combusts, the heat melts the ore, and limestone reacts with silica impurities to form slag. Molten iron sinks to the hearth at the bottom.',
+    make: makeBlastFurnace
+  },
+  {
+    key: 'cast',
+    name: 'Casting',
+    label: 'Sow & piglets',
+    stat: 'Tapped every 6–8 hrs',
+    detail: 'The molten iron is tapped from the furnace bottom into channels in a sand bed — a long "sow" runner with smaller "piglet" molds branching off (this is literally where the name comes from). Hot iron flows down the runner and fills each piglet, then cools and solidifies over hours.',
+    make: makePigIron
+  },
+  {
+    key: 'ingot',
+    name: 'Pig iron',
+    label: 'Cooled & stacked',
+    stat: '~94% Fe, 4% C, 2% other · ~20–50 kg each',
+    detail: 'After cooling, the ingots are broken off the runner and stacked at the foundry yard. Each block weighs 20–50 kg — heavy enough to be valuable as cargo, small enough to be hand-loadable. The surface is rough and pitted (cast in sand), and rusts quickly because of its high carbon content. From here it ships to a steel mill for further refining.',
+    make: makePigIronIngot
+  }
+];
+
+// Generic renderer for a stream's stage
+function renderStream(streamKey, stageId, detailId, panels) {
+  const stage = document.getElementById(stageId);
+  const detail = document.getElementById(detailId);
+  if (!stage) return;
+
+  let html = '';
+  const hasAnimated = panels.some(p => p.animated);
+
+  // For animated streams, wrap the entire sequence in iron-scene so all panel animations work
+  if (hasAnimated) {
+    html += `<div class="iron-scene" id="${streamKey}-scene" data-playing="false" data-played="false">`;
+  }
+  html += '<div class="refine-sequence">';
+  panels.forEach((p, i) => {
+    html += `
+      <div class="refine-panel" data-key="${p.key}">
+        <div class="refine-panel-svg-wrap">${p.make({ uid: streamKey + '-' + p.key })}</div>
+        <div class="refine-panel-name">${p.name}</div>
+        <div class="refine-panel-label">${p.label}</div>
+      </div>
+    `;
+    if (i < panels.length - 1) {
+      html += `<div class="refine-arrow-between">→</div>`;
+    }
+  });
+  html += '</div>';
+  if (hasAnimated) {
+    html += `</div>`; // close iron-scene
+  }
+
+  // Add play button if any panel is animated
+  if (hasAnimated) {
+    html += `
+      <div class="iron-play-controls">
+        <button class="iron-play-btn" id="${streamKey}-play-btn" type="button">
+          <span class="play-icon">▶</span> <span class="play-label">Play smelting animation</span>
+        </button>
+      </div>
+    `;
+  }
+
+  stage.innerHTML = html;
+
+  // Hook up hover/click for each panel
+  stage.querySelectorAll('.refine-panel').forEach(panel => {
+    const key = panel.getAttribute('data-key');
+    const p = panels.find(x => x.key === key);
+    const update = () => {
+      detail.classList.remove('empty');
+      detail.innerHTML = `
+        <div class="detail-card-name">${p.name}</div>
+        <div class="detail-card-stat">${p.stat}</div>
+        <div class="detail-card-text">${p.detail}</div>
+      `;
+    };
+    panel.addEventListener('mouseenter', update);
+    panel.addEventListener('click', update);
+  });
+
+  // Hook up play button if present
+  if (hasAnimated) {
+    const btn = document.getElementById(streamKey + '-play-btn');
+    const scene = document.getElementById(streamKey + '-scene');
+    if (btn && scene) {
+      btn.addEventListener('click', () => {
+        if (scene.getAttribute('data-playing') === 'true') return;
+        scene.setAttribute('data-playing', 'true');
+        btn.querySelector('.play-icon').textContent = '◐';
+        btn.querySelector('.play-label').textContent = 'Smelting…';
+        setTimeout(() => {
+          scene.setAttribute('data-playing', 'false');
+          scene.setAttribute('data-played', 'true');
+          btn.querySelector('.play-icon').textContent = '↻';
+          btn.querySelector('.play-label').textContent = 'Replay animation';
+        }, 5100);
+      });
+    }
+  }
+}
+
+renderStream('apple', 'apple-stage', 'apple-detail', APPLE_PANELS);
+renderStream('lumber', 'lumber-stage', 'lumber-detail', LUMBER_PANELS);
+renderStream('iron', 'iron-stage', 'iron-detail', IRON_PANELS);
+
+// Reveal animations
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

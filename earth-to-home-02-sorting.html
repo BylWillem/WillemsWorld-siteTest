@@ -1,0 +1,2564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Earth to Home · Section 2 — Sorting — willemsworld.fyi</title>
+<meta name="description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<link rel="canonical" href="https://willemsworld.fyi/earth-to-home-02-sorting.html">
+<meta name="author" content="willemsworld">
+
+<!-- Open Graph (Facebook, LinkedIn, etc.) -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://willemsworld.fyi/earth-to-home-02-sorting.html">
+<meta property="og:site_name" content="willemsworld.fyi">
+<meta property="og:title" content="Earth to Home — Section 2 — Sorting">
+<meta property="og:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta property="og:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A globe on the left, three colored streams arcing across, converging on a house on the right. Title: Earth to Home.">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Earth to Home — Section 2 — Sorting">
+<meta name="twitter:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta name="twitter:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f1ea;
+    --paper-deep: #ebe5d9;
+    --ink: #1a1614;
+    --ink-soft: #4a4540;
+    --ink-faint: #8a847c;
+    --rule: #d6cfc0;
+
+    --apple: #b8302a;
+    --apple-deep: #7a1a16;
+    --apple-soft: #f5dad8;
+    --apple-mid: #d65c54;
+    --apple-shadow: rgba(184, 48, 42, 0.15);
+
+    --lumber: #3d6b3a;
+    --lumber-deep: #1f3d1d;
+    --iron: #4a4a4a;
+    --iron-deep: #1f1f1f;
+
+    --display: 'Fraunces', 'Times New Roman', serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184, 48, 42, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(61, 107, 58, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(74, 74, 74, 0.025) 0%, transparent 40%);
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.25rem 3rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+    z-index: 10; background: rgba(245, 241, 234, 0.92); backdrop-filter: blur(8px);
+    position: sticky; top: 0;
+  }
+  .masthead-brand { font-family: var(--display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em; }
+  .masthead-brand .tld { font-weight: 300; color: var(--ink-faint); }
+  .masthead-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+
+  .stages-strip {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .stage-pill {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.35rem 0.7rem; border: 1px solid var(--rule);
+    color: var(--ink-faint); background: rgba(255, 253, 248, 0.5); white-space: nowrap;
+  }
+  .stage-pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .stage-pill .num { opacity: 0.5; margin-right: 0.4rem; }
+  .stage-pill.active .num { opacity: 0.7; }
+  .stage-pill:not(.active):not(.takeaways):hover {
+    border-color: var(--ink); color: var(--ink); background: rgba(255, 253, 248, 0.9);
+    cursor: pointer;
+  }
+  .stage-pill.takeaways {
+    border-style: dashed;
+    margin-left: auto;
+  }
+  .stage-pill.takeaways.active { border-style: solid; }
+  .stage-pill.takeaways .star { margin-right: 0.4rem; opacity: 0.5; font-style: italic; }
+  .stage-pill.takeaways.active .star { opacity: 0.7; }
+  .stage-pill.takeaways:not(.active):hover {
+    border-color: var(--ink); color: var(--ink); background: rgba(255, 253, 248, 0.9);
+    cursor: pointer;
+  }
+
+  .section { padding: 5rem 3rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .section-marker {
+    display: flex; align-items: baseline; gap: 2rem;
+    margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
+  }
+  .section-number {
+    font-family: var(--display); font-weight: 300; font-size: 6rem; line-height: 1; letter-spacing: -0.04em;
+  }
+  .section-number-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 3rem; letter-spacing: -0.02em;
+  }
+  .section-intro {
+    font-family: var(--display); font-weight: 300; font-size: 1.25rem; line-height: 1.6;
+    max-width: 65ch; color: var(--ink-soft); margin-bottom: 4rem; font-style: italic;
+  }
+  .section-intro::first-letter {
+    font-size: 3.5rem; float: left; line-height: 0.85; padding: 0.3rem 0.5rem 0 0;
+    font-weight: 400; font-style: normal; color: var(--ink);
+  }
+
+  /* === STREAM CARD (single, full-width for now — apple only) === */
+  .stream-card {
+    background: rgba(255, 253, 248, 0.65);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--apple);
+    padding: 2rem 2.25rem;
+    margin-bottom: 2rem;
+  }
+  .stream-card-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 0.5rem;
+  }
+  .stream-card-name {
+    font-family: var(--display); font-weight: 600; font-size: 1.5rem;
+    letter-spacing: -0.01em; color: var(--apple-deep);
+  }
+  .stream-card-symbol { font-family: var(--display); font-size: 1.1rem; opacity: 0.4; }
+  .stream-subtitle {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 2.5rem;
+    padding-bottom: 1rem; border-bottom: 1px dotted var(--rule);
+  }
+
+  /* === SUB-SECTION === */
+  .sub {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .sub:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+  .sub-header {
+    display: flex; align-items: baseline; gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .sub-number {
+    font-family: var(--display); font-weight: 300; font-size: 2.5rem;
+    line-height: 1; letter-spacing: -0.03em; color: var(--ink-faint);
+    font-feature-settings: 'lnum';
+  }
+  .sub-title {
+    font-family: var(--display); font-weight: 600; font-style: italic;
+    font-size: 1.5rem; letter-spacing: -0.01em;
+  }
+  .sub-prompt {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    color: var(--ink-soft); font-size: 1rem; margin-bottom: 2rem;
+    padding-left: 0; max-width: 60ch;
+  }
+
+  /* === APPLE GRID === */
+  .apple-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  .apple-grid.varieties { grid-template-columns: repeat(6, 1fr); }
+  .apple-grid.blemish { grid-template-columns: repeat(4, 1fr); }
+  .apple-grid.size { grid-template-columns: repeat(3, 1fr); }
+
+  .apple-cell {
+    text-align: center;
+    cursor: pointer;
+    padding: 1rem 0.5rem;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+    position: relative;
+    border-radius: 2px;
+  }
+  .apple-cell:hover {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: var(--rule);
+    transform: translateY(-2px);
+  }
+
+  .apple-svg-wrap {
+    height: 110px;
+    display: flex; align-items: flex-end; justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+  .apple-svg-wrap.size-large { height: 130px; }
+  .apple-svg-wrap.size-medium { height: 110px; }
+  .apple-svg-wrap.size-small { height: 80px; }
+
+  .apple-svg {
+    transition: transform 0.3s ease;
+  }
+  .apple-cell:hover .apple-svg {
+    transform: scale(1.06);
+  }
+
+  .apple-name {
+    font-family: var(--display); font-weight: 600; font-size: 0.95rem;
+    color: var(--apple-deep); margin-bottom: 0.25rem;
+    letter-spacing: -0.005em;
+  }
+  .apple-meta {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* Hover detail card */
+  .detail-card {
+    margin-top: 1.5rem;
+    padding: 1.1rem 1.4rem;
+    background: rgba(255, 253, 248, 0.95);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--apple);
+    min-height: 70px;
+    transition: opacity 0.25s ease;
+  }
+  .detail-card.empty {
+    background: rgba(0, 0, 0, 0.02);
+    border-left-color: var(--rule);
+  }
+  .detail-card-empty-text {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 0.9rem; color: var(--ink-faint);
+  }
+  .detail-card-name {
+    font-family: var(--display); font-weight: 600; font-size: 1.1rem;
+    color: var(--apple-deep); letter-spacing: -0.01em; margin-bottom: 0.2rem;
+  }
+  .detail-card-stat {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 0.5rem;
+  }
+  .detail-card-stat strong { color: var(--ink); font-weight: 600; }
+  .detail-card-text {
+    font-size: 0.85rem; color: var(--ink-soft); line-height: 1.45;
+  }
+
+  /* Destination chip — sits under blemish/size apples */
+  .destination {
+    display: inline-block;
+    margin-top: 0.4rem;
+    padding: 0.25rem 0.55rem;
+    background: rgba(184, 48, 42, 0.08);
+    color: var(--apple-deep);
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+  .destination.discard {
+    background: rgba(0, 0, 0, 0.06);
+    color: var(--ink-faint);
+  }
+
+  /* === LUMBER STREAM CARD === */
+  .stream-card-lumber {
+    border-top-color: var(--lumber);
+  }
+  .stream-card-lumber .stream-card-name { color: var(--lumber-deep); }
+  .stream-card-lumber .destination {
+    background: rgba(61, 107, 58, 0.08);
+    color: var(--lumber-deep);
+  }
+  .stream-card-lumber .destination.discard {
+    background: rgba(0, 0, 0, 0.06);
+    color: var(--ink-faint);
+  }
+  .detail-card-lumber {
+    border-left-color: var(--lumber) !important;
+  }
+  .detail-card-lumber.empty {
+    border-left-color: var(--rule) !important;
+  }
+  .detail-card-lumber .detail-card-name {
+    color: var(--lumber-deep);
+  }
+
+  /* Tree grid (Sub 1) */
+  .tree-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .tree-cell {
+    text-align: center;
+    cursor: pointer;
+    padding: 1.25rem 0.5rem;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+    border-radius: 2px;
+  }
+  .tree-cell:hover {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: var(--rule);
+    transform: translateY(-2px);
+  }
+  .tree-svg-wrap {
+    height: 180px;
+    display: flex; align-items: flex-end; justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+  .tree-svg {
+    transition: transform 0.3s ease;
+  }
+  .tree-cell:hover .tree-svg {
+    transform: scale(1.04);
+  }
+  .tree-name {
+    font-family: var(--display); font-weight: 600; font-size: 1rem;
+    color: var(--lumber-deep); margin-bottom: 0.25rem;
+    letter-spacing: -0.005em;
+  }
+  .tree-meta {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* Log end (Sub 2) — diameter cross-sections */
+  .log-end-grid {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .log-end-cell {
+    text-align: center;
+    cursor: pointer;
+    padding: 1rem 0.75rem;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+    border-radius: 2px;
+    flex: 1;
+    min-width: 130px;
+    max-width: 220px;
+  }
+  .log-end-cell:hover {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: var(--rule);
+    transform: translateY(-2px);
+  }
+  .log-end-svg-wrap {
+    display: flex; align-items: flex-end; justify-content: center;
+    margin-bottom: 0.75rem;
+    height: 180px;
+  }
+  .log-end-svg {
+    transition: transform 0.3s ease;
+  }
+  .log-end-cell:hover .log-end-svg { transform: scale(1.04); }
+  .log-end-name {
+    font-family: var(--display); font-weight: 600; font-size: 1rem;
+    color: var(--lumber-deep); margin-bottom: 0.25rem;
+    letter-spacing: -0.005em;
+  }
+  .log-end-meta {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.4rem;
+  }
+
+  /* Log side (Sub 3) — straightness/grading */
+  .log-side-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .log-side-cell {
+    text-align: center;
+    cursor: pointer;
+    padding: 1rem 0.5rem;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+    border-radius: 2px;
+  }
+  .log-side-cell:hover {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: var(--rule);
+    transform: translateY(-2px);
+  }
+  .log-side-svg-wrap {
+    height: 90px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+  .log-side-svg { transition: transform 0.3s ease; }
+  .log-side-cell:hover .log-side-svg { transform: scale(1.04); }
+  .log-side-name {
+    font-family: var(--display); font-weight: 600; font-size: 1rem;
+    color: var(--lumber-deep); margin-bottom: 0.25rem;
+    letter-spacing: -0.005em;
+  }
+
+  /* === IRON STREAM CARD === */
+  .stream-card-iron {
+    border-top-color: var(--iron);
+  }
+  .stream-card-iron .stream-card-name { color: var(--iron-deep); }
+  .stream-card-iron .destination {
+    background: rgba(74, 74, 74, 0.1);
+    color: var(--iron-deep);
+  }
+  .stream-card-iron .destination.discard {
+    background: rgba(0, 0, 0, 0.06);
+    color: var(--ink-faint);
+  }
+  .detail-card-iron {
+    border-left-color: var(--iron) !important;
+  }
+  .detail-card-iron.empty {
+    border-left-color: var(--rule) !important;
+  }
+  .detail-card-iron .detail-card-name {
+    color: var(--iron-deep);
+  }
+
+  /* Iron stage container — centered visual area */
+  .iron-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+    padding: 0.5rem 0;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .iron-stage svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Multi-panel sequence (used in Sub 01 raw-ore and Sub 02 crushing) */
+  .iron-sequence {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .iron-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    flex: 1 1 0;
+    min-width: 130px;
+    max-width: 320px;
+  }
+  .iron-panel-svg-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .iron-panel-svg-wrap svg {
+    max-width: 100%;
+    height: auto;
+  }
+  .iron-panel-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-align: center;
+  }
+  .iron-arrow-between {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.3rem;
+    color: var(--ink-faint);
+    align-self: center;
+    user-select: none;
+    flex-shrink: 0;
+    padding: 0 0.25rem;
+  }
+
+  /* Animated scene (Sub 03 magnet, Sub 04 flotation) */
+  .iron-scene-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .iron-play-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  .iron-play-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    padding: 0.5rem 1.1rem;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    transition: all 0.2s ease;
+    font-weight: 500;
+  }
+  .iron-play-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .iron-play-btn .play-icon {
+    font-size: 0.85rem;
+  }
+
+  /* Animation classes — applied when scene is "playing" */
+  .iron-scene[data-playing="true"] .anim-feed {
+    animation: feedPour 4s ease-in-out forwards;
+  }
+  .iron-scene[data-playing="true"] .anim-drum-rotate {
+    animation: drumRotate 4s linear forwards;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  .iron-scene[data-playing="true"] .anim-particle-iron {
+    animation: ironParticle 4s ease-in-out forwards;
+  }
+  .iron-scene[data-playing="true"] .anim-particle-tailings {
+    animation: tailingsParticle 4s ease-in-out forwards;
+  }
+  .iron-scene[data-playing="true"] .anim-bubble-rise {
+    animation: bubbleRise 4s ease-out forwards;
+  }
+  .iron-scene[data-playing="true"] .anim-froth-grow {
+    animation: frothGrow 4s ease-out forwards;
+  }
+  .iron-scene[data-playing="true"] .anim-flot-feed {
+    animation: flotFeed 4s ease-in-out forwards;
+  }
+
+  @keyframes drumRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(720deg); }
+  }
+  @keyframes feedPour {
+    0% { opacity: 0; transform: translateY(-30px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes ironParticle {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    100% { opacity: 1; }
+  }
+  @keyframes tailingsParticle {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    100% { opacity: 1; }
+  }
+  @keyframes bubbleRise {
+    0% { opacity: 0; transform: translateY(40px); }
+    20% { opacity: 0.6; }
+    100% { opacity: 0.6; transform: translateY(0); }
+  }
+  @keyframes frothGrow {
+    0% { opacity: 0; transform: scaleY(0.2); transform-origin: bottom; }
+    60% { opacity: 0.5; transform: scaleY(0.6); transform-origin: bottom; }
+    100% { opacity: 1; transform: scaleY(1); transform-origin: bottom; }
+  }
+  @keyframes flotFeed {
+    0% { opacity: 0; transform: translateX(-20px); }
+    25% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Anything pre-animation should be invisible until played */
+  .iron-scene .anim-feed,
+  .iron-scene .anim-particle-iron,
+  .iron-scene .anim-particle-tailings,
+  .iron-scene .anim-bubble-rise,
+  .iron-scene .anim-froth-grow,
+  .iron-scene .anim-flot-feed {
+    opacity: 0;
+  }
+  /* When playing or finished, show end state */
+  .iron-scene[data-playing="true"] .anim-feed,
+  .iron-scene[data-playing="true"] .anim-particle-iron,
+  .iron-scene[data-playing="true"] .anim-particle-tailings,
+  .iron-scene[data-playing="true"] .anim-bubble-rise,
+  .iron-scene[data-playing="true"] .anim-froth-grow,
+  .iron-scene[data-playing="true"] .anim-flot-feed,
+  .iron-scene[data-played="true"] .anim-feed,
+  .iron-scene[data-played="true"] .anim-particle-iron,
+  .iron-scene[data-played="true"] .anim-particle-tailings,
+  .iron-scene[data-played="true"] .anim-bubble-rise,
+  .iron-scene[data-played="true"] .anim-froth-grow,
+  .iron-scene[data-played="true"] .anim-flot-feed {
+    opacity: 1;
+  }
+
+  /* Each individual hover-cell for iron sub-elements (rocks, output streams) */
+  .iron-cell {
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  .iron-cell:hover {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: var(--rule);
+  }
+  .iron-cell-svg-wrap {
+    transition: transform 0.3s ease;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .iron-cell-name {
+    font-family: var(--display); font-weight: 600; font-size: 0.95rem;
+    color: var(--iron-deep); letter-spacing: -0.005em;
+  }
+  .iron-cell-meta {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* Magnetic separation — two output streams side-by-side with magnet between */
+  .iron-magsep {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .iron-arrow {
+    font-family: var(--mono);
+    font-size: 1.25rem;
+    color: var(--ink-faint);
+    opacity: 0.5;
+    user-select: none;
+  }
+
+  /* Final outcome card */
+  .iron-outcome {
+    margin-top: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    border: 2px solid var(--iron);
+    background: rgba(255, 253, 248, 0.85);
+    text-align: center;
+  }
+  .iron-outcome-label {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 0.5rem; display: block;
+  }
+  .iron-outcome-result {
+    font-family: var(--display); font-weight: 600;
+    font-size: 1.6rem; letter-spacing: -0.01em; line-height: 1.2;
+    color: var(--iron-deep); margin-bottom: 0.5rem;
+  }
+  .iron-outcome-detail {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 1rem; color: var(--ink-soft); line-height: 1.5;
+    max-width: 55ch; margin: 0 auto;
+  }
+  .iron-outcome-detail strong { font-weight: 600; font-style: normal; color: var(--ink); }
+
+  /* Section footer */
+  .section-footer {
+    margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .next-section {
+    font-family: var(--display); font-style: italic; font-weight: 400;
+    font-size: 1.4rem; text-transform: none; letter-spacing: -0.01em;
+    color: var(--ink); text-align: right;
+  }
+  a.next-section {
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+  a.next-section:hover {
+    opacity: 0.75;
+    transform: translateX(3px);
+  }
+  .next-section span {
+    color: var(--ink-faint); font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; display: block; margin-bottom: 0.25rem; font-style: normal;
+  }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .masthead { padding: 0.9rem 1.25rem; }
+    .stages-strip { padding: 1rem 1.25rem; gap: 0.3rem; }
+    .stage-pill { font-size: 0.58rem; padding: 0.28rem 0.5rem; }
+    .section { padding: 3.5rem 1.25rem; }
+    .stream-card { padding: 1.5rem 1.25rem; }
+    .section-marker { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    .section-number { font-size: 4rem; }
+    .section-title { font-size: 2rem; }
+    .section-intro { font-size: 1.1rem; }
+    .apple-grid.varieties { grid-template-columns: repeat(3, 1fr); }
+    .apple-grid.blemish { grid-template-columns: repeat(2, 1fr); }
+    .apple-grid.size { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+    .apple-svg-wrap { height: 90px; }
+    .apple-svg-wrap.size-large { height: 100px; }
+    .apple-svg-wrap.size-small { height: 65px; }
+    .tree-grid { gap: 0.5rem; }
+    .tree-svg-wrap { height: 140px; }
+    .log-end-grid { gap: 0.5rem; }
+    .log-end-svg-wrap { height: 130px; }
+    .log-side-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+    .iron-magsep { gap: 0.5rem; }
+    .iron-arrow { font-size: 1rem; }
+    .iron-sequence { flex-direction: column; gap: 0.5rem; }
+    .iron-arrow-between { transform: rotate(90deg); }
+    .iron-panel { max-width: 100%; }
+    .iron-outcome-result { font-size: 1.3rem; }
+    .iron-outcome-detail { font-size: 0.95rem; }
+    .sub-title { font-size: 1.25rem; }
+    .sub-number { font-size: 2rem; }
+    .section-footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .next-section { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-brand">willemsworld<span class="tld">.fyi</span></div>
+  <div class="masthead-meta">Insight № 04 · Supply Chain Ecosystems</div>
+</header>
+
+<div class="stages-strip">
+  <a href="earth-to-home.html" class="stage-pill" style="text-decoration: none;"><span class="num">01</span>The Earth</a>
+  <span class="stage-pill active"><span class="num">02</span>Sorting</span>
+  <a href="earth-to-home-03-refinement.html" class="stage-pill" style="text-decoration: none;"><span class="num">03</span>Refinement</a>
+  <a href="earth-to-home-04-transformation.html" class="stage-pill" style="text-decoration: none;"><span class="num">04</span>Transformation</a>
+  <a href="earth-to-home-05-finishing.html" class="stage-pill" style="text-decoration: none;"><span class="num">05</span>Finishing</a>
+  <a href="earth-to-home-06-assembly.html" class="stage-pill" style="text-decoration: none;"><span class="num">06</span>Assembly</a>
+  <a href="earth-to-home-07-distribution.html" class="stage-pill" style="text-decoration: none;"><span class="num">07</span>Distribution</a>
+  <a href="earth-to-home-08-consumption.html" class="stage-pill" style="text-decoration: none;"><span class="num">08</span>Consumption</a>
+  <a href="earth-to-home-takeaways.html" class="stage-pill takeaways" style="text-decoration: none;"><span class="star">✦</span>Takeaways</a>
+</div>
+
+<section class="section">
+  <div class="section-marker reveal">
+    <div class="section-number">02</div>
+    <div>
+      <span class="section-number-meta">Stage Two of Eight</span>
+      <h2 class="section-title">Sorting</h2>
+    </div>
+  </div>
+
+  <p class="section-intro reveal">
+    Sorting almost always happens at the place of origin — at the orchard, the mill yard, the
+    mine head — because hauling unsorted material is hauling waste. Every supply chain narrows
+    here, deciding which fragments deserve the cost of the next step.
+  </p>
+
+  <article class="stream-card reveal">
+    <div class="stream-card-header">
+      <div class="stream-card-name">Apple Sorting</div>
+      <div class="stream-card-symbol">○</div>
+    </div>
+    <div class="stream-subtitle">From orchard bin to applesauce line</div>
+
+    <!-- ======== SUB 1: VARIETY ======== -->
+    <div class="sub">
+      <div class="sub-header">
+        <div class="sub-number">01</div>
+        <div class="sub-title">Variety</div>
+      </div>
+      <p class="sub-prompt">
+        Most commercial applesauce is a <em>blend</em> of varieties — each contributes a different
+        sweetness, tartness, or texture. The fill level shows roughly how much of each variety's
+        harvest ends up in sauce. Hover any apple to learn why.
+      </p>
+
+      <div class="apple-grid varieties" id="variety-grid"></div>
+
+      <div class="detail-card empty" id="variety-detail">
+        <div class="detail-card-empty-text">Hover an apple to see how it's used.</div>
+      </div>
+    </div>
+
+    <!-- ======== SUB 2: QUALITY SCAN ======== -->
+    <div class="sub">
+      <div class="sub-header">
+        <div class="sub-number">02</div>
+        <div class="sub-title">Quality scan</div>
+      </div>
+      <p class="sub-prompt">
+        Optical cameras look at every apple. Surface defects route each one to a different
+        destination — fewer blemishes, higher value.
+      </p>
+
+      <div class="apple-grid blemish" id="blemish-grid"></div>
+
+      <div class="detail-card empty" id="blemish-detail">
+        <div class="detail-card-empty-text">Hover an apple to see where it goes.</div>
+      </div>
+    </div>
+
+    <!-- ======== SUB 3: SIZE GRADE ======== -->
+    <div class="sub">
+      <div class="sub-header">
+        <div class="sub-number">03</div>
+        <div class="sub-title">Size grade</div>
+      </div>
+      <p class="sub-prompt">
+        After quality, apples are sorted by size. Bigger isn't always better — sauce wants
+        the medium ones.
+      </p>
+
+      <div class="apple-grid size" id="size-grid"></div>
+
+      <div class="detail-card empty" id="size-detail">
+        <div class="detail-card-empty-text">Hover an apple to see where it goes.</div>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- ======== LUMBER STREAM CARD ======== -->
+  <article class="stream-card stream-card-lumber reveal">
+    <div class="stream-card-header">
+      <div class="stream-card-name">Lumber Sorting</div>
+      <div class="stream-card-symbol">▲</div>
+    </div>
+    <div class="stream-subtitle">From forest landing to corrugate mill</div>
+
+    <!-- SUB 1: WOOD TYPE -->
+    <div class="sub">
+      <div class="sub-header">
+        <div class="sub-number">01</div>
+        <div class="sub-title">Wood type</div>
+      </div>
+      <p class="sub-prompt">
+        Corrugated board is mostly <em>softwood</em> — long fibers from pine and spruce make
+        stronger, springier paper. Hardwoods contribute shorter fibers and are blended in for
+        smoother surfaces. Hover each tree to see why.
+      </p>
+
+      <div class="tree-grid" id="tree-grid"></div>
+
+      <div class="detail-card empty detail-card-lumber" id="tree-detail">
+        <div class="detail-card-empty-text">Hover a tree to see how its fiber is used.</div>
+      </div>
+    </div>
+
+    <!-- SUB 2: DIAMETER -->
+    <div class="sub">
+      <div class="sub-header">
+        <div class="sub-number">02</div>
+        <div class="sub-title">Diameter</div>
+      </div>
+      <p class="sub-prompt">
+        Logs are sorted by butt-end diameter at the mill yard. Big logs are too valuable for
+        pulping — they go to the sawmill for boards. Pulpwood is the medium-and-smaller class.
+      </p>
+
+      <div class="log-end-grid" id="log-end-grid"></div>
+
+      <div class="detail-card empty detail-card-lumber" id="log-end-detail">
+        <div class="detail-card-empty-text">Hover a log to see where it goes.</div>
+      </div>
+    </div>
+
+    <!-- SUB 3: LOG GRADING -->
+    <div class="sub">
+      <div class="sub-header">
+        <div class="sub-number">03</div>
+        <div class="sub-title">Log grading</div>
+      </div>
+      <p class="sub-prompt">
+        Even within pulpwood, logs are graded by straightness, knots, and rot. Pulping is forgiving
+        — but only up to a point.
+      </p>
+
+      <div class="log-side-grid" id="log-side-grid"></div>
+
+      <div class="detail-card empty detail-card-lumber" id="log-side-detail">
+        <div class="detail-card-empty-text">Hover a log to see its grade and destination.</div>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- ======== IRON STREAM CARD ======== -->
+  <article class="stream-card stream-card-iron reveal">
+    <div class="stream-card-header">
+      <div class="stream-card-name">Iron Ore Sorting</div>
+      <div class="stream-card-symbol">◆</div>
+    </div>
+    <div class="stream-subtitle">From rock at the mine head to concentrate ready for the furnace</div>
+
+    <!-- SUB 1: RAW ROCK -->
+    <div class="sub">
+      <div class="sub-header">
+        <div class="sub-number">01</div>
+        <div class="sub-title">Raw ore</div>
+      </div>
+      <p class="sub-prompt">
+        Iron ore comes out of the ground as <em>mixed rock</em>. The valuable iron-bearing
+        minerals are veined through plain stone (called <em>gangue</em>). The first job is to
+        figure out how to get one out from the other.
+      </p>
+
+      <div class="iron-stage" id="iron-stage-1"></div>
+
+      <div class="detail-card empty detail-card-iron" id="iron-1-detail">
+        <div class="detail-card-empty-text">Hover the pit or the rock to learn more.</div>
+      </div>
+    </div>
+
+    <!-- SUB 2: CRUSHING -->
+    <div class="sub">
+      <div class="sub-header">
+        <div class="sub-number">02</div>
+        <div class="sub-title">Crushing</div>
+      </div>
+      <p class="sub-prompt">
+        The first physical step: <em>break the rock smaller</em>. Crushing doesn't separate
+        anything — it just exposes more iron veins so the next steps can work. Each piece still
+        contains both ore and gangue.
+      </p>
+
+      <div class="iron-stage" id="iron-stage-2"></div>
+
+      <div class="detail-card empty detail-card-iron" id="iron-2-detail">
+        <div class="detail-card-empty-text">Hover any panel to see what's happening at that step.</div>
+      </div>
+    </div>
+
+    <!-- SUB 3: MAGNETIC SEPARATION -->
+    <div class="sub">
+      <div class="sub-header">
+        <div class="sub-number">03</div>
+        <div class="sub-title">Magnetic separation</div>
+      </div>
+      <p class="sub-prompt">
+        The crushed material passes a powerful magnet. Iron-rich pieces are pulled aside;
+        non-magnetic gangue continues straight through to the <em>tailings</em>.
+      </p>
+
+      <div class="iron-stage" id="iron-stage-3"></div>
+
+      <div class="detail-card empty detail-card-iron" id="iron-3-detail">
+        <div class="detail-card-empty-text">Hover either output stream to see where it goes.</div>
+      </div>
+    </div>
+
+    <!-- SUB 4: FLOTATION -->
+    <div class="sub">
+      <div class="sub-header">
+        <div class="sub-number">04</div>
+        <div class="sub-title">Flotation</div>
+      </div>
+      <p class="sub-prompt">
+        Final purification. Crushed ore is mixed with water and chemicals in a tank, and air
+        bubbles are pumped in. Silica latches onto the bubbles and floats to the top as
+        <em>froth</em>; the iron-rich particles sink to the bottom as concentrate.
+      </p>
+
+      <div class="iron-stage" id="iron-stage-4"></div>
+
+      <div class="detail-card empty detail-card-iron" id="iron-4-detail">
+        <div class="detail-card-empty-text">Hover the tank to see what's happening inside.</div>
+      </div>
+    </div>
+
+    <!-- FINAL OUTCOME -->
+    <div class="iron-outcome">
+      <span class="iron-outcome-label">Final output</span>
+      <div class="iron-outcome-result">~65% iron concentrate</div>
+      <div class="iron-outcome-detail">
+        From <strong>1,000 tonnes</strong> of run-of-mine rock at ~30% iron, the sorting plant
+        produces roughly <strong>460 tonnes</strong> of pellet-grade concentrate. The rest —
+        the tailings and the silica froth — stays at the mine site.
+      </div>
+    </div>
+
+  </article>
+
+  <div class="section-footer">
+    <span>End of Stage 02</span>
+    <a class="next-section" href="earth-to-home-03-refinement.html">
+      <span>Continue ↓</span>
+      Stage 03 — Refinement
+    </a>
+  </div>
+</section>
+
+<script>
+// =============================================================
+// Apple SVG generator
+// Variants: 'plain', 'blemish-light', 'blemish-medium', 'blemish-heavy-worm'
+// Size: 'lg' | 'md' | 'sm' (just scales the viewBox container)
+// fillPct: 0–1 — how much of the apple is "filled" with the deep red
+// skinTone: hex, the apple's variety color
+// =============================================================
+function makeApple({
+  fillPct = 1,
+  skinTone = '#b8302a',
+  highlight = true,
+  variant = 'plain',  // for blemish stage
+  width = 90,
+  height = 100,
+  uid = 'a'
+} = {}) {
+  // Apple silhouette path (centered around 50,55, ~80 wide)
+  // Slight asymmetry, indent at top for stem
+  const applePath = 'M50 12 C 30 12, 12 30, 12 55 C 12 80, 28 95, 50 95 C 72 95, 88 80, 88 55 C 88 30, 70 12, 50 12 Z';
+  const stemPath = 'M50 12 C 50 8, 52 4, 56 2 L 58 4 C 55 6, 53 9, 52 12 Z';
+  const leafPath = 'M52 8 C 60 4, 72 6, 76 14 C 70 16, 60 14, 54 12 Z';
+
+  // For "wine glass fill" we use a clipPath that defines the apple shape,
+  // then a rect that fills from the bottom up to the fillPct level.
+  const fillTop = 95 - (95 - 12) * fillPct;  // 95 = bottom, 12 = top of apple
+  // Empty (above-fill) gets a very light tint of the skin tone
+  const lightTone = skinTone + '22'; // ~13% alpha
+
+  // Highlight (small glossy spot)
+  const highlightSvg = highlight
+    ? `<ellipse cx="35" cy="32" rx="9" ry="6" fill="rgba(255,255,255,0.35)" />
+       <ellipse cx="33" cy="30" rx="4" ry="2.5" fill="rgba(255,255,255,0.5)" />`
+    : '';
+
+  // Blemish overlays
+  let blemishSvg = '';
+  if (variant === 'blemish-light') {
+    blemishSvg = `
+      <circle cx="62" cy="48" r="3" fill="rgba(74,40,20,0.4)" />
+      <circle cx="58" cy="52" r="1.5" fill="rgba(74,40,20,0.3)" />
+    `;
+  } else if (variant === 'blemish-medium') {
+    blemishSvg = `
+      <ellipse cx="60" cy="50" rx="7" ry="5" fill="rgba(74,40,20,0.55)" />
+      <circle cx="38" cy="68" r="3" fill="rgba(74,40,20,0.4)" />
+      <circle cx="70" cy="35" r="2.5" fill="rgba(74,40,20,0.35)" />
+    `;
+  } else if (variant === 'blemish-heavy-worm') {
+    blemishSvg = `
+      <ellipse cx="55" cy="50" rx="14" ry="9" fill="rgba(50,30,15,0.7)" />
+      <ellipse cx="40" cy="65" rx="8" ry="5" fill="rgba(50,30,15,0.6)" />
+      <ellipse cx="68" cy="38" rx="5" ry="4" fill="rgba(50,30,15,0.55)" />
+      <!-- worm hole + worm peeking out -->
+      <ellipse cx="60" cy="60" rx="3" ry="4" fill="#1a1614" />
+      <path d="M59 58 Q 64 56 67 60 Q 64 62 60 60 Z" fill="#9b7e5e" />
+      <circle cx="66" cy="60" r="0.8" fill="#1a1614" />
+    `;
+  }
+
+  return `
+    <svg class="apple-svg" width="${width}" height="${height}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="apple-clip-${uid}">
+          <path d="${applePath}" />
+        </clipPath>
+      </defs>
+
+      <!-- Empty (light) base of the apple -->
+      <path d="${applePath}" fill="${lightTone}" stroke="${skinTone}" stroke-width="1.2" />
+
+      <!-- Wine-glass fill: a rect rising from the bottom, clipped to apple shape -->
+      <g clip-path="url(#apple-clip-${uid})">
+        <rect x="0" y="${fillTop}" width="100" height="${100 - fillTop}" fill="${skinTone}" />
+        ${highlightSvg}
+      </g>
+
+      <!-- Apple outline on top so it stays crisp -->
+      <path d="${applePath}" fill="none" stroke="${skinTone}" stroke-width="1.2" />
+
+      <!-- Stem and leaf -->
+      <path d="${stemPath}" fill="#5a3a1f" stroke="#3d2613" stroke-width="0.5" />
+      <path d="${leafPath}" fill="#6a8a4a" stroke="#3d5a26" stroke-width="0.5" />
+
+      <!-- Blemish overlays (clipped to apple) -->
+      <g clip-path="url(#apple-clip-${uid})">
+        ${blemishSvg}
+      </g>
+    </svg>
+  `;
+}
+
+// =============================================================
+// SUB 1: VARIETY DATA
+// fillPct represents share of harvest going to sauce
+// =============================================================
+const VARIETIES = [
+  {
+    name: 'Golden Delicious',
+    fillPct: 0.85,
+    skinTone: '#c9a432',
+    summary: 'The sauce workhorse',
+    detail: 'High sugar, soft texture, low acidity. Breaks down beautifully into a smooth, naturally sweet sauce. The most common variety in commercial applesauce.'
+  },
+  {
+    name: 'McIntosh',
+    fillPct: 0.70,
+    skinTone: '#a82820',
+    summary: 'Classic sauce variety',
+    detail: 'Soft, mealy flesh that cooks down quickly. Tart-sweet balance and a slight pink tinge that lends sauce its traditional color. A New England favorite.'
+  },
+  {
+    name: 'Granny Smith',
+    fillPct: 0.50,
+    skinTone: '#7a9d3a',
+    summary: 'Half to sauce, half elsewhere',
+    detail: 'Tart and firm. Often blended with sweeter varieties to balance flavor. Holds shape better than McIntosh, so good for chunky sauce or pies.'
+  },
+  {
+    name: 'Honeycrisp',
+    fillPct: 0.25,
+    skinTone: '#d65c54',
+    summary: 'Mostly fresh-eating',
+    detail: 'Premium fresh-market variety. Crisp, juicy, and expensive — too valuable to send to sauce. Only the bruised and undersized end up in processing.'
+  },
+  {
+    name: 'Fuji',
+    fillPct: 0.25,
+    skinTone: '#dd6862',
+    summary: 'Mostly fresh-eating',
+    detail: 'Dense and crisp with long storage life. Travels well, sells well fresh. Sauce is usually a backup destination for cosmetic rejects.'
+  },
+  {
+    name: 'Pink Lady',
+    fillPct: 0.15,
+    skinTone: '#e08580',
+    summary: 'Almost all fresh',
+    detail: 'Late-season premium variety. Tart-sweet and crisp, sold whole at high prices. Sauce is rare — it\'s the last destination, not the first.'
+  }
+];
+
+// =============================================================
+// SUB 2: BLEMISH DATA
+// =============================================================
+const BLEMISH_LEVELS = [
+  {
+    name: 'No blemish',
+    variant: 'plain',
+    destination: 'Fresh market',
+    destinationClass: '',
+    summary: 'Cosmetically perfect',
+    detail: 'Clean skin, no bruises, even color. The highest-value path: shipped whole to grocery stores. Roughly the top 30-40% of the harvest by appearance.'
+  },
+  {
+    name: 'Light blemish',
+    variant: 'blemish-light',
+    destination: 'Sauce or pies',
+    destinationClass: '',
+    summary: 'Small surface marks',
+    detail: 'A scab, a russet patch, or a small bruise. Still sound flesh — just not pretty enough for the produce aisle. Perfect for processing.'
+  },
+  {
+    name: 'Medium blemish',
+    variant: 'blemish-medium',
+    destination: 'Juice or feed',
+    destinationClass: '',
+    summary: 'Multiple defects',
+    detail: 'More extensive bruising or surface damage. Flesh is mostly fine but cosmetic value is gone. Goes to juice, cider, or animal feed depending on the orchard\'s contracts.'
+  },
+  {
+    name: 'Heavy blemish + worm',
+    variant: 'blemish-heavy-worm',
+    destination: 'Discard',
+    destinationClass: 'discard',
+    summary: 'Compromised flesh',
+    detail: 'Internal damage, rot, or pest entry. Even juicing isn\'t worth the contamination risk. Composted or sent to anaerobic digestion.'
+  }
+];
+
+// =============================================================
+// SUB 3: SIZE DATA
+// =============================================================
+const SIZES = [
+  {
+    name: 'Large',
+    sizeKey: 'lg',
+    scale: 1.0,
+    destination: 'Fresh market',
+    destinationClass: '',
+    summary: '~3" diameter and up',
+    detail: 'Premium size for fresh sales. Eye-catching on shelves, commands the highest price per pound. Sauce processors rarely see these unless they\'re cosmetically rejected.'
+  },
+  {
+    name: 'Medium',
+    sizeKey: 'md',
+    scale: 0.78,
+    destination: 'Sauce or pies',
+    destinationClass: '',
+    summary: '~2.5"–3" diameter',
+    detail: 'The sauce sweet spot. Big enough to be efficient to peel and core, small enough that fresh markets don\'t want them. Most processed apples come from this grade.'
+  },
+  {
+    name: 'Small',
+    sizeKey: 'sm',
+    scale: 0.55,
+    destination: 'Juice or feed',
+    destinationClass: '',
+    summary: 'Under ~2.5" diameter',
+    detail: 'Too small to peel cost-effectively. Pressed whole for juice and cider, or sold as livestock feed. The bottom rung of the size grade.'
+  }
+];
+
+// =============================================================
+// RENDER
+// =============================================================
+function renderVarieties() {
+  const grid = document.getElementById('variety-grid');
+  const detail = document.getElementById('variety-detail');
+  let html = '';
+  VARIETIES.forEach((v, i) => {
+    html += `
+      <div class="apple-cell" data-idx="${i}">
+        <div class="apple-svg-wrap">
+          ${makeApple({ fillPct: v.fillPct, skinTone: v.skinTone, uid: 'var-' + i })}
+        </div>
+        <div class="apple-name">${v.name}</div>
+      </div>
+    `;
+  });
+  grid.innerHTML = html;
+
+  grid.querySelectorAll('.apple-cell').forEach(cell => {
+    cell.addEventListener('mouseenter', () => {
+      const v = VARIETIES[parseInt(cell.getAttribute('data-idx'), 10)];
+      detail.classList.remove('empty');
+      detail.innerHTML = `
+        <div class="detail-card-name">${v.name}</div>
+        <div class="detail-card-stat">${v.summary}</div>
+        <div class="detail-card-text">${v.detail}</div>
+      `;
+    });
+    // On click for mobile / sticky detail
+    cell.addEventListener('click', () => {
+      const v = VARIETIES[parseInt(cell.getAttribute('data-idx'), 10)];
+      detail.classList.remove('empty');
+      detail.innerHTML = `
+        <div class="detail-card-name">${v.name}</div>
+        <div class="detail-card-stat">${v.summary}</div>
+        <div class="detail-card-text">${v.detail}</div>
+      `;
+    });
+  });
+}
+
+function renderBlemish() {
+  const grid = document.getElementById('blemish-grid');
+  const detail = document.getElementById('blemish-detail');
+  let html = '';
+  BLEMISH_LEVELS.forEach((b, i) => {
+    html += `
+      <div class="apple-cell" data-idx="${i}">
+        <div class="apple-svg-wrap">
+          ${makeApple({ fillPct: 1, skinTone: '#b8302a', variant: b.variant, uid: 'bl-' + i })}
+        </div>
+        <div class="apple-name">${b.name}</div>
+        <span class="destination ${b.destinationClass}">${b.destination}</span>
+      </div>
+    `;
+  });
+  grid.innerHTML = html;
+
+  grid.querySelectorAll('.apple-cell').forEach(cell => {
+    const update = () => {
+      const b = BLEMISH_LEVELS[parseInt(cell.getAttribute('data-idx'), 10)];
+      detail.classList.remove('empty');
+      detail.innerHTML = `
+        <div class="detail-card-name">${b.name} → ${b.destination}</div>
+        <div class="detail-card-stat">${b.summary}</div>
+        <div class="detail-card-text">${b.detail}</div>
+      `;
+    };
+    cell.addEventListener('mouseenter', update);
+    cell.addEventListener('click', update);
+  });
+}
+
+function renderSize() {
+  const grid = document.getElementById('size-grid');
+  const detail = document.getElementById('size-detail');
+  let html = '';
+  SIZES.forEach((s, i) => {
+    const w = Math.round(110 * s.scale);
+    const h = Math.round(120 * s.scale);
+    html += `
+      <div class="apple-cell" data-idx="${i}">
+        <div class="apple-svg-wrap size-${s.sizeKey === 'lg' ? 'large' : s.sizeKey === 'md' ? 'medium' : 'small'}">
+          ${makeApple({ fillPct: 1, skinTone: '#b8302a', width: w, height: h, uid: 'sz-' + i })}
+        </div>
+        <div class="apple-name">${s.name}</div>
+        <span class="destination ${s.destinationClass}">${s.destination}</span>
+      </div>
+    `;
+  });
+  grid.innerHTML = html;
+
+  grid.querySelectorAll('.apple-cell').forEach(cell => {
+    const update = () => {
+      const s = SIZES[parseInt(cell.getAttribute('data-idx'), 10)];
+      detail.classList.remove('empty');
+      detail.innerHTML = `
+        <div class="detail-card-name">${s.name} → ${s.destination}</div>
+        <div class="detail-card-stat">${s.summary}</div>
+        <div class="detail-card-text">${s.detail}</div>
+      `;
+    };
+    cell.addEventListener('mouseenter', update);
+    cell.addEventListener('click', update);
+  });
+}
+
+renderVarieties();
+renderBlemish();
+renderSize();
+
+// =============================================================
+// LUMBER — TREE SVG GENERATOR
+// Wine-glass fill metaphor: green fill rises from bottom to fillPct
+// type: 'pine' (conical evergreen) or 'oak' (broadleaf hardwood)
+// =============================================================
+function makeTree({ fillPct = 1, type = 'pine', uid = 't' } = {}) {
+  const trunkColor = '#6b4a2b';
+  const trunkLight = '#6b4a2b22';
+  const foliageDeep = '#1f3d1d';
+  const foliageMid = '#3d6b3a';
+  const foliageLight = '#3d6b3a22';
+
+  // Common viewBox 100x180. Trunk at bottom, foliage above.
+  const trunkPath = type === 'pine'
+    ? 'M 46 175 L 46 130 L 54 130 L 54 175 Z'
+    : 'M 44 175 L 46 110 L 54 110 L 56 175 Z';
+
+  // Foliage shapes
+  let foliageOutlinePath, fillTop;
+  if (type === 'pine') {
+    // Three-tier conical pine: stacked triangles getting smaller going up
+    // Layer 1 (bottom, widest): y 90-135
+    // Layer 2 (middle):         y 55-100
+    // Layer 3 (top):            y 20-65
+    foliageOutlinePath = `
+      M 50 20 L 30 65 L 40 65 L 22 100 L 32 100 L 12 135 L 88 135 L 68 100 L 78 100 L 60 65 L 70 65 Z
+    `;
+    fillTop = 135 - (135 - 20) * fillPct;
+  } else {
+    // Oak: rounded broad canopy with bumpy edge. Roughly y 15-115.
+    foliageOutlinePath = `
+      M 50 15
+      C 30 15, 18 25, 16 40
+      C 8 45, 8 60, 14 68
+      C 8 75, 12 88, 22 92
+      C 22 105, 35 115, 50 113
+      C 65 115, 78 105, 78 92
+      C 88 88, 92 75, 86 68
+      C 92 60, 92 45, 84 40
+      C 82 25, 70 15, 50 15
+      Z
+    `;
+    fillTop = 113 - (113 - 15) * fillPct;
+  }
+
+  return `
+    <svg class="tree-svg" width="120" height="180" viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="tree-clip-${uid}">
+          <path d="${foliageOutlinePath}" />
+        </clipPath>
+      </defs>
+
+      <!-- Light foliage outline (the unfilled portion) -->
+      <path d="${foliageOutlinePath}" fill="${foliageLight}" stroke="${foliageMid}" stroke-width="1.2" />
+
+      <!-- Wine-glass fill rising from bottom -->
+      <g clip-path="url(#tree-clip-${uid})">
+        <rect x="0" y="${fillTop}" width="100" height="${200 - fillTop}" fill="${foliageMid}" />
+      </g>
+
+      <!-- Crisp outline on top -->
+      <path d="${foliageOutlinePath}" fill="none" stroke="${foliageDeep}" stroke-width="1.2" stroke-linejoin="round" />
+
+      <!-- Trunk -->
+      <path d="${trunkPath}" fill="${trunkColor}" stroke="${foliageDeep}" stroke-width="0.8" />
+      <!-- Subtle bark texture -->
+      <line x1="48" y1="${type === 'pine' ? 140 : 125}" x2="48" y2="170" stroke="${foliageDeep}" stroke-width="0.4" opacity="0.4" />
+      <line x1="51" y1="${type === 'pine' ? 145 : 130}" x2="51" y2="170" stroke="${foliageDeep}" stroke-width="0.4" opacity="0.3" />
+
+      <!-- Ground line -->
+      <line x1="20" y1="176" x2="80" y2="176" stroke="#8a7050" stroke-width="0.8" opacity="0.5" />
+    </svg>
+  `;
+}
+
+// =============================================================
+// LUMBER — LOG END (cross-section) GENERATOR
+// Concentric circles for growth rings, scaled by diameter
+// =============================================================
+function makeLogEnd({ diameterPx = 140, uid = 'le' } = {}) {
+  const r = diameterPx / 2;
+  const cx = r + 4, cy = r + 4;
+  const total = diameterPx + 8;
+
+  // Bark
+  const barkOuter = r;
+  const barkInner = r * 0.92;
+  // Sapwood
+  const sapwoodOuter = r * 0.92;
+  const sapwoodInner = r * 0.78;
+  // Heartwood
+  const heartOuter = r * 0.78;
+
+  // Growth rings — concentric circles
+  let rings = '';
+  const ringCount = Math.max(4, Math.round(r / 12));
+  for (let i = 1; i < ringCount; i++) {
+    const ringR = (heartOuter / ringCount) * i;
+    rings += `<circle cx="${cx}" cy="${cy}" r="${ringR}" fill="none" stroke="#a08868" stroke-width="0.5" opacity="${0.3 + (i / ringCount) * 0.3}" />`;
+  }
+
+  return `
+    <svg class="log-end-svg" width="${total}" height="${total}" viewBox="0 0 ${total} ${total}" xmlns="http://www.w3.org/2000/svg">
+      <!-- Bark (dark outer ring) -->
+      <circle cx="${cx}" cy="${cy}" r="${barkOuter}" fill="#4a3520" stroke="#2a1e10" stroke-width="0.8" />
+      <!-- Sapwood (light layer just inside bark) -->
+      <circle cx="${cx}" cy="${cy}" r="${sapwoodOuter}" fill="#e8d5a8" />
+      <!-- Heartwood (warm core) -->
+      <circle cx="${cx}" cy="${cy}" r="${heartOuter}" fill="#c9a877" />
+      <!-- Growth rings -->
+      ${rings}
+      <!-- Pith (small dark center) -->
+      <circle cx="${cx}" cy="${cy}" r="1.2" fill="#5a3a1f" />
+    </svg>
+  `;
+}
+
+// =============================================================
+// LUMBER — LOG SIDE (profile) GENERATOR
+// Shows straightness, knots, sweep, rot for grading
+// =============================================================
+function makeLogSide({ grade = 'veneer', uid = 'ls' } = {}) {
+  const W = 280, H = 60;
+  const barkColor = '#4a3520';
+  const woodColor = '#c9a877';
+  const woodEnd = '#a08868';
+  const knotColor = '#5a3a1f';
+  const rotColor = '#2a1e10';
+
+  let logPath, defects = '', endL = '', endR = '';
+
+  if (grade === 'veneer') {
+    // Perfectly straight, clean log
+    logPath = `M 10 22 L 270 22 L 270 38 L 10 38 Z`;
+    endL = `<ellipse cx="10" cy="30" rx="3" ry="8" fill="${woodEnd}" stroke="${barkColor}" stroke-width="0.6" />`;
+    endR = `<ellipse cx="270" cy="30" rx="3" ry="8" fill="${woodEnd}" stroke="${barkColor}" stroke-width="0.6" />`;
+  } else if (grade === 'pulp') {
+    // Slight sweep (curve), a couple of small knots
+    logPath = `M 10 24 Q 140 16, 270 26 L 270 40 Q 140 30, 10 40 Z`;
+    endL = `<ellipse cx="10" cy="32" rx="3" ry="8" fill="${woodEnd}" stroke="${barkColor}" stroke-width="0.6" />`;
+    endR = `<ellipse cx="270" cy="33" rx="3" ry="8" fill="${woodEnd}" stroke="${barkColor}" stroke-width="0.6" />`;
+    defects = `
+      <ellipse cx="80" cy="28" rx="3" ry="2" fill="${knotColor}" opacity="0.85" />
+      <ellipse cx="160" cy="32" rx="2.5" ry="2" fill="${knotColor}" opacity="0.75" />
+      <ellipse cx="220" cy="29" rx="2" ry="1.5" fill="${knotColor}" opacity="0.7" />
+    `;
+  } else {
+    // cull — heavily curved, multiple knots, rot patches, split
+    logPath = `M 10 28 Q 80 12, 140 28 Q 200 44, 270 24 L 270 38 Q 200 56, 140 42 Q 80 28, 10 42 Z`;
+    endL = `<ellipse cx="10" cy="35" rx="3.5" ry="8" fill="${rotColor}" stroke="${barkColor}" stroke-width="0.6" />`;
+    endR = `<ellipse cx="270" cy="31" rx="3.5" ry="8" fill="${rotColor}" stroke="${barkColor}" stroke-width="0.6" />`;
+    defects = `
+      <ellipse cx="60" cy="22" rx="5" ry="3" fill="${rotColor}" opacity="0.8" />
+      <ellipse cx="120" cy="32" rx="4" ry="3" fill="${knotColor}" opacity="0.9" />
+      <ellipse cx="170" cy="38" rx="6" ry="4" fill="${rotColor}" opacity="0.85" />
+      <ellipse cx="225" cy="28" rx="4" ry="3" fill="${knotColor}" opacity="0.85" />
+      <!-- A split crack -->
+      <line x1="100" y1="22" x2="135" y2="42" stroke="${rotColor}" stroke-width="1.2" opacity="0.7" />
+    `;
+  }
+
+  return `
+    <svg class="log-side-svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+      <!-- Log body -->
+      <path d="${logPath}" fill="${woodColor}" stroke="${barkColor}" stroke-width="1.2" stroke-linejoin="round" />
+      <!-- Bark stripes -->
+      <path d="${logPath}" fill="none" stroke="${barkColor}" stroke-width="0.5" opacity="0.4" />
+      <!-- Defects -->
+      ${defects}
+      <!-- End grain on each side -->
+      ${endL}
+      ${endR}
+    </svg>
+  `;
+}
+
+// =============================================================
+// LUMBER DATA
+// =============================================================
+const TREES = [
+  {
+    name: 'Softwood',
+    subtitle: 'Pine, spruce, fir',
+    type: 'pine',
+    fillPct: 0.70,
+    summary: 'The corrugate workhorse',
+    detail: 'Long, straight cellulose fibers (3–5 mm) make strong, springy paper that resists crushing. Loblolly pine in the US South and spruce in northern Europe and Russia are the dominant species. Roughly 70% of corrugate fiber globally.'
+  },
+  {
+    name: 'Hardwood',
+    subtitle: 'Oak, maple, birch',
+    type: 'oak',
+    fillPct: 0.30,
+    summary: 'Blended in for smoothness',
+    detail: 'Short fibers (1–2 mm) make smoother, denser paper but weaker structure. Blended into the inner liner of corrugate for a finer printing surface. Most hardwood goes to fine paper, furniture, and flooring instead.'
+  }
+];
+
+const LOG_ENDS = [
+  {
+    name: 'Sawtimber',
+    diameter: 16,    // inches
+    pixelDiameter: 160,
+    destination: 'Sawmill (boards)',
+    summary: '≥ 11" diameter',
+    detail: 'Big logs are too valuable to pulp. They\'re sawn into dimensional lumber — 2x4s, beams, plywood veneer. Roughly 4× the per-log revenue of pulpwood. Corrugate mills almost never see these.'
+  },
+  {
+    name: 'Pulpwood',
+    diameter: 8,
+    pixelDiameter: 100,
+    destination: 'Pulp mill (corrugate)',
+    summary: '5"–11" diameter',
+    detail: 'The sweet spot for corrugate. Big enough to chip efficiently, small enough that sawmills don\'t want them. Most pulpwood comes from thinning operations — clearing weaker trees so the others grow into sawtimber.'
+  },
+  {
+    name: 'Chip-and-saw',
+    diameter: 5,
+    pixelDiameter: 70,
+    destination: 'Pulp or OSB',
+    summary: 'Under 5" diameter',
+    detail: 'Smallest commercial size. Often chipped on-site for OSB (oriented strand board) or sent to pulp mills as a low-cost feed. Below this size, logs become firewood or are left in the forest.'
+  }
+];
+
+const LOG_SIDES = [
+  {
+    name: 'Veneer grade',
+    grade: 'veneer',
+    destination: 'Plywood / veneer',
+    summary: 'Straight, clear, sound',
+    detail: 'The premium grade. Logs are perfectly straight with no knots or rot in the lower 8–16 feet. Sliced thin for plywood face veneer. Earns 5–10× the price of pulpwood. Almost never goes to corrugate.'
+  },
+  {
+    name: 'Pulp grade',
+    grade: 'pulp',
+    destination: 'Corrugate fiber',
+    summary: 'Some sweep & knots OK',
+    detail: 'The realistic standard for most logs. Mild sweep (curve) and occasional knots are fine — the wood will be chipped and dissolved into pulp anyway. As long as the wood is sound, defects don\'t matter.'
+  },
+  {
+    name: 'Cull',
+    grade: 'cull',
+    destination: 'Boiler fuel / left in forest',
+    summary: 'Rotten or split',
+    detail: 'Heart rot, deep splits, or severe sweep. Even pulping can\'t use it — rot contaminates the batch and damages chipper blades. Burned for boiler fuel at the mill, or sometimes left in the forest as nutrient cycling.'
+  }
+];
+
+// =============================================================
+// LUMBER RENDER FUNCTIONS
+// =============================================================
+function renderTrees() {
+  const grid = document.getElementById('tree-grid');
+  const detail = document.getElementById('tree-detail');
+  if (!grid) return;
+  let html = '';
+  TREES.forEach((t, i) => {
+    html += `
+      <div class="tree-cell" data-idx="${i}">
+        <div class="tree-svg-wrap">
+          ${makeTree({ fillPct: t.fillPct, type: t.type, uid: 'tree-' + i })}
+        </div>
+        <div class="tree-name">${t.name}</div>
+        <div class="tree-meta">${t.subtitle}</div>
+      </div>
+    `;
+  });
+  grid.innerHTML = html;
+  grid.querySelectorAll('.tree-cell').forEach(cell => {
+    const update = () => {
+      const t = TREES[parseInt(cell.getAttribute('data-idx'), 10)];
+      detail.classList.remove('empty');
+      detail.innerHTML = `
+        <div class="detail-card-name">${t.name}</div>
+        <div class="detail-card-stat">${t.summary}</div>
+        <div class="detail-card-text">${t.detail}</div>
+      `;
+    };
+    cell.addEventListener('mouseenter', update);
+    cell.addEventListener('click', update);
+  });
+}
+
+function renderLogEnds() {
+  const grid = document.getElementById('log-end-grid');
+  const detail = document.getElementById('log-end-detail');
+  if (!grid) return;
+  let html = '';
+  LOG_ENDS.forEach((l, i) => {
+    html += `
+      <div class="log-end-cell" data-idx="${i}">
+        <div class="log-end-svg-wrap">
+          ${makeLogEnd({ diameterPx: l.pixelDiameter, uid: 'le-' + i })}
+        </div>
+        <div class="log-end-name">${l.name}</div>
+        <div class="log-end-meta">~${l.diameter}" diameter</div>
+        <span class="destination">${l.destination}</span>
+      </div>
+    `;
+  });
+  grid.innerHTML = html;
+  grid.querySelectorAll('.log-end-cell').forEach(cell => {
+    const update = () => {
+      const l = LOG_ENDS[parseInt(cell.getAttribute('data-idx'), 10)];
+      detail.classList.remove('empty');
+      detail.innerHTML = `
+        <div class="detail-card-name">${l.name} → ${l.destination}</div>
+        <div class="detail-card-stat">${l.summary}</div>
+        <div class="detail-card-text">${l.detail}</div>
+      `;
+    };
+    cell.addEventListener('mouseenter', update);
+    cell.addEventListener('click', update);
+  });
+}
+
+function renderLogSides() {
+  const grid = document.getElementById('log-side-grid');
+  const detail = document.getElementById('log-side-detail');
+  if (!grid) return;
+  let html = '';
+  LOG_SIDES.forEach((l, i) => {
+    const destClass = l.grade === 'cull' ? 'discard' : '';
+    html += `
+      <div class="log-side-cell" data-idx="${i}">
+        <div class="log-side-svg-wrap">
+          ${makeLogSide({ grade: l.grade, uid: 'ls-' + i })}
+        </div>
+        <div class="log-side-name">${l.name}</div>
+        <span class="destination ${destClass}">${l.destination}</span>
+      </div>
+    `;
+  });
+  grid.innerHTML = html;
+  grid.querySelectorAll('.log-side-cell').forEach(cell => {
+    const update = () => {
+      const l = LOG_SIDES[parseInt(cell.getAttribute('data-idx'), 10)];
+      detail.classList.remove('empty');
+      detail.innerHTML = `
+        <div class="detail-card-name">${l.name} → ${l.destination}</div>
+        <div class="detail-card-stat">${l.summary}</div>
+        <div class="detail-card-text">${l.detail}</div>
+      `;
+    };
+    cell.addEventListener('mouseenter', update);
+    cell.addEventListener('click', update);
+  });
+}
+
+renderTrees();
+renderLogEnds();
+renderLogSides();
+
+// =============================================================
+// IRON — SVG GENERATORS (panels + animated scenes)
+// =============================================================
+
+// Shared color palette
+const IRON_COLORS = {
+  skyTint: '#ebe5d9',
+  distantWall: '#a89b85',
+  midWall: '#8a7d68',
+  nearWall: '#6b6258',
+  pitFloor: '#56524e',
+  pitShadow: '#3e3a35',
+  oreColor: '#7a3a1a',
+  oreLight: '#a85020',
+  oreDark: '#3a1808',
+  gangueColor: '#6b6258',
+  gangueDark: '#3e3a35',
+  gangueLight: '#857d72',
+  metalDark: '#34322f',
+  metalLight: '#56524e',
+  metalGrey: '#7a7570',
+  beltDark: '#1f1c19',
+  yellowAccent: '#d4a531',  // for crusher pulley
+  blueAccent: '#4a6580',    // for crusher body
+  blueShadow: '#2c3e50',
+  liquid: '#aab2bd',
+  frothColor: '#d8d4d0',
+  frame: '#1a1614'
+};
+
+// Deterministic random helper
+function makeRand(seed) {
+  let s = seed;
+  return () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+}
+
+// =============================================================
+// PANEL 01a — Open pit mine
+// =============================================================
+function makePitPanel({ uid = 'pit' } = {}) {
+  const W = 280, H = 180;
+  const C = IRON_COLORS;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+      <!-- Sky / horizon -->
+      <rect x="0" y="0" width="${W}" height="50" fill="${C.skyTint}"/>
+      <line x1="0" y1="50" x2="${W}" y2="50" stroke="#c2b9a4" stroke-width="0.6" stroke-dasharray="3 4" opacity="0.5"/>
+
+      <!-- Far terrace -->
+      <path d="M 0 50 L ${W} 50 L ${W} 75 L 200 78 L 160 88 L 115 90 L 75 86 L 35 78 L 0 72 Z"
+            fill="${C.distantWall}" stroke="${C.pitShadow}" stroke-width="0.4"/>
+
+      <!-- Mid terrace -->
+      <path d="M 0 72 L 35 78 L 75 86 L 115 90 L 160 88 L 200 78 L ${W} 75 L ${W} 100 L 205 105 L 165 116 L 115 119 L 65 113 L 25 102 L 0 95 Z"
+            fill="${C.midWall}" stroke="${C.pitShadow}" stroke-width="0.4"/>
+
+      <!-- Near terrace -->
+      <path d="M 0 95 L 25 102 L 65 113 L 115 119 L 165 116 L 205 105 L ${W} 100 L ${W} 132 L 220 138 L 165 146 L 110 148 L 60 142 L 18 130 L 0 122 Z"
+            fill="${C.nearWall}" stroke="${C.pitShadow}" stroke-width="0.4"/>
+
+      <!-- Pit floor -->
+      <path d="M 0 122 L 18 130 L 60 142 L 110 148 L 165 146 L 220 138 L ${W} 132 L ${W} ${H} L 0 ${H} Z"
+            fill="${C.pitFloor}"/>
+
+      <!-- Floor texture / piles of broken rock -->
+      <ellipse cx="60" cy="158" rx="22" ry="3" fill="${C.pitShadow}" opacity="0.4"/>
+      <ellipse cx="160" cy="165" rx="32" ry="4" fill="${C.pitShadow}" opacity="0.4"/>
+      <ellipse cx="220" cy="160" rx="20" ry="3" fill="${C.pitShadow}" opacity="0.5"/>
+
+      <!-- Bench haul roads -->
+      <line x1="35" y1="82" x2="190" y2="83" stroke="#c2b9a4" stroke-width="0.6" opacity="0.3"/>
+      <line x1="25" y1="108" x2="205" y2="109" stroke="#c2b9a4" stroke-width="0.6" opacity="0.3"/>
+
+      <!-- Tiny haul trucks for scale -->
+      <g transform="translate(95, 105)" opacity="0.7">
+        <rect x="0" y="0" width="11" height="4" fill="${C.pitShadow}"/>
+        <rect x="2" y="-2" width="4" height="2" fill="${C.pitShadow}"/>
+        <circle cx="2.5" cy="5" r="1" fill="${C.pitShadow}"/>
+        <circle cx="8.5" cy="5" r="1" fill="${C.pitShadow}"/>
+      </g>
+      <g transform="translate(170, 117)" opacity="0.7">
+        <rect x="0" y="0" width="9" height="3" fill="${C.pitShadow}"/>
+        <rect x="2" y="-2" width="3" height="2" fill="${C.pitShadow}"/>
+        <circle cx="2" cy="4" r="0.8" fill="${C.pitShadow}"/>
+        <circle cx="7" cy="4" r="0.8" fill="${C.pitShadow}"/>
+      </g>
+    </svg>
+  `;
+}
+
+// =============================================================
+// PANEL 01b — Single rock specimen (hero shot)
+// =============================================================
+function makeRockSpecimen({ uid = 'spec', size = 180 } = {}) {
+  const C = IRON_COLORS;
+  const rand = makeRand(42);
+  const cx = size / 2, cy = size / 2;
+  const baseR = size * 0.38;
+
+  const verts = [];
+  for (let i = 0; i < 11; i++) {
+    const angle = (i / 11) * Math.PI * 2;
+    const r = baseR * (0.78 + rand() * 0.36);
+    verts.push([cx + Math.cos(angle) * r, cy + Math.sin(angle) * r]);
+  }
+  const rockPath = 'M ' + verts.map(v => v[0].toFixed(1) + ' ' + v[1].toFixed(1)).join(' L ') + ' Z';
+
+  let veins = '';
+  for (let i = 0; i < 9; i++) {
+    const a = rand() * Math.PI * 2;
+    const d = rand() * baseR * 0.65;
+    const vx = cx + Math.cos(a) * d;
+    const vy = cy + Math.sin(a) * d;
+    const vRx = baseR * (0.1 + rand() * 0.18);
+    const vRy = vRx * (0.4 + rand() * 0.5);
+    const vRot = rand() * 360;
+    veins += `<ellipse cx="${vx.toFixed(1)}" cy="${vy.toFixed(1)}" rx="${vRx.toFixed(1)}" ry="${vRy.toFixed(1)}" transform="rotate(${vRot.toFixed(0)} ${vx.toFixed(1)} ${vy.toFixed(1)})" fill="${rand() > 0.5 ? C.oreColor : C.oreLight}" opacity="${(0.65 + rand() * 0.25).toFixed(2)}"/>`;
+  }
+
+  let specks = '';
+  for (let i = 0; i < 18; i++) {
+    const a = rand() * Math.PI * 2;
+    const d = rand() * baseR * 0.78;
+    const sx = cx + Math.cos(a) * d;
+    const sy = cy + Math.sin(a) * d;
+    specks += `<circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="${(0.8 + rand() * 1.2).toFixed(1)}" fill="${C.oreDark}" opacity="0.7"/>`;
+  }
+
+  return `
+    <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="${cx}" cy="${cy + baseR + 6}" rx="${baseR * 0.85}" ry="5" fill="#1a1614" opacity="0.22"/>
+      <defs>
+        <clipPath id="spec-clip-${uid}">
+          <path d="${rockPath}" />
+        </clipPath>
+      </defs>
+      <path d="${rockPath}" fill="${C.gangueColor}" stroke="${C.gangueDark}" stroke-width="1.4" stroke-linejoin="round"/>
+      <g clip-path="url(#spec-clip-${uid})">
+        ${veins}
+        ${specks}
+      </g>
+      <path d="${rockPath}" fill="none" stroke="${C.gangueDark}" stroke-width="1.2" stroke-linejoin="round"/>
+    </svg>
+  `;
+}
+
+// =============================================================
+// PANEL 02b — Industrial rock crusher (jaw + drive pulley)
+// Modeled on the user's reference: grey-blue body, yellow drive pulley
+// with V-belt, motor base, feed hopper top, output below
+// =============================================================
+function makeCrusherMachine({ uid = 'crusher' } = {}) {
+  const W = 240, H = 200;
+  const C = IRON_COLORS;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+      <!-- Floor base -->
+      <rect x="20" y="${H - 18}" width="${W - 40}" height="14" fill="${C.metalDark}" stroke="${C.frame}" stroke-width="1"/>
+
+      <!-- Main crusher body (angled like a wedge) -->
+      <path d="M 70 60 L 145 60 L 175 100 L 175 ${H - 18} L 50 ${H - 18} L 50 100 Z"
+            fill="${C.blueAccent}" stroke="${C.frame}" stroke-width="1.2" stroke-linejoin="round"/>
+
+      <!-- Body shading -->
+      <path d="M 70 60 L 145 60 L 175 100 L 175 ${H - 18} L 50 ${H - 18} L 50 100 Z"
+            fill="${C.blueShadow}" opacity="0.3"/>
+
+      <!-- Bolts on body corners -->
+      <circle cx="60" cy="105" r="2" fill="${C.frame}"/>
+      <circle cx="60" cy="${H - 30}" r="2" fill="${C.frame}"/>
+      <circle cx="167" cy="105" r="2" fill="${C.frame}"/>
+      <circle cx="167" cy="${H - 30}" r="2" fill="${C.frame}"/>
+
+      <!-- Feed hopper at top -->
+      <path d="M 90 12 L 130 12 L 145 60 L 75 60 Z"
+            fill="${C.metalLight}" stroke="${C.frame}" stroke-width="1.2" stroke-linejoin="round"/>
+      <!-- Hopper inside (darker) -->
+      <path d="M 95 16 L 125 16 L 138 56 L 82 56 Z"
+            fill="${C.metalDark}" opacity="0.6"/>
+
+      <!-- Drive pulley (yellow, with V-belt) -->
+      <ellipse cx="200" cy="115" rx="22" ry="22" fill="${C.yellowAccent}" stroke="${C.frame}" stroke-width="1.5"/>
+      <ellipse cx="200" cy="115" rx="14" ry="14" fill="${C.metalDark}" stroke="${C.frame}" stroke-width="0.8"/>
+      <circle cx="200" cy="115" r="4" fill="${C.frame}"/>
+      <!-- Pulley spokes -->
+      <line x1="200" y1="100" x2="200" y2="130" stroke="${C.metalDark}" stroke-width="1.5" opacity="0.6"/>
+      <line x1="186" y1="115" x2="214" y2="115" stroke="${C.metalDark}" stroke-width="1.5" opacity="0.6"/>
+
+      <!-- V-belt connecting pulley to internal drive (on body) -->
+      <ellipse cx="155" cy="115" rx="10" ry="10" fill="${C.metalGrey}" stroke="${C.frame}" stroke-width="1"/>
+      <ellipse cx="155" cy="115" rx="5" ry="5" fill="${C.frame}"/>
+      <!-- Belt -->
+      <path d="M 155 105 Q 178 95, 200 99 Q 222 103, 222 115 Q 222 127, 200 131 Q 178 135, 155 125"
+            fill="none" stroke="${C.frame}" stroke-width="3" opacity="0.9"/>
+
+      <!-- Motor (lower right, drum-shaped) -->
+      <ellipse cx="200" cy="155" rx="22" ry="14" fill="${C.metalGrey}" stroke="${C.frame}" stroke-width="1.2"/>
+      <line x1="178" y1="155" x2="222" y2="155" stroke="${C.frame}" stroke-width="0.5" opacity="0.5"/>
+      <!-- Motor cooling fins -->
+      <line x1="184" y1="148" x2="184" y2="162" stroke="${C.frame}" stroke-width="0.5" opacity="0.5"/>
+      <line x1="190" y1="146" x2="190" y2="164" stroke="${C.frame}" stroke-width="0.5" opacity="0.5"/>
+      <line x1="200" y1="145" x2="200" y2="165" stroke="${C.frame}" stroke-width="0.5" opacity="0.5"/>
+      <line x1="210" y1="146" x2="210" y2="164" stroke="${C.frame}" stroke-width="0.5" opacity="0.5"/>
+      <line x1="216" y1="148" x2="216" y2="162" stroke="${C.frame}" stroke-width="0.5" opacity="0.5"/>
+
+      <!-- Motor mount base -->
+      <rect x="183" y="${H - 22}" width="34" height="8" fill="${C.metalDark}" stroke="${C.frame}" stroke-width="1"/>
+
+      <!-- Output chute (under main body) -->
+      <path d="M 80 ${H - 18} L 145 ${H - 18} L 130 ${H - 4} L 95 ${H - 4} Z"
+            fill="${C.metalDark}" stroke="${C.frame}" stroke-width="1"/>
+
+      <!-- Decorative arrow on body indicating rotation -->
+      <path d="M 100 78 Q 108 73, 116 78" fill="none" stroke="#c95a3a" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M 116 78 L 113 75 M 116 78 L 113 81" stroke="#c95a3a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+
+      <!-- Small support frame leg lines -->
+      <line x1="75" y1="${H - 18}" x2="75" y2="${H - 4}" stroke="${C.frame}" stroke-width="0.8"/>
+      <line x1="160" y1="${H - 18}" x2="160" y2="${H - 4}" stroke="${C.frame}" stroke-width="0.8"/>
+    </svg>
+  `;
+}
+
+// =============================================================
+// PANEL 02c — Crushed pile (small)
+// =============================================================
+function makeCrushedPile({ uid = 'crushed', width = 200, height = 140 } = {}) {
+  const C = IRON_COLORS;
+  const rand = makeRand(7);
+  const cx = width / 2, cy = height / 2 + 15;
+  const pileRx = width * 0.38;
+  const pileRy = height * 0.28;
+
+  const placements = [];
+  for (let i = 0; i < 16; i++) {
+    const angle = rand() * Math.PI * 2;
+    const radius = Math.sqrt(rand());
+    const px = cx + Math.cos(angle) * radius * pileRx;
+    const py = cy + Math.sin(angle) * radius * pileRy * 0.8;
+    const sz = 14 + rand() * 18;
+    const oreD = rand();
+    placements.push({ px, py, sz, oreD });
+  }
+  placements.sort((a, b) => a.py - b.py);
+
+  let pieces = '';
+  placements.forEach(p => {
+    const verts = [];
+    const vc = 5 + Math.floor(rand() * 3);
+    for (let i = 0; i < vc; i++) {
+      const a = (i / vc) * Math.PI * 2;
+      const r = (p.sz / 2) * (0.7 + rand() * 0.5);
+      verts.push([p.px + Math.cos(a) * r, p.py + Math.sin(a) * r]);
+    }
+    const path = 'M ' + verts.map(v => v[0].toFixed(1) + ' ' + v[1].toFixed(1)).join(' L ') + ' Z';
+    let inner = '';
+    if (p.oreD > 0.4) {
+      const numPatches = Math.floor(1 + p.oreD * 3);
+      for (let j = 0; j < numPatches; j++) {
+        const ipa = rand() * Math.PI * 2;
+        const ipd = rand() * (p.sz / 4);
+        const ipx = p.px + Math.cos(ipa) * ipd;
+        const ipy = p.py + Math.sin(ipa) * ipd;
+        const ipr = 1.5 + rand() * 2.5;
+        inner += `<circle cx="${ipx.toFixed(1)}" cy="${ipy.toFixed(1)}" r="${ipr.toFixed(1)}" fill="${p.oreD > 0.55 ? C.oreColor : C.oreLight}" opacity="0.75"/>`;
+      }
+    }
+    pieces += `<g><path d="${path}" fill="${C.gangueColor}" stroke="${C.gangueDark}" stroke-width="0.7" stroke-linejoin="round"/>${inner}</g>`;
+  });
+
+  return `
+    <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="${cx}" cy="${cy + pileRy * 0.85}" rx="${pileRx * 1.1}" ry="5" fill="#1a1614" opacity="0.18"/>
+      ${pieces}
+    </svg>
+  `;
+}
+
+// =============================================================
+// SCENE 03 — Magnetic drum separator (animated)
+// Modeled on the reference diagram: drum in housing, raw materials enter
+// from bottom-left, drum rotates carrying iron particles to the right,
+// concentrate drops into ore bin, tailings exit left-bottom.
+// =============================================================
+function makeMagDrumScene({ uid = 'magdrum' } = {}) {
+  const W = 480, H = 280;
+  const C = IRON_COLORS;
+
+  // Drum geometry
+  const drumCx = 240, drumCy = 130, drumR = 70;
+
+  // Drum interior (rotates) — has spokes/markings so rotation is visible
+  const drumSpokes = `
+    <circle cx="${drumCx}" cy="${drumCy}" r="${drumR}" fill="${C.metalLight}" stroke="${C.frame}" stroke-width="1.5"/>
+    <circle cx="${drumCx}" cy="${drumCy}" r="${drumR - 8}" fill="${C.metalDark}" stroke="${C.metalGrey}" stroke-width="0.6"/>
+    <!-- Spokes -->
+    <g class="anim-drum-rotate">
+      <line x1="${drumCx}" y1="${drumCy - drumR + 12}" x2="${drumCx}" y2="${drumCy + drumR - 12}" stroke="${C.metalGrey}" stroke-width="1.5" opacity="0.6"/>
+      <line x1="${drumCx - drumR + 12}" y1="${drumCy}" x2="${drumCx + drumR - 12}" y2="${drumCy}" stroke="${C.metalGrey}" stroke-width="1.5" opacity="0.6"/>
+      <line x1="${drumCx - 38}" y1="${drumCy - 38}" x2="${drumCx + 38}" y2="${drumCy + 38}" stroke="${C.metalGrey}" stroke-width="1" opacity="0.4"/>
+      <line x1="${drumCx + 38}" y1="${drumCy - 38}" x2="${drumCx - 38}" y2="${drumCy + 38}" stroke="${C.metalGrey}" stroke-width="1" opacity="0.4"/>
+      <!-- Center hub -->
+      <circle cx="${drumCx}" cy="${drumCy}" r="6" fill="${C.frame}"/>
+      <!-- Tiny iron particle stuck to drum (rotates with it for visual effect) -->
+      <circle cx="${drumCx}" cy="${drumCy - drumR + 4}" r="3" fill="${C.oreLight}"/>
+      <circle cx="${drumCx + drumR - 6}" cy="${drumCy - 18}" r="2.5" fill="${C.oreColor}"/>
+      <circle cx="${drumCx + drumR - 4}" cy="${drumCy + 14}" r="3" fill="${C.oreLight}"/>
+    </g>
+  `;
+
+  // Housing — curved bath at the bottom of the drum (where mixed material flows)
+  const housing = `
+    <!-- Bath under drum (where material is washed) -->
+    <path d="M ${drumCx - drumR - 25} ${drumCy + 20}
+             L ${drumCx - drumR - 25} ${drumCy + drumR + 20}
+             L ${drumCx + drumR + 25} ${drumCy + drumR + 20}
+             L ${drumCx + drumR + 25} ${drumCy + 20}"
+          fill="none" stroke="${C.frame}" stroke-width="1.5"/>
+    <!-- Curved water/slurry surface following drum -->
+    <path d="M ${drumCx - drumR - 25} ${drumCy + 20}
+             Q ${drumCx} ${drumCy + drumR + 30} ${drumCx + drumR + 25} ${drumCy + 20}"
+          fill="${C.liquid}" fill-opacity="0.25" stroke="${C.frame}" stroke-width="0.8"/>
+  `;
+
+  // Feed entry — raw materials chute on bottom-left
+  const feed = `
+    <!-- Feed chute coming in from upper-left -->
+    <path d="M 30 60 L 90 60 L 110 ${drumCy - 30} L 80 ${drumCy - 30} Z"
+          fill="${C.metalDark}" stroke="${C.frame}" stroke-width="1"/>
+    <text x="60" y="50" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#8a847c" letter-spacing="2">FEED ↓</text>
+
+    <!-- Mixed feed particles (animated entry) -->
+    <g class="anim-feed">
+      <circle cx="95" cy="${drumCy - 50}" r="3" fill="${C.gangueColor}"/>
+      <circle cx="100" cy="${drumCy - 35}" r="2.5" fill="${C.oreColor}"/>
+      <circle cx="92" cy="${drumCy - 22}" r="2.8" fill="${C.gangueColor}"/>
+      <circle cx="98" cy="${drumCy - 8}" r="2.2" fill="${C.oreLight}"/>
+      <circle cx="100" cy="${drumCy + 8}" r="2.6" fill="${C.gangueColor}"/>
+      <circle cx="95" cy="${drumCy + 24}" r="2.4" fill="${C.oreColor}"/>
+    </g>
+  `;
+
+  // Output: ore concentrate exits to the right (iron particles fall off drum at top)
+  const oreOutput = `
+    <!-- Ore concentrate box (right side) -->
+    <path d="M ${drumCx + drumR + 30} ${drumCy - 20}
+             L ${drumCx + drumR + 95} ${drumCy - 20}
+             L ${drumCx + drumR + 95} ${drumCy + drumR + 30}
+             L ${drumCx + drumR + 30} ${drumCy + drumR + 30} Z"
+          fill="none" stroke="${C.frame}" stroke-width="1.5"/>
+
+    <!-- Iron particles dropping into ore box (animated) -->
+    <g class="anim-particle-iron">
+      <circle cx="${drumCx + drumR + 38}" cy="${drumCy + 10}" r="3" fill="${C.oreColor}"/>
+      <circle cx="${drumCx + drumR + 50}" cy="${drumCy + 30}" r="2.8" fill="${C.oreLight}"/>
+      <circle cx="${drumCx + drumR + 65}" cy="${drumCy + 50}" r="3" fill="${C.oreColor}"/>
+      <circle cx="${drumCx + drumR + 78}" cy="${drumCy + 65}" r="2.6" fill="${C.oreLight}"/>
+      <!-- Pile inside box -->
+      <circle cx="${drumCx + drumR + 50}" cy="${drumCy + drumR + 22}" r="3" fill="${C.oreColor}"/>
+      <circle cx="${drumCx + drumR + 60}" cy="${drumCy + drumR + 25}" r="3.5" fill="${C.oreLight}"/>
+      <circle cx="${drumCx + drumR + 72}" cy="${drumCy + drumR + 22}" r="3" fill="${C.oreColor}"/>
+      <circle cx="${drumCx + drumR + 82}" cy="${drumCy + drumR + 25}" r="2.8" fill="${C.oreLight}"/>
+      <circle cx="${drumCx + drumR + 55}" cy="${drumCy + drumR + 18}" r="2.5" fill="${C.oreColor}"/>
+      <circle cx="${drumCx + drumR + 70}" cy="${drumCy + drumR + 16}" r="2.8" fill="${C.oreColor}"/>
+    </g>
+
+    <text x="${drumCx + drumR + 62}" y="${drumCy + drumR + 50}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#1f1f1f" letter-spacing="1.5">ORE CONCENTRATE</text>
+  `;
+
+  // Tailings: gangue exits left-bottom
+  const tailingsOutput = `
+    <!-- Tailings chute (lower-left) -->
+    <path d="M ${drumCx - drumR - 80} ${drumCy + drumR + 20}
+             L ${drumCx - drumR - 25} ${drumCy + drumR + 20}
+             L ${drumCx - drumR - 25} ${drumCy + drumR + 50}
+             L ${drumCx - drumR - 80} ${drumCy + drumR + 50} Z"
+          fill="none" stroke="${C.frame}" stroke-width="1.5"/>
+
+    <!-- Tailings particles flowing out (animated) -->
+    <g class="anim-particle-tailings">
+      <circle cx="${drumCx - drumR - 30}" cy="${drumCy + drumR + 35}" r="2.5" fill="${C.gangueColor}"/>
+      <circle cx="${drumCx - drumR - 45}" cy="${drumCy + drumR + 35}" r="3" fill="${C.gangueLight}"/>
+      <circle cx="${drumCx - drumR - 60}" cy="${drumCy + drumR + 35}" r="2.8" fill="${C.gangueColor}"/>
+      <circle cx="${drumCx - drumR - 72}" cy="${drumCy + drumR + 35}" r="2.5" fill="${C.gangueLight}"/>
+      <!-- Tailings pile below -->
+      <circle cx="${drumCx - drumR - 70}" cy="${drumCy + drumR + 60}" r="3" fill="${C.gangueColor}"/>
+      <circle cx="${drumCx - drumR - 60}" cy="${drumCy + drumR + 62}" r="3.5" fill="${C.gangueLight}"/>
+      <circle cx="${drumCx - drumR - 50}" cy="${drumCy + drumR + 60}" r="3" fill="${C.gangueColor}"/>
+      <circle cx="${drumCx - drumR - 40}" cy="${drumCy + drumR + 62}" r="2.8" fill="${C.gangueLight}"/>
+    </g>
+
+    <text x="${drumCx - drumR - 55}" y="${drumCy + drumR + 80}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#8a847c" letter-spacing="1.5">TAILINGS</text>
+  `;
+
+  // Rotation arrow indicator on the drum
+  const rotationArrow = `
+    <path d="M ${drumCx - 14} ${drumCy - 56} Q ${drumCx} ${drumCy - 64} ${drumCx + 14} ${drumCy - 56}"
+          fill="none" stroke="${C.oreColor}" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M ${drumCx + 14} ${drumCy - 56} L ${drumCx + 9} ${drumCy - 60} M ${drumCx + 14} ${drumCy - 56} L ${drumCx + 11} ${drumCy - 50}"
+          stroke="${C.oreColor}" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+  `;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+      <!-- Floor reference -->
+      <line x1="0" y1="${H - 6}" x2="${W}" y2="${H - 6}" stroke="${C.frame}" stroke-width="0.5" opacity="0.3" stroke-dasharray="3 3"/>
+
+      ${housing}
+      ${feed}
+      ${tailingsOutput}
+      ${oreOutput}
+      ${drumSpokes}
+      ${rotationArrow}
+    </svg>
+  `;
+}
+
+// =============================================================
+// SCENE 04 — Flotation tank (animated)
+// Modeled on reference: rectangular tank, ore-water mixture enters left,
+// air bubbles rise from bottom, mineral particles attach and form froth
+// at top that overflows out one side; tailings exit the other side.
+// =============================================================
+function makeFlotationScene({ uid = 'flot' } = {}) {
+  const W = 480, H = 260;
+  const C = IRON_COLORS;
+  const tankX = 110, tankY = 30, tankW = 240, tankH = 180;
+  const liquidTop = tankY + 40;
+  const frothBaseY = liquidTop;
+  const rand = makeRand(31);
+
+  // Tank body
+  const tankBody = `
+    <rect x="${tankX}" y="${tankY}" width="${tankW}" height="${tankH}"
+          fill="${C.liquid}" fill-opacity="0.18" stroke="${C.frame}" stroke-width="1.5"/>
+    <!-- Inner glass-bevel hint -->
+    <line x1="${tankX + 3}" y1="${tankY + 3}" x2="${tankX + 3}" y2="${tankY + tankH - 3}" stroke="${C.liquid}" stroke-width="0.5" opacity="0.5"/>
+  `;
+
+  // Feed entry on the left side
+  const feed = `
+    <!-- Reagent + ore-water inlet pipe (left side) -->
+    <line x1="50" y1="${liquidTop + 30}" x2="${tankX}" y2="${liquidTop + 30}" stroke="${C.frame}" stroke-width="2.5"/>
+    <line x1="50" y1="${liquidTop + 30}" x2="50" y2="${liquidTop + 18}" stroke="${C.frame}" stroke-width="2.5"/>
+    <!-- Arrow showing flow direction -->
+    <path d="M ${tankX - 8} ${liquidTop + 27} L ${tankX - 4} ${liquidTop + 30} L ${tankX - 8} ${liquidTop + 33}"
+          fill="none" stroke="${C.frame}" stroke-width="1.5" stroke-linecap="round"/>
+
+    <text x="50" y="${liquidTop + 12}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#8a847c" letter-spacing="1.5">FEED</text>
+    <text x="50" y="${liquidTop + 22}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="1">+ REAGENT</text>
+
+    <!-- Mineral particles entering (animated) -->
+    <g class="anim-flot-feed">
+      <circle cx="${tankX + 12}" cy="${liquidTop + 28}" r="2" fill="${C.oreColor}"/>
+      <circle cx="${tankX + 22}" cy="${liquidTop + 32}" r="1.8" fill="${C.gangueColor}"/>
+      <circle cx="${tankX + 32}" cy="${liquidTop + 35}" r="2.2" fill="${C.oreColor}"/>
+      <circle cx="${tankX + 44}" cy="${liquidTop + 30}" r="1.8" fill="${C.gangueColor}"/>
+      <circle cx="${tankX + 56}" cy="${liquidTop + 38}" r="2" fill="${C.oreLight}"/>
+      <!-- Some have settled to bottom (tailings — gangue) -->
+      <circle cx="${tankX + 30}" cy="${tankY + tankH - 14}" r="2" fill="${C.gangueColor}" opacity="0.85"/>
+      <circle cx="${tankX + 50}" cy="${tankY + tankH - 11}" r="2.5" fill="${C.gangueLight}" opacity="0.8"/>
+      <circle cx="${tankX + 80}" cy="${tankY + tankH - 13}" r="2.2" fill="${C.gangueColor}" opacity="0.85"/>
+      <circle cx="${tankX + 110}" cy="${tankY + tankH - 10}" r="2" fill="${C.gangueLight}" opacity="0.8"/>
+      <circle cx="${tankX + 145}" cy="${tankY + tankH - 13}" r="2.5" fill="${C.gangueColor}" opacity="0.85"/>
+      <circle cx="${tankX + 180}" cy="${tankY + tankH - 11}" r="2" fill="${C.gangueLight}" opacity="0.8"/>
+      <circle cx="${tankX + 210}" cy="${tankY + tankH - 13}" r="2.2" fill="${C.gangueColor}" opacity="0.85"/>
+    </g>
+  `;
+
+  // Air injection from below
+  const airInjection = `
+    <line x1="${tankX + tankW * 0.2}" y1="${tankY + tankH}" x2="${tankX + tankW * 0.2}" y2="${tankY + tankH + 14}" stroke="${C.frame}" stroke-width="1.2"/>
+    <line x1="${tankX + tankW * 0.4}" y1="${tankY + tankH}" x2="${tankX + tankW * 0.4}" y2="${tankY + tankH + 14}" stroke="${C.frame}" stroke-width="1.2"/>
+    <line x1="${tankX + tankW * 0.6}" y1="${tankY + tankH}" x2="${tankX + tankW * 0.6}" y2="${tankY + tankH + 14}" stroke="${C.frame}" stroke-width="1.2"/>
+    <line x1="${tankX + tankW * 0.8}" y1="${tankY + tankH}" x2="${tankX + tankW * 0.8}" y2="${tankY + tankH + 14}" stroke="${C.frame}" stroke-width="1.2"/>
+    <text x="${tankX + tankW / 2}" y="${tankY + tankH + 26}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="1.5">AIR INJECTION</text>
+  `;
+
+  // Rising bubbles (animated)
+  let risingBubbles = '<g class="anim-bubble-rise">';
+  for (let i = 0; i < 26; i++) {
+    const bx = tankX + 14 + rand() * (tankW - 28);
+    const by = liquidTop + 12 + rand() * (tankH - 60);
+    const br = 1.4 + rand() * 2.6;
+    risingBubbles += `<circle cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="${br.toFixed(1)}" fill="#fff" opacity="0.55"/>`;
+    // Some bubbles carry a tiny mineral hint
+    if (i % 4 === 0) {
+      risingBubbles += `<circle cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="0.8" fill="${C.gangueLight}" opacity="0.7"/>`;
+    }
+  }
+  risingBubbles += '</g>';
+
+  // Froth layer at top (grows in animation)
+  let frothBubbles = '<g class="anim-froth-grow">';
+  for (let i = 0; i < 38; i++) {
+    const bx = tankX + 8 + rand() * (tankW - 16);
+    const by = tankY + 4 + rand() * 32;
+    const br = 3 + rand() * 5;
+    frothBubbles += `<circle cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="${br.toFixed(1)}" fill="${C.frothColor}" stroke="#8a847c" stroke-width="0.4" opacity="0.85"/>`;
+    if (i % 3 === 0) {
+      frothBubbles += `<circle cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="1.2" fill="${C.oreColor}" opacity="0.7"/>`;
+    }
+  }
+  frothBubbles += '</g>';
+
+  // Froth overflow (concentrate output) — runs out the right side near the top
+  const frothOverflow = `
+    <!-- Overflow lip (small notch on top right of tank) -->
+    <path d="M ${tankX + tankW} ${tankY + 16} L ${tankX + tankW + 38} ${tankY + 16} L ${tankX + tankW + 38} ${tankY + 30} L ${tankX + tankW + 8} ${tankY + 30}"
+          fill="none" stroke="${C.frame}" stroke-width="1.5"/>
+    <!-- Froth pouring out (animated) -->
+    <g class="anim-froth-grow">
+      <circle cx="${tankX + tankW + 14}" cy="${tankY + 22}" r="3" fill="${C.frothColor}" stroke="#8a847c" stroke-width="0.4"/>
+      <circle cx="${tankX + tankW + 22}" cy="${tankY + 26}" r="2.5" fill="${C.frothColor}" stroke="#8a847c" stroke-width="0.4"/>
+      <circle cx="${tankX + tankW + 30}" cy="${tankY + 22}" r="2.8" fill="${C.frothColor}" stroke="#8a847c" stroke-width="0.4"/>
+      <circle cx="${tankX + tankW + 18}" cy="${tankY + 25}" r="1.2" fill="${C.oreColor}" opacity="0.7"/>
+      <circle cx="${tankX + tankW + 28}" cy="${tankY + 24}" r="1" fill="${C.oreColor}" opacity="0.7"/>
+    </g>
+    <text x="${tankX + tankW + 23}" y="${tankY + 8}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#1f1f1f" letter-spacing="1.5">FROTH</text>
+    <text x="${tankX + tankW + 23}" y="${tankY + 44}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#1f1f1f" letter-spacing="1">→ IRON CONC.</text>
+  `;
+
+  // Tailings outlet (low side, opposite the froth)
+  const tailingsOutlet = `
+    <!-- Tailings outlet pipe on right side, lower -->
+    <line x1="${tankX + tankW}" y1="${tankY + tankH - 18}" x2="${tankX + tankW + 50}" y2="${tankY + tankH - 18}" stroke="${C.frame}" stroke-width="2.5"/>
+    <path d="M ${tankX + tankW + 46} ${tankY + tankH - 22} L ${tankX + tankW + 50} ${tankY + tankH - 18} L ${tankX + tankW + 46} ${tankY + tankH - 14}"
+          fill="none" stroke="${C.frame}" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="${tankX + tankW + 25}" y="${tankY + tankH - 26}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#8a847c" letter-spacing="1.5">TAILINGS</text>
+    <text x="${tankX + tankW + 25}" y="${tankY + tankH - 4}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="1">low minerals</text>
+  `;
+
+  // Liquid surface line
+  const surfaceLine = `<line x1="${tankX + 3}" y1="${liquidTop}" x2="${tankX + tankW - 3}" y2="${liquidTop}" stroke="${C.frame}" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.4"/>`;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+      <!-- Floor -->
+      <line x1="0" y1="${H - 6}" x2="${W}" y2="${H - 6}" stroke="${C.frame}" stroke-width="0.5" opacity="0.3" stroke-dasharray="3 3"/>
+
+      ${tankBody}
+
+      <!-- Bubbles in liquid -->
+      ${risingBubbles}
+
+      ${surfaceLine}
+
+      <!-- Froth at top -->
+      ${frothBubbles}
+
+      <!-- Feed entry + particles -->
+      ${feed}
+
+      <!-- Air injection -->
+      ${airInjection}
+
+      <!-- Outputs -->
+      ${frothOverflow}
+      ${tailingsOutlet}
+    </svg>
+  `;
+}
+
+// =============================================================
+// IRON DATA
+// =============================================================
+const IRON_RAW = {
+  name: 'Run-of-mine ore',
+  meta: '~30% iron content',
+  detail: 'Straight from the pit. Iron-bearing minerals (magnetite, hematite) are visible as rust-orange veins and metallic flecks running through the host rock. The dark grey "gangue" is mostly silicate minerals — useless for steelmaking but bonded into the same chunks.'
+};
+
+const IRON_CRUSHED = {
+  name: 'Crushed feed',
+  meta: 'Reduced to ~50 mm',
+  detail: 'Massive jaw and cone crushers reduce the rock to chunks under about 50 mm. No separation has happened yet — each piece still contains both iron veins and gangue. The point of crushing is to expose more iron surface area so the next stage can pull it out.'
+};
+
+const IRON_MAGSEP = [
+  {
+    type: 'concentrate',
+    name: 'Magnetic concentrate',
+    destination: 'To flotation',
+    detail: 'Iron-rich pieces (magnetite especially) are pulled out of the stream by a powerful drum magnet. This step alone can recover 60–80% of the iron from the feed, depending on how much of the ore is magnetite vs hematite.'
+  },
+  {
+    type: 'tailings',
+    name: 'Tailings',
+    destination: 'Tailings dam',
+    destinationClass: 'discard',
+    detail: 'Non-magnetic gangue — silicates, quartz, clay. Slurried with water and pumped to a tailings impoundment, where it settles for years or decades. Tailings are the most visible footprint of large-scale mining.'
+  }
+];
+
+const IRON_FLOTATION = {
+  name: 'Flotation tank',
+  meta: 'Reverse flotation',
+  detail: 'In reverse flotation (the steel-industry standard), surfactant chemicals make silica and other gangue minerals attach to air bubbles and rise to the top as froth. Iron particles stay wet and sink to the bottom as a fine, dense concentrate. The froth is skimmed off; the concentrate is pumped out and dewatered.'
+};
+
+// =============================================================
+// IRON RENDER FUNCTIONS
+// =============================================================
+
+// SUB 01: 2-panel sequence — open pit + rock specimen
+function renderIronStage1() {
+  const stage = document.getElementById('iron-stage-1');
+  const detail = document.getElementById('iron-1-detail');
+  if (!stage) return;
+  stage.innerHTML = `
+    <div class="iron-sequence">
+      <div class="iron-panel" data-key="pit">
+        <div class="iron-panel-svg-wrap">${makePitPanel({ uid: 'pit' })}</div>
+        <div class="iron-panel-label">Open-pit mine</div>
+      </div>
+      <div class="iron-arrow-between">→</div>
+      <div class="iron-panel" data-key="rock">
+        <div class="iron-panel-svg-wrap">${makeRockSpecimen({ uid: 'spec', size: 160 })}</div>
+        <div class="iron-panel-label">Rock specimen · ~30% Fe</div>
+      </div>
+    </div>
+  `;
+
+  const PANEL_INFO = {
+    pit: {
+      name: 'The open-pit mine',
+      stat: 'The starting point',
+      detail: 'Iron ore mining at industrial scale almost always means an open pit — a terraced amphitheater cut into the ground over decades. Haul trucks the size of houses move ore from the pit floor up the bench roads to the crushing plant.'
+    },
+    rock: {
+      name: 'Run-of-mine ore',
+      stat: '~30% iron content',
+      detail: 'A typical chunk of what comes out of the pit. The rust-orange streaks are iron-bearing minerals (magnetite, hematite); the dark grey matrix is gangue — silicate rock that has no use for steelmaking. The first job of sorting is to get one out from the other.'
+    }
+  };
+
+  stage.querySelectorAll('.iron-panel').forEach(panel => {
+    const key = panel.getAttribute('data-key');
+    const update = () => {
+      const info = PANEL_INFO[key];
+      detail.classList.remove('empty');
+      detail.innerHTML = `
+        <div class="detail-card-name">${info.name}</div>
+        <div class="detail-card-stat">${info.stat}</div>
+        <div class="detail-card-text">${info.detail}</div>
+      `;
+    };
+    panel.addEventListener('mouseenter', update);
+    panel.addEventListener('click', update);
+  });
+}
+
+// SUB 02: 3-panel sequence — rock → crusher machine → fragments
+function renderIronStage2() {
+  const stage = document.getElementById('iron-stage-2');
+  const detail = document.getElementById('iron-2-detail');
+  if (!stage) return;
+  stage.innerHTML = `
+    <div class="iron-sequence">
+      <div class="iron-panel" data-key="input">
+        <div class="iron-panel-svg-wrap">${makeRockSpecimen({ uid: 'crushin', size: 130 })}</div>
+        <div class="iron-panel-label">Rock in</div>
+      </div>
+      <div class="iron-arrow-between">→</div>
+      <div class="iron-panel" data-key="crusher">
+        <div class="iron-panel-svg-wrap">${makeCrusherMachine({ uid: 'crmach' })}</div>
+        <div class="iron-panel-label">Jaw crusher</div>
+      </div>
+      <div class="iron-arrow-between">→</div>
+      <div class="iron-panel" data-key="output">
+        <div class="iron-panel-svg-wrap">${makeCrushedPile({ uid: 'crout', width: 180, height: 130 })}</div>
+        <div class="iron-panel-label">Fragments out</div>
+      </div>
+    </div>
+  `;
+
+  const PANEL_INFO = {
+    input: {
+      name: 'Rock entering',
+      stat: 'Up to ~1 metre across',
+      detail: 'Massive boulders from the pit are loaded directly into the crusher\'s feed hopper. The biggest pieces start at over a metre across and weigh hundreds of kilograms each.'
+    },
+    crusher: {
+      name: 'Jaw crusher',
+      stat: 'Tonnes per hour',
+      detail: 'Inside the housing, a fixed jaw and a swinging jaw close on each rock with hundreds of tonnes of force, breaking it into manageable pieces. The yellow drive pulley and electric motor keep the swinging jaw in constant motion. No separation happens here — it just makes the rock smaller.'
+    },
+    output: {
+      name: 'Crushed feed',
+      stat: 'Reduced to ~50 mm',
+      detail: 'After one or two passes through crushing stages, the rock is in fist-sized or smaller pieces. Each fragment still contains both iron and gangue — but now there\'s enough exposed surface area for magnetic separation and flotation to do their work.'
+    }
+  };
+
+  stage.querySelectorAll('.iron-panel').forEach(panel => {
+    const key = panel.getAttribute('data-key');
+    const update = () => {
+      const info = PANEL_INFO[key];
+      detail.classList.remove('empty');
+      detail.innerHTML = `
+        <div class="detail-card-name">${info.name}</div>
+        <div class="detail-card-stat">${info.stat}</div>
+        <div class="detail-card-text">${info.detail}</div>
+      `;
+    };
+    panel.addEventListener('mouseenter', update);
+    panel.addEventListener('click', update);
+  });
+}
+
+// SUB 03: Animated magnetic drum scene
+function renderIronStage3() {
+  const stage = document.getElementById('iron-stage-3');
+  const detail = document.getElementById('iron-3-detail');
+  if (!stage) return;
+  stage.innerHTML = `
+    <div class="iron-scene-wrap">
+      <div class="iron-scene" id="iron-scene-3" data-playing="false" data-played="false">
+        ${makeMagDrumScene({ uid: 'magdrum' })}
+      </div>
+    </div>
+    <div class="iron-play-controls">
+      <button class="iron-play-btn" id="play-btn-3" type="button">
+        <span class="play-icon">▶</span> <span class="play-label">Play animation</span>
+      </button>
+    </div>
+  `;
+
+  // Detail card explanation (always available, populated immediately)
+  detail.classList.remove('empty');
+  detail.innerHTML = `
+    <div class="detail-card-name">Drum magnetic separator</div>
+    <div class="detail-card-stat">Two output streams · Press play to see it run</div>
+    <div class="detail-card-text">
+      Crushed ore enters a bath at the bottom of a slowly rotating drum. Inside the drum, powerful permanent
+      or electromagnets pull iron-bearing particles against the drum's surface. As the drum rotates, those
+      particles ride along until they exit the magnetic field on the far side, where they fall away into
+      the <strong>ore concentrate</strong> box. Non-magnetic gangue stays in the bath and flows out
+      the opposite side as <strong>tailings</strong>.
+    </div>
+  `;
+
+  // Wire up play button
+  const btn = document.getElementById('play-btn-3');
+  const scene = document.getElementById('iron-scene-3');
+  btn.addEventListener('click', () => {
+    if (scene.getAttribute('data-playing') === 'true') return;  // already running
+    scene.setAttribute('data-playing', 'true');
+    btn.querySelector('.play-icon').textContent = '◐';
+    btn.querySelector('.play-label').textContent = 'Playing…';
+    setTimeout(() => {
+      scene.setAttribute('data-playing', 'false');
+      scene.setAttribute('data-played', 'true');
+      btn.querySelector('.play-icon').textContent = '↻';
+      btn.querySelector('.play-label').textContent = 'Replay';
+    }, 4100);
+  });
+}
+
+// SUB 04: Animated flotation scene
+function renderIronStage4() {
+  const stage = document.getElementById('iron-stage-4');
+  const detail = document.getElementById('iron-4-detail');
+  if (!stage) return;
+  stage.innerHTML = `
+    <div class="iron-scene-wrap">
+      <div class="iron-scene" id="iron-scene-4" data-playing="false" data-played="false">
+        ${makeFlotationScene({ uid: 'flot' })}
+      </div>
+    </div>
+    <div class="iron-play-controls">
+      <button class="iron-play-btn" id="play-btn-4" type="button">
+        <span class="play-icon">▶</span> <span class="play-label">Play animation</span>
+      </button>
+    </div>
+  `;
+
+  detail.classList.remove('empty');
+  detail.innerHTML = `
+    <div class="detail-card-name">Flotation tank</div>
+    <div class="detail-card-stat">Reverse flotation · Press play to see it run</div>
+    <div class="detail-card-text">
+      Crushed ore mixed with water and reagent chemicals enters from the side. Air is injected from the
+      bottom, sending bubbles rising through the slurry. Surfactant-coated mineral particles attach to the
+      bubbles and ride them upward, forming a thick <strong>froth layer</strong> at the top that overflows
+      out one side as concentrate. Particles that don't attach to bubbles settle to the bottom and flow
+      out the other side as <strong>tailings</strong>.
+    </div>
+  `;
+
+  const btn = document.getElementById('play-btn-4');
+  const scene = document.getElementById('iron-scene-4');
+  btn.addEventListener('click', () => {
+    if (scene.getAttribute('data-playing') === 'true') return;
+    scene.setAttribute('data-playing', 'true');
+    btn.querySelector('.play-icon').textContent = '◐';
+    btn.querySelector('.play-label').textContent = 'Playing…';
+    setTimeout(() => {
+      scene.setAttribute('data-playing', 'false');
+      scene.setAttribute('data-played', 'true');
+      btn.querySelector('.play-icon').textContent = '↻';
+      btn.querySelector('.play-label').textContent = 'Replay';
+    }, 4100);
+  });
+}
+
+renderIronStage1();
+renderIronStage2();
+renderIronStage3();
+renderIronStage4();
+
+// Reveal animations
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

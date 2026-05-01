@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Earth to Home · Section 1 — The Earth — willemsworld.fyi</title>
+<meta name="description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<link rel="canonical" href="https://willemsworld.fyi/earth-to-home.html">
+<meta name="author" content="willemsworld">
+
+<!-- Open Graph (Facebook, LinkedIn, etc.) -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://willemsworld.fyi/earth-to-home.html">
+<meta property="og:site_name" content="willemsworld.fyi">
+<meta property="og:title" content="Earth to Home — Section 1 — The Earth">
+<meta property="og:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta property="og:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A globe on the left, three colored streams arcing across, converging on a house on the right. Title: Earth to Home.">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Earth to Home — Section 1 — The Earth">
+<meta name="twitter:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta name="twitter:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f1ea;
+    --paper-deep: #ebe5d9;
+    --ink: #1a1614;
+    --ink-soft: #4a4540;
+    --ink-faint: #8a847c;
+    --rule: #d6cfc0;
+    --land: #d8d1bf;
+    --land-stroke: #c2b9a4;
+
+    --apple: #b8302a;
+    --apple-deep: #7a1a16;
+    --lumber: #3d6b3a;
+    --lumber-deep: #1f3d1d;
+    --iron: #4a4a4a;
+    --iron-deep: #1f1f1f;
+
+    --display: 'Fraunces', 'Times New Roman', serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184, 48, 42, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(61, 107, 58, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(74, 74, 74, 0.025) 0%, transparent 40%);
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.25rem 3rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+    z-index: 10; background: rgba(245, 241, 234, 0.92); backdrop-filter: blur(8px);
+    position: sticky; top: 0;
+  }
+  .masthead-brand { font-family: var(--display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em; }
+  .masthead-brand .tld { font-weight: 300; color: var(--ink-faint); }
+  .masthead-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+
+  .hero { padding: 5rem 3rem 3rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--ink-faint); }
+  .hero-title {
+    font-family: var(--display); font-weight: 300;
+    font-size: clamp(2.5rem, 8vw, 6rem); line-height: 0.95; letter-spacing: -0.04em;
+    margin-bottom: 2rem; max-width: 14ch;
+  }
+  .hero-title em { font-style: italic; font-weight: 400; }
+  .hero-deck {
+    font-family: var(--display); font-weight: 300; font-size: 1.3rem; line-height: 1.55;
+    color: var(--ink-soft); max-width: 62ch; font-style: italic; margin-bottom: 2.5rem;
+  }
+  .hero-deck strong { font-style: normal; font-weight: 600; color: var(--ink); }
+
+  .stages-strip {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    padding: 1.25rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    margin-bottom: 3rem;
+  }
+  .stage-pill {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.35rem 0.7rem; border: 1px solid var(--rule);
+    color: var(--ink-faint); background: rgba(255, 253, 248, 0.5); white-space: nowrap;
+  }
+  .stage-pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .stage-pill .num { opacity: 0.5; margin-right: 0.4rem; }
+  .stage-pill.active .num { opacity: 0.7; }
+  .stage-pill:not(.active):not(.takeaways):hover {
+    border-color: var(--ink); color: var(--ink); background: rgba(255, 253, 248, 0.9);
+    cursor: pointer;
+  }
+  .stage-pill.takeaways {
+    border-style: dashed;
+    margin-left: auto;
+  }
+  .stage-pill.takeaways.active { border-style: solid; }
+  .stage-pill.takeaways .star { margin-right: 0.4rem; opacity: 0.5; font-style: italic; }
+  .stage-pill.takeaways.active .star { opacity: 0.7; }
+  .stage-pill.takeaways:not(.active):hover {
+    border-color: var(--ink); color: var(--ink); background: rgba(255, 253, 248, 0.9);
+    cursor: pointer;
+  }
+
+  .hero-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+  .hero-product { border-top: 2px solid var(--ink); padding-top: 1rem; }
+  .hero-product[data-stream="apple"] { border-color: var(--apple); }
+  .hero-product[data-stream="lumber"] { border-color: var(--lumber); }
+  .hero-product[data-stream="iron"] { border-color: var(--iron); }
+  .hero-product-label {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.5rem;
+  }
+  .hero-product-name {
+    font-family: var(--display); font-weight: 400; font-size: 1.85rem;
+    letter-spacing: -0.02em; margin-bottom: 0.4rem;
+  }
+  .hero-product[data-stream="apple"] .hero-product-name { color: var(--apple-deep); }
+  .hero-product[data-stream="lumber"] .hero-product-name { color: var(--lumber-deep); }
+  .hero-product[data-stream="iron"] .hero-product-name { color: var(--iron-deep); }
+  .hero-product-arrow {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    color: var(--ink-faint); font-size: 1rem; margin: 0.2rem 0;
+  }
+  .hero-product-target {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 1.4rem; color: var(--ink);
+  }
+
+  .section { padding: 5rem 3rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .section-marker {
+    display: flex; align-items: baseline; gap: 2rem;
+    margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
+  }
+  .section-number {
+    font-family: var(--display); font-weight: 300; font-size: 6rem; line-height: 1; letter-spacing: -0.04em;
+  }
+  .section-number-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 3rem; letter-spacing: -0.02em;
+  }
+  .section-intro {
+    font-family: var(--display); font-weight: 300; font-size: 1.25rem; line-height: 1.6;
+    max-width: 62ch; color: var(--ink-soft); margin-bottom: 4rem; font-style: italic;
+  }
+  .section-intro::first-letter {
+    font-size: 3.5rem; float: left; line-height: 0.85; padding: 0.3rem 0.5rem 0 0;
+    font-weight: 400; font-style: normal; color: var(--ink);
+  }
+
+  .block { margin-bottom: 5rem; }
+  .block-header {
+    display: flex; align-items: baseline; gap: 1.25rem;
+    margin-bottom: 2rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule);
+  }
+  .block-label {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .block-title {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 1.65rem; letter-spacing: -0.01em;
+  }
+
+  .block-grid-maps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+  .block-stack { display: flex; flex-direction: column; gap: 2rem; }
+
+  .stream-card {
+    background: rgba(255, 253, 248, 0.65); border: 1px solid var(--rule);
+    border-top: 3px solid var(--ink); padding: 1.5rem;
+  }
+  .stream-card[data-stream="apple"] { border-top-color: var(--apple); }
+  .stream-card[data-stream="lumber"] { border-top-color: var(--lumber); }
+  .stream-card[data-stream="iron"] { border-top-color: var(--iron); }
+  .stream-card-wide { padding: 2rem 2.25rem; }
+
+  .stream-card-header {
+    display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;
+  }
+  .stream-card-name {
+    font-family: var(--display); font-weight: 600; font-size: 1.2rem; letter-spacing: -0.01em;
+  }
+  .stream-card-wide .stream-card-name { font-size: 1.5rem; }
+  .stream-card[data-stream="apple"] .stream-card-name { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .stream-card-name { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .stream-card-name { color: var(--iron-deep); }
+  .stream-card-symbol { font-family: var(--display); font-size: 1.1rem; opacity: 0.4; }
+
+  .map-svg-wrap {
+    width: 100%; aspect-ratio: 16 / 6; background: var(--paper-deep);
+    border: 1px solid var(--rule); overflow: hidden; position: relative;
+  }
+  .map-svg-wrap svg { width: 100%; height: 100%; display: block; }
+  .map-svg-wrap .country {
+    fill: var(--land); stroke: var(--land-stroke); stroke-width: 0.4;
+    transition: fill 0.3s ease, stroke 0.2s ease;
+  }
+  .map-svg-wrap .country.has-data { cursor: pointer; }
+  .map-svg-wrap .country.has-data:hover { stroke: var(--ink); stroke-width: 1.2; }
+
+  .map-loading {
+    display: flex; align-items: center; justify-content: center; height: 100%;
+    color: var(--ink-faint); font-family: var(--mono); font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+  }
+  .map-tooltip {
+    position: absolute; background: var(--ink); color: var(--paper);
+    padding: 0.4rem 0.6rem; font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.05em; pointer-events: none; opacity: 0;
+    transition: opacity 0.15s ease; transform: translate(-50%, -130%);
+    white-space: nowrap; z-index: 5;
+  }
+  .map-tooltip.show { opacity: 1; }
+
+  .map-legend {
+    display: flex; align-items: center; gap: 0.75rem; margin-top: 0.75rem;
+    font-family: var(--mono); font-size: 0.62rem; color: var(--ink-faint);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .legend-bar { height: 6px; flex: 1; }
+
+  .regions { margin-top: 1rem; }
+  .regions-title {
+    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.5rem;
+  }
+  .region-row {
+    display: flex; align-items: center; gap: 0.55rem; padding: 0.3rem 0;
+    border-bottom: 1px dotted var(--rule); font-size: 0.78rem;
+  }
+  .region-row:last-child { border-bottom: none; }
+  .region-chip {
+    width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .region-name { font-weight: 500; flex-shrink: 0; width: 88px; }
+  .region-bar-wrap { flex: 1; height: 3px; background: var(--paper-deep); overflow: hidden; }
+  .region-bar { height: 100%; transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .stream-card[data-stream="apple"] .region-bar { background: var(--apple); }
+  .stream-card[data-stream="lumber"] .region-bar { background: var(--lumber); }
+  .stream-card[data-stream="iron"] .region-bar { background: var(--iron); }
+  .region-pct {
+    font-family: var(--mono); font-size: 0.65rem; color: var(--ink-soft);
+    width: 32px; text-align: right;
+  }
+
+  .timeline-row {
+    display: grid; grid-template-columns: 1fr 280px;
+    gap: 2rem; align-items: start;
+  }
+  .timeline-main { min-width: 0; }
+  .timeline-side { padding-top: 0.5rem; }
+
+  .timeline-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 1rem; font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-faint);
+    flex-wrap: wrap; gap: 0.5rem;
+  }
+  .timeline-meta strong { color: var(--ink); font-weight: 600; }
+
+  .timeline-display {
+    display: grid; grid-template-columns: 1fr 240px;
+    gap: 1.25rem; align-items: stretch;
+  }
+  .timeline-svg-wrap { width: 100%; overflow: visible; position: relative; min-width: 0; }
+  .timeline-svg-wrap svg { width: 100%; height: auto; display: block; overflow: visible; }
+
+  .tl-panel {
+    border: 1px solid var(--rule); background: rgba(255, 253, 248, 0.7);
+    padding: 1rem 1.1rem; border-left: 3px solid var(--ink);
+    display: flex; flex-direction: column; justify-content: flex-start;
+    min-height: 180px; transition: border-color 0.3s ease, background 0.3s ease;
+  }
+  .stream-card[data-stream="apple"] .tl-panel { border-left-color: var(--apple); }
+  .stream-card[data-stream="lumber"] .tl-panel { border-left-color: var(--lumber); }
+  .stream-card[data-stream="iron"] .tl-panel { border-left-color: var(--iron); }
+
+  .tl-panel-empty {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 0.95rem; color: var(--ink-faint); line-height: 1.5;
+  }
+  .tl-panel-label {
+    font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.45rem; display: block;
+  }
+  .tl-panel-name {
+    font-family: var(--display); font-weight: 600; font-size: 1.15rem;
+    letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 0.5rem; color: var(--ink);
+  }
+  .stream-card[data-stream="apple"] .tl-panel-name { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .tl-panel-name { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .tl-panel-name { color: var(--iron-deep); }
+
+  .tl-panel-detail {
+    font-family: var(--body); font-weight: 400; font-size: 0.85rem;
+    line-height: 1.5; color: var(--ink-soft); margin-bottom: 0.75rem;
+  }
+  .tl-panel-duration {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-faint);
+    padding-top: 0.6rem; margin-top: auto; border-top: 1px dotted var(--rule);
+  }
+  .tl-panel-duration strong { color: var(--ink); font-weight: 600; }
+
+  .tl-axis-line { stroke: var(--ink); stroke-width: 1; }
+  .tl-axis-tick { stroke: var(--ink-faint); stroke-width: 0.6; }
+  .tl-axis-grid { stroke: var(--rule); stroke-width: 0.5; stroke-dasharray: 2 3; }
+  .tl-axis-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    fill: var(--ink-faint); letter-spacing: 0.05em;
+  }
+  .tl-axis-title {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    fill: var(--ink-faint); letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .tl-range-line { stroke-width: 2; stroke-linecap: round; }
+  .tl-range-cap { stroke-width: 1.5; stroke-linecap: round; }
+
+  .tl-figure {
+    cursor: pointer; transition: transform 0.2s ease;
+    transform-origin: center; transform-box: fill-box;
+  }
+  .tl-figure:hover { transform: scale(1.18); }
+  .tl-figure.active { transform: scale(1.22); }
+  .tl-figure-icon { pointer-events: none; }
+
+  .tl-step-name {
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500;
+    fill: var(--ink); pointer-events: none;
+  }
+
+  .callout {
+    padding: 1.1rem 1.25rem; border-left: 3px solid;
+    background: rgba(255, 253, 248, 0.5); height: 100%;
+  }
+  .stream-card[data-stream="apple"] .callout { border-color: var(--apple); }
+  .stream-card[data-stream="lumber"] .callout { border-color: var(--lumber); }
+  .stream-card[data-stream="iron"] .callout { border-color: var(--iron); }
+  .callout-label {
+    font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.5rem; display: block;
+  }
+  .callout-text {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 1rem; line-height: 1.5; color: var(--ink);
+  }
+  .callout-text strong { font-weight: 600; font-style: normal; }
+  .stream-card[data-stream="apple"] .callout-text strong { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .callout-text strong { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .callout-text strong { color: var(--iron-deep); }
+
+  .section-footer {
+    margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .next-section {
+    font-family: var(--display); font-style: italic; font-weight: 400;
+    font-size: 1.4rem; text-transform: none; letter-spacing: -0.01em;
+    color: var(--ink); text-align: right;
+  }
+  a.next-section {
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+  a.next-section:hover {
+    opacity: 0.75;
+    transform: translateX(3px);
+  }
+  .next-section span {
+    color: var(--ink-faint); font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; display: block; margin-bottom: 0.25rem; font-style: normal;
+  }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .masthead { padding: 0.9rem 1.25rem; }
+    .masthead-meta { font-size: 0.58rem; }
+    .masthead-brand { font-size: 1.2rem; }
+    .hero { padding: 3rem 1.25rem 2rem; }
+    .section { padding: 3.5rem 1.25rem; }
+    .hero-products,
+    .block-grid-maps { grid-template-columns: 1fr; gap: 1.5rem; }
+    .timeline-row,
+    .timeline-display { grid-template-columns: 1fr; gap: 1.25rem; }
+    .section-marker { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    .section-number { font-size: 4rem; }
+    .section-title { font-size: 2rem; }
+    .block-header { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+    .block-title { font-size: 1.35rem; }
+    .hero-deck { font-size: 1.1rem; }
+    .hero-title { margin-bottom: 1.5rem; }
+    .stages-strip { gap: 0.3rem; padding: 1rem 0; margin-bottom: 2rem; }
+    .stage-pill { font-size: 0.58rem; padding: 0.28rem 0.5rem; }
+    .section-footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .next-section { text-align: left; }
+    .stream-card { padding: 1.25rem; }
+    .stream-card-wide { padding: 1.25rem; }
+    .section-intro { font-size: 1.1rem; margin-bottom: 3rem; }
+    .tl-step-name { font-size: 11px; }
+    .tl-axis-label { font-size: 11px; }
+    .tl-panel { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-brand">willemsworld<span class="tld">.fyi</span></div>
+  <div class="masthead-meta">Insight № 04 · Supply Chain Ecosystems</div>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">A journey in eight stages</div>
+  <h1 class="hero-title">From the <em>ground</em><br>to your <em>home</em>.</h1>
+  <p class="hero-deck">
+    Every object you touch passes through <strong>eight stages</strong> on its way from the earth
+    to your hands — extracted, sorted, refined, transformed, finished, assembled, distributed,
+    and finally consumed. Follow three ordinary products back through this hidden chain, and
+    watch the spiderweb of global supply lines reveal itself.
+  </p>
+
+  <div class="stages-strip">
+    <span class="stage-pill active"><span class="num">01</span>The Earth</span>
+    <a href="earth-to-home-02-sorting.html" class="stage-pill" style="text-decoration: none;"><span class="num">02</span>Sorting</a>
+    <a href="earth-to-home-03-refinement.html" class="stage-pill" style="text-decoration: none;"><span class="num">03</span>Refinement</a>
+    <a href="earth-to-home-04-transformation.html" class="stage-pill" style="text-decoration: none;"><span class="num">04</span>Transformation</a>
+    <a href="earth-to-home-05-finishing.html" class="stage-pill" style="text-decoration: none;"><span class="num">05</span>Finishing</a>
+    <a href="earth-to-home-06-assembly.html" class="stage-pill" style="text-decoration: none;"><span class="num">06</span>Assembly</a>
+    <a href="earth-to-home-07-distribution.html" class="stage-pill" style="text-decoration: none;"><span class="num">07</span>Distribution</a>
+    <a href="earth-to-home-08-consumption.html" class="stage-pill" style="text-decoration: none;"><span class="num">08</span>Consumption</a>
+    <a href="earth-to-home-takeaways.html" class="stage-pill takeaways" style="text-decoration: none;"><span class="star">✦</span>Takeaways</a>
+  </div>
+
+  <div class="hero-products">
+    <div class="hero-product" data-stream="apple">
+      <div class="hero-product-label">Stream № 1</div>
+      <div class="hero-product-name">Apple</div>
+      <div class="hero-product-arrow">becomes</div>
+      <div class="hero-product-target">Applesauce</div>
+    </div>
+    <div class="hero-product" data-stream="lumber">
+      <div class="hero-product-label">Stream № 2</div>
+      <div class="hero-product-name">Lumber</div>
+      <div class="hero-product-arrow">becomes</div>
+      <div class="hero-product-target">Corrugated Board</div>
+    </div>
+    <div class="hero-product" data-stream="iron">
+      <div class="hero-product-label">Stream № 3</div>
+      <div class="hero-product-name">Iron</div>
+      <div class="hero-product-arrow">becomes</div>
+      <div class="hero-product-target">Scissors</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="section-1">
+  <div class="section-marker reveal">
+    <div class="section-number">01</div>
+    <div>
+      <span class="section-number-meta">Stage One of Eight</span>
+      <h2 class="section-title">The Earth</h2>
+    </div>
+  </div>
+
+  <p class="section-intro reveal">
+    Before logistics, before factories, before commerce — there is geography. Every supply chain
+    begins in a specific place on the planet, in soil or stone or forest, and the rest of the journey
+    is shaped by where that place happens to be.
+  </p>
+
+  <div class="block reveal">
+    <div class="block-header">
+      <span class="block-label">Block 01</span>
+      <h3 class="block-title">Where on Earth it happens</h3>
+    </div>
+
+    <div class="block-grid-maps">
+      <article class="stream-card" data-stream="apple">
+        <div class="stream-card-header">
+          <div class="stream-card-name">Apple Orchards</div>
+          <div class="stream-card-symbol">○</div>
+        </div>
+        <div class="map-svg-wrap" id="map-apple">
+          <div class="map-loading">loading map…</div>
+          <div class="map-tooltip" id="tip-apple"></div>
+        </div>
+        <div class="map-legend">
+          <span>less</span>
+          <div class="legend-bar" id="legend-apple"></div>
+          <span>more</span>
+        </div>
+        <div class="regions" id="regions-apple">
+          <div class="regions-title">Top 8 Producing Countries</div>
+        </div>
+      </article>
+
+      <article class="stream-card" data-stream="lumber">
+        <div class="stream-card-header">
+          <div class="stream-card-name">Timber Forests</div>
+          <div class="stream-card-symbol">▲</div>
+        </div>
+        <div class="map-svg-wrap" id="map-lumber">
+          <div class="map-loading">loading map…</div>
+          <div class="map-tooltip" id="tip-lumber"></div>
+        </div>
+        <div class="map-legend">
+          <span>less</span>
+          <div class="legend-bar" id="legend-lumber"></div>
+          <span>more</span>
+        </div>
+        <div class="regions" id="regions-lumber">
+          <div class="regions-title">Top 8 Producing Countries</div>
+        </div>
+      </article>
+
+      <article class="stream-card" data-stream="iron">
+        <div class="stream-card-header">
+          <div class="stream-card-name">Iron Ore Mines</div>
+          <div class="stream-card-symbol">◆</div>
+        </div>
+        <div class="map-svg-wrap" id="map-iron">
+          <div class="map-loading">loading map…</div>
+          <div class="map-tooltip" id="tip-iron"></div>
+        </div>
+        <div class="map-legend">
+          <span>less</span>
+          <div class="legend-bar" id="legend-iron"></div>
+          <span>more</span>
+        </div>
+        <div class="regions" id="regions-iron">
+          <div class="regions-title">Top 8 Producing Countries</div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="block reveal">
+    <div class="block-header">
+      <span class="block-label">Block 02</span>
+      <h3 class="block-title">The process & how long it takes</h3>
+    </div>
+
+    <div class="block-stack">
+      <article class="stream-card stream-card-wide" data-stream="apple">
+        <div class="stream-card-header">
+          <div class="stream-card-name">Apple Orchards</div>
+          <div class="stream-card-symbol">○</div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-main">
+            <div class="timeline-meta">
+              <span>Total cycle</span>
+              <span><strong>~4 years</strong> sapling to first harvest</span>
+            </div>
+            <div class="timeline-display">
+              <div class="timeline-svg-wrap" id="tl-apple"></div>
+              <div class="tl-panel" id="panel-apple">
+                <div class="tl-panel-empty">Hover any icon on the timeline to see what happens at that step.</div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-side">
+            <div class="callout">
+              <span class="callout-label">Notable</span>
+              <p class="callout-text">
+                A new orchard waits <strong>four years</strong> before producing its first sauce-worthy crop —
+                then keeps producing for decades after.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="stream-card stream-card-wide" data-stream="lumber">
+        <div class="stream-card-header">
+          <div class="stream-card-name">Timber Forests</div>
+          <div class="stream-card-symbol">▲</div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-main">
+            <div class="timeline-meta">
+              <span>Total cycle</span>
+              <span><strong>25–40 years</strong> seedling to harvest</span>
+            </div>
+            <div class="timeline-display">
+              <div class="timeline-svg-wrap" id="tl-lumber"></div>
+              <div class="tl-panel" id="panel-lumber">
+                <div class="tl-panel-empty">Hover any icon on the timeline to see what happens at that step.</div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-side">
+            <div class="callout">
+              <span class="callout-label">Notable</span>
+              <p class="callout-text">
+                The tree that becomes today's Amazon box was likely planted <strong>before the first iPhone existed</strong> —
+                a multi-decade head start on its destination.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="stream-card stream-card-wide" data-stream="iron">
+        <div class="stream-card-header">
+          <div class="stream-card-name">Iron Ore Mines</div>
+          <div class="stream-card-symbol">◆</div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-main">
+            <div class="timeline-meta">
+              <span>Total cycle</span>
+              <span><strong>15+ years</strong> discovery to first ore</span>
+            </div>
+            <div class="timeline-display">
+              <div class="timeline-svg-wrap" id="tl-iron"></div>
+              <div class="tl-panel" id="panel-iron">
+                <div class="tl-panel-empty">Hover any icon on the timeline to see what happens at that step.</div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-side">
+            <div class="callout">
+              <span class="callout-label">Notable</span>
+              <p class="callout-text">
+                From discovery to first shipped ore takes <strong>15+ years</strong> — a bet placed
+                on commodity prices a decade and a half away.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="section-footer">
+    <span>End of Stage 01</span>
+    <a class="next-section" href="earth-to-home-02-sorting.html">
+      <span>Continue ↓</span>
+      Stage 02 — Sorting
+    </a>
+  </div>
+</section>
+
+<script>
+// =============================================================
+// TOP 8 ONLY — index in array = rank, index 0 = #1 producer
+// =============================================================
+const APPLE_TOP8 = [
+  { code: 'CN', name: 'China',   pct: 49 },
+  { code: 'US', name: 'USA',     pct: 5 },
+  { code: 'TR', name: 'Turkey',  pct: 5 },
+  { code: 'PL', name: 'Poland',  pct: 4 },
+  { code: 'IT', name: 'Italy',   pct: 3 },
+  { code: 'IN', name: 'India',   pct: 3 },
+  { code: 'IR', name: 'Iran',    pct: 2.5 },
+  { code: 'FR', name: 'France',  pct: 2 }
+];
+const LUMBER_TOP8 = [
+  { code: 'US', name: 'USA',     pct: 17 },
+  { code: 'RU', name: 'Russia',  pct: 15 },
+  { code: 'CA', name: 'Canada',  pct: 10 },
+  { code: 'BR', name: 'Brazil',  pct: 9 },
+  { code: 'CN', name: 'China',   pct: 8 },
+  { code: 'SE', name: 'Sweden',  pct: 4 },
+  { code: 'FI', name: 'Finland', pct: 3 },
+  { code: 'DE', name: 'Germany', pct: 2.5 }
+];
+const IRON_TOP8 = [
+  { code: 'AU', name: 'Australia',    pct: 38 },
+  { code: 'BR', name: 'Brazil',       pct: 17 },
+  { code: 'CN', name: 'China',        pct: 14 },
+  { code: 'IN', name: 'India',        pct: 9 },
+  { code: 'RU', name: 'Russia',       pct: 4 },
+  { code: 'ZA', name: 'South Africa', pct: 3 },
+  { code: 'UA', name: 'Ukraine',      pct: 2.5 },
+  { code: 'CA', name: 'Canada',       pct: 2.5 }
+];
+
+const APPLE_PALETTE = [
+  '#3a0807', '#7a1a14', '#a82820', '#c9433b',
+  '#dd6862', '#ea9591', '#f3bdb9', '#f9dcd9'
+];
+const LUMBER_PALETTE = [
+  '#0d1f0a', '#2b5128', '#456f41', '#5e8a59',
+  '#7ea478', '#9fbf99', '#bdd5b8', '#dce8d9'
+];
+const IRON_PALETTE = [
+  '#1a1816', '#3d3a36', '#605c57', '#857f78',
+  '#a8a39b', '#bfbab1', '#d2cdc3', '#e3ddd3'
+];
+
+// =============================================================
+// CRITICAL FIX: World-atlas dataset uses ZERO-PADDED 3-digit IDs
+// like "036" for Australia, "076" for Brazil. My old dictionary
+// had keys like "36" and "76" which never matched.
+//
+// Solution: normalize() strips leading zeros before lookup.
+// "036" → "36", "076" → "76", "156" → "156" (unchanged).
+// =============================================================
+function normalizeId(id) {
+  // Convert to string, strip leading zeros, but keep at least one digit
+  const s = String(id);
+  const stripped = s.replace(/^0+/, '');
+  return stripped === '' ? '0' : stripped;
+}
+
+const NUMERIC_TO_ALPHA2 = {
+  '4':'AF','8':'AL','12':'DZ','24':'AO','32':'AR','36':'AU','40':'AT','50':'BD',
+  '56':'BE','68':'BO','76':'BR','100':'BG','104':'MM','108':'BI','112':'BY','116':'KH',
+  '120':'CM','124':'CA','140':'CF','148':'TD','152':'CL','156':'CN','158':'TW','170':'CO',
+  '178':'CG','180':'CD','188':'CR','191':'HR','192':'CU','196':'CY','203':'CZ','208':'DK',
+  '214':'DO','218':'EC','222':'SV','226':'GQ','231':'ET','233':'EE','246':'FI','250':'FR',
+  '266':'GA','268':'GE','270':'GM','276':'DE','288':'GH','300':'GR','320':'GT','324':'GN',
+  '332':'HT','340':'HN','348':'HU','352':'IS','356':'IN','360':'ID','364':'IR','368':'IQ',
+  '372':'IE','376':'IL','380':'IT','384':'CI','388':'JM','392':'JP','398':'KZ','400':'JO',
+  '404':'KE','408':'KP','410':'KR','414':'KW','417':'KG','418':'LA','422':'LB','426':'LS',
+  '428':'LV','430':'LR','434':'LY','440':'LT','442':'LU','450':'MG','454':'MW','458':'MY',
+  '466':'ML','478':'MR','484':'MX','496':'MN','498':'MD','504':'MA','508':'MZ','516':'NA',
+  '524':'NP','528':'NL','554':'NZ','558':'NI','562':'NE','566':'NG','578':'NO','586':'PK',
+  '591':'PA','598':'PG','600':'PY','604':'PE','608':'PH','616':'PL','620':'PT','624':'GW',
+  '626':'TL','630':'PR','634':'QA','642':'RO','643':'RU','646':'RW','682':'SA','686':'SN',
+  '688':'RS','694':'SL','702':'SG','703':'SK','704':'VN','705':'SI','706':'SO','710':'ZA',
+  '716':'ZW','724':'ES','728':'SS','729':'SD','740':'SR','748':'SZ','752':'SE','756':'CH',
+  '760':'SY','762':'TJ','764':'TH','768':'TG','780':'TT','784':'AE','788':'TN','792':'TR',
+  '795':'TM','800':'UG','804':'UA','807':'MK','818':'EG','826':'GB','834':'TZ','840':'US',
+  '854':'BF','858':'UY','860':'UZ','862':'VE','887':'YE','894':'ZM'
+};
+
+const COUNTRY_NAMES = {
+  'CN':'China','US':'United States','TR':'Turkey','PL':'Poland','IN':'India',
+  'IT':'Italy','FR':'France','IR':'Iran','RU':'Russia','BR':'Brazil',
+  'AU':'Australia','CA':'Canada','SE':'Sweden','FI':'Finland','DE':'Germany',
+  'ZA':'South Africa','UA':'Ukraine'
+};
+
+async function loadMapData() {
+  if (!window.topojson) {
+    await new Promise((resolve, reject) => {
+      const tryLoad = (urls, idx = 0) => {
+        if (idx >= urls.length) return reject(new Error('topojson lib failed'));
+        const s = document.createElement('script');
+        s.src = urls[idx];
+        s.onload = resolve;
+        s.onerror = () => tryLoad(urls, idx + 1);
+        document.head.appendChild(s);
+      };
+      tryLoad([
+        'https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js',
+        'https://unpkg.com/topojson-client@3/dist/topojson-client.min.js'
+      ]);
+    });
+  }
+  const sources = [
+    'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json',
+    'https://unpkg.com/world-atlas@2/countries-110m.json'
+  ];
+  for (const url of sources) {
+    try {
+      const r = await fetch(url);
+      if (!r.ok) continue;
+      const topo = await r.json();
+      return topojson.feature(topo, topo.objects.countries);
+    } catch (e) { console.warn('Map source failed:', url); }
+  }
+  throw new Error('All map sources failed');
+}
+
+function project(lng, lat, w, h) {
+  const cl = Math.max(Math.min(lat, 75), -60);
+  return [(lng + 180) * (w / 360), (75 - cl) * (h / 135)];
+}
+
+function ringToPath(ring, w, h) {
+  let d = ''; let started = false; let last = null;
+  for (let i = 0; i < ring.length; i++) {
+    const lng = ring[i][0], lat = ring[i][1];
+    if (last !== null && Math.abs(lng - last) > 180) {
+      d += 'Z M'; started = true;
+      const [x, y] = project(lng, lat, w, h);
+      d += x.toFixed(2) + ' ' + y.toFixed(2);
+      last = lng; continue;
+    }
+    const [x, y] = project(lng, lat, w, h);
+    d += (started ? 'L' : 'M') + x.toFixed(2) + ' ' + y.toFixed(2);
+    started = true; last = lng;
+  }
+  return d + 'Z';
+}
+
+function geomToPath(geom, w, h) {
+  if (geom.type === 'Polygon') return geom.coordinates.map(r => ringToPath(r, w, h)).join(' ');
+  if (geom.type === 'MultiPolygon') return geom.coordinates.map(p => p.map(r => ringToPath(r, w, h)).join(' ')).join(' ');
+  return '';
+}
+
+function renderMap(containerId, geoData, top8, palette, tipId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const W = 800, H = 300;
+
+  const lookup = {};
+  top8.forEach((entry, rank) => {
+    lookup[entry.code] = { rank, pct: entry.pct, name: entry.name, color: palette[rank] };
+  });
+
+  // Render with darkest-rank countries drawn LAST (on top)
+  const sortedFeatures = [...geoData.features].sort((a, b) => {
+    // *** USING normalizeId to handle zero-padded IDs ***
+    const aCode = NUMERIC_TO_ALPHA2[normalizeId(a.id)] || '';
+    const bCode = NUMERIC_TO_ALPHA2[normalizeId(b.id)] || '';
+    const aRank = lookup[aCode] ? lookup[aCode].rank : 99;
+    const bRank = lookup[bCode] ? lookup[bCode].rank : 99;
+    return bRank - aRank;
+  });
+
+  let svgInner = '';
+  sortedFeatures.forEach(feat => {
+    // *** USING normalizeId here too ***
+    const normalizedId = normalizeId(feat.id);
+    const alpha2 = NUMERIC_TO_ALPHA2[normalizedId] || '';
+    const entry = lookup[alpha2];
+    const path = geomToPath(feat.geometry, W, H);
+    if (!path) return;
+    const name = entry ? entry.name : (COUNTRY_NAMES[alpha2] || (feat.properties && feat.properties.name) || alpha2);
+
+    if (entry) {
+      svgInner += `<path class="country has-data" d="${path}" style="fill:${entry.color}" data-name="${name}" data-pct="${entry.pct}"></path>`;
+    } else {
+      svgInner += `<path class="country" d="${path}"></path>`;
+    }
+  });
+
+  const svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <defs><clipPath id="map-clip-${containerId}"><rect x="0" y="0" width="${W}" height="${H}"/></clipPath></defs>
+    <g clip-path="url(#map-clip-${containerId})">${svgInner}</g>
+  </svg>`;
+
+  const tooltip = container.querySelector('.map-tooltip');
+  container.innerHTML = svg;
+  if (tooltip) container.appendChild(tooltip);
+
+  const tip = document.getElementById(tipId);
+  container.querySelectorAll('.country.has-data').forEach(p => {
+    p.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      tip.style.left = (e.clientX - rect.left) + 'px';
+      tip.style.top = (e.clientY - rect.top) + 'px';
+      const name = p.getAttribute('data-name');
+      const pct = parseFloat(p.getAttribute('data-pct'));
+      tip.innerHTML = `<strong>${name}</strong> · ${pct < 1 ? pct.toFixed(1) : pct.toFixed(0)}% of global`;
+      tip.classList.add('show');
+    });
+    p.addEventListener('mouseleave', () => tip.classList.remove('show'));
+  });
+}
+
+function renderLegend(legendId, palette) {
+  const el = document.getElementById(legendId);
+  if (!el) return;
+  el.style.background = `linear-gradient(to right, ${palette[7]}, ${palette[5]}, ${palette[3]}, ${palette[1]}, ${palette[0]})`;
+}
+
+function renderRegions(containerId, top8, palette) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const maxPct = Math.max(...top8.map(r => r.pct));
+  let html = '<div class="regions-title">Top 8 Producing Countries</div>';
+  top8.forEach((r, rank) => {
+    const barW = (r.pct / maxPct) * 100;
+    html += `
+      <div class="region-row">
+        <span class="region-chip" style="background:${palette[rank]}"></span>
+        <span class="region-name">${r.name}</span>
+        <div class="region-bar-wrap"><div class="region-bar" style="width: ${barW}%"></div></div>
+        <span class="region-pct">${r.pct}%</span>
+      </div>
+    `;
+  });
+  container.innerHTML = html;
+}
+
+// =============================================================
+// TIMELINE
+// =============================================================
+const ICONS = {
+  sapling: '<path d="M12 22 L12 12 M12 12 Q8 9 7 5 M12 12 Q16 9 17 5" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/>',
+  tree: '<path d="M12 22 L12 14" stroke-width="1.5" stroke-linecap="round"/><path d="M12 14 Q6 11 6 6 Q6 4 8 4 Q9 2 12 3 Q15 2 16 4 Q18 4 18 6 Q18 11 12 14 Z" stroke-width="1.3" fill="none"/>',
+  flower: '<circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.7"/><path d="M12 8 Q14 6 12 4 Q10 6 12 8 Z M16 12 Q18 10 20 12 Q18 14 16 12 Z M12 16 Q14 18 12 20 Q10 18 12 16 Z M8 12 Q6 14 4 12 Q6 10 8 12 Z" stroke-width="1.2" fill="none"/>',
+  fruit: '<circle cx="12" cy="14" r="5" stroke-width="1.4" fill="none"/><path d="M12 9 Q12 6 14 5" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M14 5 Q15 4 16 5" stroke-width="1.4" fill="none" stroke-linecap="round"/>',
+  basket: '<path d="M5 10 L19 10 L17 20 L7 20 Z" stroke-width="1.4" fill="none"/><path d="M8 10 Q8 5 12 5 Q16 5 16 10" stroke-width="1.3" fill="none"/><circle cx="10" cy="14" r="1.5" fill="currentColor" opacity="0.5"/><circle cx="14" cy="15" r="1.5" fill="currentColor" opacity="0.5"/>',
+  seedling: '<path d="M12 22 L12 16" stroke-width="1.5" stroke-linecap="round"/><path d="M12 16 Q8 14 6 10" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M12 16 Q16 14 18 10" stroke-width="1.3" fill="none" stroke-linecap="round"/>',
+  growing: '<path d="M12 22 L12 8" stroke-width="1.5" stroke-linecap="round"/><path d="M12 18 Q9 17 8 14 M12 14 Q15 13 16 10 M12 10 Q9 9 8 6" stroke-width="1.2" fill="none" stroke-linecap="round"/>',
+  saw: '<path d="M3 14 L21 14 L21 16 L3 16 Z" stroke-width="1.3" fill="none"/><path d="M5 14 L5 11 M8 14 L8 11 M11 14 L11 11 M14 14 L14 11 M17 14 L17 11" stroke-width="1.2"/><path d="M3 16 L3 19 L8 19" stroke-width="1.3" fill="none"/>',
+  fullTree: '<path d="M12 22 L12 16" stroke-width="2" stroke-linecap="round"/><path d="M12 16 Q4 12 4 7 Q4 4 7 4 Q9 1 12 2 Q15 1 17 4 Q20 4 20 7 Q20 12 12 16 Z" stroke-width="1.4" fill="none"/>',
+  log: '<rect x="3" y="9" width="18" height="6" rx="3" stroke-width="1.4" fill="none"/><circle cx="6.5" cy="12" r="1.5" stroke-width="1" fill="none"/><circle cx="6.5" cy="12" r="0.6" fill="currentColor"/>',
+  drill: '<path d="M12 3 L12 14" stroke-width="1.5" stroke-linecap="round"/><path d="M9 14 L15 14 L13 19 L11 19 Z" stroke-width="1.3" fill="none"/><path d="M10 6 L14 6 M10 9 L14 9 M10 12 L14 12" stroke-width="1"/>',
+  document: '<path d="M6 3 L15 3 L18 6 L18 21 L6 21 Z" stroke-width="1.4" fill="none"/><path d="M15 3 L15 6 L18 6" stroke-width="1.3" fill="none"/><path d="M9 11 L15 11 M9 14 L15 14 M9 17 L13 17" stroke-width="1.1" stroke-linecap="round"/>',
+  excavator: '<path d="M3 18 L21 18 L21 21 L3 21 Z" stroke-width="1.3" fill="none"/><circle cx="7" cy="20" r="1.5" stroke-width="1" fill="none"/><circle cx="17" cy="20" r="1.5" stroke-width="1" fill="none"/><path d="M9 18 L9 12 L15 10 L15 18" stroke-width="1.3" fill="none"/><path d="M15 12 L20 7 L21 9 L18 13" stroke-width="1.3" fill="none"/>',
+  pickaxe: '<path d="M4 4 Q12 5 20 4 Q19 8 12 9 Q5 8 4 4 Z" stroke-width="1.3" fill="none"/><path d="M12 9 L12 21" stroke-width="1.5" stroke-linecap="round"/>',
+  truck: '<path d="M3 16 L13 16 L13 9 L3 9 Z" stroke-width="1.3" fill="none"/><path d="M13 11 L18 11 L21 14 L21 16 L13 16" stroke-width="1.3" fill="none"/><circle cx="6.5" cy="17.5" r="1.5" stroke-width="1" fill="none"/><circle cx="17" cy="17.5" r="1.5" stroke-width="1" fill="none"/>'
+};
+
+const APPLE_TIMELINE = {
+  maxValue: 4.2, axisTicks: [0, 1, 2, 3, 4], axisUnit: 'years',
+  steps: [
+    { name: 'Plant sapling',   detail: 'Grafted onto rootstock to standardize the variety.', start: 0, end: 0.15, icon: 'sapling', lane: 0 },
+    { name: 'Tree maturation', detail: 'Years of growth before the first commercial fruit appears.', start: 0.15, end: 4, icon: 'tree', lane: 1 },
+    { name: 'Annual bloom',    detail: 'Pollination by bees in April, every year once mature.', start: 3.25, end: 3.35, icon: 'flower', lane: 0 },
+    { name: 'Fruit set',       detail: 'Selective thinning in May–June to size up the remaining crop.', start: 3.45, end: 3.6, icon: 'fruit', lane: 0, labelBelow: true },
+    { name: 'Harvest',         detail: 'Hand-picked into bins · August through November.', start: 3.7, end: 4, icon: 'basket', lane: 0 }
+  ]
+};
+const LUMBER_TIMELINE = {
+  maxValue: 40, axisTicks: [0, 5, 10, 15, 20, 25, 30, 35, 40], axisUnit: 'years',
+  steps: [
+    { name: 'Seedling planted', detail: '~600 loblolly pine seedlings per acre, hand or machine planted.', start: 0, end: 0.5, icon: 'seedling', lane: 0 },
+    { name: 'Tree growth',      detail: 'Steady upward growth toward maturity.', start: 0.5, end: 30, icon: 'growing', lane: 1 },
+    { name: 'First thinning',   detail: 'Weaker trees removed for pulp around year 15 to give survivors more room.', start: 14, end: 16, icon: 'saw', lane: 0 },
+    { name: 'Continued growth', detail: 'Surviving trees mature into harvestable timber over the next decade-plus.', start: 16, end: 30, icon: 'fullTree', lane: 2 },
+    { name: 'Final harvest',    detail: 'Felled, delimbed, bucked into logs, then trucked to the mill.', start: 30, end: 40, icon: 'log', lane: 0 }
+  ]
+};
+const IRON_TIMELINE = {
+  maxValue: 17, axisTicks: [0, 2, 4, 6, 8, 10, 12, 14, 16], axisUnit: 'years',
+  steps: [
+    { name: 'Exploration',       detail: 'Geological surveys, exploratory drilling, sampling to confirm reserves.', start: 0, end: 7, icon: 'drill', lane: 0 },
+    { name: 'Permits & review',  detail: 'Environmental impact studies and regulatory approval from multiple agencies.', start: 5, end: 12, icon: 'document', lane: 1 },
+    { name: 'Mine construction', detail: 'Roads, processing plants, equipment installation, workforce setup.', start: 10, end: 15, icon: 'excavator', lane: 2 },
+    { name: 'Extraction begins', detail: 'Open-pit or underground operations start producing ore.', start: 15, end: 17, icon: 'pickaxe', lane: 0 },
+    { name: 'Daily haul cycle',  detail: 'Drill → blast → load → haul → crush. 24-hour operations once running.', start: 16, end: 17, icon: 'truck', lane: 1 }
+  ]
+};
+
+function formatDuration(start, end) {
+  const dur = end - start;
+  if (dur < 0.05) return 'instant';
+  if (dur < 1) return `~${Math.max(1, Math.round(dur * 12))} mo`;
+  if (dur < 2) return `~${dur.toFixed(1)} yrs`;
+  return `~${Math.round(dur)} yrs`;
+}
+
+function renderTimeline(containerId, panelId, data, streamColor) {
+  const container = document.getElementById(containerId);
+  const panel = document.getElementById(panelId);
+  if (!container || !panel) return;
+
+  const W = 900, leftPad = 40, rightPad = 40;
+  const trackWidth = W - leftPad - rightPad;
+  const maxLane = Math.max(...data.steps.map(s => s.lane));
+  const laneHeight = 64;
+  const baselineY = 70 + maxLane * laneHeight;
+  const H = baselineY + 50;
+
+  const xScale = v => leftPad + (v / data.maxValue) * trackWidth;
+  const laneY = lane => baselineY - 32 - lane * laneHeight;
+
+  let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">`;
+
+  const gridTicks = data.axisTicks.length > 6 ? data.axisTicks.filter((_, i) => i % 2 === 0) : data.axisTicks;
+  gridTicks.forEach(t => {
+    const x = xScale(t);
+    svg += `<line class="tl-axis-grid" x1="${x}" y1="20" x2="${x}" y2="${baselineY}"/>`;
+  });
+
+  svg += `<line class="tl-axis-line" x1="${leftPad}" y1="${baselineY}" x2="${leftPad + trackWidth}" y2="${baselineY}"/>`;
+
+  data.axisTicks.forEach(t => {
+    const x = xScale(t);
+    svg += `<line class="tl-axis-tick" x1="${x}" y1="${baselineY}" x2="${x}" y2="${baselineY + 5}"/>`;
+    svg += `<text class="tl-axis-label" x="${x}" y="${baselineY + 18}" text-anchor="middle">${t}</text>`;
+  });
+  svg += `<text class="tl-axis-title" x="${leftPad + trackWidth / 2}" y="${baselineY + 36}" text-anchor="middle">${data.axisUnit}</text>`;
+
+  data.steps.forEach((step, i) => {
+    const x1 = xScale(step.start);
+    const x2 = xScale(step.end);
+    const xCenter = (x1 + x2) / 2;
+    const figY = laneY(step.lane);
+    const errBarY = figY + 24;
+
+    svg += `<line x1="${xCenter}" y1="${figY + 18}" x2="${xCenter}" y2="${baselineY}" stroke="${streamColor}" stroke-width="0.6" stroke-dasharray="2 2" opacity="0.4"/>`;
+
+    const capH = 6;
+    if (x2 - x1 > 2) {
+      svg += `<line class="tl-range-line" x1="${x1}" y1="${errBarY}" x2="${x2}" y2="${errBarY}" stroke="${streamColor}" opacity="0.85"/>`;
+      svg += `<line class="tl-range-cap" x1="${x1}" y1="${errBarY - capH}" x2="${x1}" y2="${errBarY + capH}" stroke="${streamColor}" opacity="0.85"/>`;
+      svg += `<line class="tl-range-cap" x1="${x2}" y1="${errBarY - capH}" x2="${x2}" y2="${errBarY + capH}" stroke="${streamColor}" opacity="0.85"/>`;
+    } else {
+      svg += `<circle cx="${xCenter}" cy="${errBarY}" r="3" fill="${streamColor}"/>`;
+    }
+
+    const iconSize = 26;
+    svg += `
+      <g class="tl-figure" data-step="${i}" transform="translate(${xCenter - iconSize/2}, ${figY - iconSize/2 + 8})">
+        <circle cx="${iconSize/2}" cy="${iconSize/2}" r="${iconSize/2 + 3}" fill="${streamColor}" opacity="0.12"/>
+        <circle cx="${iconSize/2}" cy="${iconSize/2}" r="${iconSize/2}" fill="${streamColor}" opacity="0.95"/>
+        <g class="tl-figure-icon" transform="translate(${(iconSize - 20)/2}, ${(iconSize - 20)/2}) scale(${20/24})" stroke="white" fill="none" color="white">
+          ${ICONS[step.icon] || ''}
+        </g>
+      </g>
+    `;
+    if (step.labelBelow) {
+      svg += `<text class="tl-step-name" x="${xCenter}" y="${figY + iconSize + 12}" text-anchor="middle">${step.name}</text>`;
+    } else {
+      svg += `<text class="tl-step-name" x="${xCenter}" y="${figY - 8}" text-anchor="middle">${step.name}</text>`;
+    }
+  });
+
+  svg += '</svg>';
+  container.innerHTML = svg;
+
+  function showStep(step) {
+    panel.innerHTML = `
+      <span class="tl-panel-label">Step</span>
+      <div class="tl-panel-name">${step.name}</div>
+      <div class="tl-panel-detail">${step.detail}</div>
+      <div class="tl-panel-duration">Duration: <strong>${formatDuration(step.start, step.end)}</strong> · year ${step.start}–${step.end}</div>
+    `;
+  }
+
+  let activeFigure = null;
+  container.querySelectorAll('.tl-figure').forEach(g => {
+    g.addEventListener('mouseenter', () => {
+      const idx = parseInt(g.getAttribute('data-step'), 10);
+      showStep(data.steps[idx]);
+      if (activeFigure) activeFigure.classList.remove('active');
+      g.classList.add('active');
+      activeFigure = g;
+    });
+  });
+}
+
+async function init() {
+  renderLegend('legend-apple', APPLE_PALETTE);
+  renderLegend('legend-lumber', LUMBER_PALETTE);
+  renderLegend('legend-iron', IRON_PALETTE);
+
+  renderRegions('regions-apple', APPLE_TOP8, APPLE_PALETTE);
+  renderRegions('regions-lumber', LUMBER_TOP8, LUMBER_PALETTE);
+  renderRegions('regions-iron', IRON_TOP8, IRON_PALETTE);
+
+  renderTimeline('tl-apple', 'panel-apple', APPLE_TIMELINE, '#b8302a');
+  renderTimeline('tl-lumber', 'panel-lumber', LUMBER_TIMELINE, '#3d6b3a');
+  renderTimeline('tl-iron', 'panel-iron', IRON_TIMELINE, '#4a4a4a');
+
+  try {
+    const geo = await loadMapData();
+    renderMap('map-apple', geo, APPLE_TOP8, APPLE_PALETTE, 'tip-apple');
+    renderMap('map-lumber', geo, LUMBER_TOP8, LUMBER_PALETTE, 'tip-lumber');
+    renderMap('map-iron', geo, IRON_TOP8, IRON_PALETTE, 'tip-iron');
+  } catch (e) {
+    console.error('Map load failed:', e);
+    document.querySelectorAll('.map-svg-wrap').forEach(el => {
+      const tip = el.querySelector('.map-tooltip');
+      el.innerHTML = '<div class="map-loading">map data offline</div>';
+      if (tip) el.appendChild(tip);
+    });
+  }
+}
+init();
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

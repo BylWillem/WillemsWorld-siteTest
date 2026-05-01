@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Earth to Home · Section 6 — Assembly — willemsworld.fyi</title>
+<meta name="description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<link rel="canonical" href="https://willemsworld.fyi/earth-to-home-06-assembly.html">
+<meta name="author" content="willemsworld">
+
+<!-- Open Graph (Facebook, LinkedIn, etc.) -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://willemsworld.fyi/earth-to-home-06-assembly.html">
+<meta property="og:site_name" content="willemsworld.fyi">
+<meta property="og:title" content="Earth to Home — Section 6 — Assembly">
+<meta property="og:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta property="og:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A globe on the left, three colored streams arcing across, converging on a house on the right. Title: Earth to Home.">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Earth to Home — Section 6 — Assembly">
+<meta name="twitter:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta name="twitter:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f1ea;
+    --paper-deep: #ebe5d9;
+    --ink: #1a1614;
+    --ink-soft: #4a4540;
+    --ink-faint: #8a847c;
+    --rule: #d6cfc0;
+
+    --apple: #b8302a;
+    --apple-deep: #7a1a16;
+    --apple-soft: #f5dad8;
+    --apple-mid: #d65c54;
+
+    --lumber: #3d6b3a;
+    --lumber-deep: #1f3d1d;
+    --lumber-soft: #d4dfd2;
+    --lumber-mid: #6a9266;
+
+    --iron: #4a4a4a;
+    --iron-deep: #1f1f1f;
+    --iron-soft: #d8d4d0;
+    --iron-mid: #888;
+
+    --display: 'Fraunces', 'Times New Roman', serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184, 48, 42, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(61, 107, 58, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(74, 74, 74, 0.025) 0%, transparent 40%);
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.25rem 3rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+    z-index: 10; background: rgba(245, 241, 234, 0.92); backdrop-filter: blur(8px);
+    position: sticky; top: 0;
+  }
+  .masthead-brand { font-family: var(--display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em; }
+  .masthead-brand .tld { font-weight: 300; color: var(--ink-faint); }
+  .masthead-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+
+  .stages-strip {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .stage-pill {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.35rem 0.7rem; border: 1px solid var(--rule);
+    color: var(--ink-faint); background: rgba(255, 253, 248, 0.5); white-space: nowrap;
+  }
+  .stage-pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .stage-pill .num { opacity: 0.5; margin-right: 0.4rem; }
+  .stage-pill.active .num { opacity: 0.7; }
+  .stage-pill:not(.active):not(.takeaways):hover {
+    border-color: var(--ink); color: var(--ink); background: rgba(255, 253, 248, 0.9);
+    cursor: pointer;
+  }
+  .stage-pill.takeaways {
+    border-style: dashed;
+    margin-left: auto;
+  }
+  .stage-pill.takeaways.active { border-style: solid; }
+  .stage-pill.takeaways .star { margin-right: 0.4rem; opacity: 0.5; font-style: italic; }
+  .stage-pill.takeaways.active .star { opacity: 0.7; }
+  .stage-pill.takeaways:not(.active):hover {
+    border-color: var(--ink); color: var(--ink); background: rgba(255, 253, 248, 0.9);
+    cursor: pointer;
+  }
+
+  .section { padding: 5rem 3rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .section-marker {
+    display: flex; align-items: baseline; gap: 2rem;
+    margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
+  }
+  .section-number {
+    font-family: var(--display); font-weight: 300; font-size: 6rem; line-height: 1; letter-spacing: -0.04em;
+  }
+  .section-number-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 3rem; letter-spacing: -0.02em;
+  }
+  .section-intro {
+    font-family: var(--display); font-weight: 300; font-size: 1.25rem; line-height: 1.6;
+    max-width: 65ch; color: var(--ink-soft); margin-bottom: 4rem; font-style: italic;
+  }
+  .section-intro::first-letter {
+    font-size: 3.5rem; float: left; line-height: 0.85; padding: 0.3rem 0.5rem 0 0;
+    font-weight: 400; font-style: normal; color: var(--ink);
+  }
+
+  /* Stream cards */
+  .stream-card {
+    background: rgba(255, 253, 248, 0.65);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--ink);
+    padding: 2rem 2.25rem;
+    margin-bottom: 2rem;
+  }
+  .stream-card[data-stream="apple"] { border-top-color: var(--apple); }
+  .stream-card[data-stream="lumber"] { border-top-color: var(--lumber); }
+  .stream-card[data-stream="iron"] { border-top-color: var(--iron); }
+
+  .stream-card-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 0.5rem;
+  }
+  .stream-card-name {
+    font-family: var(--display); font-weight: 600; font-size: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .stream-card[data-stream="apple"] .stream-card-name { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .stream-card-name { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .stream-card-name { color: var(--iron-deep); }
+  .stream-card-symbol { font-family: var(--display); font-size: 1.1rem; opacity: 0.4; }
+  .stream-subtitle {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 1rem;
+  }
+  .stream-location {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 0.95rem; color: var(--ink-soft); line-height: 1.5;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dotted var(--rule);
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  .stream-location-tag {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+    padding-top: 0.05rem;
+  }
+  .stream-location-text { font-style: italic; }
+  .stream-location-text strong {
+    font-weight: 600; font-style: normal; color: var(--ink);
+  }
+
+  /* Sequence row of panels */
+  .refine-stage {
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem; flex-direction: column; gap: 0.75rem;
+  }
+  .refine-sequence {
+    display: flex; align-items: center; justify-content: center;
+    gap: 1rem; flex-wrap: wrap; width: 100%;
+  }
+  .refine-panel {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0.6rem; padding: 0.6rem 0.4rem;
+    flex: 1 1 0; min-width: 130px; max-width: 320px;
+    cursor: pointer; border: 1px solid transparent; border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+  .refine-panel:hover {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: var(--rule);
+    transform: translateY(-2px);
+  }
+  .refine-panel-svg-wrap {
+    width: 100%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .refine-panel-svg-wrap svg { max-width: 100%; height: auto; }
+  .refine-panel-name {
+    font-family: var(--display); font-weight: 600; font-size: 1rem; letter-spacing: -0.005em;
+  }
+  .stream-card[data-stream="apple"] .refine-panel-name { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .refine-panel-name { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .refine-panel-name { color: var(--iron-deep); }
+  .refine-panel-label {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-faint); text-align: center;
+  }
+  .refine-arrow-between {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 1.3rem; color: var(--ink-faint);
+    align-self: center; user-select: none;
+    flex-shrink: 0; padding: 0 0.25rem;
+  }
+
+  /* Detail card */
+  .detail-card {
+    margin-top: 1.25rem; padding: 1.1rem 1.4rem;
+    background: rgba(255, 253, 248, 0.95);
+    border: 1px solid var(--rule); border-left: 3px solid var(--ink);
+    min-height: 70px;
+  }
+  .stream-card[data-stream="apple"] .detail-card { border-left-color: var(--apple); }
+  .stream-card[data-stream="lumber"] .detail-card { border-left-color: var(--lumber); }
+  .stream-card[data-stream="iron"] .detail-card { border-left-color: var(--iron); }
+  .detail-card.empty {
+    background: rgba(0, 0, 0, 0.02);
+    border-left-color: var(--rule);
+  }
+  .detail-card-empty-text {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 0.9rem; color: var(--ink-faint);
+  }
+  .detail-card-name {
+    font-family: var(--display); font-weight: 600; font-size: 1.1rem;
+    letter-spacing: -0.01em; margin-bottom: 0.2rem;
+  }
+  .stream-card[data-stream="apple"] .detail-card-name { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .detail-card-name { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .detail-card-name { color: var(--iron-deep); }
+  .detail-card-stat {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 0.5rem;
+  }
+  .detail-card-stat strong { color: var(--ink); font-weight: 600; }
+  .detail-card-text {
+    font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;
+  }
+
+  /* Outcome line */
+  .stream-outcome {
+    margin-top: 1.5rem; padding: 1rem 1.25rem;
+    border: 2px solid; background: rgba(255, 253, 248, 0.85);
+    text-align: center;
+  }
+  .stream-card[data-stream="apple"] .stream-outcome { border-color: var(--apple); }
+  .stream-card[data-stream="lumber"] .stream-outcome { border-color: var(--lumber); }
+  .stream-card[data-stream="iron"] .stream-outcome { border-color: var(--iron); }
+  .stream-outcome-label {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--ink-faint); display: block; margin-bottom: 0.4rem;
+  }
+  .stream-outcome-result {
+    font-family: var(--display); font-weight: 600;
+    font-size: 1.3rem; letter-spacing: -0.01em;
+  }
+  .stream-card[data-stream="apple"] .stream-outcome-result { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .stream-outcome-result { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .stream-outcome-result { color: var(--iron-deep); }
+  .stream-outcome-detail {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 0.95rem; color: var(--ink-soft); line-height: 1.45;
+    margin-top: 0.4rem; max-width: 55ch; margin-left: auto; margin-right: auto;
+  }
+  .stream-outcome-detail strong {
+    font-weight: 600; font-style: normal; color: var(--ink);
+  }
+
+  /* ============================================================
+   * HOVER ANIMATIONS
+   * ============================================================ */
+  .anim-rotate-cw, .anim-rotate-ccw, .anim-rivet-press, .anim-print-head {
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+
+  /* APPLE — jar conveyor scrolling, fill stream pulsing */
+  .refine-panel:hover .anim-jar-belt {
+    animation: jarBelt 2s linear infinite;
+  }
+  .refine-panel:hover .anim-fill-stream {
+    animation: fillStream 1.4s ease-in-out infinite;
+  }
+  .refine-panel:hover .anim-cap-drop {
+    animation: capDrop 1.6s ease-in-out infinite;
+  }
+  @keyframes jarBelt {
+    from { transform: translateX(0); }
+    to { transform: translateX(-40px); }
+  }
+  @keyframes fillStream {
+    0%, 100% { opacity: 0.6; transform: scaleY(0.85); transform-origin: top; }
+    50% { opacity: 1; transform: scaleY(1.05); transform-origin: top; }
+  }
+  @keyframes capDrop {
+    0%, 100% { transform: translateY(0); opacity: 0.85; }
+    50% { transform: translateY(8px); opacity: 1; }
+  }
+
+  /* LUMBER — board scrolling, print head stamping */
+  .refine-panel:hover .anim-board-feed {
+    animation: jarBelt 2s linear infinite;
+  }
+  .refine-panel:hover .anim-print-head {
+    animation: printStamp 1.2s ease-in-out infinite;
+  }
+  .refine-panel:hover .anim-glue-drop {
+    animation: capDrop 1.5s ease-in-out infinite;
+  }
+  @keyframes printStamp {
+    0%, 100% { transform: translateY(0); }
+    40% { transform: translateY(8px); }
+    55% { transform: translateY(8px); }
+    70% { transform: translateY(0); }
+  }
+
+  /* IRON — rivet press descending, handle snap, packaging slide */
+  .refine-panel:hover .anim-rivet-press {
+    animation: rivetPress 1.4s ease-in-out infinite;
+  }
+  .refine-panel:hover .anim-package-slide {
+    animation: jarBelt 2.5s linear infinite;
+  }
+  .refine-panel:hover .anim-spark-rivet {
+    animation: sparkBurst 1.4s ease-out infinite;
+  }
+  @keyframes rivetPress {
+    0%, 100% { transform: translateY(0); }
+    35% { transform: translateY(14px); }
+    50% { transform: translateY(14px); }
+    65% { transform: translateY(0); }
+  }
+  @keyframes sparkBurst {
+    0%, 25% { opacity: 0; transform: scale(0.6); }
+    35% { opacity: 1; transform: scale(1.1); }
+    55% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.2); }
+  }
+
+  /* Section footer */
+  .section-footer {
+    margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .next-section {
+    font-family: var(--display); font-style: italic; font-weight: 400;
+    font-size: 1.4rem; text-transform: none; letter-spacing: -0.01em;
+    color: var(--ink); text-align: right;
+  }
+  a.next-section {
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+  a.next-section:hover {
+    opacity: 0.75;
+    transform: translateX(3px);
+  }
+  .next-section span {
+    color: var(--ink-faint); font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; display: block; margin-bottom: 0.25rem; font-style: normal;
+  }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .masthead { padding: 0.9rem 1.25rem; }
+    .stages-strip { padding: 1rem 1.25rem; gap: 0.3rem; }
+    .stage-pill { font-size: 0.58rem; padding: 0.28rem 0.5rem; }
+    .section { padding: 3.5rem 1.25rem; }
+    .stream-card { padding: 1.5rem 1.25rem; }
+    .section-marker { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    .section-number { font-size: 4rem; }
+    .section-title { font-size: 2rem; }
+    .section-intro { font-size: 1.1rem; }
+    .refine-sequence { flex-direction: column; gap: 0.5rem; }
+    .refine-arrow-between { transform: rotate(90deg); }
+    .refine-panel { max-width: 100%; }
+    .stream-outcome-result { font-size: 1.15rem; }
+    .section-footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .next-section { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-brand">willemsworld<span class="tld">.fyi</span></div>
+  <div class="masthead-meta">Insight № 04 · Supply Chain Ecosystems</div>
+</header>
+
+<div class="stages-strip">
+  <a href="earth-to-home.html" class="stage-pill" style="text-decoration: none;"><span class="num">01</span>The Earth</a>
+  <a href="earth-to-home-02-sorting.html" class="stage-pill" style="text-decoration: none;"><span class="num">02</span>Sorting</a>
+  <a href="earth-to-home-03-refinement.html" class="stage-pill" style="text-decoration: none;"><span class="num">03</span>Refinement</a>
+  <a href="earth-to-home-04-transformation.html" class="stage-pill" style="text-decoration: none;"><span class="num">04</span>Transformation</a>
+  <a href="earth-to-home-05-finishing.html" class="stage-pill" style="text-decoration: none;"><span class="num">05</span>Finishing</a>
+  <span class="stage-pill active"><span class="num">06</span>Assembly</span>
+  <a href="earth-to-home-07-distribution.html" class="stage-pill" style="text-decoration: none;"><span class="num">07</span>Distribution</a>
+  <a href="earth-to-home-08-consumption.html" class="stage-pill" style="text-decoration: none;"><span class="num">08</span>Consumption</a>
+  <a href="earth-to-home-takeaways.html" class="stage-pill takeaways" style="text-decoration: none;"><span class="star">✦</span>Takeaways</a>
+</div>
+
+<section class="section">
+  <div class="section-marker reveal">
+    <div class="section-number">06</div>
+    <div>
+      <span class="section-number-meta">Stage Six of Eight</span>
+      <h2 class="section-title">Assembly</h2>
+    </div>
+  </div>
+
+  <p class="section-intro reveal">
+    Finishing made the components. Assembly puts them together into a finished product
+    you could put in someone's hand. Sauce gets sealed in a jar. Board gets folded into
+    a box. Two scissor halves get joined at the pivot. After this stage, the product
+    has its final form — only delivery stands between it and a customer.
+  </p>
+
+  <!-- ============================== -->
+  <!-- APPLE -->
+  <!-- ============================== -->
+  <article class="stream-card reveal" data-stream="apple">
+    <div class="stream-card-header">
+      <div class="stream-card-name">Apple Assembly</div>
+      <div class="stream-card-symbol">○</div>
+    </div>
+    <div class="stream-subtitle">Sauce + jars + lids → finished product</div>
+    <div class="stream-location">
+      <span class="stream-location-tag">Where</span>
+      <span class="stream-location-text"><strong>The same processing plant</strong> as cooking and finishing — the pasteurizer drains directly into the filler. Empty jars arrive on a separate line from a glass plant nearby (or from offshore), get rinsed, and meet the sauce on the filling line.</span>
+    </div>
+
+    <div class="refine-stage" id="apple-stage"></div>
+
+    <div class="detail-card empty" id="apple-detail">
+      <div class="detail-card-empty-text">Hover either panel to see what's happening at that step.</div>
+    </div>
+
+    <div class="stream-outcome">
+      <span class="stream-outcome-label">Output</span>
+      <div class="stream-outcome-result">Sealed jars of applesauce</div>
+      <div class="stream-outcome-detail">
+        Each jar is now a <strong>finished product</strong> — pasteurized sauce inside, hermetic
+        seal, label applied. From here it's a sealed unit, indistinguishable from any jar you'd
+        pull off a shelf. Stable for years if unopened.
+      </div>
+    </div>
+  </article>
+
+  <!-- ============================== -->
+  <!-- LUMBER -->
+  <!-- ============================== -->
+  <article class="stream-card reveal" data-stream="lumber">
+    <div class="stream-card-header">
+      <div class="stream-card-name">Lumber Assembly</div>
+      <div class="stream-card-symbol">▲</div>
+    </div>
+    <div class="stream-subtitle">Sheets → cut, scored, glued, branded boxes</div>
+    <div class="stream-location">
+      <span class="stream-location-tag">Where</span>
+      <span class="stream-location-text"><strong>A converter</strong> — a separate facility from the corrugator, often closer to the brand customer. Giant board sheets arrive on flatbeds; cut, scored, glued, and printed flat-pack boxes leave on flatbeds. A typical converter serves dozens of brand customers within a regional radius.</span>
+    </div>
+
+    <div class="refine-stage" id="lumber-stage"></div>
+
+    <div class="detail-card empty" id="lumber-detail">
+      <div class="detail-card-empty-text">Hover either panel to see what's happening at that step.</div>
+    </div>
+
+    <div class="stream-outcome">
+      <span class="stream-outcome-label">Output</span>
+      <div class="stream-outcome-result">Branded flat-pack box blanks</div>
+      <div class="stream-outcome-detail">
+        Stacked on pallets, ready to ship. Each blank is precisely sized, scored where it'll
+        fold, and printed with the customer's branding. They arrive at the buyer <strong>flat</strong> —
+        the box is only assembled into 3D form at the moment something needs to go inside it.
+      </div>
+    </div>
+  </article>
+
+  <!-- ============================== -->
+  <!-- IRON -->
+  <!-- ============================== -->
+  <article class="stream-card reveal" data-stream="iron">
+    <div class="stream-card-header">
+      <div class="stream-card-name">Iron Assembly</div>
+      <div class="stream-card-symbol">◆</div>
+    </div>
+    <div class="stream-subtitle">Two blades → joined, handled, packaged scissors</div>
+    <div class="stream-location">
+      <span class="stream-location-tag">Where</span>
+      <span class="stream-location-text"><strong>The scissor factory.</strong> Final assembly is the last cell on the line — riveting, handle attachment, and packaging happen in sequence in the same building where the blades were finished. The product that leaves here is what you'd find in a retail box.</span>
+    </div>
+
+    <div class="refine-stage" id="iron-stage"></div>
+
+    <div class="detail-card empty" id="iron-detail">
+      <div class="detail-card-empty-text">Hover any panel to see what's happening at that step.</div>
+    </div>
+
+    <div class="stream-outcome">
+      <span class="stream-outcome-label">Output</span>
+      <div class="stream-outcome-result">Retail-ready scissors</div>
+      <div class="stream-outcome-detail">
+        Two pieces of steel, joined at one point, with a handle on each end and a barcode on
+        the package. <strong>Functional, branded, sellable.</strong> The supply chain that started
+        15+ years ago at an iron ore pit in Australia now ends at a hangtag on a hardware-store hook.
+      </div>
+    </div>
+  </article>
+
+  <div class="section-footer">
+    <span>End of Stage 06</span>
+    <a class="next-section" href="earth-to-home-07-distribution.html">
+      <span>Continue ↓</span>
+      Stage 07 — Distribution
+    </a>
+  </div>
+</section>
+
+<script>
+function makeRand(seed) {
+  let s = seed;
+  return () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+}
+
+// Color tokens
+const APPLE_SAUCE = '#d4a878';
+const APPLE_SAUCE_DEEP = '#a87f4f';
+const APPLE_SKIN = '#b8302a';
+const APPLE_SKIN_DEEP = '#7a1a16';
+const STEAM = '#e8e2d4';
+const GLASS = '#c8d4dc';
+const GLASS_DEEP = '#8a9aa8';
+const GOLD_LID = '#b8932a';
+const GOLD_LID_DEEP = '#7a611a';
+
+const KRAFT_BROWN = '#8a5a32';
+const KRAFT_DEEP = '#5a3a1f';
+const KRAFT_LIGHT = '#b88c5a';
+const PAPER_TAN = '#d4b88a';
+
+const IRON_DARK = '#1a1614';
+const IRON_METAL = '#34322f';
+const IRON_LIGHT = '#56524e';
+const IRON_GREY = '#7a7570';
+const IRON_RUST = '#7a3a1a';
+const IRON_RUST_LIGHT = '#a85020';
+const IRON_GLOW = '#ff6b1a';
+const IRON_GLOW_INNER = '#ffb340';
+const IRON_GLOW_HOT = '#ffe066';
+const HANDLE_RED = '#c43a2a';
+const HANDLE_RED_DEEP = '#8a1f12';
+
+// =============================================================
+// APPLE — FILLING + SEALING
+// =============================================================
+
+// Helper: a single jar shape, optionally filled with sauce, optionally with lid
+function jarShape({ x, y, filled = false, lid = false, scale = 1 }) {
+  const w = 18 * scale, h = 28 * scale;
+  // Jar body: slightly tapered cylinder with rounded shoulders
+  const body = `
+    <path d="M ${x - w/2} ${y - h * 0.6}
+             L ${x - w/2} ${y + h * 0.35}
+             Q ${x - w/2} ${y + h * 0.5} ${x - w/2 + 2} ${y + h * 0.5}
+             L ${x + w/2 - 2} ${y + h * 0.5}
+             Q ${x + w/2} ${y + h * 0.5} ${x + w/2} ${y + h * 0.35}
+             L ${x + w/2} ${y - h * 0.6}
+             Q ${x + w/2 - 1} ${y - h * 0.65} ${x + w/2 - 3} ${y - h * 0.65}
+             L ${x - w/2 + 3} ${y - h * 0.65}
+             Q ${x - w/2 + 1} ${y - h * 0.65} ${x - w/2} ${y - h * 0.6} Z"
+          fill="${GLASS}" fill-opacity="0.45" stroke="${GLASS_DEEP}" stroke-width="0.8"/>
+  `;
+  // Sauce inside (if filled)
+  const sauce = filled ? `
+    <path d="M ${x - w/2 + 1.5} ${y - h * 0.4}
+             L ${x - w/2 + 1.5} ${y + h * 0.34}
+             Q ${x - w/2 + 1.5} ${y + h * 0.48} ${x - w/2 + 3} ${y + h * 0.48}
+             L ${x + w/2 - 3} ${y + h * 0.48}
+             Q ${x + w/2 - 1.5} ${y + h * 0.48} ${x + w/2 - 1.5} ${y + h * 0.34}
+             L ${x + w/2 - 1.5} ${y - h * 0.4} Z"
+          fill="${APPLE_SAUCE}" opacity="0.95"/>
+    <ellipse cx="${x}" cy="${y - h * 0.4}" rx="${w/2 - 1.5}" ry="1.5" fill="${APPLE_SAUCE_DEEP}"/>
+  ` : '';
+  // Lid (if present)
+  const lidEl = lid ? `
+    <rect x="${x - w/2 - 0.5}" y="${y - h * 0.7}" width="${w + 1}" height="3" fill="${GOLD_LID}" stroke="${GOLD_LID_DEEP}" stroke-width="0.6"/>
+    <line x1="${x - w/2}" y1="${y - h * 0.69}" x2="${x + w/2}" y2="${y - h * 0.69}" stroke="${GOLD_LID_DEEP}" stroke-width="0.3" opacity="0.6"/>
+  ` : '';
+  // Highlight on glass for sheen
+  const sheen = `<line x1="${x - w/2 + 2.5}" y1="${y - h * 0.4}" x2="${x - w/2 + 2.5}" y2="${y + h * 0.3}" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>`;
+
+  return body + sauce + lidEl + sheen;
+}
+
+// PANEL 1: Filling — jars on conveyor, fill head dispensing sauce into one
+function makeFilling({ uid = 'fill' } = {}) {
+  const W = 280, H = 200;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Floor -->
+      <line x1="0" y1="186" x2="280" y2="186" stroke="${IRON_DARK}" stroke-width="0.5" opacity="0.4" stroke-dasharray="3 3"/>
+
+      <!-- Sauce supply pipe coming in from upper-left -->
+      <line x1="20" y1="20" x2="140" y2="20" stroke="${IRON_DARK}" stroke-width="3"/>
+      <line x1="140" y1="20" x2="140" y2="40" stroke="${IRON_DARK}" stroke-width="3"/>
+      <text x="20" y="14" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1">PASTEURIZED SAUCE →</text>
+
+      <!-- Filling head — a vertical nozzle dispensing sauce -->
+      <rect x="132" y="40" width="16" height="22" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1"/>
+      <rect x="135" y="62" width="10" height="6" fill="${IRON_DARK}"/>
+
+      <!-- Sauce stream falling into jar (animated pulse) -->
+      <g class="anim-fill-stream">
+        <rect x="138" y="68" width="4" height="40" fill="${APPLE_SAUCE}" opacity="0.9"/>
+        <ellipse cx="140" cy="68" rx="2.5" ry="1.5" fill="${APPLE_SAUCE_DEEP}"/>
+        <!-- Splash at the jar opening -->
+        <ellipse cx="140" cy="108" rx="6" ry="2" fill="${APPLE_SAUCE_DEEP}" opacity="0.7"/>
+      </g>
+
+      <!-- Conveyor belt -->
+      <rect x="10" y="135" width="260" height="8" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1"/>
+      <!-- Belt rollers at each end -->
+      <circle cx="14" cy="139" r="6" fill="${IRON_DARK}" stroke="${IRON_DARK}" stroke-width="0.5"/>
+      <circle cx="266" cy="139" r="6" fill="${IRON_DARK}" stroke="${IRON_DARK}" stroke-width="0.5"/>
+
+      <!-- Belt tread marks (animated to scroll) -->
+      <g class="anim-jar-belt">
+        <line x1="20" y1="135" x2="20" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="40" y1="135" x2="40" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="60" y1="135" x2="60" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="80" y1="135" x2="80" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="100" y1="135" x2="100" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="120" y1="135" x2="120" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="160" y1="135" x2="160" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="180" y1="135" x2="180" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="200" y1="135" x2="200" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="220" y1="135" x2="220" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="240" y1="135" x2="240" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="260" y1="135" x2="260" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+      </g>
+
+      <!-- Jars on the conveyor — empty on left, full mid, full on right -->
+      <!-- Empty jar far-left -->
+      ${jarShape({ x: 30, y: 120, filled: false, lid: false, scale: 1 })}
+      <!-- Empty jar approaching the filling head -->
+      ${jarShape({ x: 90, y: 120, filled: false, lid: false, scale: 1 })}
+      <!-- The jar currently being filled (under the nozzle) -->
+      ${jarShape({ x: 140, y: 120, filled: true, lid: false, scale: 1 })}
+      <!-- Filled jar moving away from filler -->
+      ${jarShape({ x: 200, y: 120, filled: true, lid: false, scale: 1 })}
+      <!-- Another filled jar at far right -->
+      ${jarShape({ x: 250, y: 120, filled: true, lid: false, scale: 1 })}
+
+      <!-- Conveyor support legs -->
+      <line x1="14" y1="145" x2="14" y2="186" stroke="${IRON_DARK}" stroke-width="1.2"/>
+      <line x1="140" y1="145" x2="140" y2="186" stroke="${IRON_DARK}" stroke-width="1.2"/>
+      <line x1="266" y1="145" x2="266" y2="186" stroke="${IRON_DARK}" stroke-width="1.2"/>
+
+      <!-- Direction arrow -->
+      <path d="M 240 162 L 256 162 M 252 159 L 256 162 L 252 165" stroke="${APPLE_SKIN}" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <text x="248" y="173" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5" fill="${APPLE_SKIN_DEEP}" letter-spacing="0.5">FLOW</text>
+
+      <!-- Title -->
+      <text x="140" y="196" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="2">FILLING LINE · ~200 JARS / MIN</text>
+    </svg>
+  `;
+}
+
+// PANEL 2: Sealing — capper places lids on jars, induction sealing
+function makeSealing({ uid = 'seal' } = {}) {
+  const W = 280, H = 200;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Floor -->
+      <line x1="0" y1="186" x2="280" y2="186" stroke="${IRON_DARK}" stroke-width="0.5" opacity="0.4" stroke-dasharray="3 3"/>
+
+      <!-- Lid feeder hopper at upper-left (where caps come from) -->
+      <path d="M 25 14 L 75 14 L 70 32 L 30 32 Z" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1"/>
+      <text x="50" y="10" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1.5">CAPS</text>
+      <!-- Stack of caps inside the hopper -->
+      <rect x="35" y="20" width="30" height="2" fill="${GOLD_LID}"/>
+      <rect x="35" y="23" width="30" height="2" fill="${GOLD_LID}"/>
+      <rect x="35" y="26" width="30" height="2" fill="${GOLD_LID}"/>
+      <rect x="35" y="29" width="30" height="2" fill="${GOLD_LID}"/>
+
+      <!-- Capper machine arm (descends to place each cap) -->
+      <line x1="50" y1="32" x2="50" y2="60" stroke="${IRON_DARK}" stroke-width="2"/>
+      <line x1="50" y1="60" x2="140" y2="60" stroke="${IRON_DARK}" stroke-width="2"/>
+      <line x1="140" y1="60" x2="140" y2="76" stroke="${IRON_DARK}" stroke-width="2"/>
+
+      <!-- Capper head: holds and presses cap -->
+      <g class="anim-cap-drop">
+        <rect x="132" y="76" width="16" height="14" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1"/>
+        <rect x="134" y="86" width="12" height="3" fill="${IRON_DARK}"/>
+        <!-- Cap currently being placed -->
+        <rect x="133" y="92" width="14" height="2.5" fill="${GOLD_LID}" stroke="${GOLD_LID_DEEP}" stroke-width="0.5"/>
+      </g>
+
+      <!-- Induction heating coil — small box below the conveyor that seals the lids by heat -->
+      <rect x="190" y="100" width="50" height="14" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1"/>
+      <text x="215" y="110" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5" fill="${PAPER_TAN}" letter-spacing="0.5" font-weight="700">INDUCTION SEAL</text>
+      <!-- Heat indicator marks -->
+      <circle cx="200" cy="118" r="0.8" fill="${IRON_GLOW}" opacity="0.7"/>
+      <circle cx="215" cy="118" r="0.8" fill="${IRON_GLOW}" opacity="0.7"/>
+      <circle cx="230" cy="118" r="0.8" fill="${IRON_GLOW}" opacity="0.7"/>
+
+      <!-- Conveyor belt -->
+      <rect x="10" y="135" width="260" height="8" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1"/>
+      <circle cx="14" cy="139" r="6" fill="${IRON_DARK}" stroke="${IRON_DARK}" stroke-width="0.5"/>
+      <circle cx="266" cy="139" r="6" fill="${IRON_DARK}" stroke="${IRON_DARK}" stroke-width="0.5"/>
+      <!-- Belt tread marks (animated) -->
+      <g class="anim-jar-belt">
+        <line x1="20" y1="135" x2="20" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="40" y1="135" x2="40" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="60" y1="135" x2="60" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="80" y1="135" x2="80" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="100" y1="135" x2="100" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="120" y1="135" x2="120" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="160" y1="135" x2="160" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="180" y1="135" x2="180" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="200" y1="135" x2="200" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="240" y1="135" x2="240" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="260" y1="135" x2="260" y2="143" stroke="${IRON_GREY}" stroke-width="0.5"/>
+      </g>
+
+      <!-- Jars: filled (no lid yet) → being capped → sealed → finished -->
+      <!-- Filled jar approaching capper, no lid yet -->
+      ${jarShape({ x: 80, y: 120, filled: true, lid: false, scale: 1 })}
+      <!-- Jar directly under capper, lid being placed -->
+      ${jarShape({ x: 140, y: 120, filled: true, lid: false, scale: 1 })}
+      <!-- Just-capped jar moving past induction sealer -->
+      ${jarShape({ x: 215, y: 120, filled: true, lid: true, scale: 1 })}
+      <!-- Fully sealed jar exiting on right -->
+      ${jarShape({ x: 255, y: 120, filled: true, lid: true, scale: 1 })}
+
+      <!-- A small label being applied (would be applied by a labeler downstream — represented with a paper rectangle on the rightmost jar) -->
+      <rect x="247" y="115" width="16" height="8" fill="${PAPER_TAN}" stroke="${KRAFT_DEEP}" stroke-width="0.4"/>
+      <line x1="249" y1="118" x2="261" y2="118" stroke="${KRAFT_DEEP}" stroke-width="0.3"/>
+      <line x1="249" y1="120" x2="259" y2="120" stroke="${KRAFT_DEEP}" stroke-width="0.3"/>
+
+      <!-- Conveyor support legs -->
+      <line x1="14" y1="145" x2="14" y2="186" stroke="${IRON_DARK}" stroke-width="1.2"/>
+      <line x1="140" y1="145" x2="140" y2="186" stroke="${IRON_DARK}" stroke-width="1.2"/>
+      <line x1="266" y1="145" x2="266" y2="186" stroke="${IRON_DARK}" stroke-width="1.2"/>
+
+      <!-- Direction arrow -->
+      <path d="M 240 162 L 256 162 M 252 159 L 256 162 L 252 165" stroke="${APPLE_SKIN}" stroke-width="1" fill="none" stroke-linecap="round"/>
+
+      <!-- Title -->
+      <text x="140" y="196" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="2">CAPPING + INDUCTION SEAL · 1 SEC PER JAR</text>
+    </svg>
+  `;
+}
+
+// =============================================================
+// LUMBER — GLUING + BRANDING
+// =============================================================
+
+// PANEL 1: Gluing — corrugated sheet with score lines, glue strip, folded into box blank
+function makeGluing({ uid = 'glue' } = {}) {
+  const W = 280, H = 200;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Floor -->
+      <line x1="0" y1="186" x2="280" y2="186" stroke="${IRON_DARK}" stroke-width="0.5" opacity="0.4" stroke-dasharray="3 3"/>
+
+      <!-- Input: corrugated board sheet feeding in from left -->
+      <!-- Show the flat sheet on the left half, with score lines visible -->
+      <rect x="10" y="80" width="120" height="50" fill="${PAPER_TAN}" stroke="${KRAFT_DEEP}" stroke-width="1"/>
+      <!-- Corrugated edge texture on the cut side -->
+      <g>
+        <path d="M 130 80 L 132 82 L 130 84 L 132 86 L 130 88 L 132 90 L 130 92 L 132 94 L 130 96 L 132 98 L 130 100 L 132 102 L 130 104 L 132 106 L 130 108 L 132 110 L 130 112 L 132 114 L 130 116 L 132 118 L 130 120 L 132 122 L 130 124 L 132 126 L 130 128 L 132 130"
+              fill="none" stroke="${KRAFT_BROWN}" stroke-width="0.5"/>
+      </g>
+
+      <!-- Score lines on the sheet (where it'll fold) -->
+      <line x1="40" y1="80" x2="40" y2="130" stroke="${KRAFT_DEEP}" stroke-width="0.5" stroke-dasharray="2 2"/>
+      <line x1="70" y1="80" x2="70" y2="130" stroke="${KRAFT_DEEP}" stroke-width="0.5" stroke-dasharray="2 2"/>
+      <line x1="100" y1="80" x2="100" y2="130" stroke="${KRAFT_DEEP}" stroke-width="0.5" stroke-dasharray="2 2"/>
+      <line x1="10" y1="100" x2="130" y2="100" stroke="${KRAFT_DEEP}" stroke-width="0.5" stroke-dasharray="2 2"/>
+
+      <text x="70" y="74" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1">SCORED SHEET</text>
+
+      <!-- Glue applicator above (a small nozzle dispensing adhesive) -->
+      <rect x="146" y="40" width="14" height="20" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="0.8"/>
+      <rect x="148" y="60" width="10" height="4" fill="${IRON_DARK}"/>
+      <text x="153" y="36" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5" fill="#8a847c" letter-spacing="0.5">GLUE</text>
+
+      <!-- Glue drops falling onto the seam (animated) -->
+      <g class="anim-glue-drop">
+        <ellipse cx="153" cy="68" rx="1.5" ry="2" fill="${KRAFT_BROWN}" opacity="0.85"/>
+        <ellipse cx="153" cy="78" rx="1.5" ry="2" fill="${KRAFT_BROWN}" opacity="0.7"/>
+      </g>
+
+      <!-- Glue line on the box flap (where the seam will be) -->
+      <line x1="148" y1="100" x2="158" y2="100" stroke="${KRAFT_DEEP}" stroke-width="2" opacity="0.85"/>
+
+      <!-- Output: assembled box blank on the right (flat, glued seam visible) -->
+      <!-- This is what the box looks like after the seam is glued — still flat, but ready to pop into 3D -->
+      <g transform="translate(165, 95)">
+        <!-- Main face -->
+        <rect x="0" y="0" width="50" height="36" fill="${PAPER_TAN}" stroke="${KRAFT_DEEP}" stroke-width="1.2"/>
+        <!-- Side flap on top -->
+        <rect x="0" y="-12" width="50" height="12" fill="${KRAFT_LIGHT}" stroke="${KRAFT_DEEP}" stroke-width="0.8"/>
+        <!-- Side flap on bottom -->
+        <rect x="0" y="36" width="50" height="12" fill="${KRAFT_LIGHT}" stroke="${KRAFT_DEEP}" stroke-width="0.8"/>
+        <!-- Glued seam strip on the right edge -->
+        <rect x="44" y="0" width="6" height="36" fill="${KRAFT_BROWN}" opacity="0.6" stroke="${KRAFT_DEEP}" stroke-width="0.4"/>
+        <!-- Score lines on the box blank (faint) -->
+        <line x1="0" y1="-12" x2="50" y2="-12" stroke="${KRAFT_DEEP}" stroke-width="0.4" stroke-dasharray="2 2" opacity="0.6"/>
+        <line x1="0" y1="36" x2="50" y2="36" stroke="${KRAFT_DEEP}" stroke-width="0.4" stroke-dasharray="2 2" opacity="0.6"/>
+        <line x1="44" y1="-12" x2="44" y2="48" stroke="${KRAFT_DEEP}" stroke-width="0.4" stroke-dasharray="2 2" opacity="0.6"/>
+        <!-- Bit of glue squeeze-out at the seam -->
+        <path d="M 44 0 L 44 36" stroke="${KRAFT_DEEP}" stroke-width="0.6" opacity="0.7"/>
+      </g>
+
+      <text x="190" y="160" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1">BOX BLANK · FLAT-PACK</text>
+
+      <!-- Direction arrow between input and output -->
+      <path d="M 137 118 L 162 118 M 158 115 L 162 118 L 158 121" stroke="${KRAFT_DEEP}" stroke-width="1" fill="none" stroke-linecap="round"/>
+
+      <!-- Title -->
+      <text x="140" y="196" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="2">SCORE · GLUE · FOLD SEAM</text>
+    </svg>
+  `;
+}
+
+// PANEL 2: Branding — flexographic printing press stamping logo on box
+function makeBranding({ uid = 'brand' } = {}) {
+  const W = 280, H = 200;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Floor -->
+      <line x1="0" y1="186" x2="280" y2="186" stroke="${IRON_DARK}" stroke-width="0.5" opacity="0.4" stroke-dasharray="3 3"/>
+
+      <!-- Print press housing -->
+      <rect x="80" y="30" width="120" height="80" fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1.5"/>
+      <rect x="80" y="30" width="120" height="80" fill="${IRON_DARK}" opacity="0.15"/>
+      <!-- Bolts on corners -->
+      <circle cx="86" cy="36" r="1.5" fill="${IRON_DARK}"/>
+      <circle cx="194" cy="36" r="1.5" fill="${IRON_DARK}"/>
+
+      <!-- Two ink reservoirs on top (red and dark) -->
+      <rect x="100" y="14" width="20" height="16" fill="${HANDLE_RED}" stroke="${HANDLE_RED_DEEP}" stroke-width="0.8"/>
+      <text x="110" y="24" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="4" fill="#fff" letter-spacing="0.5">RED</text>
+      <rect x="160" y="14" width="20" height="16" fill="${IRON_DARK}" stroke="${IRON_DARK}" stroke-width="0.8"/>
+      <text x="170" y="24" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="4" fill="#fff" letter-spacing="0.5">BLACK</text>
+
+      <!-- Print head — descends onto the board -->
+      <g class="anim-print-head">
+        <rect x="115" y="50" width="50" height="34" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1.2"/>
+        <!-- Print plate (where the design is) -->
+        <rect x="120" y="55" width="40" height="24" fill="${HANDLE_RED}" opacity="0.6" stroke="${IRON_DARK}" stroke-width="0.5"/>
+        <!-- Stylized logo on the print plate -->
+        <text x="140" y="71" text-anchor="middle" font-family="Fraunces, serif" font-size="11" font-weight="700" fill="#fff" letter-spacing="-0.5">LOGO</text>
+        <!-- Striking face -->
+        <rect x="118" y="80" width="44" height="3" fill="${IRON_DARK}"/>
+      </g>
+
+      <!-- Box blank on conveyor below -->
+      <rect x="50" y="100" width="180" height="36" fill="${PAPER_TAN}" stroke="${KRAFT_DEEP}" stroke-width="1.2"/>
+      <!-- Existing score lines -->
+      <line x1="60" y1="100" x2="60" y2="136" stroke="${KRAFT_DEEP}" stroke-width="0.4" stroke-dasharray="2 2" opacity="0.5"/>
+      <line x1="120" y1="100" x2="120" y2="136" stroke="${KRAFT_DEEP}" stroke-width="0.4" stroke-dasharray="2 2" opacity="0.5"/>
+      <line x1="180" y1="100" x2="180" y2="136" stroke="${KRAFT_DEEP}" stroke-width="0.4" stroke-dasharray="2 2" opacity="0.5"/>
+
+      <!-- Printed logo already on the left side of the box (from a previous strike) -->
+      <text x="90" y="123" text-anchor="middle" font-family="Fraunces, serif" font-size="10" font-weight="700" fill="${HANDLE_RED}" letter-spacing="-0.5">LOGO</text>
+
+      <!-- Conveyor belt -->
+      <rect x="10" y="138" width="260" height="6" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1"/>
+      <circle cx="14" cy="141" r="5" fill="${IRON_DARK}" stroke="${IRON_DARK}" stroke-width="0.5"/>
+      <circle cx="266" cy="141" r="5" fill="${IRON_DARK}" stroke="${IRON_DARK}" stroke-width="0.5"/>
+
+      <!-- Belt tread marks (animated) -->
+      <g class="anim-board-feed">
+        <line x1="20" y1="138" x2="20" y2="144" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="40" y1="138" x2="40" y2="144" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="60" y1="138" x2="60" y2="144" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="80" y1="138" x2="80" y2="144" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="100" y1="138" x2="100" y2="144" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="120" y1="138" x2="120" y2="144" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="140" y1="138" x2="140" y2="144" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="160" y1="138" x2="160" y2="144" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="180" y1="138" x2="180" y2="144" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="200" y1="138" x2="200" y2="144" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="220" y1="138" x2="220" y2="144" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="240" y1="138" x2="240" y2="144" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="260" y1="138" x2="260" y2="144" stroke="${IRON_GREY}" stroke-width="0.5"/>
+      </g>
+
+      <!-- Conveyor support legs -->
+      <line x1="14" y1="146" x2="14" y2="186" stroke="${IRON_DARK}" stroke-width="1.2"/>
+      <line x1="140" y1="146" x2="140" y2="186" stroke="${IRON_DARK}" stroke-width="1.2"/>
+      <line x1="266" y1="146" x2="266" y2="186" stroke="${IRON_DARK}" stroke-width="1.2"/>
+
+      <!-- Stack of finished printed boxes at the right -->
+      <g transform="translate(238, 154)">
+        <rect x="0" y="0" width="30" height="6" fill="${PAPER_TAN}" stroke="${KRAFT_DEEP}" stroke-width="0.5"/>
+        <text x="15" y="4.5" text-anchor="middle" font-family="Fraunces, serif" font-size="3.5" font-weight="700" fill="${HANDLE_RED}">LOGO</text>
+        <rect x="0" y="-6" width="30" height="6" fill="${PAPER_TAN}" stroke="${KRAFT_DEEP}" stroke-width="0.5"/>
+        <text x="15" y="-1.5" text-anchor="middle" font-family="Fraunces, serif" font-size="3.5" font-weight="700" fill="${HANDLE_RED}">LOGO</text>
+        <rect x="0" y="-12" width="30" height="6" fill="${PAPER_TAN}" stroke="${KRAFT_DEEP}" stroke-width="0.5"/>
+        <text x="15" y="-7.5" text-anchor="middle" font-family="Fraunces, serif" font-size="3.5" font-weight="700" fill="${HANDLE_RED}">LOGO</text>
+      </g>
+      <text x="253" y="174" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5" fill="#8a847c" letter-spacing="0.5">STACK</text>
+
+      <!-- Direction arrow -->
+      <path d="M 220 162 L 232 162 M 228 159 L 232 162 L 228 165" stroke="${KRAFT_DEEP}" stroke-width="1" fill="none" stroke-linecap="round"/>
+
+      <!-- Title -->
+      <text x="140" y="196" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="2">FLEXOGRAPHIC PRESS · MULTI-COLOR PRINT</text>
+    </svg>
+  `;
+}
+
+// =============================================================
+// IRON — JOINING + HANDLES + PACKAGING
+// =============================================================
+
+// Helper: scissor blade silhouette without handles
+function bladeOnly(scale, rotation, fillColor) {
+  const s = scale;
+  return `
+    <g transform="rotate(${rotation})">
+      <path d="M ${-50*s} ${-3*s} L ${-42*s} ${-7*s} L ${30*s} ${-5*s} Q ${42*s} 0 ${30*s} ${5*s} L ${-42*s} ${7*s} Z"
+            fill="${fillColor}" stroke="${IRON_DARK}" stroke-width="1"/>
+      <ellipse cx="${-46*s}" cy="0" rx="${5*s}" ry="${4*s}" fill="${fillColor}" stroke="${IRON_DARK}" stroke-width="1"/>
+      <ellipse cx="${-46*s}" cy="0" rx="${2.5*s}" ry="${2*s}" fill="${IRON_DARK}"/>
+      <circle cx="${-30*s}" cy="0" r="${2.5*s}" fill="${IRON_DARK}"/>
+    </g>
+  `;
+}
+
+// Helper: full scissors (two blades joined at pivot, with handles)
+function fullScissors({ x, y, scale = 1, opened = false, withHandles = true, handleColor = HANDLE_RED }) {
+  const s = scale;
+  const angle = opened ? 18 : 8;
+  // Realistic scissor handle: tear-drop / D-shape with a clear finger loop
+  // Wider toward the outer end (where finger goes), narrower toward the blade pivot
+  // Path runs from (-40, +6) at the blade-side top, around the bulb, back to (-40, -6)
+  const handle = (color) => withHandles ? `
+    <!-- Outer plastic handle (D-shaped: narrows toward blade, wider bulb at outer end) -->
+    <path d="M ${-40*s} ${6*s}
+             Q ${-50*s} ${15*s} ${-65*s} ${14*s}
+             Q ${-82*s} ${10*s} ${-82*s} 0
+             Q ${-82*s} ${-10*s} ${-65*s} ${-14*s}
+             Q ${-50*s} ${-15*s} ${-40*s} ${-6*s}
+             Z"
+          fill="${color}" stroke="${HANDLE_RED_DEEP}" stroke-width="1"/>
+    <!-- Inner finger hole (also tear-drop shaped, slightly offset toward outer end) -->
+    <path d="M ${-46*s} ${3*s}
+             Q ${-52*s} ${9*s} ${-63*s} ${8*s}
+             Q ${-74*s} ${6*s} ${-74*s} 0
+             Q ${-74*s} ${-6*s} ${-63*s} ${-8*s}
+             Q ${-52*s} ${-9*s} ${-46*s} ${-3*s}
+             Z"
+          fill="${IRON_DARK}"/>
+    <!-- Subtle highlight on the outer rim of the handle -->
+    <path d="M ${-72*s} ${-12*s} Q ${-78*s} ${-8*s} ${-78*s} ${-2*s}"
+          fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="${1.2*s}" stroke-linecap="round"/>
+  ` : `
+    <!-- Bare metal loop (no handle yet) -->
+    <ellipse cx="${-46*s}" cy="0" rx="${5*s}" ry="${4*s}" fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1"/>
+    <ellipse cx="${-46*s}" cy="0" rx="${2.5*s}" ry="${2*s}" fill="${IRON_DARK}"/>
+  `;
+  return `
+    <g transform="translate(${x}, ${y})">
+      <!-- Top blade -->
+      <g transform="rotate(${-angle})">
+        <path d="M ${-50*s} ${-3*s} L ${-42*s} ${-7*s} L ${30*s} ${-5*s} Q ${42*s} 0 ${30*s} ${5*s} L ${-42*s} ${7*s} Z"
+              fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1"/>
+        ${handle(handleColor)}
+      </g>
+      <!-- Bottom blade -->
+      <g transform="rotate(${angle})">
+        <path d="M ${-50*s} ${-3*s} L ${-42*s} ${-7*s} L ${30*s} ${-5*s} Q ${42*s} 0 ${30*s} ${5*s} L ${-42*s} ${7*s} Z"
+              fill="${IRON_GREY}" stroke="${IRON_DARK}" stroke-width="1"/>
+        ${handle(handleColor)}
+      </g>
+      <!-- Pivot rivet (drawn last so it sits on top) -->
+      <circle cx="0" cy="0" r="${3*s}" fill="${IRON_DARK}"/>
+      <circle cx="0" cy="0" r="${1.5*s}" fill="${IRON_GREY}"/>
+    </g>
+  `;
+}
+
+// PANEL 1: Joining — two blades, rivet press descending to join them
+function makeJoining({ uid = 'join' } = {}) {
+  const W = 240, H = 200;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Floor -->
+      <line x1="0" y1="186" x2="240" y2="186" stroke="${IRON_DARK}" stroke-width="0.5" opacity="0.4" stroke-dasharray="3 3"/>
+
+      <!-- Worktable -->
+      <rect x="20" y="140" width="200" height="14" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1.2"/>
+      <rect x="25" y="154" width="6" height="32" fill="${IRON_DARK}"/>
+      <rect x="209" y="154" width="6" height="32" fill="${IRON_DARK}"/>
+
+      <!-- Two blades positioned in cross-pattern on the table, ready to be joined at the pivot -->
+      <g transform="translate(120, 138)">
+        <g transform="rotate(-15)">
+          <path d="M -50 -3 L -42 -7 L 30 -5 Q 42 0 30 5 L -42 7 Z"
+                fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1"/>
+          <ellipse cx="-46" cy="0" rx="5" ry="4" fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1"/>
+          <ellipse cx="-46" cy="0" rx="2.5" ry="2" fill="${IRON_DARK}"/>
+        </g>
+        <g transform="rotate(15)">
+          <path d="M -50 -3 L -42 -7 L 30 -5 Q 42 0 30 5 L -42 7 Z"
+                fill="${IRON_GREY}" stroke="${IRON_DARK}" stroke-width="1"/>
+          <ellipse cx="-46" cy="0" rx="5" ry="4" fill="${IRON_LIGHT}" stroke="${IRON_DARK}" stroke-width="1"/>
+          <ellipse cx="-46" cy="0" rx="2.5" ry="2" fill="${IRON_DARK}"/>
+        </g>
+        <!-- Empty pivot hole at the cross point (where rivet will go) -->
+        <circle cx="0" cy="0" r="3" fill="${IRON_DARK}" stroke="${IRON_DARK}" stroke-width="0.5"/>
+        <circle cx="0" cy="0" r="1.5" fill="${IRON_LIGHT}"/>
+      </g>
+
+      <!-- Rivet press machine above the table — frame, press head -->
+      <line x1="60" y1="20" x2="60" y2="60" stroke="${IRON_DARK}" stroke-width="2.5"/>
+      <line x1="180" y1="20" x2="180" y2="60" stroke="${IRON_DARK}" stroke-width="2.5"/>
+      <rect x="48" y="20" width="144" height="14" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1.2"/>
+      <circle cx="56" cy="27" r="1.5" fill="${IRON_DARK}"/>
+      <circle cx="184" cy="27" r="1.5" fill="${IRON_DARK}"/>
+      <text x="120" y="14" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1.5">RIVET PRESS</text>
+
+      <!-- Press ram (animated to descend on hover) -->
+      <g class="anim-rivet-press">
+        <line x1="120" y1="34" x2="120" y2="80" stroke="${IRON_GREY}" stroke-width="6"/>
+        <rect x="108" y="80" width="24" height="20" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1.2"/>
+        <!-- Striking face / rivet -->
+        <rect x="113" y="100" width="14" height="6" fill="${IRON_DARK}"/>
+        <circle cx="120" cy="106" r="3" fill="${IRON_GLOW_INNER}" opacity="0.9"/>
+      </g>
+
+      <!-- Sparks at the contact point (animated) -->
+      <g class="anim-spark-rivet">
+        <circle cx="108" cy="135" r="0.9" fill="${IRON_GLOW_HOT}"/>
+        <circle cx="132" cy="135" r="0.9" fill="${IRON_GLOW_HOT}"/>
+        <circle cx="100" cy="138" r="0.7" fill="${IRON_GLOW_INNER}" opacity="0.85"/>
+        <circle cx="140" cy="138" r="0.7" fill="${IRON_GLOW_INNER}" opacity="0.85"/>
+      </g>
+
+      <!-- Title -->
+      <text x="120" y="196" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="2">RIVET PRESS · JOIN AT PIVOT</text>
+    </svg>
+  `;
+}
+
+// PANEL 2: Handles — colored plastic handles being attached to scissor loops
+function makeHandles({ uid = 'handles' } = {}) {
+  const W = 240, H = 200;
+
+  // A standalone D-shape handle for the bin (matches the shape used in fullScissors)
+  function binHandle(cx, cy, scale) {
+    const s = scale;
+    return `
+      <g transform="translate(${cx}, ${cy})">
+        <path d="M ${-2*s} ${6*s}
+                 Q ${-12*s} ${15*s} ${-27*s} ${14*s}
+                 Q ${-44*s} ${10*s} ${-44*s} 0
+                 Q ${-44*s} ${-10*s} ${-27*s} ${-14*s}
+                 Q ${-12*s} ${-15*s} ${-2*s} ${-6*s}
+                 Z"
+              fill="${HANDLE_RED}" stroke="${HANDLE_RED_DEEP}" stroke-width="0.8"/>
+        <path d="M ${-8*s} ${3*s}
+                 Q ${-14*s} ${9*s} ${-25*s} ${8*s}
+                 Q ${-36*s} ${6*s} ${-36*s} 0
+                 Q ${-36*s} ${-6*s} ${-25*s} ${-8*s}
+                 Q ${-14*s} ${-9*s} ${-8*s} ${-3*s}
+                 Z"
+              fill="${IRON_DARK}"/>
+      </g>
+    `;
+  }
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Floor -->
+      <line x1="0" y1="186" x2="240" y2="186" stroke="${IRON_DARK}" stroke-width="0.5" opacity="0.4" stroke-dasharray="3 3"/>
+
+      <!-- Worktable spanning the bottom -->
+      <rect x="10" y="148" width="220" height="14" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1.2"/>
+      <rect x="14" y="162" width="6" height="24" fill="${IRON_DARK}"/>
+      <rect x="220" y="162" width="6" height="24" fill="${IRON_DARK}"/>
+
+      <!-- Bin of handles in the upper-left -->
+      <path d="M 14 24 L 88 24 L 84 60 L 18 60 Z" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1"/>
+      <text x="51" y="20" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1">HANDLES · BIN</text>
+      <!-- Several D-shape handles inside the bin, at various rotations to look like loose parts -->
+      <g transform="translate(38, 38) rotate(-15)">${binHandle(0, 0, 0.45)}</g>
+      <g transform="translate(64, 36) rotate(20)">${binHandle(0, 0, 0.45)}</g>
+      <g transform="translate(40, 52) rotate(160)">${binHandle(0, 0, 0.4)}</g>
+      <g transform="translate(70, 52) rotate(-30)">${binHandle(0, 0, 0.4)}</g>
+
+      <!-- BEFORE label and bare scissors on the left side of the table -->
+      <text x="65" y="105" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1.5">BEFORE</text>
+      ${fullScissors({ x: 65, y: 138, scale: 0.55, withHandles: false })}
+
+      <!-- Arrow between -->
+      <path d="M 105 138 L 130 138 M 126 134 L 130 138 L 126 142"
+            stroke="${HANDLE_RED}" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+      <!-- AFTER label and finished scissors on the right side of the table -->
+      <text x="180" y="105" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#8a847c" letter-spacing="1.5">AFTER</text>
+      ${fullScissors({ x: 180, y: 138, scale: 0.55, withHandles: true })}
+
+      <!-- Title -->
+      <text x="120" y="196" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="2">PRESS-FIT HANDLES · ONTO LOOPS</text>
+    </svg>
+  `;
+}
+
+// PANEL 3: Packaging — finished scissors in a clear blister pack on a hangtag card
+function makePackaging({ uid = 'pkg' } = {}) {
+  const W = 240, H = 200;
+
+  return `
+    <svg width="${W}" height="${H}" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Floor -->
+      <line x1="0" y1="186" x2="240" y2="186" stroke="${IRON_DARK}" stroke-width="0.5" opacity="0.4" stroke-dasharray="3 3"/>
+
+      <!-- Conveyor belt at the bottom -->
+      <rect x="10" y="160" width="220" height="6" fill="${IRON_METAL}" stroke="${IRON_DARK}" stroke-width="1"/>
+      <circle cx="14" cy="163" r="5" fill="${IRON_DARK}" stroke="${IRON_DARK}" stroke-width="0.5"/>
+      <circle cx="226" cy="163" r="5" fill="${IRON_DARK}" stroke="${IRON_DARK}" stroke-width="0.5"/>
+
+      <!-- Belt tread marks (animated) -->
+      <g class="anim-package-slide">
+        <line x1="20" y1="160" x2="20" y2="166" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="40" y1="160" x2="40" y2="166" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="60" y1="160" x2="60" y2="166" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="80" y1="160" x2="80" y2="166" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="100" y1="160" x2="100" y2="166" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="120" y1="160" x2="120" y2="166" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="140" y1="160" x2="140" y2="166" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="160" y1="160" x2="160" y2="166" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="180" y1="160" x2="180" y2="166" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="200" y1="160" x2="200" y2="166" stroke="${IRON_GREY}" stroke-width="0.5"/>
+        <line x1="220" y1="160" x2="220" y2="166" stroke="${IRON_GREY}" stroke-width="0.5"/>
+      </g>
+
+      <!-- Conveyor support legs -->
+      <line x1="14" y1="167" x2="14" y2="186" stroke="${IRON_DARK}" stroke-width="1.2"/>
+      <line x1="226" y1="167" x2="226" y2="186" stroke="${IRON_DARK}" stroke-width="1.2"/>
+
+      <!-- HERO blister pack in the center — paper hangtag card with clear plastic shell over the scissors -->
+      <g transform="translate(120, 95)">
+        <!-- Paper backing card -->
+        <rect x="-50" y="-72" width="100" height="138" fill="${PAPER_TAN}" stroke="${KRAFT_DEEP}" stroke-width="1.2"/>
+        <!-- Hangtag hole at the top -->
+        <circle cx="0" cy="-62" r="4" fill="${PAPER_TAN}" stroke="${KRAFT_DEEP}" stroke-width="1"/>
+        <circle cx="0" cy="-62" r="3" fill="${IRON_DARK}"/>
+        <!-- Brand header -->
+        <rect x="-46" y="-52" width="92" height="16" fill="${HANDLE_RED}"/>
+        <text x="0" y="-42" text-anchor="middle" font-family="Fraunces, serif" font-size="9" font-weight="700" fill="#fff" letter-spacing="-0.5">SHARPCO</text>
+        <!-- Subtitle / product line -->
+        <text x="0" y="-30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5" fill="${KRAFT_DEEP}" letter-spacing="1">8" GENERAL PURPOSE</text>
+
+        <!-- Clear plastic blister (shows scissors inside) -->
+        <path d="M -42 -22 L 42 -22 Q 46 -22 46 -18 L 46 42 Q 46 46 42 46 L -42 46 Q -46 46 -46 42 L -46 -18 Q -46 -22 -42 -22 Z"
+              fill="rgba(200, 220, 230, 0.35)" stroke="${GLASS_DEEP}" stroke-width="0.6"/>
+        <!-- Plastic highlight to suggest 3D shell -->
+        <line x1="-44" y1="-18" x2="-44" y2="40" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+
+        <!-- The scissors INSIDE the blister, vertically positioned -->
+        <g transform="translate(0, 12) rotate(-90)">
+          ${fullScissors({ x: 0, y: 0, scale: 0.45, withHandles: true })}
+        </g>
+
+        <!-- Barcode below the blister in clear card space -->
+        <rect x="-30" y="52" width="60" height="12" fill="${PAPER_TAN}"/>
+        <line x1="-26" y1="54" x2="-26" y2="62" stroke="${IRON_DARK}" stroke-width="0.6"/>
+        <line x1="-23" y1="54" x2="-23" y2="62" stroke="${IRON_DARK}" stroke-width="0.4"/>
+        <line x1="-21" y1="54" x2="-21" y2="62" stroke="${IRON_DARK}" stroke-width="0.6"/>
+        <line x1="-18" y1="54" x2="-18" y2="62" stroke="${IRON_DARK}" stroke-width="0.4"/>
+        <line x1="-14" y1="54" x2="-14" y2="62" stroke="${IRON_DARK}" stroke-width="0.6"/>
+        <line x1="-11" y1="54" x2="-11" y2="62" stroke="${IRON_DARK}" stroke-width="0.4"/>
+        <line x1="-7" y1="54" x2="-7" y2="62" stroke="${IRON_DARK}" stroke-width="0.6"/>
+        <line x1="-4" y1="54" x2="-4" y2="62" stroke="${IRON_DARK}" stroke-width="0.4"/>
+        <line x1="0" y1="54" x2="0" y2="62" stroke="${IRON_DARK}" stroke-width="0.6"/>
+        <line x1="3" y1="54" x2="3" y2="62" stroke="${IRON_DARK}" stroke-width="0.4"/>
+        <line x1="7" y1="54" x2="7" y2="62" stroke="${IRON_DARK}" stroke-width="0.6"/>
+        <line x1="10" y1="54" x2="10" y2="62" stroke="${IRON_DARK}" stroke-width="0.4"/>
+        <line x1="14" y1="54" x2="14" y2="62" stroke="${IRON_DARK}" stroke-width="0.6"/>
+        <line x1="17" y1="54" x2="17" y2="62" stroke="${IRON_DARK}" stroke-width="0.4"/>
+        <line x1="21" y1="54" x2="21" y2="62" stroke="${IRON_DARK}" stroke-width="0.6"/>
+        <line x1="24" y1="54" x2="24" y2="62" stroke="${IRON_DARK}" stroke-width="0.4"/>
+        <line x1="27" y1="54" x2="27" y2="62" stroke="${IRON_DARK}" stroke-width="0.6"/>
+      </g>
+
+      <!-- Title -->
+      <text x="120" y="196" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a847c" letter-spacing="2">BLISTER PACK · RETAIL READY</text>
+    </svg>
+  `;
+}
+
+// =============================================================
+// DATA + RENDER
+// =============================================================
+
+const APPLE_PANELS = [
+  {
+    key: 'fill',
+    name: 'Filling',
+    label: 'Hot fill into jars',
+    stat: 'Filling line · ~200 jars/min',
+    detail: 'Empty glass jars travel along a conveyor under a precision filling head. As each jar passes underneath, a precisely metered dose of hot pasteurized sauce is dispensed — fast enough to fill ~200 jars per minute on a typical commercial line. The sauce enters the jar still hot (~85°C), which sterilizes the inside of the jar and the headspace as the lid is applied.',
+    make: makeFilling
+  },
+  {
+    key: 'seal',
+    name: 'Sealing',
+    label: 'Cap + induction seal',
+    stat: 'Capper + induction sealer · 1 sec/jar',
+    detail: 'Lids drop from a hopper onto each filled jar. A capping head presses each lid down and threads it onto the jar. Then the jars pass under an induction sealer — a coil that heats a thin metal foil bonded to the lid, melting it onto the glass rim. The result is a hermetic seal: as the sauce cools, the headspace contracts and pulls the lid down, creating the satisfying "pop" you hear when you open a fresh jar.',
+    make: makeSealing
+  }
+];
+
+const LUMBER_PANELS = [
+  {
+    key: 'glue',
+    name: 'Score & glue',
+    label: 'Sheet → box blank',
+    stat: 'Score lines + glued seam',
+    detail: 'A flat corrugated sheet enters the converter. Rotary blades cut it to size and impress score lines (creases) where the box will fold. A glue applicator lays down a thin bead of adhesive along one edge — the manufacturer\'s seam. The two ends of the sheet are then folded together and pressed at the seam, creating a flat-pack blank that will pop into a 3D box when needed. Most commercial boxes ship and store flat to save space.',
+    make: makeGluing
+  },
+  {
+    key: 'brand',
+    name: 'Branding',
+    label: 'Logos + labels printed',
+    stat: 'Flexographic press · multi-color',
+    detail: 'Box blanks pass under a flexographic printing press. Raised rubber plates pick up ink from reservoirs and stamp it onto the corrugated surface — typically in 1 to 4 colors per pass. Brand logos, product names, handling icons (FRAGILE, ↑ THIS WAY UP), and barcodes are all printed in this step. Flexography is rough but cheap and fast — ideal for the textured corrugated surface, which doesn\'t need fine-art-quality printing.',
+    make: makeBranding
+  }
+];
+
+const IRON_PANELS = [
+  {
+    key: 'join',
+    name: 'Joining',
+    label: 'Two blades → one tool',
+    stat: 'Rivet press · pneumatic strike',
+    detail: 'Two finished blades are placed in a fixture so their pivot holes align. A rivet — a small metal pin with a head on one end — is dropped through both holes. A rivet press descends and strikes the back side of the rivet, mushrooming the metal until it locks the two blades together. The two halves can now pivot freely against each other but cannot separate. This single rivet is the only thing that makes a scissor a scissor.',
+    make: makeJoining
+  },
+  {
+    key: 'handles',
+    name: 'Handles',
+    label: 'Press-fit grips',
+    stat: 'Injection-molded plastic · press-fit',
+    detail: 'Pre-molded plastic or rubber handles are dropped onto the bare metal loop ends of each blade. A jig presses them into place — sometimes with mild heat to soften the plastic just enough for a snug fit. The handle hides the rough metal loop, provides a comfortable grip, and gives the manufacturer a place to put their brand color. Plastic handles became standard in the 1970s; before that, scissor handles were just polished metal loops.',
+    make: makeHandles
+  },
+  {
+    key: 'pkg',
+    name: 'Packaging',
+    label: 'Blister pack + barcode',
+    stat: 'Heat-sealed clamshell · auto-pack',
+    detail: 'Finished scissors are placed onto a printed paperboard backing card with a clear plastic blister shell heat-sealed over them. The card carries the brand logo, the SKU, the size, the barcode, and the hangtag hole that lets it hang on a retail peg hook. The scissors are now a "stock-keeping unit" — a barcode away from being scanned at any cash register in the world. From here, the journey is no longer about manufacturing — it\'s about logistics.',
+    make: makePackaging
+  }
+];
+
+function renderStream(streamKey, stageId, detailId, panels) {
+  const stage = document.getElementById(stageId);
+  const detail = document.getElementById(detailId);
+  if (!stage) return;
+
+  let html = '<div class="refine-sequence">';
+  panels.forEach((p, i) => {
+    html += `
+      <div class="refine-panel" data-key="${p.key}">
+        <div class="refine-panel-svg-wrap">${p.make({ uid: streamKey + '-' + p.key })}</div>
+        <div class="refine-panel-name">${p.name}</div>
+        <div class="refine-panel-label">${p.label}</div>
+      </div>
+    `;
+    if (i < panels.length - 1) {
+      html += `<div class="refine-arrow-between">→</div>`;
+    }
+  });
+  html += '</div>';
+
+  stage.innerHTML = html;
+
+  stage.querySelectorAll('.refine-panel').forEach(panel => {
+    const key = panel.getAttribute('data-key');
+    const p = panels.find(x => x.key === key);
+    const update = () => {
+      detail.classList.remove('empty');
+      detail.innerHTML = `
+        <div class="detail-card-name">${p.name}</div>
+        <div class="detail-card-stat">${p.stat}</div>
+        <div class="detail-card-text">${p.detail}</div>
+      `;
+    };
+    panel.addEventListener('mouseenter', update);
+    panel.addEventListener('click', update);
+  });
+}
+
+renderStream('apple', 'apple-stage', 'apple-detail', APPLE_PANELS);
+renderStream('lumber', 'lumber-stage', 'lumber-detail', LUMBER_PANELS);
+renderStream('iron', 'iron-stage', 'iron-detail', IRON_PANELS);
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

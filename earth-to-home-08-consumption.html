@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Earth to Home · Section 8 — Consumption — willemsworld.fyi</title>
+<meta name="description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<link rel="canonical" href="https://willemsworld.fyi/earth-to-home-08-consumption.html">
+<meta name="author" content="willemsworld">
+
+<!-- Open Graph (Facebook, LinkedIn, etc.) -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://willemsworld.fyi/earth-to-home-08-consumption.html">
+<meta property="og:site_name" content="willemsworld.fyi">
+<meta property="og:title" content="Earth to Home — Section 8 — Consumption">
+<meta property="og:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta property="og:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A globe on the left, three colored streams arcing across, converging on a house on the right. Title: Earth to Home.">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Earth to Home — Section 8 — Consumption">
+<meta name="twitter:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta name="twitter:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f1ea;
+    --paper-deep: #ebe5d9;
+    --ink: #1a1614;
+    --ink-soft: #4a4540;
+    --ink-faint: #8a847c;
+    --rule: #d6cfc0;
+
+    --apple-1: #f5dad8;
+    --apple-2: #e08580;
+    --apple-3: #b8302a;
+    --apple-4: #7a1a16;
+    --apple: #b8302a;
+    --apple-deep: #7a1a16;
+
+    --lumber-1: #d4dfd2;
+    --lumber-2: #94b291;
+    --lumber-3: #3d6b3a;
+    --lumber-4: #1f3d1d;
+    --lumber: #3d6b3a;
+    --lumber-deep: #1f3d1d;
+
+    --iron-1: #d8d4d0;
+    --iron-2: #888;
+    --iron-3: #4a4a4a;
+    --iron-4: #1f1f1f;
+    --iron: #4a4a4a;
+    --iron-deep: #1f1f1f;
+
+    --display: 'Fraunces', 'Times New Roman', serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184, 48, 42, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(61, 107, 58, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(74, 74, 74, 0.025) 0%, transparent 40%);
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.25rem 3rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+    z-index: 10; background: rgba(245, 241, 234, 0.92); backdrop-filter: blur(8px);
+    position: sticky; top: 0;
+  }
+  .masthead-brand { font-family: var(--display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em; }
+  .masthead-brand .tld { font-weight: 300; color: var(--ink-faint); }
+  .masthead-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+
+  .stages-strip {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .stage-pill {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.35rem 0.7rem; border: 1px solid var(--rule);
+    color: var(--ink-faint); background: rgba(255, 253, 248, 0.5); white-space: nowrap;
+  }
+  .stage-pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .stage-pill .num { opacity: 0.5; margin-right: 0.4rem; }
+  .stage-pill.active .num { opacity: 0.7; }
+  .stage-pill:not(.active):not(.takeaways):hover {
+    border-color: var(--ink); color: var(--ink); background: rgba(255, 253, 248, 0.9);
+    cursor: pointer;
+  }
+  .stage-pill.takeaways { border-style: dashed; margin-left: auto; }
+  .stage-pill.takeaways.active { border-style: solid; }
+  .stage-pill.takeaways .star { margin-right: 0.4rem; opacity: 0.5; font-style: italic; }
+  .stage-pill.takeaways:not(.active):hover {
+    border-color: var(--ink); color: var(--ink); background: rgba(255, 253, 248, 0.9);
+    cursor: pointer;
+  }
+
+  .section { padding: 5rem 3rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .section-marker {
+    display: flex; align-items: baseline; gap: 2rem;
+    margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
+  }
+  .section-number {
+    font-family: var(--display); font-weight: 300; font-size: 6rem; line-height: 1; letter-spacing: -0.04em;
+  }
+  .section-number-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 3rem; letter-spacing: -0.02em;
+  }
+  .section-intro {
+    font-family: var(--display); font-weight: 300; font-size: 1.25rem; line-height: 1.6;
+    max-width: 65ch; color: var(--ink-soft); margin-bottom: 4rem; font-style: italic;
+  }
+  .section-intro::first-letter {
+    font-size: 3.5rem; float: left; line-height: 0.85; padding: 0.3rem 0.5rem 0 0;
+    font-weight: 400; font-style: normal; color: var(--ink);
+  }
+
+  /* === COMPARISON BLOCK STRUCTURE === */
+  /* Each block has: header, prompt, 3-column grid of donuts, shared detail card */
+  .comparison-block {
+    margin-bottom: 4rem;
+  }
+  .block-header {
+    display: flex; align-items: baseline; gap: 1.25rem;
+    margin-bottom: 1rem; padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .block-label {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .block-title {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 1.65rem; letter-spacing: -0.01em;
+  }
+  .block-prompt {
+    font-family: var(--display); font-weight: 300; font-style: italic;
+    font-size: 1rem; line-height: 1.55; color: var(--ink-soft);
+    max-width: 65ch; margin-bottom: 2rem;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .comparison-cell {
+    background: rgba(255, 253, 248, 0.65);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--ink);
+    padding: 1.5rem 1.25rem;
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  }
+  .comparison-cell[data-stream="apple"] { border-top-color: var(--apple); }
+  .comparison-cell[data-stream="lumber"] { border-top-color: var(--lumber); }
+  .comparison-cell[data-stream="iron"] { border-top-color: var(--iron); }
+
+  .comparison-cell-header {
+    width: 100%;
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 0.6rem; border-bottom: 1px dotted var(--rule);
+  }
+  .comparison-cell-name {
+    font-family: var(--display); font-weight: 600; font-size: 1.1rem;
+    letter-spacing: -0.01em;
+  }
+  .comparison-cell[data-stream="apple"] .comparison-cell-name { color: var(--apple-deep); }
+  .comparison-cell[data-stream="lumber"] .comparison-cell-name { color: var(--lumber-deep); }
+  .comparison-cell[data-stream="iron"] .comparison-cell-name { color: var(--iron-deep); }
+  .comparison-cell-symbol { font-family: var(--display); font-size: 1rem; opacity: 0.4; }
+
+  .donut-svg-wrap {
+    width: 100%; max-width: 280px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .donut-svg-wrap svg { width: 100%; height: auto; display: block; overflow: visible; }
+
+  /* === DELIVERY BLOCK (Block 03) === */
+  .delivery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .delivery-card {
+    background: rgba(255, 253, 248, 0.65);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--ink);
+    padding: 1.75rem 1.4rem;
+    display: flex; flex-direction: column; align-items: stretch;
+  }
+  .delivery-icon {
+    width: 100%;
+    height: 100px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .delivery-icon svg {
+    width: 100%; max-width: 140px; height: 100%; display: block;
+  }
+  .delivery-name {
+    font-family: var(--display); font-weight: 600; font-size: 1.4rem;
+    letter-spacing: -0.01em; color: var(--ink);
+    text-align: center;
+    margin-bottom: 0.2rem;
+  }
+  .delivery-subtitle {
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-faint);
+    text-align: center;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .delivery-text {
+    font-size: 0.85rem; line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 1.25rem;
+  }
+
+  /* === DELIVERY BAR CHART (per delivery card) === */
+  .delivery-bars {
+    margin-bottom: 1.5rem;
+    padding: 1rem 1rem 1.1rem;
+    background: rgba(0, 0, 0, 0.025);
+    border-radius: 2px;
+  }
+  .delivery-bars-label {
+    font-family: var(--mono); font-size: 0.55rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.7rem;
+  }
+  .delivery-bar-row {
+    display: grid;
+    grid-template-columns: 65px 1fr 36px;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.45rem;
+  }
+  .delivery-bar-row:last-child { margin-bottom: 0; }
+  .delivery-bar-name {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .delivery-bar-track {
+    position: relative;
+    height: 14px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .delivery-bar-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .delivery-bar-fill.apple  { background: var(--apple); }
+  .delivery-bar-fill.lumber { background: var(--lumber); }
+  .delivery-bar-fill.iron   { background: var(--iron); }
+  .delivery-bar-pct {
+    font-family: var(--mono); font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-align: right;
+  }
+
+  .delivery-matchup-label {
+    font-family: var(--mono); font-size: 0.55rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+  .delivery-matchup-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  .delivery-matchup-list li {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-family: var(--mono); font-size: 0.65rem;
+    color: var(--ink-soft); letter-spacing: 0.05em;
+  }
+  /* Tag pills for category names — color-matched to the donut palette */
+  .tag {
+    display: inline-block;
+    padding: 0.18rem 0.5rem;
+    border-radius: 2px;
+    font-family: var(--mono); font-size: 0.6rem;
+    font-weight: 500; letter-spacing: 0.08em;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .tag-b2c   { background: #c08e3a; }
+  .tag-b2b   { background: #3d6b8a; }
+  .tag-b2g   { background: #5e4080; }
+  .tag-ecom  { background: #2a8a7a; }
+  .tag-brick { background: #a85a3a; }
+  .tag-order { background: #4a5560; }
+
+  .donut-slice {
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  .donut-slice:hover {
+    opacity: 0.85;
+  }
+  .donut-slice.active {
+    transform: scale(1.04);
+  }
+
+  /* Legend below each donut */
+  .donut-legend {
+    width: 100%;
+    max-width: 320px;
+    display: flex; flex-direction: column; gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+  .donut-legend-row {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.35rem 0.55rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .donut-legend-row:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+  .donut-legend-row.active {
+    background: rgba(0, 0, 0, 0.06);
+  }
+  .donut-legend-swatch {
+    width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0;
+  }
+  .donut-legend-name {
+    font-family: var(--body); font-weight: 500; font-size: 0.82rem;
+    flex: 1;
+  }
+  .donut-legend-pct {
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.05em; color: var(--ink-soft); font-weight: 500;
+  }
+
+  /* Detail card */
+  .detail-card {
+    margin-top: 0.5rem;
+    padding: 1.1rem 1.4rem;
+    background: rgba(255, 253, 248, 0.95);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--ink);
+    min-height: 70px;
+  }
+  .detail-card.empty {
+    background: rgba(0, 0, 0, 0.02);
+    border-left-color: var(--rule);
+  }
+  .detail-card-empty-text {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 0.9rem; color: var(--ink-faint);
+  }
+  .detail-card-name {
+    font-family: var(--display); font-weight: 600; font-size: 1.1rem;
+    letter-spacing: -0.01em; margin-bottom: 0.2rem;
+    color: var(--ink);
+  }
+  .detail-card-stat {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 0.5rem;
+  }
+  .detail-card-stat strong { color: var(--ink); font-weight: 600; }
+  .detail-card-text {
+    font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;
+  }
+  /* When detail card content has been activated by a specific stream's segment,
+     we tint the left border to match that stream */
+  .detail-card[data-active-stream="apple"] { border-left-color: var(--apple); }
+  .detail-card[data-active-stream="lumber"] { border-left-color: var(--lumber); }
+  .detail-card[data-active-stream="iron"] { border-left-color: var(--iron); }
+  .detail-card[data-active-stream="apple"] .detail-card-name { color: var(--apple-deep); }
+  .detail-card[data-active-stream="lumber"] .detail-card-name { color: var(--lumber-deep); }
+  .detail-card[data-active-stream="iron"] .detail-card-name { color: var(--iron-deep); }
+
+  /* Section footer */
+  .section-footer {
+    margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .next-section {
+    font-family: var(--display); font-style: italic; font-weight: 400;
+    font-size: 1.4rem; text-transform: none; letter-spacing: -0.01em;
+    color: var(--ink); text-align: right;
+  }
+  a.next-section {
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+  a.next-section:hover {
+    opacity: 0.75;
+    transform: translateX(3px);
+  }
+  .next-section span {
+    color: var(--ink-faint); font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; display: block; margin-bottom: 0.25rem; font-style: normal;
+  }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .masthead { padding: 0.9rem 1.25rem; }
+    .stages-strip { padding: 1rem 1.25rem; gap: 0.3rem; }
+    .stage-pill { font-size: 0.58rem; padding: 0.28rem 0.5rem; }
+    .section { padding: 3.5rem 1.25rem; }
+    .comparison-cell { padding: 1.25rem 1rem; }
+    .section-marker { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    .section-number { font-size: 4rem; }
+    .section-title { font-size: 2rem; }
+    .section-intro { font-size: 1.1rem; }
+    .comparison-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .delivery-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    .section-footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .next-section { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-brand">willemsworld<span class="tld">.fyi</span></div>
+  <div class="masthead-meta">Insight № 04 · Supply Chain Ecosystems</div>
+</header>
+
+<div class="stages-strip">
+  <a href="earth-to-home.html" class="stage-pill" style="text-decoration: none;"><span class="num">01</span>The Earth</a>
+  <a href="earth-to-home-02-sorting.html" class="stage-pill" style="text-decoration: none;"><span class="num">02</span>Sorting</a>
+  <a href="earth-to-home-03-refinement.html" class="stage-pill" style="text-decoration: none;"><span class="num">03</span>Refinement</a>
+  <a href="earth-to-home-04-transformation.html" class="stage-pill" style="text-decoration: none;"><span class="num">04</span>Transformation</a>
+  <a href="earth-to-home-05-finishing.html" class="stage-pill" style="text-decoration: none;"><span class="num">05</span>Finishing</a>
+  <a href="earth-to-home-06-assembly.html" class="stage-pill" style="text-decoration: none;"><span class="num">06</span>Assembly</a>
+  <a href="earth-to-home-07-distribution.html" class="stage-pill" style="text-decoration: none;"><span class="num">07</span>Distribution</a>
+  <span class="stage-pill active"><span class="num">08</span>Consumption</span>
+  <a href="earth-to-home-takeaways.html" class="stage-pill takeaways" style="text-decoration: none;"><span class="star">✦</span>Takeaways</a>
+</div>
+
+<section class="section">
+  <div class="section-marker reveal">
+    <div class="section-number">08</div>
+    <div>
+      <span class="section-number-meta">Stage Eight of Eight</span>
+      <h2 class="section-title">Consumption</h2>
+    </div>
+  </div>
+
+  <p class="section-intro reveal">
+    Eight stages later, the product reaches a buyer. But who is that buyer, and how do they
+    actually purchase it? The answer differs sharply across our three streams. Some products
+    pass through millions of households at the grocery store; others are bought in bulk by
+    procurement officers you've never met. The same supply chain story can end in very
+    different places.
+  </p>
+
+
+  <!-- =================================================== -->
+  <!-- BLOCK 01: HOW IT'S CONSUMED — delivery modes -->
+  <!-- =================================================== -->
+  <div class="comparison-block reveal">
+    <div class="block-header">
+      <span class="block-label">Block 01</span>
+      <h3 class="block-title">How it's consumed</h3>
+    </div>
+    <p class="block-prompt">
+      Before getting into <em>who</em> buys these products and <em>how</em> they place an
+      order, the most tangible question: how do they end up in someone's hands? Three
+      completely different last-mile experiences — pallet freight to a loading dock,
+      parcel delivery to a doorstep, or no delivery at all because the buyer walks into
+      a store and picks it off the shelf.
+    </p>
+
+    <div class="delivery-grid">
+
+      <!-- SEMI TRUCK — pallet-scale freight -->
+      <article class="delivery-card">
+        <div class="delivery-icon" id="delivery-icon-semi"></div>
+        <div class="delivery-name">Semi truck</div>
+        <div class="delivery-subtitle">Pallet-scale freight</div>
+        <div class="delivery-bars">
+          <div class="delivery-bars-label">Share of each product's delivery</div>
+          <div class="delivery-bar-row">
+            <div class="delivery-bar-name">Corrugate</div>
+            <div class="delivery-bar-track"><div class="delivery-bar-fill lumber" style="width: 90%"></div></div>
+            <div class="delivery-bar-pct">90%</div>
+          </div>
+          <div class="delivery-bar-row">
+            <div class="delivery-bar-name">Applesauce</div>
+            <div class="delivery-bar-track"><div class="delivery-bar-fill apple" style="width: 10%"></div></div>
+            <div class="delivery-bar-pct">10%</div>
+          </div>
+          <div class="delivery-bar-row">
+            <div class="delivery-bar-name">Scissors</div>
+            <div class="delivery-bar-track"><div class="delivery-bar-fill iron" style="width: 5%"></div></div>
+            <div class="delivery-bar-pct">5%</div>
+          </div>
+        </div>
+        <div class="delivery-text">
+          Bulk shipments to a loading dock. Pallets get unloaded with a forklift,
+          racked, and broken down for distribution within the buyer's operation.
+          Standard for B2B and B2G when order quantity justifies a full or partial
+          truckload.
+        </div>
+        <div class="delivery-matchup">
+          <div class="delivery-matchup-label">Applies to</div>
+          <ul class="delivery-matchup-list">
+            <li><span class="tag tag-order">Ordering</span> × <span class="tag tag-b2b">B2B</span></li>
+            <li><span class="tag tag-order">Ordering</span> × <span class="tag tag-b2g">B2G</span></li>
+            <li><span class="tag tag-ecom">E-commerce</span> × <span class="tag tag-b2b">B2B (bulk)</span></li>
+            <li><span class="tag tag-ecom">E-commerce</span> × <span class="tag tag-b2g">B2G (bulk)</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- PARCEL TRUCK — last-mile single package -->
+      <article class="delivery-card">
+        <div class="delivery-icon" id="delivery-icon-parcel"></div>
+        <div class="delivery-name">Parcel van</div>
+        <div class="delivery-subtitle">Last-mile single package</div>
+        <div class="delivery-bars">
+          <div class="delivery-bars-label">Share of each product's delivery</div>
+          <div class="delivery-bar-row">
+            <div class="delivery-bar-name">Scissors</div>
+            <div class="delivery-bar-track"><div class="delivery-bar-fill iron" style="width: 50%"></div></div>
+            <div class="delivery-bar-pct">50%</div>
+          </div>
+          <div class="delivery-bar-row">
+            <div class="delivery-bar-name">Applesauce</div>
+            <div class="delivery-bar-track"><div class="delivery-bar-fill apple" style="width: 15%"></div></div>
+            <div class="delivery-bar-pct">15%</div>
+          </div>
+          <div class="delivery-bar-row">
+            <div class="delivery-bar-name">Corrugate</div>
+            <div class="delivery-bar-track"><div class="delivery-bar-fill lumber" style="width: 8%"></div></div>
+            <div class="delivery-bar-pct">8%</div>
+          </div>
+        </div>
+        <div class="delivery-text">
+          Amazon, FedEx, UPS, USPS. Individual boxes dropped at a doorstep, mailroom,
+          or office. The fastest-growing delivery mode for everything from groceries
+          to scissors. The corrugated box from our lumber stream is what almost every
+          one of these arrives in.
+        </div>
+        <div class="delivery-matchup">
+          <div class="delivery-matchup-label">Applies to</div>
+          <ul class="delivery-matchup-list">
+            <li><span class="tag tag-ecom">E-commerce</span> × <span class="tag tag-b2c">B2C</span></li>
+            <li><span class="tag tag-ecom">E-commerce</span> × <span class="tag tag-b2b">B2B (small)</span></li>
+            <li><span class="tag tag-ecom">E-commerce</span> × <span class="tag tag-b2g">B2G (small)</span></li>
+            <li><span class="tag tag-order">Ordering</span> × <span class="tag tag-b2b">B2B (replenish)</span></li>
+            <li><span class="tag tag-order">Ordering</span> × <span class="tag tag-b2g">B2G (replenish)</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- STORE — physical retail pickup -->
+      <article class="delivery-card">
+        <div class="delivery-icon" id="delivery-icon-store"></div>
+        <div class="delivery-name">Store</div>
+        <div class="delivery-subtitle">Buyer fetches it</div>
+        <div class="delivery-bars">
+          <div class="delivery-bars-label">Share of each product's delivery</div>
+          <div class="delivery-bar-row">
+            <div class="delivery-bar-name">Applesauce</div>
+            <div class="delivery-bar-track"><div class="delivery-bar-fill apple" style="width: 75%"></div></div>
+            <div class="delivery-bar-pct">75%</div>
+          </div>
+          <div class="delivery-bar-row">
+            <div class="delivery-bar-name">Scissors</div>
+            <div class="delivery-bar-track"><div class="delivery-bar-fill iron" style="width: 45%"></div></div>
+            <div class="delivery-bar-pct">45%</div>
+          </div>
+          <div class="delivery-bar-row">
+            <div class="delivery-bar-name">Corrugate</div>
+            <div class="delivery-bar-track"><div class="delivery-bar-fill lumber" style="width: 2%"></div></div>
+            <div class="delivery-bar-pct">2%</div>
+          </div>
+        </div>
+        <div class="delivery-text">
+          No delivery at all. The buyer drives to a Kroger, Target, Walmart, or hardware
+          store and picks the product off a shelf. The oldest distribution model — and
+          still the dominant one for low-cost, high-impulse goods like applesauce and
+          everyday scissors.
+        </div>
+        <div class="delivery-matchup">
+          <div class="delivery-matchup-label">Applies to</div>
+          <ul class="delivery-matchup-list">
+            <li><span class="tag tag-brick">Brick &amp; mortar</span> × <span class="tag tag-b2c">B2C</span></li>
+            <li><span class="tag tag-brick">Brick &amp; mortar</span> × <span class="tag tag-b2b">B2B</span></li>
+            <li><span class="tag tag-brick">Brick &amp; mortar</span> × <span class="tag tag-b2g">B2G</span></li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- BLOCK 02: WHO CONSUMES — apple / lumber / iron -->
+  <!-- =================================================== -->
+  <div class="comparison-block reveal">
+    <div class="block-header">
+      <span class="block-label">Block 02</span>
+      <h3 class="block-title">Who consumes</h3>
+    </div>
+    <p class="block-prompt">
+      Who actually ends up buying each finished product? The contrast across the three
+      streams is striking — two are dominated by individual consumers, one is almost
+      entirely bought by businesses you'll never see.
+    </p>
+
+    <div class="comparison-grid">
+
+      <article class="comparison-cell" data-stream="apple">
+        <div class="comparison-cell-header">
+          <div class="comparison-cell-name">Apple · Applesauce</div>
+          <div class="comparison-cell-symbol">○</div>
+        </div>
+        <div class="donut-svg-wrap" id="donut-apple-who"></div>
+        <div class="donut-legend" id="legend-apple-who"></div>
+      </article>
+
+      <article class="comparison-cell" data-stream="lumber">
+        <div class="comparison-cell-header">
+          <div class="comparison-cell-name">Lumber · Corrugated boxes</div>
+          <div class="comparison-cell-symbol">▲</div>
+        </div>
+        <div class="donut-svg-wrap" id="donut-lumber-who"></div>
+        <div class="donut-legend" id="legend-lumber-who"></div>
+      </article>
+
+      <article class="comparison-cell" data-stream="iron">
+        <div class="comparison-cell-header">
+          <div class="comparison-cell-name">Iron · Scissors</div>
+          <div class="comparison-cell-symbol">◆</div>
+        </div>
+        <div class="donut-svg-wrap" id="donut-iron-who"></div>
+        <div class="donut-legend" id="legend-iron-who"></div>
+      </article>
+
+    </div>
+
+    <div class="detail-card empty" id="who-detail">
+      <div class="detail-card-empty-text">Hover any slice or legend item across the three charts to see who that segment is.</div>
+    </div>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- BLOCK 03: HOW IT'S ORDERED — apple / lumber / iron -->
+  <!-- =================================================== -->
+  <div class="comparison-block reveal">
+    <div class="block-header">
+      <span class="block-label">Block 03</span>
+      <h3 class="block-title">How it's ordered</h3>
+    </div>
+    <p class="block-prompt">
+      And how does the order itself get placed? Brick &amp; mortar, e-commerce, and B2B
+      ordering systems split the three streams in completely different ways — a reflection
+      of who's doing the buying. The physical delivery follows from this choice.
+    </p>
+
+    <div class="comparison-grid">
+
+      <article class="comparison-cell" data-stream="apple">
+        <div class="comparison-cell-header">
+          <div class="comparison-cell-name">Apple · Applesauce</div>
+          <div class="comparison-cell-symbol">○</div>
+        </div>
+        <div class="donut-svg-wrap" id="donut-apple-how"></div>
+        <div class="donut-legend" id="legend-apple-how"></div>
+      </article>
+
+      <article class="comparison-cell" data-stream="lumber">
+        <div class="comparison-cell-header">
+          <div class="comparison-cell-name">Lumber · Corrugated boxes</div>
+          <div class="comparison-cell-symbol">▲</div>
+        </div>
+        <div class="donut-svg-wrap" id="donut-lumber-how"></div>
+        <div class="donut-legend" id="legend-lumber-how"></div>
+      </article>
+
+      <article class="comparison-cell" data-stream="iron">
+        <div class="comparison-cell-header">
+          <div class="comparison-cell-name">Iron · Scissors</div>
+          <div class="comparison-cell-symbol">◆</div>
+        </div>
+        <div class="donut-svg-wrap" id="donut-iron-how"></div>
+        <div class="donut-legend" id="legend-iron-how"></div>
+      </article>
+
+    </div>
+
+    <div class="detail-card empty" id="how-detail">
+      <div class="detail-card-empty-text">Hover any slice or legend item across the three charts to see how it works.</div>
+    </div>
+  </div>
+
+
+  <div class="section-footer">
+    <span>End of Insight № 04</span>
+    <a class="next-section" href="earth-to-home-takeaways.html">
+      <span>The journey ends here ✦</span>
+      Read the takeaways
+    </a>
+  </div>
+</section>
+
+<script>
+// =============================================================
+// DATA — figures are estimates for illustrative purposes
+// =============================================================
+
+const APPLE_WHO = [
+  { key: 'b2c', name: 'B2C · Households', pct: 65, palette: 'apple-3',
+    detail: 'Most jars of applesauce are bought by individual households — at the grocery store, online, or as part of a meal plan. The classic consumer-goods pathway. Major buyers: families with young children, school lunches packed at home, older adults who eat lighter foods.' },
+  { key: 'b2b', name: 'B2B · Foodservice', pct: 20, palette: 'apple-2',
+    detail: 'Restaurants, cafeterias, hospital kitchens, hotel breakfast buffets, and meal-prep companies buy applesauce in #10 cans and food-service buckets — much larger packaging than consumer jars, sold through foodservice distributors like Sysco and US Foods.' },
+  { key: 'b2g', name: 'B2G · Government', pct: 15, palette: 'apple-1',
+    detail: 'Government institutions are a major buyer of applesauce: school lunch programs (USDA-funded), military commissaries and mess halls, federal prisons, and elder-care facilities receiving Meals on Wheels. Government contracts often specify exact recipes and packaging — these jars look different from retail jars.' }
+];
+
+const APPLE_HOW = [
+  { key: 'brick', name: 'Brick & mortar', pct: 75, palette: 'apple-3',
+    detail: 'Grocery stores remain the dominant channel — Kroger, Walmart, Albertsons, Publix, regional chains. The shopper picks the jar off a shelf, drops it in a cart, and pays at the register. Despite years of e-commerce growth, applesauce is still mostly a "saw it, grabbed it" purchase.' },
+  { key: 'ecom', name: 'E-commerce', pct: 15, palette: 'apple-2',
+    detail: 'Amazon, Walmart.com, Instacart, grocery delivery services. Applesauce ships well in cardboard cases and is shelf-stable, so it\'s a natural fit for online grocery. Growth here has accelerated since 2020 but still hasn\'t overtaken physical stores.' },
+  { key: 'order', name: 'Ordering systems', pct: 10, palette: 'apple-1',
+    detail: 'Foodservice procurement: restaurants and cafeterias order through B2B distributors via account-based ordering systems (Sysco SUS, US Foods Direct, etc.). Bulk packaging, contract pricing, weekly delivery routes. The buyer is a chef or kitchen manager, not a shopper.' }
+];
+
+const LUMBER_WHO = [
+  { key: 'b2b', name: 'B2B · Businesses', pct: 95, palette: 'lumber-3',
+    detail: 'Almost every corrugated box ever made is bought by a business: food packagers, e-commerce sellers, electronics manufacturers, beverage companies, contract packers. The box is a means to an end — packaging *something else*. Amazon alone consumes billions of boxes per year for its fulfillment operations.' },
+  { key: 'b2c', name: 'B2C · Consumers', pct: 4, palette: 'lumber-2',
+    detail: 'A small slice — people buying moving boxes from U-Haul, Home Depot, or Amazon for personal moves; small Etsy/eBay sellers buying shipping boxes for their hobby businesses. This is the only place a normal person ever pays for a corrugated box directly.' },
+  { key: 'b2g', name: 'B2G · Government', pct: 1, palette: 'lumber-1',
+    detail: 'Government packaging needs: military supply chains, USPS shipping, federal warehouses, FEMA emergency supplies. Specifications often require specific board grades and printed warnings. Small share but consistent demand.' }
+];
+
+const LUMBER_HOW = [
+  { key: 'order', name: 'Ordering systems', pct: 80, palette: 'lumber-3',
+    detail: 'B2B procurement: large customers contract directly with corrugators via standing orders, EDI systems, and automatic replenishment based on usage forecasts. Boxes are commodity items in industrial supply chains — invisible to consumers, central to operations.' },
+  { key: 'ecom', name: 'E-commerce', pct: 15, palette: 'lumber-2',
+    detail: 'Smaller businesses and home offices buy boxes through Uline, Amazon Business, ULINE, and Staples. Uline alone is a $9B/year business almost entirely centered on industrial packaging fulfillment.' },
+  { key: 'brick', name: 'Brick & mortar', pct: 5, palette: 'lumber-1',
+    detail: 'Home Depot, Lowe\'s, U-Haul, office supply stores. The only physical retail boxes most consumers ever encounter — usually for moving day. A tiny share of the total corrugate market but the only piece visible to non-business buyers.' }
+];
+
+const IRON_WHO = [
+  { key: 'b2c', name: 'B2C · Households', pct: 75, palette: 'iron-3',
+    detail: 'Three out of four pairs of scissors are bought by individuals for home use — kitchen scissors, sewing scissors, kids\' craft scissors, garden shears. Most households own multiple pairs without knowing exactly how many.' },
+  { key: 'b2b', name: 'B2B · Workplaces', pct: 20, palette: 'iron-2',
+    detail: 'Offices, schools, hair salons, kitchens, hospitals, factories — every business with hands and paper has scissors. Salon-grade hairdressing scissors alone are a multi-billion-dollar global market with much higher unit prices than consumer scissors.' },
+  { key: 'b2g', name: 'B2G · Government', pct: 5, palette: 'iron-1',
+    detail: 'Federal, state, and local agencies, school districts, military bases, government offices. Most procurement is through GSA Schedules and bulk purchasing. Specialized: military kits include pre-issued scissors and shears, and some prison commissaries sell tamper-resistant designs.' }
+];
+
+const IRON_HOW = [
+  { key: 'brick', name: 'Brick & mortar', pct: 40, palette: 'iron-3',
+    detail: 'Target, Walmart, Office Depot, hardware stores, supermarkets, dollar stores. Scissors live on hangtag pegs in the school-supplies, sewing, and kitchen aisles — exactly the blister pack we built earlier in Section 6. Still a sizable share of the market, but online has been steadily pulling ahead.' },
+  { key: 'ecom', name: 'E-commerce', pct: 55, palette: 'iron-2',
+    detail: 'Amazon dominates online scissor sales, with retailer websites (Target.com, Walmart.com), specialty craft sites, and salon-supply e-tailers making up the rest. For consumer durables like scissors, online has now overtaken physical retail — a shift that accelerated dramatically post-2020.' },
+  { key: 'order', name: 'Ordering systems', pct: 5, palette: 'iron-1',
+    detail: 'Office supply procurement (Staples Business Advantage, Office Depot Business, ODP), school district buying offices, salon distribution. A small slice but high recurrence — these buyers replenish on standing orders.' }
+];
+
+// =============================================================
+// COLOR LOOKUP
+// =============================================================
+// CATEGORY COLORS — shared across all 6 donuts so the same
+// category (B2C, e-commerce, etc.) reads the same color in
+// every chart. This makes cross-stream comparison instant.
+// =============================================================
+function getCSSVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+const CATEGORY_COLORS = {
+  // WHO categories
+  'b2c':   '#c08e3a',   // warm gold/amber — households / individuals
+  'b2b':   '#3d6b8a',   // steel blue — business / corporate
+  'b2g':   '#5e4080',   // deep purple — government / institutional
+
+  // HOW categories
+  'ecom':  '#2a8a7a',   // teal — online / digital
+  'brick': '#a85a3a',   // terra cotta — physical retail
+  'order': '#4a5560'    // slate — B2B procurement systems
+};
+
+function colorForKey(key) {
+  return CATEGORY_COLORS[key] || '#888';
+}
+
+// =============================================================
+// DONUT CHART RENDERER
+// Builds an SVG donut from a data array, with hover-linked legend
+// =============================================================
+function renderDonut(svgContainerId, legendContainerId, detailId, data, centerLabel, stream) {
+  const svgContainer = document.getElementById(svgContainerId);
+  const legendContainer = document.getElementById(legendContainerId);
+  const detail = document.getElementById(detailId);
+  if (!svgContainer || !legendContainer) return;
+
+  const W = 240, H = 240;
+  const cx = W / 2, cy = H / 2;
+  const outerR = 95;
+  const innerR = 58;
+
+  // Compute slice angles. Start at 12 o'clock (top) and go clockwise.
+  const total = data.reduce((sum, d) => sum + d.pct, 0);
+  let cumulative = 0;
+  const slices = data.map(d => {
+    const startAngle = (cumulative / total) * Math.PI * 2;
+    cumulative += d.pct;
+    const endAngle = (cumulative / total) * Math.PI * 2;
+    return { ...d, startAngle, endAngle };
+  });
+
+  // SVG arc helper — large-arc-flag is 1 if angle > pi
+  function arcPath(startA, endA, oR, iR) {
+    // Convert from "0 at top, clockwise" to standard math (0 at right, counter-clockwise)
+    // We'll use: angle 0 = top of circle = (cx, cy - oR)
+    const sx1 = cx + Math.sin(startA) * oR;
+    const sy1 = cy - Math.cos(startA) * oR;
+    const sx2 = cx + Math.sin(endA) * oR;
+    const sy2 = cy - Math.cos(endA) * oR;
+    const ix1 = cx + Math.sin(endA) * iR;
+    const iy1 = cy - Math.cos(endA) * iR;
+    const ix2 = cx + Math.sin(startA) * iR;
+    const iy2 = cy - Math.cos(startA) * iR;
+    const largeArc = (endA - startA) > Math.PI ? 1 : 0;
+    return `M ${sx1.toFixed(2)} ${sy1.toFixed(2)}
+            A ${oR} ${oR} 0 ${largeArc} 1 ${sx2.toFixed(2)} ${sy2.toFixed(2)}
+            L ${ix1.toFixed(2)} ${iy1.toFixed(2)}
+            A ${iR} ${iR} 0 ${largeArc} 0 ${ix2.toFixed(2)} ${iy2.toFixed(2)}
+            Z`;
+  }
+
+  // Build SVG
+  let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">`;
+
+  // Slices
+  slices.forEach((s, i) => {
+    const color = colorForKey(s.key);
+    svg += `<path class="donut-slice" data-key="${s.key}" data-idx="${i}"
+                d="${arcPath(s.startAngle, s.endAngle, outerR, innerR)}"
+                fill="${color}" stroke="${getCSSVar('--paper')}" stroke-width="1.5"
+                stroke-linejoin="round"/>`;
+  });
+
+  // Center label
+  svg += `<text x="${cx}" y="${cy - 4}" text-anchor="middle"
+              font-family="JetBrains Mono, monospace" font-size="10"
+              fill="${getCSSVar('--ink-faint')}" letter-spacing="3"
+              text-transform="uppercase" font-weight="500">${centerLabel}</text>`;
+  // Total label / sum
+  svg += `<text x="${cx}" y="${cy + 12}" text-anchor="middle"
+              font-family="Fraunces, serif" font-size="14"
+              fill="${getCSSVar('--ink')}" font-weight="600"
+              letter-spacing="-0.5">100%</text>`;
+
+  svg += '</svg>';
+  svgContainer.innerHTML = svg;
+
+  // Build legend
+  let legendHtml = '';
+  slices.forEach((s, i) => {
+    const color = colorForKey(s.key);
+    legendHtml += `
+      <div class="donut-legend-row" data-key="${s.key}" data-idx="${i}">
+        <span class="donut-legend-swatch" style="background:${color}"></span>
+        <span class="donut-legend-name">${s.name}</span>
+        <span class="donut-legend-pct">${s.pct}%</span>
+      </div>
+    `;
+  });
+  legendContainer.innerHTML = legendHtml;
+
+  // Stream display labels for the detail header
+  const streamLabels = { apple: 'Applesauce', lumber: 'Corrugate', iron: 'Scissors' };
+  const streamLabel = streamLabels[stream] || '';
+
+  // Wire up hover/click — both slice and legend trigger the same detail update.
+  // Because the detail card is shared across 3 sibling donuts in this block,
+  // we clear active state on all sibling slices/legends so highlights don't linger.
+  function activate(key) {
+    // Find the parent comparison-block so we can scope sibling cleanup
+    const block = svgContainer.closest('.comparison-block');
+    if (block) {
+      // Clear any active state on every donut slice and legend row in the block
+      block.querySelectorAll('.donut-slice.active').forEach(el => el.classList.remove('active'));
+      block.querySelectorAll('.donut-legend-row.active').forEach(el => el.classList.remove('active'));
+    }
+    // Activate this donut's own matching slice + legend row
+    svgContainer.querySelectorAll('.donut-slice').forEach(el => {
+      if (el.getAttribute('data-key') === key) el.classList.add('active');
+    });
+    legendContainer.querySelectorAll('.donut-legend-row').forEach(el => {
+      if (el.getAttribute('data-key') === key) el.classList.add('active');
+    });
+    // Show detail with stream identity
+    const slice = data.find(d => d.key === key);
+    if (slice && detail) {
+      detail.classList.remove('empty');
+      detail.setAttribute('data-active-stream', stream);
+      detail.innerHTML = `
+        <div class="detail-card-name">${streamLabel} · ${slice.name}</div>
+        <div class="detail-card-stat"><strong>${slice.pct}%</strong> of consumption</div>
+        <div class="detail-card-text">${slice.detail}</div>
+      `;
+    }
+  }
+
+  svgContainer.querySelectorAll('.donut-slice').forEach(slice => {
+    const key = slice.getAttribute('data-key');
+    slice.addEventListener('mouseenter', () => activate(key));
+    slice.addEventListener('click', () => activate(key));
+  });
+  legendContainer.querySelectorAll('.donut-legend-row').forEach(row => {
+    const key = row.getAttribute('data-key');
+    row.addEventListener('mouseenter', () => activate(key));
+    row.addEventListener('click', () => activate(key));
+  });
+}
+
+// =============================================================
+// INIT — render all 6 donuts
+// =============================================================
+renderDonut('donut-apple-who',  'legend-apple-who',  'who-detail', APPLE_WHO,  'who',  'apple');
+renderDonut('donut-lumber-who', 'legend-lumber-who', 'who-detail', LUMBER_WHO, 'who',  'lumber');
+renderDonut('donut-iron-who',   'legend-iron-who',   'who-detail', IRON_WHO,   'who',  'iron');
+renderDonut('donut-apple-how',  'legend-apple-how',  'how-detail', APPLE_HOW,  'how',  'apple');
+renderDonut('donut-lumber-how', 'legend-lumber-how', 'how-detail', LUMBER_HOW, 'how',  'lumber');
+renderDonut('donut-iron-how',   'legend-iron-how',   'how-detail', IRON_HOW,   'how',  'iron');
+
+// =============================================================
+// DELIVERY ICONS (Block 03)
+// Line-art SVGs in the same visual style as Section 7's transport icons
+// =============================================================
+const DELIVERY_ICONS = {
+  // Semi truck — long-haul tractor-trailer for pallet freight
+  semi: `
+    <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+      <!-- Trailer (cargo box) on the left/back -->
+      <rect x="6" y="22" width="84" height="50" fill="none" stroke="#1a1614" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Trailer panel lines -->
+      <line x1="34" y1="22" x2="34" y2="72" stroke="#1a1614" stroke-width="0.8" opacity="0.4"/>
+      <line x1="62" y1="22" x2="62" y2="72" stroke="#1a1614" stroke-width="0.8" opacity="0.4"/>
+      <!-- Coupler / 5th wheel between trailer and cab -->
+      <line x1="90" y1="56" x2="98" y2="56" stroke="#1a1614" stroke-width="2"/>
+      <!-- Cab (sleeper-style tractor) -->
+      <path d="M 98 32 L 122 32 L 134 44 L 138 56 L 138 72 L 98 72 Z"
+            fill="none" stroke="#1a1614" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Windshield -->
+      <path d="M 102 36 L 120 36 L 130 46 L 102 46 Z"
+            fill="none" stroke="#1a1614" stroke-width="1.5" stroke-linejoin="round"/>
+      <!-- Hood / grille on front -->
+      <line x1="138" y1="60" x2="142" y2="60" stroke="#1a1614" stroke-width="2"/>
+      <line x1="138" y1="65" x2="142" y2="65" stroke="#1a1614" stroke-width="2"/>
+      <!-- Side door line on cab -->
+      <line x1="110" y1="46" x2="110" y2="72" stroke="#1a1614" stroke-width="0.8" opacity="0.5"/>
+      <!-- Trailer wheels (dual axle) -->
+      <circle cx="22" cy="78" r="6" fill="none" stroke="#1a1614" stroke-width="2"/>
+      <circle cx="22" cy="78" r="2" fill="#1a1614"/>
+      <circle cx="38" cy="78" r="6" fill="none" stroke="#1a1614" stroke-width="2"/>
+      <circle cx="38" cy="78" r="2" fill="#1a1614"/>
+      <circle cx="74" cy="78" r="6" fill="none" stroke="#1a1614" stroke-width="2"/>
+      <circle cx="74" cy="78" r="2" fill="#1a1614"/>
+      <!-- Cab wheels -->
+      <circle cx="106" cy="78" r="6" fill="none" stroke="#1a1614" stroke-width="2"/>
+      <circle cx="106" cy="78" r="2" fill="#1a1614"/>
+      <circle cx="128" cy="78" r="6" fill="none" stroke="#1a1614" stroke-width="2"/>
+      <circle cx="128" cy="78" r="2" fill="#1a1614"/>
+      <!-- Ground line -->
+      <line x1="2" y1="90" x2="158" y2="90" stroke="#1a1614" stroke-width="0.6" opacity="0.4" stroke-dasharray="2 2"/>
+    </svg>
+  `,
+
+  // Parcel van — small delivery van (Amazon/UPS/USPS style)
+  parcel: `
+    <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+      <!-- Van body — boxy cargo area + sloped front -->
+      <path d="M 14 30 L 100 30 L 100 50 L 130 56 L 138 70 L 138 80 L 14 80 Z"
+            fill="none" stroke="#1a1614" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Cargo / panel division line -->
+      <line x1="100" y1="30" x2="100" y2="80" stroke="#1a1614" stroke-width="1" opacity="0.5"/>
+      <!-- Windshield (big slope) -->
+      <path d="M 102 32 L 124 52 L 102 52 Z"
+            fill="none" stroke="#1a1614" stroke-width="1.5" stroke-linejoin="round"/>
+      <!-- Side window on cargo door -->
+      <rect x="20" y="36" width="14" height="10" fill="none" stroke="#1a1614" stroke-width="1.2"/>
+      <!-- Cargo door split (rear) -->
+      <line x1="90" y1="34" x2="90" y2="80" stroke="#1a1614" stroke-width="0.8" opacity="0.5"/>
+      <!-- Package logo placeholder on side -->
+      <rect x="44" y="50" width="28" height="22" fill="none" stroke="#1a1614" stroke-width="1"/>
+      <line x1="44" y1="56" x2="72" y2="56" stroke="#1a1614" stroke-width="0.8"/>
+      <!-- Tape line across the package box -->
+      <line x1="58" y1="50" x2="58" y2="72" stroke="#1a1614" stroke-width="0.5" opacity="0.5" stroke-dasharray="1 1"/>
+      <!-- Wheels -->
+      <circle cx="34" cy="84" r="7" fill="none" stroke="#1a1614" stroke-width="2"/>
+      <circle cx="34" cy="84" r="2.5" fill="#1a1614"/>
+      <circle cx="116" cy="84" r="7" fill="none" stroke="#1a1614" stroke-width="2"/>
+      <circle cx="116" cy="84" r="2.5" fill="#1a1614"/>
+      <!-- Headlight -->
+      <circle cx="135" cy="68" r="2" fill="none" stroke="#1a1614" stroke-width="1"/>
+      <!-- Ground line -->
+      <line x1="2" y1="93" x2="158" y2="93" stroke="#1a1614" stroke-width="0.6" opacity="0.4" stroke-dasharray="2 2"/>
+    </svg>
+  `,
+
+  // Storefront — physical retail building
+  store: `
+    <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+      <!-- Roofline with awning -->
+      <path d="M 18 30 L 142 30 L 138 22 L 22 22 Z"
+            fill="none" stroke="#1a1614" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Sign on roof / above door -->
+      <rect x="46" y="14" width="68" height="10" fill="none" stroke="#1a1614" stroke-width="1.5"/>
+      <line x1="58" y1="18" x2="68" y2="18" stroke="#1a1614" stroke-width="1.5"/>
+      <line x1="74" y1="18" x2="84" y2="18" stroke="#1a1614" stroke-width="1.5"/>
+      <line x1="90" y1="18" x2="102" y2="18" stroke="#1a1614" stroke-width="1.5"/>
+      <!-- Building body -->
+      <rect x="20" y="30" width="120" height="55" fill="none" stroke="#1a1614" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Display windows on each side of door -->
+      <rect x="28" y="38" width="34" height="34" fill="none" stroke="#1a1614" stroke-width="1.5"/>
+      <line x1="45" y1="38" x2="45" y2="72" stroke="#1a1614" stroke-width="0.6" opacity="0.5"/>
+      <line x1="28" y1="55" x2="62" y2="55" stroke="#1a1614" stroke-width="0.6" opacity="0.5"/>
+      <rect x="98" y="38" width="34" height="34" fill="none" stroke="#1a1614" stroke-width="1.5"/>
+      <line x1="115" y1="38" x2="115" y2="72" stroke="#1a1614" stroke-width="0.6" opacity="0.5"/>
+      <line x1="98" y1="55" x2="132" y2="55" stroke="#1a1614" stroke-width="0.6" opacity="0.5"/>
+      <!-- Center entrance (double door) -->
+      <rect x="68" y="42" width="24" height="42" fill="none" stroke="#1a1614" stroke-width="1.5"/>
+      <line x1="80" y1="42" x2="80" y2="84" stroke="#1a1614" stroke-width="1.2"/>
+      <!-- Door handles -->
+      <circle cx="76" cy="63" r="0.8" fill="#1a1614"/>
+      <circle cx="84" cy="63" r="0.8" fill="#1a1614"/>
+      <!-- Welcome mat / sidewalk hint -->
+      <line x1="62" y1="84" x2="98" y2="84" stroke="#1a1614" stroke-width="0.8" opacity="0.6"/>
+      <!-- Ground line -->
+      <line x1="2" y1="93" x2="158" y2="93" stroke="#1a1614" stroke-width="0.6" opacity="0.4" stroke-dasharray="2 2"/>
+    </svg>
+  `
+};
+
+document.getElementById('delivery-icon-semi').innerHTML = DELIVERY_ICONS.semi;
+document.getElementById('delivery-icon-parcel').innerHTML = DELIVERY_ICONS.parcel;
+document.getElementById('delivery-icon-store').innerHTML = DELIVERY_ICONS.store;
+
+// Reveal animations
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

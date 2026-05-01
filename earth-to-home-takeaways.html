@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Earth to Home · Takeaways — willemsworld.fyi</title>
+<meta name="description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<link rel="canonical" href="https://willemsworld.fyi/earth-to-home-takeaways.html">
+<meta name="author" content="willemsworld">
+
+<!-- Open Graph (Facebook, LinkedIn, etc.) -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://willemsworld.fyi/earth-to-home-takeaways.html">
+<meta property="og:site_name" content="willemsworld.fyi">
+<meta property="og:title" content="Earth to Home — Takeaways">
+<meta property="og:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta property="og:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A globe on the left, three colored streams arcing across, converging on a house on the right. Title: Earth to Home.">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Earth to Home — Takeaways">
+<meta name="twitter:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta name="twitter:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f1ea;
+    --paper-deep: #ebe5d9;
+    --ink: #1a1614;
+    --ink-soft: #4a4540;
+    --ink-faint: #8a847c;
+    --rule: #d6cfc0;
+
+    --apple: #b8302a;
+    --apple-deep: #7a1a16;
+    --lumber: #3d6b3a;
+    --lumber-deep: #1f3d1d;
+    --iron: #4a4a4a;
+    --iron-deep: #1f1f1f;
+
+    --display: 'Fraunces', 'Times New Roman', serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184, 48, 42, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(61, 107, 58, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(74, 74, 74, 0.025) 0%, transparent 40%);
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.25rem 3rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+    z-index: 10; background: rgba(245, 241, 234, 0.92); backdrop-filter: blur(8px);
+    position: sticky; top: 0;
+  }
+  .masthead-brand { font-family: var(--display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em; }
+  .masthead-brand .tld { font-weight: 300; color: var(--ink-faint); }
+  .masthead-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+
+  .stages-strip {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .stage-pill {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.35rem 0.7rem; border: 1px solid var(--rule);
+    color: var(--ink-faint); background: rgba(255, 253, 248, 0.5); white-space: nowrap;
+  }
+  .stage-pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .stage-pill .num { opacity: 0.5; margin-right: 0.4rem; }
+  .stage-pill.active .num { opacity: 0.7; }
+  .stage-pill:not(.active):not(.takeaways):hover {
+    border-color: var(--ink); color: var(--ink); background: rgba(255, 253, 248, 0.9);
+    cursor: pointer;
+  }
+  /* Special styling for the takeaways pill — visually distinct from numbered stages */
+  .stage-pill.takeaways {
+    border-style: dashed;
+  }
+  .stage-pill.takeaways.active { border-style: solid; }
+  .stage-pill.takeaways .star {
+    margin-right: 0.4rem;
+    opacity: 0.5;
+    font-style: italic;
+  }
+  .stage-pill.takeaways.active .star { opacity: 0.7; }
+
+  .section { padding: 5rem 3rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .section-marker {
+    display: flex; align-items: baseline; gap: 2rem;
+    margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
+  }
+  .section-number {
+    font-family: var(--display); font-weight: 300; font-size: 6rem; line-height: 1; letter-spacing: -0.04em;
+  }
+  /* Takeaways uses a serif glyph instead of a number */
+  .section-glyph {
+    font-family: var(--display); font-weight: 300; font-size: 6rem; line-height: 1;
+    letter-spacing: -0.04em; font-style: italic;
+  }
+  .section-number-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 3rem; letter-spacing: -0.02em;
+  }
+
+  /* Hero deck */
+  .deck {
+    font-family: var(--display); font-weight: 300; font-size: 1.5rem; line-height: 1.55;
+    color: var(--ink-soft); max-width: 60ch; font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+  .deck::first-letter {
+    font-size: 3.5rem; float: left; line-height: 0.85; padding: 0.3rem 0.5rem 0 0;
+    font-weight: 400; font-style: normal; color: var(--ink);
+  }
+  .deck-disclaimer {
+    font-family: var(--body); font-size: 0.85rem; line-height: 1.6;
+    color: var(--ink-faint); max-width: 65ch;
+    padding: 0.85rem 1.1rem;
+    border-left: 2px solid var(--rule);
+    background: rgba(0, 0, 0, 0.02);
+    margin-bottom: 5rem;
+  }
+  .deck-disclaimer strong {
+    color: var(--ink); font-weight: 600;
+  }
+
+  /* Block headers */
+  .block { margin-bottom: 5rem; }
+  .block-header {
+    display: flex; align-items: baseline; gap: 1.25rem;
+    margin-bottom: 2rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule);
+  }
+  .block-label {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .block-title {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 1.8rem; letter-spacing: -0.01em;
+  }
+
+  /* === JOURNEY RECAP — three product paths in one row === */
+  .recap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+  .recap-card {
+    background: rgba(255, 253, 248, 0.65);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--ink);
+    padding: 1.5rem;
+  }
+  .recap-card[data-stream="apple"] { border-top-color: var(--apple); }
+  .recap-card[data-stream="lumber"] { border-top-color: var(--lumber); }
+  .recap-card[data-stream="iron"] { border-top-color: var(--iron); }
+
+  .recap-arc {
+    font-family: var(--display); font-weight: 600; font-size: 1.1rem;
+    letter-spacing: -0.01em; margin-bottom: 0.4rem;
+  }
+  .recap-card[data-stream="apple"] .recap-arc { color: var(--apple-deep); }
+  .recap-card[data-stream="lumber"] .recap-arc { color: var(--lumber-deep); }
+  .recap-card[data-stream="iron"] .recap-arc { color: var(--iron-deep); }
+
+  .recap-tag {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 1rem;
+    display: block;
+  }
+
+  .recap-stages {
+    list-style: none;
+    counter-reset: stage;
+    padding: 0;
+    margin: 0;
+  }
+  .recap-stages li {
+    counter-increment: stage;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 0.6rem;
+    align-items: baseline;
+    padding: 0.45rem 0;
+    border-bottom: 1px dotted var(--rule);
+    font-size: 0.8rem;
+  }
+  .recap-stages li:last-child { border-bottom: none; }
+  .recap-stages li::before {
+    content: counter(stage, decimal-leading-zero);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    font-weight: 500;
+  }
+  .recap-stage-name {
+    font-family: var(--display); font-weight: 600; font-size: 0.85rem;
+  }
+  .recap-stage-detail {
+    color: var(--ink-soft); font-size: 0.78rem;
+    margin-top: 0.1rem;
+    display: block;
+  }
+
+  /* === KEY TAKEAWAYS — large numbered insights === */
+  .takeaway-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .takeaway {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .takeaway:last-child { border-bottom: none; }
+  .takeaway-num {
+    font-family: var(--display); font-weight: 300;
+    font-size: 4rem; line-height: 1;
+    color: var(--ink); letter-spacing: -0.04em;
+    font-feature-settings: 'lnum';
+  }
+  .takeaway-body {
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .takeaway-title {
+    font-family: var(--display); font-weight: 600; font-style: italic;
+    font-size: 1.6rem; letter-spacing: -0.01em; line-height: 1.2;
+  }
+  .takeaway-text {
+    font-family: var(--body); font-weight: 400;
+    font-size: 1rem; line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 65ch;
+  }
+  .takeaway-text strong {
+    font-weight: 600; color: var(--ink);
+  }
+  .takeaway-text em {
+    font-style: italic;
+  }
+
+  /* === PULL QUOTE — for a hero takeaway === */
+  .pull-quote {
+    margin: 4rem 0;
+    padding: 2.5rem 3rem;
+    background: rgba(255, 253, 248, 0.55);
+    border-left: 4px solid var(--ink);
+    border-right: 1px solid var(--rule);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .pull-quote-text {
+    font-family: var(--display); font-weight: 300; font-style: italic;
+    font-size: 1.65rem; line-height: 1.45; color: var(--ink);
+    max-width: 50ch;
+  }
+  .pull-quote-text::before {
+    content: '"';
+    font-family: var(--display);
+    font-size: 4rem;
+    line-height: 0;
+    vertical-align: -0.4em;
+    margin-right: 0.3rem;
+    color: var(--ink-faint);
+    font-style: normal;
+  }
+  .pull-quote-attribution {
+    font-family: var(--mono); font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint); margin-top: 1rem;
+  }
+
+  /* === WHAT'S NEXT === */
+  .whats-next {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .next-card {
+    padding: 1.5rem 1.75rem;
+    background: rgba(255, 253, 248, 0.6);
+    border: 1px solid var(--rule);
+    border-top: 2px solid var(--ink-faint);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .next-card:hover {
+    border-top-color: var(--ink);
+    background: rgba(255, 253, 248, 0.95);
+    transform: translateY(-2px);
+  }
+  .next-card-tag {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 0.6rem; display: block;
+  }
+  .next-card-title {
+    font-family: var(--display); font-weight: 600;
+    font-size: 1.4rem; letter-spacing: -0.01em; line-height: 1.2;
+    margin-bottom: 0.5rem; color: var(--ink);
+  }
+  .next-card-desc {
+    font-family: var(--display); font-weight: 300; font-style: italic;
+    font-size: 1rem; line-height: 1.45; color: var(--ink-soft);
+  }
+
+  /* === SOURCES / METHODOLOGY === */
+  .sources {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 75ch;
+  }
+  .sources p { margin-bottom: 0.75rem; }
+  .sources strong {
+    font-weight: 600; color: var(--ink);
+  }
+
+  /* Section footer */
+  .section-footer {
+    margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .footer-end {
+    font-family: var(--display); font-style: italic; font-weight: 400;
+    font-size: 1.4rem; text-transform: none; letter-spacing: -0.01em;
+    color: var(--ink); text-align: right;
+  }
+  .footer-end span {
+    color: var(--ink-faint); font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; display: block; margin-bottom: 0.25rem; font-style: normal;
+  }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .masthead { padding: 0.9rem 1.25rem; }
+    .stages-strip { padding: 1rem 1.25rem; gap: 0.3rem; }
+    .stage-pill { font-size: 0.58rem; padding: 0.28rem 0.5rem; }
+    .section { padding: 3.5rem 1.25rem; }
+    .section-marker { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    .section-glyph { font-size: 4rem; }
+    .section-title { font-size: 2rem; }
+    .deck { font-size: 1.15rem; }
+    .recap-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    .takeaway { grid-template-columns: 60px 1fr; gap: 1.25rem; padding: 1.25rem 0; }
+    .takeaway-num { font-size: 3rem; }
+    .takeaway-title { font-size: 1.3rem; }
+    .pull-quote { padding: 1.75rem 1.5rem; margin: 3rem 0; }
+    .pull-quote-text { font-size: 1.3rem; }
+    .whats-next { grid-template-columns: 1fr; gap: 1rem; }
+    .block-title { font-size: 1.4rem; }
+    .section-footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .footer-end { text-align: left; }
+  }
+  /* === STAGE LANDSCAPE SCATTER CHART === */
+  .landscape-wrap {
+    background: rgba(255, 253, 248, 0.65);
+    border: 1px solid var(--rule);
+    padding: 2rem 2rem 1.5rem;
+    margin-bottom: 5rem;
+  }
+  .landscape-header {
+    display: flex; align-items: baseline; gap: 1.25rem;
+    margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule);
+  }
+  .landscape-label {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .landscape-title {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 1.65rem; letter-spacing: -0.01em;
+  }
+  .landscape-prompt {
+    font-family: var(--display); font-weight: 300; font-style: italic;
+    font-size: 1rem; line-height: 1.55; color: var(--ink-soft);
+    max-width: 70ch; margin-bottom: 1.5rem;
+  }
+  .landscape-svg-wrap {
+    width: 100%;
+    aspect-ratio: 5 / 3;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .landscape-svg-wrap svg { width: 100%; height: 100%; display: block; }
+
+  .landscape-quadrant-key {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .landscape-quadrant {
+    padding: 0.75rem 0.85rem;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+  }
+  .landscape-quadrant-tag {
+    font-family: var(--mono); font-size: 0.55rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 0.25rem;
+  }
+  .landscape-quadrant-title {
+    font-family: var(--display); font-weight: 600; font-size: 0.95rem;
+    letter-spacing: -0.005em; color: var(--ink); margin-bottom: 0.3rem;
+  }
+  .landscape-quadrant-text {
+    font-size: 0.75rem; line-height: 1.4; color: var(--ink-soft);
+  }
+
+  /* Hover state for scatter dots */
+  .stage-dot {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  .stage-dot:hover, .stage-dot.active {
+    transform: scale(1.2);
+  }
+
+  /* === STAGE CARDS === */
+  .stage-cards-header {
+    display: flex; align-items: baseline; gap: 1.25rem;
+    margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule);
+  }
+  .stage-cards-prompt {
+    font-family: var(--display); font-weight: 300; font-style: italic;
+    font-size: 1rem; line-height: 1.55; color: var(--ink-soft);
+    max-width: 70ch; margin-bottom: 2rem;
+  }
+
+  .stage-cards-grid {
+    display: flex; flex-direction: column; gap: 2rem;
+  }
+
+  .stage-card {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 2.5rem;
+    padding: 2rem 2.25rem;
+    background: rgba(255, 253, 248, 0.65);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--ink);
+    transition: border-left-color 0.25s ease;
+  }
+  .stage-card[data-tone="moat"]   { border-left-color: #5e4080; }
+  .stage-card[data-tone="overlooked"] { border-left-color: #2a8a7a; }
+  .stage-card[data-tone="established"] { border-left-color: #3d6b8a; }
+  .stage-card[data-tone="battlefield"] { border-left-color: #c08e3a; }
+
+  .stage-card-num {
+    font-family: var(--display); font-weight: 300;
+    font-size: 4rem; line-height: 0.95;
+    color: var(--ink);
+    letter-spacing: -0.04em;
+  }
+  .stage-card-num-label {
+    font-family: var(--mono); font-size: 0.55rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--ink-faint); margin-top: 0.25rem;
+    display: block;
+  }
+
+  .stage-card-body {
+    display: flex; flex-direction: column; gap: 1rem;
+    min-width: 0;
+  }
+  .stage-card-name {
+    font-family: var(--display); font-weight: 600; font-style: italic;
+    font-size: 1.6rem; letter-spacing: -0.01em; line-height: 1.15;
+  }
+  .stage-card-quadrant {
+    display: inline-block;
+    padding: 0.18rem 0.55rem;
+    border-radius: 2px;
+    font-family: var(--mono); font-size: 0.55rem;
+    font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #fff;
+    align-self: flex-start;
+  }
+  .stage-card[data-tone="moat"] .stage-card-quadrant   { background: #5e4080; }
+  .stage-card[data-tone="overlooked"] .stage-card-quadrant { background: #2a8a7a; }
+  .stage-card[data-tone="established"] .stage-card-quadrant { background: #3d6b8a; }
+  .stage-card[data-tone="battlefield"] .stage-card-quadrant { background: #c08e3a; }
+
+  .stage-card-headline {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 1.15rem; line-height: 1.45; color: var(--ink);
+    padding: 0.75rem 0; margin: 0.25rem 0;
+    border-top: 1px dotted var(--rule);
+    border-bottom: 1px dotted var(--rule);
+  }
+  .stage-card-points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; flex-direction: column; gap: 0.55rem;
+  }
+  .stage-card-points li {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: 0.9rem; line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .stage-card-points li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.6rem;
+    width: 8px; height: 1px;
+    background: var(--ink-faint);
+  }
+  .stage-card-points li strong {
+    color: var(--ink); font-weight: 600;
+  }
+
+  /* Closing thesis */
+  .closer {
+    margin-top: 5rem;
+    padding: 2.5rem 3rem;
+    background: rgba(255, 253, 248, 0.55);
+    border-left: 4px solid var(--ink);
+    border-right: 1px solid var(--rule);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .closer-text {
+    font-family: var(--display); font-weight: 300; font-style: italic;
+    font-size: 1.5rem; line-height: 1.5; color: var(--ink);
+    max-width: 55ch;
+  }
+  .closer-text::before {
+    content: '"';
+    font-family: var(--display);
+    font-size: 4rem;
+    line-height: 0;
+    vertical-align: -0.4em;
+    margin-right: 0.3rem;
+    color: var(--ink-faint);
+    font-style: normal;
+  }
+  .closer-attribution {
+    font-family: var(--mono); font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint); margin-top: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .landscape-wrap { padding: 1.25rem; margin-bottom: 3rem; }
+    .landscape-quadrant-key { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .stage-card { grid-template-columns: 1fr; gap: 1rem; padding: 1.5rem 1.25rem; }
+    .stage-card-num { font-size: 3rem; }
+    .stage-card-name { font-size: 1.35rem; }
+    .stage-card-headline { font-size: 1.05rem; }
+    .closer { padding: 1.75rem 1.5rem; margin-top: 3rem; }
+    .closer-text { font-size: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-brand">willemsworld<span class="tld">.fyi</span></div>
+  <div class="masthead-meta">Insight № 04 · Supply Chain Ecosystems</div>
+</header>
+
+<div class="stages-strip">
+  <a href="earth-to-home.html" class="stage-pill" style="text-decoration: none;"><span class="num">01</span>The Earth</a>
+  <a href="earth-to-home-02-sorting.html" class="stage-pill" style="text-decoration: none;"><span class="num">02</span>Sorting</a>
+  <a href="earth-to-home-03-refinement.html" class="stage-pill" style="text-decoration: none;"><span class="num">03</span>Refinement</a>
+  <a href="earth-to-home-04-transformation.html" class="stage-pill" style="text-decoration: none;"><span class="num">04</span>Transformation</a>
+  <a href="earth-to-home-05-finishing.html" class="stage-pill" style="text-decoration: none;"><span class="num">05</span>Finishing</a>
+  <a href="earth-to-home-06-assembly.html" class="stage-pill" style="text-decoration: none;"><span class="num">06</span>Assembly</a>
+  <a href="earth-to-home-07-distribution.html" class="stage-pill" style="text-decoration: none;"><span class="num">07</span>Distribution</a>
+  <a href="earth-to-home-08-consumption.html" class="stage-pill" style="text-decoration: none;"><span class="num">08</span>Consumption</a>
+  <span class="stage-pill takeaways active"><span class="star">✦</span>Takeaways</span>
+</div>
+
+<section class="section">
+  <div class="section-marker reveal">
+    <div class="section-glyph">✦</div>
+    <div>
+      <span class="section-number-meta">End of the journey</span>
+      <h2 class="section-title">Takeaways</h2>
+    </div>
+  </div>
+
+  <p class="deck reveal">
+    Eight stages, three products, one journey from the earth to a kitchen drawer. What
+    follows is less a summary and more a <em>landscape</em> — a map of where competition,
+    capital, and risk live across the supply chain. Some stages are walls. Some are
+    battlefields. Some are forgotten. None are the same.
+  </p>
+
+  <p class="deck-disclaimer reveal">
+    <strong>A note on what this is.</strong> Everything that follows is a generalization
+    of my own thinking about how the global supply chain is structured — informed by
+    research, but ultimately one person's reading of an enormous, messy, and constantly
+    shifting system. Read it as a perspective, not a verdict.
+  </p>
+
+  <!-- =============================== -->
+  <!-- SCATTER CHART — STAGE LANDSCAPE -->
+  <!-- =============================== -->
+  <div class="landscape-wrap reveal">
+    <div class="landscape-header">
+      <span class="landscape-label">The map</span>
+      <h3 class="landscape-title">Stage landscape</h3>
+    </div>
+    <p class="landscape-prompt">
+      Each stage plotted on two axes: <strong>Investment Barrier</strong> (how hard it
+      is to enter — capital, regulation, expertise) and <strong>Number of Players</strong>
+      (how concentrated or competitive the stage is). The four quadrants reveal four
+      kinds of business.
+    </p>
+
+    <div class="landscape-svg-wrap" id="landscape-svg"></div>
+
+    <div class="landscape-quadrant-key">
+      <div class="landscape-quadrant" style="border-left: 3px solid #c08e3a;">
+        <div class="landscape-quadrant-tag">Top-left</div>
+        <div class="landscape-quadrant-title">Battlefields</div>
+        <div class="landscape-quadrant-text">Low barrier, many players. Closest to the consumer, most competitive, smallest margins. Hardest to win.</div>
+      </div>
+      <div class="landscape-quadrant" style="border-left: 3px solid #3d6b8a;">
+        <div class="landscape-quadrant-tag">Top-right</div>
+        <div class="landscape-quadrant-title">Elastic</div>
+        <div class="landscape-quadrant-text">High barrier, many players. Capital-intensive but contestable — competition is real, but the winners are big.</div>
+      </div>
+      <div class="landscape-quadrant" style="border-left: 3px solid #2a8a7a;">
+        <div class="landscape-quadrant-tag">Bottom-left</div>
+        <div class="landscape-quadrant-title">Overlooked</div>
+        <div class="landscape-quadrant-text">Low barrier, few players. The forgotten parts of the supply chain — most upside for innovation.</div>
+      </div>
+      <div class="landscape-quadrant" style="border-left: 3px solid #5e4080;">
+        <div class="landscape-quadrant-tag">Bottom-right</div>
+        <div class="landscape-quadrant-title">The Wall</div>
+        <div class="landscape-quadrant-text">High barrier, few players. Sticky and profitable if you can get in. Large capital required. Generally government oversight.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================== -->
+  <!-- STAGE CARDS — eight reflections -->
+  <!-- =============================== -->
+  <div class="stage-cards-header reveal">
+    <span class="landscape-label">The stages</span>
+    <h3 class="landscape-title">Eight reflections</h3>
+  </div>
+  <p class="stage-cards-prompt reveal">
+    A reading of each stage in its own right — what kind of business it is, what its
+    quirks are, where I'd look if I were building, investing, or just trying to understand
+    where things break.
+  </p>
+
+  <div class="stage-cards-grid">
+
+    <!-- ============================== -->
+    <!-- 01 EARTH — moat -->
+    <!-- ============================== -->
+    <article class="stage-card reveal" data-tone="moat">
+      <div class="stage-card-num">
+        01
+        <span class="stage-card-num-label">Earth</span>
+      </div>
+      <div class="stage-card-body">
+        <div class="stage-card-name">The Earth</div>
+        <span class="stage-card-quadrant">The Wall</span>
+        <div class="stage-card-headline">
+          The most delicate stage of the supply chain — and the most rewarding if your
+          due diligence is right.
+        </div>
+        <ul class="stage-card-points">
+          <li><strong>Location, location, location.</strong> Surveying, testing, measuring, weather, climate, accessibility — the work that decides whether anything below it is even possible.</li>
+          <li><strong>High government regulation and permits.</strong> Red tape is the moat. Mining licenses, water rights, zoning, environmental review — the friction is the protection.</li>
+          <li><strong>Long horizons.</strong> Minimum 5–7 years to ROI; 20–30 years is normal before real profits show. Long-term planning and patient capital are the price of entry.</li>
+          <li><strong>Few producers, sticky business.</strong> When the work is done correctly, the position is essentially permanent. The land doesn't move.</li>
+          <li><strong>Building block of everything downstream.</strong> The most fragile part of the chain — and the one most worth doing well.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ============================== -->
+    <!-- 02 SORTING — overlooked -->
+    <!-- ============================== -->
+    <article class="stage-card reveal" data-tone="overlooked">
+      <div class="stage-card-num">
+        02
+        <span class="stage-card-num-label">Sorting</span>
+      </div>
+      <div class="stage-card-body">
+        <div class="stage-card-name">Sorting</div>
+        <span class="stage-card-quadrant">Overlooked</span>
+        <div class="stage-card-headline">
+          The forgotten part of the supply chain — and probably the one with the most
+          innovation upside.
+        </div>
+        <ul class="stage-card-points">
+          <li><strong>The largest source of waste in the entire chain.</strong> What gets sorted out is what gets thrown away. Volume of waste is enormous.</li>
+          <li><strong>Innovation upside hides here.</strong> Anyone who can turn that waste into a profitable product is unlocking value almost no one is competing for.</li>
+          <li><strong>Almost always co-located.</strong> Sorting happens at or near the point of extraction or harvest — moving unsorted material is too expensive.</li>
+          <li>An <strong>unglamorous</strong> stage that gets minimal attention from investors, founders, and operators alike.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ============================== -->
+    <!-- 03 REFINEMENT — established -->
+    <!-- ============================== -->
+    <article class="stage-card reveal" data-tone="established">
+      <div class="stage-card-num">
+        03
+        <span class="stage-card-num-label">Refinement</span>
+      </div>
+      <div class="stage-card-body">
+        <div class="stage-card-name">Refinement</div>
+        <span class="stage-card-quadrant">Elastic</span>
+        <div class="stage-card-headline">
+          Where the product genuinely becomes usable — and where the chain starts to
+          travel.
+        </div>
+        <ul class="stage-card-points">
+          <li><strong>Geographic separation begins here.</strong> Refinement typically happens further from extraction or harvest than sorting did — material can finally travel.</li>
+          <li><strong>The cleaning step.</strong> What enters the refinement stage is rough; what leaves it is the working substance — peel from flesh, bark from wood, oxygen from iron.</li>
+          <li><strong>Sophisticated technologies and processes.</strong> Big science and big chemistry live here.</li>
+          <li><strong>Streamlined and concentrated.</strong> Larger factories, fewer of them, optimized to throughput.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ============================== -->
+    <!-- 04 TRANSFORMATION — moat (capital-intensive) -->
+    <!-- ============================== -->
+    <article class="stage-card reveal" data-tone="moat">
+      <div class="stage-card-num">
+        04
+        <span class="stage-card-num-label">Transformation</span>
+      </div>
+      <div class="stage-card-body">
+        <div class="stage-card-name">Transformation</div>
+        <span class="stage-card-quadrant">The Wall</span>
+        <div class="stage-card-headline">
+          The largest energy and chemical use step in the chain — and the second most
+          delicate, in my view. It could use more competition.
+        </div>
+        <ul class="stage-card-points">
+          <li><strong>Highest energy and chemical intensity.</strong> The blast furnaces, the kraft digesters, the pasteurizers. This is where the chain's footprint actually lives.</li>
+          <li><strong>The product begins to take final shape.</strong> Pig iron becomes steel; pulp becomes paper; sauce gets its texture.</li>
+          <li><strong>Dirty and rigid.</strong> The processes don't bend easily; capital is sunk; output specs are narrow.</li>
+          <li><strong>Hard to start, hard to compete in.</strong> Large initial investment, "not as sexy" as consumer-facing stages, fewer entrants.</li>
+          <li>The <strong>second most delicate</strong> stage, after Earth — and the one most starved for new competition.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ============================== -->
+    <!-- 05 FINISHING — established (more competitive) -->
+    <!-- ============================== -->
+    <article class="stage-card reveal" data-tone="established">
+      <div class="stage-card-num">
+        05
+        <span class="stage-card-num-label">Finishing</span>
+      </div>
+      <div class="stage-card-body">
+        <div class="stage-card-name">Finishing</div>
+        <span class="stage-card-quadrant">Elastic</span>
+        <div class="stage-card-headline">
+          The icing on the cake — where a small number of inputs gets turned into a wide
+          variety of outputs.
+        </div>
+        <ul class="stage-card-points">
+          <li><strong>Few inputs, many outputs.</strong> Finishers transform a handful of standardized intermediates into countless final products. The variety lives here.</li>
+          <li><strong>Batch manufacturing dominates.</strong> Most finishers run batches rather than continuous lines — flexibility is the value.</li>
+          <li><strong>Planning is everything.</strong> Demand and supply forecasting must stay in tight sync; mistakes ripple instantly.</li>
+          <li><strong>Manual labor returns.</strong> A lot of the work is hands-on, and a lot of it has been outsourced to the developing world.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ============================== -->
+    <!-- 06 ASSEMBLY — established / labor-heavy -->
+    <!-- ============================== -->
+    <article class="stage-card reveal" data-tone="established">
+      <div class="stage-card-num">
+        06
+        <span class="stage-card-num-label">Assembly</span>
+      </div>
+      <div class="stage-card-body">
+        <div class="stage-card-name">Assembly</div>
+        <span class="stage-card-quadrant">Elastic</span>
+        <div class="stage-card-headline">
+          The funnel point of the supply chain — many inputs converge into a few finished
+          outputs, and any one of them can hold the line up.
+        </div>
+        <ul class="stage-card-points">
+          <li><strong>Many inputs, few outputs.</strong> The opposite of finishing — lots of components flow in, one product comes out.</li>
+          <li><strong>Delays compound.</strong> If any component upstream is missing, the entire assembly stops. Most schedule slips originate not in assembly itself but in its inputs.</li>
+          <li><strong>Hard to fully automate.</strong> Manual dexterity, frequent product spec changes, and tight tolerances mean humans still handle a lot of it.</li>
+          <li><strong>Concentrated in the developing world.</strong> Labor-cost arbitrage drives the geography.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ============================== -->
+    <!-- 07 DISTRIBUTION — moat -->
+    <!-- ============================== -->
+    <article class="stage-card reveal" data-tone="moat">
+      <div class="stage-card-num">
+        07
+        <span class="stage-card-num-label">Distribution</span>
+      </div>
+      <div class="stage-card-body">
+        <div class="stage-card-name">Distribution</div>
+        <span class="stage-card-quadrant">The Wall</span>
+        <div class="stage-card-headline">
+          Almost impossible to break into — and where most of the chain's corruption
+          and political leverage live.
+        </div>
+        <ul class="stage-card-points">
+          <li><strong>The capital costs are brutal.</strong> Boats, trains, trucks, warehouses, terminals. The infrastructure required is on a different order of magnitude than any other stage.</li>
+          <li><strong>The most corruption-prone stage.</strong> In both developed and developing markets — the historical American railroad era, and "papers and papers" mindsets in third-world ports.</li>
+          <li><strong>Where unions form.</strong> High concentration of labor at fixed nodes (ports, rail yards) makes labor organization both natural and powerful.</li>
+          <li><strong>Geopolitical chokepoints decide everything.</strong> The Strait of Hormuz, Suez, Panama, Malacca — narrow geographies hold disproportionate global power.</li>
+          <li><strong>Heavy government oversight.</strong> Where states most actively shape commerce.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ============================== -->
+    <!-- 08 CONSUMPTION — battlefield -->
+    <!-- ============================== -->
+    <article class="stage-card reveal" data-tone="battlefield">
+      <div class="stage-card-num">
+        08
+        <span class="stage-card-num-label">Consumption</span>
+      </div>
+      <div class="stage-card-body">
+        <div class="stage-card-name">Consumption</div>
+        <span class="stage-card-quadrant">Battlefield</span>
+        <div class="stage-card-headline">
+          The most competitive stage — and, I think, the most risky business segment in
+          the entire chain.
+        </div>
+        <ul class="stage-card-points">
+          <li><strong>Closest to the consumer, most competitive.</strong> Margins are thin, brands are easy to start, and someone is always doing it cheaper.</li>
+          <li><strong>Delivery has fundamentally shifted.</strong> The last 20 years have moved enormous volume from "consumer fetches it" to "delivered to the door" — a structural change still in progress.</li>
+          <li><strong>The largest signal-to-noise gap in the chain.</strong> Producers are far from customers in volume and variety; the disconnect makes demand forecasting genuinely hard.</li>
+          <li><strong>Small perceptions move large markets.</strong> A trend, a viral moment, a new packaging shape can swing demand wildly with little warning.</li>
+          <li>The <strong>most risky</strong> business segment in the entire supply chain — and the one where most consumer attention lives.</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- =============================== -->
+  <!-- CLOSING THESIS -->
+  <!-- =============================== -->
+  <div class="closer reveal">
+    <p class="closer-text">
+      Every product in your home is the end of a chain that someone, somewhere, decided to
+      stop competing in. Walking the eight stages backward from a pair of scissors or a jar
+      of applesauce isn't just a tour — it's a map of where capital, risk, and opportunity
+      actually live.
+    </p>
+    <div class="closer-attribution">— willemsworld · Insight № 04</div>
+  </div>
+
+  <div class="section-footer">
+    <span>End of Insight № 04</span>
+    <div class="footer-end">
+      <span>willemsworld.fyi</span>
+      Thank you for reading.
+    </div>
+  </div>
+</section>
+
+<script>
+// =============================================================
+// STAGE LANDSCAPE SCATTER CHART
+// =============================================================
+// Each stage plotted on:
+//   x-axis: Investment Barrier (low → high, 0–100)
+//   y-axis: Number of Players (few → many, 0–100)
+//
+// Quadrants:
+//   Top-left  (high y, low x):  Many players, low barrier — battlefield-ish but rare here
+//   Top-right (high y, high x): Many players, high barrier — Established
+//   Bot-left  (low y, low x):   Few players, low barrier — Overlooked
+//   Bot-right (low y, high x):  Few players, high barrier — Moat
+//
+// We're flipping the conventional reading: I want "few players" at the BOTTOM (rare = scarce = sits low)
+// and "many players" at the TOP (crowded). High investment barrier on the right.
+// So:
+//   Earth        = high barrier, few players      → bottom-right (Moat)
+//   Sorting      = low barrier, few players       → bottom-left  (Overlooked)
+//   Refinement   = high barrier, established      → mid/upper right (Established)
+//   Transformation = highest barrier, fewest players → bottom-right far (Moat — most extreme)
+//   Finishing    = low-medium barrier, many players → upper-mid right (Established/competitive)
+//   Assembly     = medium barrier, medium players  → mid-right (Established)
+//   Distribution = highest barrier, few players    → bottom-right (Moat)
+//   Consumption  = low barrier, many players       → top-left (Battlefield)
+//
+// Each stage carries a "tone" matching the card's quadrant color.
+
+const STAGES = [
+  { num: '01', name: 'Earth',          x: 88, y: 22, tone: 'moat',
+    blurb: 'High barrier, few producers. The bedrock of the chain.' },
+  { num: '02', name: 'Sorting',        x: 28, y: 30, tone: 'overlooked',
+    blurb: 'Few players, low barrier. The forgotten stage.' },
+  { num: '03', name: 'Refinement',     x: 70, y: 55, tone: 'established',
+    blurb: 'Sophisticated, capital-heavy, but not concentrated to a handful.' },
+  { num: '04', name: 'Transformation', x: 72, y: 18, tone: 'moat',
+    blurb: 'Highest energy and capital intensity. Few entrants.' },
+  { num: '05', name: 'Finishing',      x: 55, y: 70, tone: 'established',
+    blurb: 'Many batch manufacturers worldwide. Flexible, planning-heavy.' },
+  { num: '06', name: 'Assembly',       x: 50, y: 75, tone: 'established',
+    blurb: 'Many players globally, especially in the developing world.' },
+  { num: '07', name: 'Distribution',   x: 95, y: 28, tone: 'moat',
+    blurb: 'Almost impossible to enter. Capital and infrastructure intensive.' },
+  { num: '08', name: 'Consumption',    x: 18, y: 92, tone: 'battlefield',
+    blurb: 'Lowest barriers, most competitors. Closest to the customer.' }
+];
+
+const TONE_COLORS = {
+  moat:        '#5e4080',
+  overlooked:  '#2a8a7a',
+  established: '#3d6b8a',
+  battlefield: '#c08e3a'
+};
+
+function renderLandscape() {
+  const W = 1000, H = 600;
+  const padL = 90, padR = 30, padT = 30, padB = 70;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+
+  // Helper: convert (x, y) in 0-100 scale to SVG coords
+  // y-axis: high y (many players) is TOP of plot (low SVG y), low y is BOTTOM
+  function px(x) { return padL + (x / 100) * plotW; }
+  function py(y) { return padT + ((100 - y) / 100) * plotH; }
+
+  let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">`;
+
+  // Background quadrant tints (very subtle so the dots stay the focus)
+  // Quadrant boundaries at x=50, y=50
+  const midX = px(50), midY = py(50);
+  // Top-left = battlefield (low barrier, many players)
+  svg += `<rect x="${padL}" y="${padT}" width="${midX - padL}" height="${midY - padT}" fill="#c08e3a" opacity="0.06"/>`;
+  // Top-right = established (high barrier, many players)
+  svg += `<rect x="${midX}" y="${padT}" width="${(padL + plotW) - midX}" height="${midY - padT}" fill="#3d6b8a" opacity="0.06"/>`;
+  // Bottom-left = overlooked (low barrier, few players)
+  svg += `<rect x="${padL}" y="${midY}" width="${midX - padL}" height="${(padT + plotH) - midY}" fill="#2a8a7a" opacity="0.06"/>`;
+  // Bottom-right = moat (high barrier, few players)
+  svg += `<rect x="${midX}" y="${midY}" width="${(padL + plotW) - midX}" height="${(padT + plotH) - midY}" fill="#5e4080" opacity="0.06"/>`;
+
+  // Quadrant divider lines (subtle)
+  svg += `<line x1="${midX}" y1="${padT}" x2="${midX}" y2="${padT + plotH}" stroke="#c2b9a4" stroke-width="0.6" stroke-dasharray="3 3"/>`;
+  svg += `<line x1="${padL}" y1="${midY}" x2="${padL + plotW}" y2="${midY}" stroke="#c2b9a4" stroke-width="0.6" stroke-dasharray="3 3"/>`;
+
+  // Outer plot border
+  svg += `<rect x="${padL}" y="${padT}" width="${plotW}" height="${plotH}"
+              fill="none" stroke="#c2b9a4" stroke-width="1"/>`;
+
+  // Quadrant labels in the corners
+  const quadLabels = [
+    { x: padL + 14, y: padT + 22, text: 'BATTLEFIELD', color: '#c08e3a' },
+    { x: padL + plotW - 14, y: padT + 22, text: 'ELASTIC', color: '#3d6b8a', anchor: 'end' },
+    { x: padL + 14, y: padT + plotH - 14, text: 'OVERLOOKED', color: '#2a8a7a' },
+    { x: padL + plotW - 14, y: padT + plotH - 14, text: 'THE WALL', color: '#5e4080', anchor: 'end' }
+  ];
+  quadLabels.forEach(q => {
+    svg += `<text x="${q.x}" y="${q.y}" text-anchor="${q.anchor || 'start'}"
+                font-family="JetBrains Mono, monospace" font-size="13"
+                fill="${q.color}" font-weight="700" letter-spacing="3"
+                opacity="0.5">${q.text}</text>`;
+  });
+
+  // X-axis label
+  svg += `<text x="${padL + plotW / 2}" y="${H - 16}" text-anchor="middle"
+              font-family="JetBrains Mono, monospace" font-size="12"
+              fill="#1a1614" letter-spacing="3" font-weight="700">INVESTMENT BARRIER →</text>`;
+  svg += `<text x="${padL + 4}" y="${H - 32}" text-anchor="start"
+              font-family="JetBrains Mono, monospace" font-size="9"
+              fill="#8a847c" letter-spacing="2">LOW</text>`;
+  svg += `<text x="${padL + plotW - 4}" y="${H - 32}" text-anchor="end"
+              font-family="JetBrains Mono, monospace" font-size="9"
+              fill="#8a847c" letter-spacing="2">HIGH</text>`;
+
+  // Y-axis label (rotated)
+  svg += `<text x="${-(padT + plotH / 2)}" y="22" text-anchor="middle"
+              transform="rotate(-90)"
+              font-family="JetBrains Mono, monospace" font-size="12"
+              fill="#1a1614" letter-spacing="3" font-weight="700">↑ NUMBER OF PLAYERS</text>`;
+  svg += `<text x="${-(padT + 4)}" y="40" text-anchor="end"
+              transform="rotate(-90)"
+              font-family="JetBrains Mono, monospace" font-size="9"
+              fill="#8a847c" letter-spacing="2">MANY</text>`;
+  svg += `<text x="${-(padT + plotH - 4)}" y="40" text-anchor="start"
+              transform="rotate(-90)"
+              font-family="JetBrains Mono, monospace" font-size="9"
+              fill="#8a847c" letter-spacing="2">FEW</text>`;
+
+  // Plot the stages — dots first, then labels on top
+  STAGES.forEach(s => {
+    const cx = px(s.x), cy = py(s.y);
+    const color = TONE_COLORS[s.tone];
+    // Halo (light larger circle for visual weight)
+    svg += `<circle class="stage-dot" data-stage="${s.num}" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="22" fill="${color}" opacity="0.18"/>`;
+    // Main dot
+    svg += `<circle class="stage-dot" data-stage="${s.num}" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="14" fill="${color}" opacity="0.95"/>`;
+    // Number label inside the dot
+    svg += `<text x="${cx.toFixed(1)}" y="${(cy + 4).toFixed(1)}" text-anchor="middle"
+                font-family="JetBrains Mono, monospace" font-size="11"
+                fill="#fff" font-weight="700" letter-spacing="0.5"
+                style="pointer-events: none;">${s.num}</text>`;
+  });
+
+  // Stage name labels positioned to avoid overlap
+  // Manually offset each stage's label
+  const labelOffsets = {
+    '01': { dx: 28, dy: -2, anchor: 'start' },   // Earth — to the right of its dot
+    '02': { dx: 28, dy: -2, anchor: 'start' },   // Sorting — right of dot
+    '03': { dx: -28, dy: -2, anchor: 'end' },    // Refinement — left of dot
+    '04': { dx: -28, dy: -2, anchor: 'end' },    // Transformation — left
+    '05': { dx: 28, dy: -2,  anchor: 'start' },  // Finishing — now at lower-right position, label right
+    '06': { dx: -28, dy: 16, anchor: 'end' },    // Assembly — now at upper-left position, label left and below
+    '07': { dx: -28, dy: -2, anchor: 'end' },    // Distribution — left
+    '08': { dx: 28, dy: -2,  anchor: 'start' }   // Consumption — right
+  };
+
+  STAGES.forEach(s => {
+    const cx = px(s.x), cy = py(s.y);
+    const off = labelOffsets[s.num];
+    svg += `<text x="${(cx + off.dx).toFixed(1)}" y="${(cy + off.dy).toFixed(1)}"
+                text-anchor="${off.anchor}"
+                font-family="Fraunces, serif" font-size="14" font-weight="600"
+                fill="#1a1614" letter-spacing="-0.005em"
+                style="pointer-events: none;">${s.name}</text>`;
+  });
+
+  svg += '</svg>';
+  document.getElementById('landscape-svg').innerHTML = svg;
+}
+
+renderLandscape();
+
+// IntersectionObserver for reveal animations
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

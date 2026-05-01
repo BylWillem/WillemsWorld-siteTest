@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Earth to Home · Section 7 — Distribution — willemsworld.fyi</title>
+<meta name="description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<link rel="canonical" href="https://willemsworld.fyi/earth-to-home-07-distribution.html">
+<meta name="author" content="willemsworld">
+
+<!-- Open Graph (Facebook, LinkedIn, etc.) -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://willemsworld.fyi/earth-to-home-07-distribution.html">
+<meta property="og:site_name" content="willemsworld.fyi">
+<meta property="og:title" content="Earth to Home — Section 7 — Distribution">
+<meta property="og:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta property="og:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A globe on the left, three colored streams arcing across, converging on a house on the right. Title: Earth to Home.">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Earth to Home — Section 7 — Distribution">
+<meta name="twitter:description" content="The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.">
+<meta name="twitter:image" content="https://willemsworld.fyi/earth-to-home-og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f1ea;
+    --paper-deep: #ebe5d9;
+    --ink: #1a1614;
+    --ink-soft: #4a4540;
+    --ink-faint: #8a847c;
+    --rule: #d6cfc0;
+    --land: #d8d1bf;
+    --land-stroke: #c2b9a4;
+
+    --apple: #b8302a;
+    --apple-deep: #7a1a16;
+    --apple-soft: #f5dad8;
+
+    --lumber: #3d6b3a;
+    --lumber-deep: #1f3d1d;
+    --lumber-soft: #d4dfd2;
+
+    --iron: #4a4a4a;
+    --iron-deep: #1f1f1f;
+    --iron-soft: #d8d4d0;
+
+    --display: 'Fraunces', 'Times New Roman', serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184, 48, 42, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(61, 107, 58, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(74, 74, 74, 0.025) 0%, transparent 40%);
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.25rem 3rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+    z-index: 10; background: rgba(245, 241, 234, 0.92); backdrop-filter: blur(8px);
+    position: sticky; top: 0;
+  }
+  .masthead-brand { font-family: var(--display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em; }
+  .masthead-brand .tld { font-weight: 300; color: var(--ink-faint); }
+  .masthead-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+
+  .stages-strip {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .stage-pill {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.35rem 0.7rem; border: 1px solid var(--rule);
+    color: var(--ink-faint); background: rgba(255, 253, 248, 0.5); white-space: nowrap;
+  }
+  .stage-pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .stage-pill .num { opacity: 0.5; margin-right: 0.4rem; }
+  .stage-pill.active .num { opacity: 0.7; }
+  .stage-pill:not(.active):not(.takeaways):hover {
+    border-color: var(--ink); color: var(--ink); background: rgba(255, 253, 248, 0.9);
+    cursor: pointer;
+  }
+  .stage-pill.takeaways {
+    border-style: dashed;
+    margin-left: auto;
+  }
+  .stage-pill.takeaways.active { border-style: solid; }
+  .stage-pill.takeaways .star { margin-right: 0.4rem; opacity: 0.5; font-style: italic; }
+  .stage-pill.takeaways:not(.active):hover {
+    border-color: var(--ink); color: var(--ink); background: rgba(255, 253, 248, 0.9);
+    cursor: pointer;
+  }
+
+  .section { padding: 5rem 3rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .section-marker {
+    display: flex; align-items: baseline; gap: 2rem;
+    margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
+  }
+  .section-number {
+    font-family: var(--display); font-weight: 300; font-size: 6rem; line-height: 1; letter-spacing: -0.04em;
+  }
+  .section-number-meta {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 3rem; letter-spacing: -0.02em;
+  }
+  .section-intro {
+    font-family: var(--display); font-weight: 300; font-size: 1.25rem; line-height: 1.6;
+    max-width: 65ch; color: var(--ink-soft); margin-bottom: 4rem; font-style: italic;
+  }
+  .section-intro::first-letter {
+    font-size: 3.5rem; float: left; line-height: 0.85; padding: 0.3rem 0.5rem 0 0;
+    font-weight: 400; font-style: normal; color: var(--ink);
+  }
+
+  /* === BLOCK STRUCTURE (mirroring Section 01) === */
+  .block { margin-bottom: 5rem; }
+  .block-header {
+    display: flex; align-items: baseline; gap: 1.25rem;
+    margin-bottom: 2rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule);
+  }
+  .block-label {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .block-title {
+    font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: 1.65rem; letter-spacing: -0.01em;
+  }
+
+  .block-grid-maps {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem;
+  }
+
+  .block-stack {
+    display: flex; flex-direction: column; gap: 2rem;
+  }
+
+  /* Stream cards */
+  .stream-card {
+    background: rgba(255, 253, 248, 0.65);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--ink);
+    padding: 1.5rem;
+  }
+  .stream-card[data-stream="apple"] { border-top-color: var(--apple); }
+  .stream-card[data-stream="lumber"] { border-top-color: var(--lumber); }
+  .stream-card[data-stream="iron"] { border-top-color: var(--iron); }
+  .stream-card-wide { padding: 2rem 2.25rem; }
+
+  .stream-card-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 1rem;
+  }
+  .stream-card-name {
+    font-family: var(--display); font-weight: 600; font-size: 1.2rem; letter-spacing: -0.01em;
+  }
+  .stream-card-wide .stream-card-name { font-size: 1.4rem; }
+  .stream-card[data-stream="apple"] .stream-card-name { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .stream-card-name { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .stream-card-name { color: var(--iron-deep); }
+  .stream-card-symbol { font-family: var(--display); font-size: 1.1rem; opacity: 0.4; }
+
+  /* === MAP === */
+  .map-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    position: relative;
+  }
+  .map-wrap.world { aspect-ratio: 16 / 8; }
+  .map-wrap svg { width: 100%; height: 100%; display: block; }
+
+  .map-caption {
+    margin-top: 0.75rem;
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 0.95rem; line-height: 1.5; color: var(--ink-soft);
+  }
+  .map-caption strong {
+    font-weight: 600; font-style: normal; color: var(--ink);
+  }
+
+  .map-stat {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-top: 0.75rem; padding-top: 0.6rem;
+    border-top: 1px dotted var(--rule);
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .map-stat strong { color: var(--ink); font-weight: 600; }
+
+  /* === TRANSPORT CHAIN (Block 02) === */
+  .transport-row {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 2rem;
+    align-items: start;
+  }
+  .transport-main { min-width: 0; }
+  .transport-side { padding-top: 0.5rem; }
+
+  .transport-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 1rem;
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint);
+    flex-wrap: wrap; gap: 0.5rem;
+  }
+  .transport-meta strong { color: var(--ink); font-weight: 600; }
+
+  .transport-chain {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+  }
+  .transport-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 0;
+    min-width: 100px;
+    cursor: pointer;
+    padding: 0.75rem 0.4rem;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+  .transport-step:hover {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: var(--rule);
+  }
+  .transport-step-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+  .transport-step-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  .transport-step-name {
+    font-family: var(--display); font-weight: 600; font-size: 0.9rem;
+    letter-spacing: -0.005em; line-height: 1.2;
+    margin-bottom: 0.2rem;
+  }
+  .stream-card[data-stream="apple"] .transport-step-name { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .transport-step-name { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .transport-step-name { color: var(--iron-deep); }
+  .transport-step-duration {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+    padding: 0.15rem 0.4rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    display: inline-block;
+  }
+  .stream-card[data-stream="apple"] .transport-step-duration { background: rgba(184, 48, 42, 0.1); color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .transport-step-duration { background: rgba(61, 107, 58, 0.1); color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .transport-step-duration { background: rgba(74, 74, 74, 0.1); color: var(--iron-deep); }
+  .transport-step-meta {
+    font-family: var(--mono); font-size: 0.58rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .transport-arrow {
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--ink-faint);
+    font-size: 1.1rem;
+    padding: 0 0.25rem;
+    align-self: center;
+  }
+
+  .detail-card {
+    margin-top: 1rem; padding: 1rem 1.2rem;
+    background: rgba(255, 253, 248, 0.95);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--ink);
+    min-height: 70px;
+  }
+  .stream-card[data-stream="apple"] .detail-card { border-left-color: var(--apple); }
+  .stream-card[data-stream="lumber"] .detail-card { border-left-color: var(--lumber); }
+  .stream-card[data-stream="iron"] .detail-card { border-left-color: var(--iron); }
+  .detail-card.empty {
+    background: rgba(0, 0, 0, 0.02);
+    border-left-color: var(--rule);
+  }
+  .detail-card-empty-text {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 0.9rem; color: var(--ink-faint);
+  }
+  .detail-card-name {
+    font-family: var(--display); font-weight: 600; font-size: 1.05rem;
+    letter-spacing: -0.01em; margin-bottom: 0.2rem;
+  }
+  .stream-card[data-stream="apple"] .detail-card-name { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .detail-card-name { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .detail-card-name { color: var(--iron-deep); }
+  .detail-card-stat {
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 0.4rem;
+  }
+  .detail-card-stat strong { color: var(--ink); font-weight: 600; }
+  .detail-card-text {
+    font-size: 0.82rem; color: var(--ink-soft); line-height: 1.5;
+  }
+
+  /* Notable callout (right side) */
+  .callout {
+    padding: 1.1rem 1.25rem;
+    border-left: 3px solid;
+    background: rgba(255, 253, 248, 0.5);
+    height: 100%;
+  }
+  .stream-card[data-stream="apple"] .callout { border-color: var(--apple); }
+  .stream-card[data-stream="lumber"] .callout { border-color: var(--lumber); }
+  .stream-card[data-stream="iron"] .callout { border-color: var(--iron); }
+  .callout-label {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 0.5rem; display: block;
+  }
+  .callout-text {
+    font-family: var(--display); font-style: italic; font-weight: 300;
+    font-size: 1rem; line-height: 1.5; color: var(--ink);
+  }
+  .callout-text strong { font-weight: 600; font-style: normal; }
+  .stream-card[data-stream="apple"] .callout-text strong { color: var(--apple-deep); }
+  .stream-card[data-stream="lumber"] .callout-text strong { color: var(--lumber-deep); }
+  .stream-card[data-stream="iron"] .callout-text strong { color: var(--iron-deep); }
+
+  /* Section footer */
+  .section-footer {
+    margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .next-section {
+    font-family: var(--display); font-style: italic; font-weight: 400;
+    font-size: 1.4rem; text-transform: none; letter-spacing: -0.01em;
+    color: var(--ink); text-align: right;
+  }
+  a.next-section {
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+  a.next-section:hover {
+    opacity: 0.75;
+    transform: translateX(3px);
+  }
+  .next-section span {
+    color: var(--ink-faint); font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; display: block; margin-bottom: 0.25rem; font-style: normal;
+  }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .masthead { padding: 0.9rem 1.25rem; }
+    .stages-strip { padding: 1rem 1.25rem; gap: 0.3rem; }
+    .stage-pill { font-size: 0.58rem; padding: 0.28rem 0.5rem; }
+    .section { padding: 3.5rem 1.25rem; }
+    .stream-card { padding: 1.25rem; }
+    .stream-card-wide { padding: 1.25rem; }
+    .section-marker { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    .section-number { font-size: 4rem; }
+    .section-title { font-size: 2rem; }
+    .section-intro { font-size: 1.1rem; }
+    .block-grid-maps { grid-template-columns: 1fr; gap: 1.5rem; }
+    .transport-row { grid-template-columns: 1fr; gap: 1.25rem; }
+    .transport-step { min-width: 0; }
+    .transport-step-icon { width: 48px; height: 48px; }
+    .section-footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .next-section { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-brand">willemsworld<span class="tld">.fyi</span></div>
+  <div class="masthead-meta">Insight № 04 · Supply Chain Ecosystems</div>
+</header>
+
+<div class="stages-strip">
+  <a href="earth-to-home.html" class="stage-pill" style="text-decoration: none;"><span class="num">01</span>The Earth</a>
+  <a href="earth-to-home-02-sorting.html" class="stage-pill" style="text-decoration: none;"><span class="num">02</span>Sorting</a>
+  <a href="earth-to-home-03-refinement.html" class="stage-pill" style="text-decoration: none;"><span class="num">03</span>Refinement</a>
+  <a href="earth-to-home-04-transformation.html" class="stage-pill" style="text-decoration: none;"><span class="num">04</span>Transformation</a>
+  <a href="earth-to-home-05-finishing.html" class="stage-pill" style="text-decoration: none;"><span class="num">05</span>Finishing</a>
+  <a href="earth-to-home-06-assembly.html" class="stage-pill" style="text-decoration: none;"><span class="num">06</span>Assembly</a>
+  <span class="stage-pill active"><span class="num">07</span>Distribution</span>
+  <a href="earth-to-home-08-consumption.html" class="stage-pill" style="text-decoration: none;"><span class="num">08</span>Consumption</a>
+  <a href="earth-to-home-takeaways.html" class="stage-pill takeaways" style="text-decoration: none;"><span class="star">✦</span>Takeaways</a>
+</div>
+
+<section class="section">
+  <div class="section-marker reveal">
+    <div class="section-number">07</div>
+    <div>
+      <span class="section-number-meta">Stage Seven of Eight</span>
+      <h2 class="section-title">Distribution</h2>
+    </div>
+  </div>
+
+  <p class="section-intro reveal">
+    The product is finished. Now it has to <em>get somewhere</em>. Each of our three products
+    travels a fundamentally different distance, through a different number of hops, on a
+    different mix of trucks, ships, and rail. The geography of where things were made determines
+    the geography of how they reach you.
+  </p>
+
+  <!-- ============================================== -->
+  <!-- BLOCK 01: WHERE IT FLOWS — MAPS -->
+  <!-- ============================================== -->
+  <div class="block reveal">
+    <div class="block-header">
+      <span class="block-label">Block 01</span>
+      <h3 class="block-title">Where the products flow</h3>
+    </div>
+
+    <div class="block-grid-maps">
+
+      <article class="stream-card" data-stream="apple">
+        <div class="stream-card-header">
+          <div class="stream-card-name">Apple · Domestic loop</div>
+          <div class="stream-card-symbol">○</div>
+        </div>
+        <div class="map-wrap" id="map-apple"><div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-faint);font-family:var(--mono);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;">loading map…</div></div>
+        <p class="map-caption">
+          Made in <strong>Washington, New York, Michigan, Pennsylvania, Virginia</strong> — the apple-growing states. Jars ship out by truck and rail to grocery distribution centers across the country.
+        </p>
+        <div class="map-stat">
+          <span>Avg. journey</span>
+          <span><strong>500–1,500 mi</strong> · within US</span>
+        </div>
+      </article>
+
+      <article class="stream-card" data-stream="lumber">
+        <div class="stream-card-header">
+          <div class="stream-card-name">Lumber · Regional radius</div>
+          <div class="stream-card-symbol">▲</div>
+        </div>
+        <div class="map-wrap" id="map-lumber"><div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-faint);font-family:var(--mono);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;">loading map…</div></div>
+        <p class="map-caption">
+          About <strong>~600 corrugating plants</strong> are scattered across the US, each serving customers within a tight regional radius. Empty boxes are mostly air — shipping them far costs more than making them locally.
+        </p>
+        <div class="map-stat">
+          <span>Avg. journey</span>
+          <span><strong>50–250 mi</strong> · regional only</span>
+        </div>
+      </article>
+
+      <article class="stream-card" data-stream="iron">
+        <div class="stream-card-header">
+          <div class="stream-card-name">Scissors · Global inbound</div>
+          <div class="stream-card-symbol">◆</div>
+        </div>
+        <div class="map-wrap world" id="map-iron"><div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-faint);font-family:var(--mono);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;">loading map…</div></div>
+        <p class="map-caption">
+          Almost all consumer scissors sold in the US are <strong>imported from China and Pakistan</strong>. They arrive through five major container ports — LA/Long Beach, Seattle, NY/NJ, Savannah, and Houston — then travel inland by rail and truck.
+        </p>
+        <div class="map-stat">
+          <span>Avg. journey</span>
+          <span><strong>7,500+ mi</strong> · across an ocean</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- BLOCK 02: HOW IT GETS THERE — TRANSPORT CHAINS -->
+  <!-- ============================================== -->
+  <div class="block reveal">
+    <div class="block-header">
+      <span class="block-label">Block 02</span>
+      <h3 class="block-title">How it gets there</h3>
+    </div>
+
+    <div class="block-stack">
+
+      <article class="stream-card stream-card-wide" data-stream="apple">
+        <div class="stream-card-header">
+          <div class="stream-card-name">Apple · 3 hops</div>
+          <div class="stream-card-symbol">○</div>
+        </div>
+        <div class="transport-row">
+          <div class="transport-main">
+            <div class="transport-meta">
+              <span>Domestic logistics · ~5–18 days total</span>
+              <span><strong>Truck → Rail → Truck → Warehouse</strong></span>
+            </div>
+            <div class="transport-chain" id="apple-chain"></div>
+            <div class="detail-card empty" id="apple-detail">
+              <div class="detail-card-empty-text">Hover any step to see what happens.</div>
+            </div>
+          </div>
+          <div class="transport-side">
+            <div class="callout">
+              <span class="callout-label">Notable</span>
+              <p class="callout-text">
+                Sealed jars are <strong>shelf-stable</strong> — they ride at ambient temperature in regular dry-van trucks. The warehouse is climate-controlled mostly to keep the labels and pallets dry, not the sauce.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="stream-card stream-card-wide" data-stream="lumber">
+        <div class="stream-card-header">
+          <div class="stream-card-name">Lumber · 1 hop</div>
+          <div class="stream-card-symbol">▲</div>
+        </div>
+        <div class="transport-row">
+          <div class="transport-main">
+            <div class="transport-meta">
+              <span>Single-hop regional · ~1–2 days total</span>
+              <span><strong>Truck → Warehouse</strong></span>
+            </div>
+            <div class="transport-chain" id="lumber-chain"></div>
+            <div class="detail-card empty" id="lumber-detail">
+              <div class="detail-card-empty-text">Hover any step to see what happens.</div>
+            </div>
+          </div>
+          <div class="transport-side">
+            <div class="callout">
+              <span class="callout-label">Notable</span>
+              <p class="callout-text">
+                Flat-pack box blanks ship on pallets <strong>directly to the customer's warehouse</strong> — usually within a day's drive. A truck of empty boxes hits its <em>volume</em> limit long before its weight limit, so distance is the enemy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="stream-card stream-card-wide" data-stream="iron">
+        <div class="stream-card-header">
+          <div class="stream-card-name">Scissors · 5 hops</div>
+          <div class="stream-card-symbol">◆</div>
+        </div>
+        <div class="transport-row">
+          <div class="transport-main">
+            <div class="transport-meta">
+              <span>Global multimodal · ~25–60 days total</span>
+              <span><strong>Truck → Ship → Rail → Truck → Warehouse</strong></span>
+            </div>
+            <div class="transport-chain" id="iron-chain"></div>
+            <div class="detail-card empty" id="iron-detail">
+              <div class="detail-card-empty-text">Hover any step to see what happens.</div>
+            </div>
+          </div>
+          <div class="transport-side">
+            <div class="callout">
+              <span class="callout-label">Notable</span>
+              <p class="callout-text">
+                A pair of scissors travels through <strong>5 different transport modes</strong> and crosses an ocean before reaching a US warehouse. The journey takes <strong>~25–60 days</strong> from factory to fulfillment center — longer than the entire apple supply chain combined.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="section-footer">
+    <span>End of Stage 07</span>
+    <a class="next-section" href="earth-to-home-08-consumption.html">
+      <span>Continue ↓</span>
+      Stage 08 — Consumption
+    </a>
+  </div>
+</section>
+
+<script>
+// =============================================================
+// COLOR TOKENS
+// =============================================================
+const APPLE_DEEP = '#7a1a16';
+const APPLE = '#b8302a';
+const APPLE_SOFT = '#f5dad8';
+const LUMBER_DEEP = '#1f3d1d';
+const LUMBER = '#3d6b3a';
+const LUMBER_SOFT = '#d4dfd2';
+const IRON_DEEP = '#1f1f1f';
+const IRON = '#4a4a4a';
+const IRON_SOFT = '#d8d4d0';
+const LAND = '#d8d1bf';
+const LAND_STROKE = '#c2b9a4';
+const PAPER_DEEP = '#ebe5d9';
+const INK = '#1a1614';
+const INK_FAINT = '#8a847c';
+
+// =============================================================
+// MAPS — real geography via TopoJSON datasets
+// us-atlas for state-level US maps (apple, lumber)
+// world-atlas for the world map (scissors)
+// =============================================================
+
+// FIPS state codes for the 5 apple-producing states we want to highlight
+// 53 = Washington, 36 = New York, 26 = Michigan, 42 = Pennsylvania, 51 = Virginia
+const APPLE_STATE_FIPS = {
+  '53': { name: 'Washington', pct: 65, label: 'WA' },
+  '36': { name: 'New York', pct: 10, label: 'NY' },
+  '26': { name: 'Michigan', pct: 8, label: 'MI' },
+  '42': { name: 'Pennsylvania', pct: 5, label: 'PA' },
+  '51': { name: 'Virginia', pct: 4, label: 'VA' }
+};
+
+// State centroids in lat/lng for placing apple state labels and outflow arrow origins
+// (approximate geographic center of each state)
+const APPLE_STATE_CENTROIDS = {
+  '53': { lat: 47.4, lng: -120.4 },  // WA
+  '36': { lat: 42.9, lng: -75.5 },   // NY
+  '26': { lat: 44.3, lng: -85.4 },   // MI
+  '42': { lat: 40.9, lng: -77.7 },   // PA
+  '51': { lat: 37.8, lng: -78.7 }    // VA
+};
+
+// Outflow destinations — major US population centers (lat/lng)
+const APPLE_OUTFLOW_LATLNG = [
+  { lat: 34.0, lng: -118.2 },  // Los Angeles
+  { lat: 33.4, lng: -112.1 },  // Phoenix
+  { lat: 29.8, lng: -95.4 },   // Houston
+  { lat: 32.8, lng: -96.8 },   // Dallas
+  { lat: 33.7, lng: -84.4 },   // Atlanta
+  { lat: 25.8, lng: -80.2 },   // Miami
+  { lat: 39.7, lng: -104.9 },  // Denver
+  { lat: 41.9, lng: -87.6 },   // Chicago
+  { lat: 35.2, lng: -90.0 }    // Memphis
+];
+
+// ~80 corrugating plant locations (lat/lng) — roughly distributed by industrial density
+const LUMBER_PLANT_LATLNG = [
+  // Pacific Northwest
+  { lat: 47.5, lng: -122.3 }, { lat: 47.6, lng: -122.6 }, { lat: 45.5, lng: -122.7 },
+  { lat: 45.5, lng: -123.0 }, { lat: 46.7, lng: -117.0 },
+  // California
+  { lat: 38.5, lng: -121.5 }, { lat: 37.7, lng: -122.4 }, { lat: 36.7, lng: -119.8 },
+  { lat: 34.0, lng: -118.2 }, { lat: 34.1, lng: -117.3 }, { lat: 32.7, lng: -117.2 },
+  { lat: 35.4, lng: -119.0 }, { lat: 33.9, lng: -118.4 },
+  // Mountain West
+  { lat: 40.8, lng: -111.9 }, { lat: 33.4, lng: -112.1 }, { lat: 39.7, lng: -104.9 },
+  { lat: 35.1, lng: -106.6 },
+  // Texas (heavy)
+  { lat: 29.8, lng: -95.4 }, { lat: 32.8, lng: -96.8 }, { lat: 30.3, lng: -97.7 },
+  { lat: 29.4, lng: -98.5 }, { lat: 31.8, lng: -106.4 }, { lat: 32.7, lng: -97.3 },
+  { lat: 33.0, lng: -96.7 }, { lat: 27.8, lng: -97.4 },
+  // Plains
+  { lat: 35.5, lng: -97.5 }, { lat: 36.2, lng: -95.9 }, { lat: 39.1, lng: -94.6 },
+  { lat: 38.6, lng: -90.2 }, { lat: 39.8, lng: -89.6 }, { lat: 41.3, lng: -95.9 },
+  { lat: 41.6, lng: -93.6 },
+  // Midwest (dense)
+  { lat: 41.9, lng: -87.6 }, { lat: 41.6, lng: -88.0 }, { lat: 42.3, lng: -83.0 },
+  { lat: 42.7, lng: -84.5 }, { lat: 43.0, lng: -87.9 }, { lat: 44.9, lng: -93.2 },
+  { lat: 39.1, lng: -84.5 }, { lat: 41.5, lng: -81.7 }, { lat: 39.9, lng: -82.9 },
+  { lat: 39.8, lng: -86.1 }, { lat: 38.2, lng: -85.7 }, { lat: 36.1, lng: -86.7 },
+  { lat: 38.6, lng: -86.2 }, { lat: 41.2, lng: -85.2 },
+  // Southeast (very dense — pulp + downstream)
+  { lat: 33.7, lng: -84.4 }, { lat: 32.0, lng: -81.1 }, { lat: 33.9, lng: -83.4 },
+  { lat: 34.7, lng: -82.9 }, { lat: 35.2, lng: -80.8 }, { lat: 35.8, lng: -78.6 },
+  { lat: 36.1, lng: -79.8 }, { lat: 30.3, lng: -81.7 }, { lat: 28.5, lng: -81.4 },
+  { lat: 27.9, lng: -82.5 }, { lat: 25.8, lng: -80.2 }, { lat: 32.3, lng: -90.2 },
+  { lat: 33.5, lng: -86.8 }, { lat: 30.7, lng: -88.0 }, { lat: 35.0, lng: -85.3 },
+  { lat: 34.0, lng: -81.0 }, { lat: 35.1, lng: -90.0 },
+  // Northeast (dense)
+  { lat: 40.7, lng: -74.0 }, { lat: 40.8, lng: -74.2 }, { lat: 39.9, lng: -75.2 },
+  { lat: 42.4, lng: -71.1 }, { lat: 41.3, lng: -72.9 }, { lat: 41.8, lng: -71.4 },
+  { lat: 40.4, lng: -79.9 }, { lat: 40.3, lng: -76.9 }, { lat: 41.1, lng: -73.5 },
+  { lat: 42.7, lng: -73.7 }, { lat: 43.0, lng: -78.8 }, { lat: 39.3, lng: -76.6 },
+  { lat: 38.9, lng: -77.0 }, { lat: 40.7, lng: -73.9 },
+  // Mid-Atlantic / Appalachia
+  { lat: 39.0, lng: -79.5 }, { lat: 37.5, lng: -77.4 }, { lat: 36.8, lng: -76.3 },
+  { lat: 38.0, lng: -78.5 }
+];
+
+// 3 example plants to highlight with radius circles
+const LUMBER_RADIUS_EXAMPLES = [
+  { lat: 34.0, lng: -118.2 },  // LA
+  { lat: 33.7, lng: -84.4 },   // Atlanta
+  { lat: 40.7, lng: -74.0 }    // NYC
+];
+
+// Scissor world map: origin ports (Asia) and destination ports (US)
+const ORIGIN_PORTS_LL = [
+  { code: 'CN', name: 'Shanghai/Yantian', lat: 31.2, lng: 121.5 },
+  { code: 'PK', name: 'Karachi', lat: 24.9, lng: 67.0 }
+];
+
+const IMPORT_PORTS_LL = [
+  { code: 'LAX', name: 'LA / Long Beach', lat: 33.7, lng: -118.2, label: 'LA/LB',  labelOffset: { x: -10, y: 4, anchor: 'end' } },
+  { code: 'SEA', name: 'Seattle / Tacoma', lat: 47.6, lng: -122.3, label: 'Seattle', labelOffset: { x: 0, y: -10, anchor: 'middle' } },
+  { code: 'NYC', name: 'New York / NJ', lat: 40.7, lng: -74.0, label: 'NY/NJ', labelOffset: { x: 10, y: 4, anchor: 'start' } },
+  { code: 'SAV', name: 'Savannah, GA', lat: 32.1, lng: -81.1, label: 'Savannah', labelOffset: { x: 10, y: 4, anchor: 'start' } },
+  { code: 'HOU', name: 'Houston, TX', lat: 29.8, lng: -95.4, label: 'Houston', labelOffset: { x: 0, y: 14, anchor: 'middle' } }
+];
+
+// =============================================================
+// PROJECTIONS
+// =============================================================
+
+// Albers-USA-style projection for US maps. Real Albers is complex (rotates Alaska/Hawaii),
+// but for the contiguous 48 a simple Albers conic equal-area approximation works well.
+// We'll use a simplified version: tilt the lat/lng grid using a conic projection.
+function projectAlbersUSA(lng, lat, w, h) {
+  // Albers conic equal-area parameters typical for US: lat1=29.5, lat2=45.5, lat0=37.5, lng0=-96
+  const lat0 = 37.5 * Math.PI / 180;
+  const lat1 = 29.5 * Math.PI / 180;
+  const lat2 = 45.5 * Math.PI / 180;
+  const lng0 = -96 * Math.PI / 180;
+  const lngR = lng * Math.PI / 180;
+  const latR = lat * Math.PI / 180;
+
+  const n = (Math.sin(lat1) + Math.sin(lat2)) / 2;
+  const C = Math.cos(lat1) ** 2 + 2 * n * Math.sin(lat1);
+  const rho0 = Math.sqrt(C - 2 * n * Math.sin(lat0)) / n;
+  const rho = Math.sqrt(C - 2 * n * Math.sin(latR)) / n;
+  const theta = n * (lngR - lng0);
+
+  // Raw projected coords (math convention: +y is north)
+  const x = rho * Math.sin(theta);
+  const y = rho0 - rho * Math.cos(theta);
+
+  // Scale to fit the viewBox. SVG's y-axis is INVERTED from math convention,
+  // so we subtract y instead of adding it — north ends up at top of screen.
+  const scale = w * 0.95;
+  const cx = w / 2;
+  const cy = h / 2;
+  return [cx + x * scale, cy - y * scale];
+}
+
+// Equirectangular projection for the world map (scissors)
+function projectEquirect(lng, lat, w, h) {
+  const clippedLat = Math.max(Math.min(lat, 75), -60);
+  return [
+    (lng + 180) * (w / 360),
+    (75 - clippedLat) * (h / 135)
+  ];
+}
+
+// =============================================================
+// TOPOJSON LOADER (with CDN fallback, matching Section 1's pattern)
+// =============================================================
+async function loadTopoJsonLib() {
+  if (window.topojson) return;
+  return new Promise((resolve, reject) => {
+    const tryLoad = (urls, idx = 0) => {
+      if (idx >= urls.length) return reject(new Error('topojson lib failed'));
+      const s = document.createElement('script');
+      s.src = urls[idx];
+      s.onload = resolve;
+      s.onerror = () => tryLoad(urls, idx + 1);
+      document.head.appendChild(s);
+    };
+    tryLoad([
+      'https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js',
+      'https://unpkg.com/topojson-client@3/dist/topojson-client.min.js'
+    ]);
+  });
+}
+
+async function loadTopoData(sources) {
+  for (const url of sources) {
+    try {
+      const r = await fetch(url);
+      if (!r.ok) continue;
+      return await r.json();
+    } catch (e) { /* try next */ }
+  }
+  throw new Error('All sources failed');
+}
+
+async function loadUsStates() {
+  await loadTopoJsonLib();
+  const topo = await loadTopoData([
+    'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json',
+    'https://unpkg.com/us-atlas@3/states-10m.json'
+  ]);
+  return topojson.feature(topo, topo.objects.states);
+}
+
+async function loadWorldCountries() {
+  await loadTopoJsonLib();
+  const topo = await loadTopoData([
+    'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json',
+    'https://unpkg.com/world-atlas@2/countries-110m.json'
+  ]);
+  return topojson.feature(topo, topo.objects.countries);
+}
+
+// =============================================================
+// PATH BUILDERS
+// =============================================================
+
+function ringToPathProj(ring, projectFn, w, h) {
+  let d = '';
+  let started = false;
+  let lastLng = null;
+  for (let i = 0; i < ring.length; i++) {
+    const lng = ring[i][0];
+    const lat = ring[i][1];
+    // Detect antimeridian crossings (only matters for world map)
+    if (lastLng !== null && Math.abs(lng - lastLng) > 180) {
+      d += 'Z M';
+      started = true;
+      const [x, y] = projectFn(lng, lat, w, h);
+      d += x.toFixed(2) + ' ' + y.toFixed(2);
+      lastLng = lng;
+      continue;
+    }
+    const [x, y] = projectFn(lng, lat, w, h);
+    d += (started ? 'L' : 'M') + x.toFixed(2) + ' ' + y.toFixed(2);
+    started = true;
+    lastLng = lng;
+  }
+  return d + 'Z';
+}
+
+function geomToPathProj(geom, projectFn, w, h) {
+  if (geom.type === 'Polygon') return geom.coordinates.map(r => ringToPathProj(r, projectFn, w, h)).join(' ');
+  if (geom.type === 'MultiPolygon') return geom.coordinates.map(p => p.map(r => ringToPathProj(r, projectFn, w, h)).join(' ')).join(' ');
+  return '';
+}
+
+// =============================================================
+// SHARED LEGEND HELPER
+// =============================================================
+function buildLegend(items, x, y) {
+  let svg = `<g transform="translate(${x}, ${y})">`;
+  let cursor = 0;
+  items.forEach(item => {
+    if (item.type === 'circle') {
+      svg += `<circle cx="${cursor + 6}" cy="0" r="${item.r || 5}" fill="${item.fill}"${item.stroke ? ` stroke="${item.stroke}" stroke-width="0.8"` : ''}/>`;
+      if (item.innerFill) svg += `<circle cx="${cursor + 6}" cy="0" r="${(item.r || 5) * 0.5}" fill="${item.innerFill}"/>`;
+    } else if (item.type === 'arrow') {
+      svg += `<line x1="${cursor}" y1="0" x2="${cursor + 28}" y2="0" stroke="${item.stroke}" stroke-width="0.8" opacity="0.7"${item.dashed ? ' stroke-dasharray="3 2"' : ''}/>`;
+      svg += `<path d="M ${cursor + 28} 0 L ${cursor + 24} -2.5 M ${cursor + 28} 0 L ${cursor + 24} 2.5" stroke="${item.stroke}" stroke-width="0.8" fill="none"/>`;
+      cursor += 28;
+    } else if (item.type === 'ring') {
+      svg += `<circle cx="${cursor + 6}" cy="0" r="6" fill="none" stroke="${item.stroke}" stroke-width="0.6" stroke-dasharray="2 2"/>`;
+    }
+    cursor += (item.type === 'arrow' ? 6 : 16);
+    svg += `<text x="${cursor}" y="3" font-family="JetBrains Mono, monospace" font-size="8" fill="${INK_FAINT}" letter-spacing="1">${item.label}</text>`;
+    cursor += item.label.length * 5 + 16;
+  });
+  svg += '</g>';
+  return svg;
+}
+
+// =============================================================
+// MAP RENDERERS
+// =============================================================
+
+async function renderAppleMap() {
+  const container = document.getElementById('map-apple');
+  const W = 600, H = 360;
+  try {
+    const states = await loadUsStates();
+    let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">`;
+
+    // Pre-compute projected centroids of all states for proper outflow arrow origins
+    const projectedCentroids = {};
+    Object.entries(APPLE_STATE_CENTROIDS).forEach(([fips, ll]) => {
+      projectedCentroids[fips] = projectAlbersUSA(ll.lng, ll.lat, W, H);
+    });
+    const projectedDestinations = APPLE_OUTFLOW_LATLNG.map(d => projectAlbersUSA(d.lng, d.lat, W, H));
+
+    // Render every state — producing states get the apple highlight color, others get neutral
+    states.features.forEach(feat => {
+      const fips = String(feat.id);
+      const isProducer = APPLE_STATE_FIPS[fips];
+      const fill = isProducer ? APPLE_SOFT : LAND;
+      const stroke = LAND_STROKE;
+      const path = geomToPathProj(feat.geometry, projectAlbersUSA, W, H);
+      svg += `<path d="${path}" fill="${fill}" stroke="${stroke}" stroke-width="0.4"/>`;
+    });
+
+    // Outflow arrows — from each high-production source to several destinations
+    const sources = ['53', '36', '26']; // WA, NY, MI (the 3 biggest)
+    sources.forEach((fips, sIdx) => {
+      const src = projectedCentroids[fips];
+      if (!src) return;
+      projectedDestinations.forEach((dst, dIdx) => {
+        if ((sIdx + dIdx) % 2 !== 0) return; // skip half to reduce visual noise
+        // Curved path
+        const midX = (src[0] + dst[0]) / 2;
+        const midY = (src[1] + dst[1]) / 2 - 18;
+        svg += `<path d="M ${src[0].toFixed(1)} ${src[1].toFixed(1)} Q ${midX.toFixed(1)} ${midY.toFixed(1)} ${dst[0].toFixed(1)} ${dst[1].toFixed(1)}"
+                    fill="none" stroke="${APPLE}" stroke-width="0.7" opacity="0.55" stroke-linecap="round"/>`;
+        // Arrowhead
+        const dx = dst[0] - midX, dy = dst[1] - midY;
+        const len = Math.sqrt(dx * dx + dy * dy) || 1;
+        const ux = dx / len, uy = dy / len;
+        const ax1 = dst[0] - ux * 6 - uy * 3;
+        const ay1 = dst[1] - uy * 6 + ux * 3;
+        const ax2 = dst[0] - ux * 6 + uy * 3;
+        const ay2 = dst[1] - uy * 6 - ux * 3;
+        svg += `<path d="M ${dst[0].toFixed(1)} ${dst[1].toFixed(1)} L ${ax1.toFixed(1)} ${ay1.toFixed(1)} M ${dst[0].toFixed(1)} ${dst[1].toFixed(1)} L ${ax2.toFixed(1)} ${ay2.toFixed(1)}"
+                    stroke="${APPLE}" stroke-width="0.8" opacity="0.7" fill="none" stroke-linecap="round"/>`;
+      });
+    });
+
+    // State markers + labels (drawn on top of arrows)
+    Object.entries(APPLE_STATE_FIPS).forEach(([fips, info]) => {
+      const c = projectedCentroids[fips];
+      if (!c) return;
+      const r = info.pct >= 8 ? 10 : 7;
+      svg += `<circle cx="${c[0].toFixed(1)}" cy="${c[1].toFixed(1)}" r="${r}" fill="${APPLE}" stroke="${APPLE_DEEP}" stroke-width="0.8"/>`;
+      svg += `<text x="${c[0].toFixed(1)}" y="${(c[1] + 3).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#fff" font-weight="700" letter-spacing="0.5">${info.label}</text>`;
+    });
+
+    // Legend
+    svg += buildLegend([
+      { type: 'circle', fill: APPLE, label: 'PRODUCING STATE' },
+      { type: 'arrow', stroke: APPLE, label: 'SHIPMENT FLOW' }
+    ], 20, H - 20);
+
+    svg += '</svg>';
+    container.innerHTML = svg;
+  } catch (e) {
+    console.error('Apple map failed:', e);
+    container.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:${INK_FAINT};font-family:monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;">map data unavailable</div>`;
+  }
+}
+
+async function renderLumberMap() {
+  const container = document.getElementById('map-lumber');
+  const W = 600, H = 360;
+  try {
+    const states = await loadUsStates();
+    let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">`;
+
+    // States in neutral land color
+    states.features.forEach(feat => {
+      const path = geomToPathProj(feat.geometry, projectAlbersUSA, W, H);
+      svg += `<path d="${path}" fill="${LAND}" stroke="${LAND_STROKE}" stroke-width="0.4"/>`;
+    });
+
+    // Radius circles for the 3 example plants
+    LUMBER_RADIUS_EXAMPLES.forEach(p => {
+      const [x, y] = projectAlbersUSA(p.lng, p.lat, W, H);
+      // 200 mile radius — one degree of latitude is ~69 mi, so 200 mi ≈ 2.9 degrees,
+      // and at our scale that's roughly 38 px (matches what we had before)
+      svg += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="38" fill="${LUMBER_SOFT}" opacity="0.4"/>`;
+      svg += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="38" fill="none" stroke="${LUMBER}" stroke-width="0.6" stroke-dasharray="3 2" opacity="0.65"/>`;
+    });
+
+    // All 80 plant dots
+    LUMBER_PLANT_LATLNG.forEach(p => {
+      const [x, y] = projectAlbersUSA(p.lng, p.lat, W, H);
+      svg += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.2" fill="${LUMBER_DEEP}" opacity="0.85"/>`;
+    });
+
+    // Highlight the 3 radius-example dots in lumber color
+    LUMBER_RADIUS_EXAMPLES.forEach(p => {
+      const [x, y] = projectAlbersUSA(p.lng, p.lat, W, H);
+      svg += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.5" fill="${LUMBER}" stroke="${LUMBER_DEEP}" stroke-width="0.8"/>`;
+    });
+
+    // Legend
+    svg += buildLegend([
+      { type: 'circle', fill: LUMBER_DEEP, r: 2.2, label: 'CORRUGATING PLANT' },
+      { type: 'ring', stroke: LUMBER, label: '~150–250 MI RADIUS' }
+    ], 20, H - 20);
+
+    svg += '</svg>';
+    container.innerHTML = svg;
+  } catch (e) {
+    console.error('Lumber map failed:', e);
+    container.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:${INK_FAINT};font-family:monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;">map data unavailable</div>`;
+  }
+}
+
+async function renderIronMap() {
+  const container = document.getElementById('map-iron');
+  const W = 720, H = 360;
+  try {
+    const countries = await loadWorldCountries();
+    let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">`;
+
+    // World countries in neutral land color
+    countries.features.forEach(feat => {
+      const path = geomToPathProj(feat.geometry, projectEquirect, W, H);
+      if (path) svg += `<path d="${path}" fill="${LAND}" stroke="${LAND_STROKE}" stroke-width="0.3"/>`;
+    });
+
+    // Origin port markers (Asia)
+    ORIGIN_PORTS_LL.forEach(p => {
+      const [x, y] = projectEquirect(p.lng, p.lat, W, H);
+      svg += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="6" fill="${IRON_DEEP}" opacity="0.95"/>`;
+      svg += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="${IRON_SOFT}"/>`;
+      svg += `<text x="${x.toFixed(1)}" y="${(y - 11).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="${IRON_DEEP}" font-weight="700" letter-spacing="0.5">${p.code}</text>`;
+    });
+
+    // Pre-compute projected destination ports
+    const destProj = IMPORT_PORTS_LL.map(p => {
+      const [x, y] = projectEquirect(p.lng, p.lat, W, H);
+      return { ...p, x, y };
+    });
+
+    // Pre-compute projected origin ports
+    const originProj = ORIGIN_PORTS_LL.map(p => {
+      const [x, y] = projectEquirect(p.lng, p.lat, W, H);
+      return { ...p, x, y };
+    });
+
+    // Container routes: from each Asian origin to each US port
+    // The Pacific is on the LEFT side of the map (low x values for east coast Asia)
+    // Asian origins are around x=470-555; US ports are around x=140-220 (west coast) and 220 (east coast)
+    // So the route literally crosses LEFT-to-RIGHT (going around the world the "wrong" way visually,
+    // but accurate to how a flat equirect map shows trans-Pacific routes from Asia eastward).
+    // To make it visually clear, we'll draw arcs that go OVER the top (north Pacific great circle).
+    originProj.forEach(origin => {
+      destProj.forEach(dest => {
+        // Skip Pakistan → West Coast (less common; Pakistan exports mostly via Suez to East Coast)
+        if (origin.code === 'PK' && (dest.code === 'LAX' || dest.code === 'SEA')) return;
+
+        // For trans-Pacific (China → US West Coast), arc OVER the top of the map
+        // For Pakistan → US East Coast (via Suez), arc OVER too but lower
+        // Path: the line crosses the antimeridian, but we draw it as if it goes "over" the top
+        // Use a large negative-y midpoint for a great-circle-ish arc
+        const arcHeight = origin.code === 'CN' ? 80 : 40;
+        const midX = (origin.x + dest.x) / 2;
+        const midY = Math.min(origin.y, dest.y) - arcHeight;
+
+        // Since the equirect map shows Asia on the right and Americas on the left,
+        // an arc from Asia (right, high x) to Americas (left, low x) goes RIGHT-to-LEFT.
+        // The arc curves UP (north) in the great-circle sense.
+        svg += `<path d="M ${origin.x.toFixed(1)} ${origin.y.toFixed(1)} Q ${midX.toFixed(1)} ${midY.toFixed(1)} ${dest.x.toFixed(1)} ${dest.y.toFixed(1)}"
+                    fill="none" stroke="${IRON}" stroke-width="0.8" opacity="0.55" stroke-linecap="round" stroke-dasharray="3 2"/>`;
+
+        // Arrowhead at destination — direction is (dest - midX, dest - midY) tangent
+        const dx = dest.x - midX, dy = dest.y - midY;
+        const len = Math.sqrt(dx * dx + dy * dy) || 1;
+        const ux = dx / len, uy = dy / len;
+        const ax1 = dest.x - ux * 7 - uy * 3.5;
+        const ay1 = dest.y - uy * 7 + ux * 3.5;
+        const ax2 = dest.x - ux * 7 + uy * 3.5;
+        const ay2 = dest.y - uy * 7 - ux * 3.5;
+        svg += `<path d="M ${dest.x.toFixed(1)} ${dest.y.toFixed(1)} L ${ax1.toFixed(1)} ${ay1.toFixed(1)} M ${dest.x.toFixed(1)} ${dest.y.toFixed(1)} L ${ax2.toFixed(1)} ${ay2.toFixed(1)}"
+                    stroke="${IRON}" stroke-width="1" opacity="0.8" fill="none" stroke-linecap="round"/>`;
+      });
+    });
+
+    // Destination port markers + labels (drawn on top of routes)
+    destProj.forEach(p => {
+      svg += `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="5" fill="${IRON}" opacity="0.95"/>`;
+      svg += `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="2.5" fill="${IRON_SOFT}"/>`;
+      const labelX = p.x + p.labelOffset.x;
+      const labelY = p.y + p.labelOffset.y;
+      svg += `<text x="${labelX.toFixed(1)}" y="${labelY.toFixed(1)}" text-anchor="${p.labelOffset.anchor}" font-family="JetBrains Mono, monospace" font-size="7" fill="${IRON_DEEP}" font-weight="700" letter-spacing="0.5">${p.label}</text>`;
+    });
+
+    // Legend
+    svg += buildLegend([
+      { type: 'circle', fill: IRON_DEEP, label: 'ORIGIN PORT' },
+      { type: 'circle', fill: IRON, label: 'US IMPORT PORT' },
+      { type: 'arrow', stroke: IRON, dashed: true, label: 'CONTAINER ROUTE' }
+    ], 20, H - 20);
+
+    svg += '</svg>';
+    container.innerHTML = svg;
+  } catch (e) {
+    console.error('Iron map failed:', e);
+    container.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:${INK_FAINT};font-family:monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;">map data unavailable</div>`;
+  }
+}
+// =============================================================
+// TRANSPORT MODE ICONS (small line-art SVGs)
+// All drawn within a 0-64 viewBox, line-art style
+// =============================================================
+const TRANSPORT_ICONS = {
+  truck: (color) => `
+    <svg viewBox="0 0 64 64">
+      <!-- Cargo box -->
+      <rect x="10" y="22" width="32" height="22" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Cab -->
+      <path d="M 42 28 L 52 28 L 56 34 L 56 44 L 42 44 Z" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Cab window -->
+      <line x1="46" y1="32" x2="52" y2="32" stroke="${color}" stroke-width="1.2"/>
+      <line x1="46" y1="32" x2="46" y2="38" stroke="${color}" stroke-width="1.2"/>
+      <!-- Wheels -->
+      <circle cx="18" cy="48" r="4" fill="none" stroke="${color}" stroke-width="2"/>
+      <circle cx="34" cy="48" r="4" fill="none" stroke="${color}" stroke-width="2"/>
+      <circle cx="48" cy="48" r="4" fill="none" stroke="${color}" stroke-width="2"/>
+      <!-- Ground line -->
+      <line x1="6" y1="55" x2="58" y2="55" stroke="${color}" stroke-width="0.6" opacity="0.4" stroke-dasharray="2 2"/>
+    </svg>
+  `,
+  rail: (color) => `
+    <svg viewBox="0 0 64 64">
+      <!-- Locomotive -->
+      <path d="M 6 28 L 14 28 L 14 22 L 22 22 L 22 28 L 30 28 L 30 44 L 6 44 Z"
+            fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Smokestack -->
+      <rect x="16" y="18" width="4" height="6" fill="none" stroke="${color}" stroke-width="1.5"/>
+      <!-- Window -->
+      <rect x="9" y="32" width="6" height="6" fill="none" stroke="${color}" stroke-width="1.2"/>
+      <!-- Coupling line to cargo -->
+      <line x1="30" y1="36" x2="34" y2="36" stroke="${color}" stroke-width="1.5"/>
+      <!-- Cargo car -->
+      <rect x="34" y="28" width="24" height="16" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Cargo car detail line -->
+      <line x1="46" y1="28" x2="46" y2="44" stroke="${color}" stroke-width="0.8" opacity="0.5"/>
+      <!-- Wheels -->
+      <circle cx="12" cy="48" r="3" fill="none" stroke="${color}" stroke-width="1.5"/>
+      <circle cx="22" cy="48" r="3" fill="none" stroke="${color}" stroke-width="1.5"/>
+      <circle cx="40" cy="48" r="3" fill="none" stroke="${color}" stroke-width="1.5"/>
+      <circle cx="52" cy="48" r="3" fill="none" stroke="${color}" stroke-width="1.5"/>
+      <!-- Rails (track) -->
+      <line x1="4" y1="55" x2="60" y2="55" stroke="${color}" stroke-width="1"/>
+      <!-- Tie marks on track -->
+      <line x1="10" y1="54" x2="10" y2="56" stroke="${color}" stroke-width="0.6" opacity="0.6"/>
+      <line x1="22" y1="54" x2="22" y2="56" stroke="${color}" stroke-width="0.6" opacity="0.6"/>
+      <line x1="34" y1="54" x2="34" y2="56" stroke="${color}" stroke-width="0.6" opacity="0.6"/>
+      <line x1="46" y1="54" x2="46" y2="56" stroke="${color}" stroke-width="0.6" opacity="0.6"/>
+    </svg>
+  `,
+  ship: (color) => `
+    <svg viewBox="0 0 64 64">
+      <!-- Hull -->
+      <path d="M 4 38 L 60 38 L 54 50 L 10 50 Z" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Container stacks (cargo) -->
+      <rect x="10" y="22" width="8" height="16" fill="none" stroke="${color}" stroke-width="1.5"/>
+      <rect x="20" y="18" width="8" height="20" fill="none" stroke="${color}" stroke-width="1.5"/>
+      <rect x="30" y="22" width="8" height="16" fill="none" stroke="${color}" stroke-width="1.5"/>
+      <rect x="40" y="20" width="8" height="18" fill="none" stroke="${color}" stroke-width="1.5"/>
+      <!-- Container detail lines -->
+      <line x1="14" y1="22" x2="14" y2="38" stroke="${color}" stroke-width="0.5" opacity="0.5"/>
+      <line x1="24" y1="18" x2="24" y2="38" stroke="${color}" stroke-width="0.5" opacity="0.5"/>
+      <line x1="34" y1="22" x2="34" y2="38" stroke="${color}" stroke-width="0.5" opacity="0.5"/>
+      <line x1="44" y1="20" x2="44" y2="38" stroke="${color}" stroke-width="0.5" opacity="0.5"/>
+      <!-- Bridge / superstructure on top right -->
+      <rect x="50" y="26" width="8" height="12" fill="none" stroke="${color}" stroke-width="1.5"/>
+      <line x1="52" y1="29" x2="56" y2="29" stroke="${color}" stroke-width="0.6"/>
+      <line x1="52" y1="33" x2="56" y2="33" stroke="${color}" stroke-width="0.6"/>
+      <!-- Water lines -->
+      <path d="M 4 54 Q 12 56 20 54 Q 28 52 36 54 Q 44 56 52 54 Q 58 52 60 54"
+            fill="none" stroke="${color}" stroke-width="0.8" opacity="0.5"/>
+      <path d="M 6 58 Q 14 60 22 58 Q 30 56 38 58 Q 46 60 54 58"
+            fill="none" stroke="${color}" stroke-width="0.6" opacity="0.4"/>
+    </svg>
+  `,
+  warehouse: (color) => `
+    <svg viewBox="0 0 64 64">
+      <!-- Roof -->
+      <path d="M 6 24 L 32 12 L 58 24 L 58 28 L 6 28 Z"
+            fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Body -->
+      <rect x="8" y="28" width="48" height="22" fill="none" stroke="${color}" stroke-width="2"/>
+      <!-- Loading dock door (large center) -->
+      <rect x="22" y="34" width="20" height="16" fill="none" stroke="${color}" stroke-width="1.5"/>
+      <line x1="22" y1="38" x2="42" y2="38" stroke="${color}" stroke-width="0.6"/>
+      <line x1="22" y1="42" x2="42" y2="42" stroke="${color}" stroke-width="0.6"/>
+      <line x1="22" y1="46" x2="42" y2="46" stroke="${color}" stroke-width="0.6"/>
+      <!-- Side windows -->
+      <rect x="12" y="34" width="6" height="6" fill="none" stroke="${color}" stroke-width="1"/>
+      <rect x="46" y="34" width="6" height="6" fill="none" stroke="${color}" stroke-width="1"/>
+      <!-- Ground line -->
+      <line x1="4" y1="55" x2="60" y2="55" stroke="${color}" stroke-width="0.6" opacity="0.4" stroke-dasharray="2 2"/>
+    </svg>
+  `
+};
+
+// =============================================================
+// TRANSPORT CHAIN DATA + RENDERER
+// =============================================================
+const APPLE_CHAIN = [
+  {
+    key: 'truck1',
+    icon: 'truck',
+    name: 'Truck',
+    meta: 'Plant → rail yard',
+    duration: '~1–3 days',
+    detail: 'Pallets of jarred sauce leave the processing plant on a regular dry-van truck. Short haul — usually less than 100 miles to the nearest rail yard or distribution center. The trailer is just sealed and rolled; no temperature control needed because the jars are shelf-stable.'
+  },
+  {
+    key: 'rail',
+    icon: 'rail',
+    name: 'Rail',
+    meta: 'Long-haul intermodal',
+    duration: '~3–12 days',
+    detail: 'For long distances, pallets get loaded into intermodal containers and ride freight rail. A train pulling 100 containers is dramatically cheaper per pound than the same trip by truck — about a quarter of the cost. Most of the journey from Washington apple country to East Coast grocery shelves happens on rail.'
+  },
+  {
+    key: 'truck2',
+    icon: 'truck',
+    name: 'Truck',
+    meta: 'Rail yard → DC',
+    duration: '~1–3 days',
+    detail: 'At the destination rail yard, containers are transferred back onto trucks for the final leg to the regional grocery distribution center. Last-mile trucking is the most expensive part of the journey per mile — but it\'s also the shortest leg, often under 50 miles.'
+  },
+  {
+    key: 'wh',
+    icon: 'warehouse',
+    name: 'Warehouse',
+    meta: 'Climate-controlled DC',
+    duration: 'days–weeks',
+    detail: 'The grocery chain\'s regional distribution center holds inventory for hundreds of stores. Pallets sit on racks, climate-controlled (mostly to protect labels and packaging from humidity), waiting to be picked and loaded onto store delivery trucks. Average dwell time: a few days to a couple weeks.'
+  }
+];
+
+const LUMBER_CHAIN = [
+  {
+    key: 'truck1',
+    icon: 'truck',
+    name: 'Truck',
+    meta: 'Converter → customer',
+    duration: '~1 day',
+    detail: 'Flat-pack box blanks are stacked on pallets and shrink-wrapped, then loaded into a flatbed or dry-van trailer. The truck drives directly to the customer\'s facility — usually a manufacturer or fulfillment center within the corrugator\'s 150–250 mile service radius. No intermediate stops.'
+  },
+  {
+    key: 'wh',
+    icon: 'warehouse',
+    name: 'Warehouse',
+    meta: 'Customer\'s receiving',
+    duration: 'hours–days',
+    detail: 'Arrival at the customer\'s warehouse — could be a food-packing plant, an Amazon fulfillment center, or a contract packager. Boxes get unloaded, racked, and held until they\'re needed for the day\'s outbound shipments. Because empty boxes are bulky, customers usually order just-in-time rather than stockpiling.'
+  }
+];
+
+const IRON_CHAIN = [
+  {
+    key: 'truck1',
+    icon: 'truck',
+    name: 'Truck',
+    meta: 'Factory → port',
+    duration: '~1–3 days',
+    detail: 'Finished, packaged scissors leave the Chinese factory in a 40-foot shipping container, trucked to a coastal export port (Shanghai, Yantian, Ningbo). Inland China factories travel further than coastal ones; some take two days by road just to reach the port.'
+  },
+  {
+    key: 'ship',
+    icon: 'ship',
+    name: 'Ship',
+    meta: 'Trans-Pacific freight',
+    duration: '~18–44 days',
+    detail: 'The container is loaded onto a massive container ship — modern ones carry 20,000+ TEUs (twenty-foot equivalent units). The journey from East Asia to LA/Long Beach takes about 18–25 days at ~25 mph. From Asia to East Coast US ports (via Panama Canal or Suez) is closer to 30–44 days, especially when port congestion or weather delays the schedule.'
+  },
+  {
+    key: 'rail',
+    icon: 'rail',
+    name: 'Rail',
+    meta: 'Port → inland yard',
+    duration: '~3–12 days',
+    detail: 'After unloading and customs clearance, the container is moved by intermodal rail to an inland distribution yard. From LA/Long Beach, this is often Chicago, Memphis, or Dallas — the major continental rail hubs. Takes 2–5 days depending on destination and rail congestion.'
+  },
+  {
+    key: 'truck2',
+    icon: 'truck',
+    name: 'Truck',
+    meta: 'Yard → fulfillment',
+    duration: '~1–3 days',
+    detail: 'The container is transferred to a truck for the final leg to the importer\'s fulfillment center or to a retailer\'s regional DC. This is where the scissors break out of bulk: the 40,000 pairs in one container get dispersed into hundreds of smaller orders.'
+  },
+  {
+    key: 'wh',
+    icon: 'warehouse',
+    name: 'Warehouse',
+    meta: 'Fulfillment center',
+    duration: 'days–months',
+    detail: 'The scissors arrive at a US fulfillment center — could be Amazon, Walmart, Target, or a third-party 3PL. Here they sit on shelves until an order triggers them to be picked, packed, and shipped to a consumer. The whole journey from Chinese factory floor to US warehouse: about a month, sometimes two.'
+  }
+];
+
+function renderChain(containerId, detailId, chain) {
+  const container = document.getElementById(containerId);
+  const detail = document.getElementById(detailId);
+  if (!container || !detail) return;
+
+  // Determine stream color from container's data-stream parent
+  const streamCard = container.closest('[data-stream]');
+  const stream = streamCard ? streamCard.getAttribute('data-stream') : 'apple';
+  const colorMap = { apple: APPLE_DEEP, lumber: LUMBER_DEEP, iron: IRON_DEEP };
+  const color = colorMap[stream];
+
+  let html = '';
+  chain.forEach((step, i) => {
+    html += `
+      <div class="transport-step" data-key="${step.key}">
+        <div class="transport-step-icon">${TRANSPORT_ICONS[step.icon](color)}</div>
+        <div class="transport-step-name">${step.name}</div>
+        <div class="transport-step-duration">${step.duration}</div>
+        <div class="transport-step-meta">${step.meta}</div>
+      </div>
+    `;
+    if (i < chain.length - 1) {
+      html += `<div class="transport-arrow">→</div>`;
+    }
+  });
+  container.innerHTML = html;
+
+  container.querySelectorAll('.transport-step').forEach(step => {
+    const key = step.getAttribute('data-key');
+    const s = chain.find(c => c.key === key);
+    const update = () => {
+      detail.classList.remove('empty');
+      detail.innerHTML = `
+        <div class="detail-card-name">${s.name} · <span style="font-weight:400;font-style:italic;">${s.meta}</span></div>
+        <div class="detail-card-text">${s.detail}</div>
+      `;
+    };
+    step.addEventListener('mouseenter', update);
+    step.addEventListener('click', update);
+  });
+}
+
+// =============================================================
+// INIT
+// =============================================================
+renderAppleMap();
+renderLumberMap();
+renderIronMap();
+renderChain('apple-chain', 'apple-detail', APPLE_CHAIN);
+renderChain('lumber-chain', 'lumber-detail', LUMBER_CHAIN);
+renderChain('iron-chain', 'iron-detail', IRON_CHAIN);
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
