@@ -947,13 +947,16 @@ function buildWalkthroughs(p) {
     { label:'Walk · L', url: p.walk_long_url  },
   ].filter(w => w.url);
 
-  // 0 or 1 URL → single "Walkthrough" button (matches old design)
-  // 2+ URLs    → separate Short/Mid/Long buttons
-  if (walks.length <= 1) {
-    const url = walks.length === 1 ? walks[0].url : null;
-    return block('video', url, p.title, 'Walkthrough', 'video', false);
-  }
+  // Walkthrough only renders when at least one walkthrough URL exists.
+  // 1 URL → single "Walkthrough" button. 2+ URLs → separate Short/Mid/Long buttons.
+  if (walks.length === 0) return '';
+  if (walks.length === 1) return block('video', walks[0].url, p.title, 'Walkthrough', 'video', false);
   return walks.map(w => block('video', w.url, p.title, w.label, 'video', false)).join('');
+}
+
+function hasAnyLiveMode(p) {
+  return !!(p.experienceUrl || p.summaryUrl || p.dashboardUrl ||
+            p.walk_short_url || p.walk_mid_url || p.walk_long_url);
 }
 
 function mapInsight(row) {
@@ -975,17 +978,23 @@ function mapInsight(row) {
 }
 
 function renderFeed(projects) {
-  document.getElementById('feed-count').textContent = `${projects.length} published`;
+  // Hide any insight that has zero live modes
+  const visible = projects.filter(hasAnyLiveMode);
 
-  document.getElementById('feed-scroll').innerHTML = projects.map((p, i) => {
+  document.getElementById('feed-count').textContent = `${visible.length} published`;
+
+  document.getElementById('feed-scroll').innerHTML = visible.map((p, i) => {
     const tagsHtml = p.tagSlugs.map((slug, idx) =>
       `<span class="card-domain ${TAG_COLORS[slug] || 'default'}">${p.tagNames[idx]}</span>`
     ).join('');
 
-    const expBlock   = block('experience', p.experienceUrl, p.title, 'Experience', 'experience', true);
-    const walkBlocks = buildWalkthroughs(p);
-    const sumBlock   = block('summary',   p.summaryUrl,    p.title, 'Summary',    'summary',    false);
-    const dashBlock  = block('dashboard', p.dashboardUrl,  p.title, 'Dashboard',  'dashboard',  false);
+    // Only render blocks for modes that are actually live
+    const blocks = [];
+    if (p.experienceUrl) blocks.push(block('experience', p.experienceUrl, p.title, 'Experience', 'experience', true));
+    const walks = buildWalkthroughs(p);
+    if (walks) blocks.push(walks);
+    if (p.summaryUrl)   blocks.push(block('summary',   p.summaryUrl,    p.title, 'Summary',    'summary',    false));
+    if (p.dashboardUrl) blocks.push(block('dashboard', p.dashboardUrl,  p.title, 'Dashboard',  'dashboard',  false));
 
     return `
     <div class="project-card" style="animation-delay:${i * 0.07}s">
@@ -995,7 +1004,7 @@ function renderFeed(projects) {
       </div>
       <h3 class="card-title">${p.title}</h3>
       <p class="card-desc">${p.desc}</p>
-      <div class="card-blocks">${expBlock}${walkBlocks}${sumBlock}${dashBlock}</div>
+      <div class="card-blocks">${blocks.join('')}</div>
     </div>`;
   }).join('');
 }
