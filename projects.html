@@ -507,11 +507,14 @@ function buildWalkthroughsP(p) {
     { label:'Walk · L', url: p.walk_long_url  },
   ].filter(w => w.url);
 
-  if (walks.length <= 1) {
-    const url = walks.length === 1 ? walks[0].url : null;
-    return pcBlock('video', url, p.title, 'Walkthrough', 'video', false);
-  }
+  if (walks.length === 0) return '';
+  if (walks.length === 1) return pcBlock('video', walks[0].url, p.title, 'Walkthrough', 'video', false);
   return walks.map(w => pcBlock('video', w.url, p.title, w.label, 'video', false)).join('');
+}
+
+function hasAnyLiveModeP(p) {
+  return !!(p.experienceUrl || p.summaryUrl || p.dashboardUrl ||
+            p.walk_short_url || p.walk_mid_url || p.walk_long_url);
 }
 
 function mapInsightP(row) {
@@ -533,22 +536,35 @@ function mapInsightP(row) {
 }
 
 function renderGrid(projects){
-  document.getElementById('result-count').textContent=`${projects.length} project${projects.length!==1?'s':''}`;
-  const grid=document.getElementById('projects-grid');
-  if(!projects.length){grid.innerHTML=`<div class="empty-state"><div class="empty-icon">🌐</div><div>No projects match</div></div>`;return;}
+  // Hide any insight with zero live modes
+  const visible = projects.filter(hasAnyLiveModeP);
 
-  grid.innerHTML=projects.map((p,i)=>{
+  document.getElementById('result-count').textContent=`${visible.length} project${visible.length!==1?'s':''}`;
+  const grid=document.getElementById('projects-grid');
+  if(!visible.length){grid.innerHTML=`<div class="empty-state"><div class="empty-icon">🌐</div><div>No projects match</div></div>`;return;}
+
+  grid.innerHTML=visible.map((p,i)=>{
     const tagsHtml = p.tagSlugs.map(slug =>
       `<span class="pc-domain ${slug}">${TAG_LABELS[slug] || slug}</span>`
     ).join('');
 
-    const expBlock   = pcBlock('experience', p.experienceUrl, p.title, 'Experience', 'experience', true);
-    const walkBlocks = buildWalkthroughsP(p);
-    const sumBlock   = pcBlock('summary',   p.summaryUrl,    p.title, 'Summary',    'summary',    false);
-    const dashBlock  = pcBlock('dashboard', p.dashboardUrl,  p.title, 'Dashboard',  'dashboard',  false);
+    // Only render blocks for modes that are live
+    const blocks = [];
+    if (p.experienceUrl) blocks.push(pcBlock('experience', p.experienceUrl, p.title, 'Experience', 'experience', true));
+    const walks = buildWalkthroughsP(p);
+    if (walks) blocks.push(walks);
+    if (p.summaryUrl)   blocks.push(pcBlock('summary',   p.summaryUrl,    p.title, 'Summary',    'summary',    false));
+    if (p.dashboardUrl) blocks.push(pcBlock('dashboard', p.dashboardUrl,  p.title, 'Dashboard',  'dashboard',  false));
 
+    // grid columns = total visible blocks
     const walkCount = [p.walk_short_url, p.walk_mid_url, p.walk_long_url].filter(Boolean).length;
-    const blockCount = 3 + Math.max(walkCount, 1);
+    let blockCount = 0;
+    if (p.experienceUrl) blockCount++;
+    if (walkCount === 1) blockCount += 1;
+    else if (walkCount >= 2) blockCount += walkCount;
+    if (p.summaryUrl)   blockCount++;
+    if (p.dashboardUrl) blockCount++;
+    if (blockCount === 0) blockCount = 1;
 
     const thumbHtml = p.thumbnail
       ? `<div class="pc-thumb"><img src="${p.thumbnail}" alt="" loading="lazy"/></div>`
@@ -559,7 +575,7 @@ function renderGrid(projects){
       <h3 class="pc-title">${p.title}</h3>
       <p class="pc-desc">${p.desc}</p>
       ${thumbHtml}
-      <div class="pc-blocks" style="grid-template-columns:repeat(${blockCount},1fr)">${expBlock}${walkBlocks}${sumBlock}${dashBlock}</div>
+      <div class="pc-blocks" style="grid-template-columns:repeat(${blockCount},1fr)">${blocks.join('')}</div>
     </div>`;
   }).join('');
 }
