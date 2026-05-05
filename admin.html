@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Admin · WillemsWorld</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --ink: #111111;
+    --ink-soft: #555555;
+    --ink-faint: #999999;
+    --line: #e5e5e0;
+    --line-soft: #f0f0eb;
+    --danger: #b42318;
+    --success: #027a48;
+    --warn: #b54708;
+    --draft-bg: #fff8e6;
+    --mode-bg: #f7f7f3;
+    --edit-accent: #1d4ed8;
+    --edit-bg: #eff6ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: ui-serif, Georgia, "Times New Roman", serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* HEADER */
+  header {
+    border-bottom: 1px solid var(--line);
+    padding: 1.25rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--surface);
+    position: sticky; top: 0; z-index: 10;
+  }
+  header h1 { margin: 0; font-size: 1.25rem; font-weight: 500; }
+  header h1 .tag {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em;
+    background: var(--ink); color: var(--surface);
+    padding: 0.15rem 0.5rem; border-radius: 2px;
+    margin-left: 0.5rem; vertical-align: middle;
+  }
+  header .meta {
+    font-size: 0.85rem; color: var(--ink-soft);
+    display: flex; gap: 1rem; align-items: center;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* LOGIN */
+  .login-wrap { max-width: 400px; margin: 5rem auto; padding: 0 1rem; }
+  .login-wrap h2 {
+    text-align: center; margin: 0 0 1.5rem;
+    font-size: 1.4rem; font-weight: 500;
+  }
+
+  main {
+    max-width: 1200px; margin: 0 auto; padding: 2rem;
+    display: grid; grid-template-columns: 1fr 1.1fr; gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 1000px) { main { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  body.edit-mode .form-card-stack .card {
+    border-color: var(--edit-accent);
+    box-shadow: 0 0 0 3px var(--edit-bg);
+  }
+
+  .edit-banner {
+    display: none;
+    background: var(--edit-bg);
+    border: 1px solid var(--edit-accent);
+    border-radius: 3px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.8rem;
+    color: var(--edit-accent);
+    justify-content: space-between; align-items: center;
+  }
+  body.edit-mode .edit-banner { display: flex; }
+
+  .card h2 {
+    margin: 0 0 1.25rem;
+    font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-soft);
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .card h2 .count {
+    background: var(--line); color: var(--ink-soft);
+    padding: 0.1rem 0.55rem; border-radius: 10px;
+    font-size: 0.7rem; font-weight: 400;
+  }
+
+  label {
+    display: block; font-size: 0.75rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-soft); margin-bottom: 0.4rem;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+  input[type="text"], input[type="url"], input[type="email"],
+  input[type="password"], textarea, select {
+    width: 100%; padding: 0.6rem 0.75rem;
+    border: 1px solid var(--line); border-radius: 3px;
+    font-size: 0.95rem; font-family: inherit;
+    background: var(--bg); color: var(--ink);
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: none; border-color: var(--ink);
+  }
+  textarea { min-height: 80px; resize: vertical; }
+  .field { margin-bottom: 1.1rem; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
+
+  .char-count {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.7rem; color: var(--ink-faint);
+    text-align: right; margin-top: 0.25rem;
+  }
+
+  /* CATEGORIES */
+  .category-picker {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    padding: 0.6rem;
+    border: 1px solid var(--line); border-radius: 3px;
+    background: var(--bg);
+    align-items: center;
+    min-height: 50px;
+  }
+  .cat-pill {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.12s;
+    text-transform: capitalize;
+  }
+  .cat-pill:hover { border-color: var(--ink-soft); }
+  .cat-pill.selected {
+    background: var(--ink); color: var(--surface); border-color: var(--ink);
+  }
+  .cat-add-btn {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px dashed var(--ink-faint);
+    border-radius: 14px;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .cat-add-btn:hover { color: var(--ink); border-color: var(--ink); }
+  .cat-add-input {
+    border: 1px solid var(--ink); border-radius: 14px;
+    padding: 0.3rem 0.7rem; font-size: 0.75rem;
+    width: 130px;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    background: var(--surface);
+  }
+
+  /* TOGGLES */
+  .toggle-group {
+    display: flex;
+    border: 1px solid var(--line); border-radius: 3px;
+    overflow: hidden;
+    font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.8rem;
+  }
+  .toggle-group label {
+    flex: 1; margin: 0; padding: 0.55rem 0.75rem;
+    text-align: center; cursor: pointer;
+    text-transform: none; letter-spacing: normal;
+    color: var(--ink-soft); background: var(--bg);
+    border-right: 1px solid var(--line);
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .toggle-group label:last-child { border-right: none; }
+  .toggle-group label.active {
+    background: var(--ink); color: var(--surface);
+  }
+
+  /* IMAGE UPLOAD */
+  .image-drop {
+    border: 1.5px dashed var(--line); border-radius: 3px;
+    padding: 1.25rem; text-align: center;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.85rem; color: var(--ink-soft);
+    cursor: pointer; transition: all 0.15s;
+    background: var(--bg);
+  }
+  .image-drop:hover { border-color: var(--ink); color: var(--ink); }
+  .image-drop .icon { display: block; font-size: 1.4rem; margin-bottom: 0.4rem; }
+  .image-current {
+    margin-top: 0.5rem; display: none;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.75rem; color: var(--ink-soft);
+    align-items: center; gap: 0.5rem;
+  }
+  .image-current.show { display: flex; }
+  .image-current img {
+    width: 50px; height: 50px; object-fit: cover; border-radius: 3px;
+  }
+
+  /* MODES */
+  .modes-intro {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.8rem; color: var(--ink-soft);
+    margin-bottom: 1.25rem; line-height: 1.5;
+    padding: 0.75rem; background: var(--bg);
+    border-left: 3px solid var(--ink); border-radius: 2px;
+  }
+  .mode-block {
+    background: var(--mode-bg);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    transition: all 0.15s;
+  }
+  .mode-block.has-content {
+    background: var(--surface);
+    border-left: 3px solid var(--success);
+  }
+  .mode-block.has-content.is-hidden {
+    border-left-color: var(--warn);
+    opacity: 0.85;
+  }
+  .mode-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 0.6rem;
+  }
+  .mode-header .mode-name {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.85rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .mode-header .mode-type {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.65rem; color: var(--ink-faint);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .mode-block input[type="url"] {
+    background: var(--surface);
+    font-size: 0.85rem;
+    padding: 0.5rem 0.6rem;
+  }
+  .mode-toggle-row {
+    display: flex; gap: 0.5rem; align-items: center;
+    margin-top: 0.5rem;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.75rem;
+  }
+  .mini-toggle {
+    display: inline-flex; gap: 0; border: 1px solid var(--line);
+    border-radius: 12px; overflow: hidden;
+  }
+  .mini-toggle label {
+    margin: 0; padding: 0.2rem 0.6rem;
+    text-transform: none; letter-spacing: normal;
+    cursor: pointer; background: var(--bg);
+    color: var(--ink-soft); font-size: 0.7rem;
+    border-right: 1px solid var(--line);
+    user-select: none;
+  }
+  .mini-toggle label:last-child { border-right: none; }
+  .mini-toggle label.active {
+    background: var(--ink); color: var(--surface);
+  }
+
+  /* BUTTONS */
+  button {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 0.65rem 1.25rem;
+    border: 1px solid var(--ink); background: var(--ink); color: var(--surface);
+    cursor: pointer; border-radius: 3px;
+    transition: opacity 0.15s;
+  }
+  button:hover { opacity: 0.85; }
+  button:disabled { opacity: 0.5; cursor: wait; }
+  button.secondary { background: transparent; color: var(--ink); }
+  button.ghost { background: transparent; color: var(--ink-soft); border-color: var(--line); }
+  button.danger { color: var(--danger); border-color: var(--danger); background: transparent; }
+  button.danger:hover { background: var(--danger); color: var(--surface); opacity: 1; }
+  button.small { padding: 0.4rem 0.75rem; font-size: 0.7rem; }
+  .btn-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+  .add-mode-only { display: inline-block; }
+  .edit-mode-only { display: none; }
+  body.edit-mode .add-mode-only { display: none; }
+  body.edit-mode .edit-mode-only { display: inline-block; }
+
+  /* FILTERS */
+  .search-box {
+    width: 100%; margin-bottom: 1rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--line); border-radius: 3px;
+    font-size: 0.9rem;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    background: var(--bg);
+  }
+  .filters {
+    display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+  .filter-chip {
+    padding: 0.35rem 0.75rem; border: 1px solid var(--line);
+    border-radius: 12px; background: var(--bg);
+    font-size: 0.75rem; color: var(--ink-soft);
+    cursor: pointer; transition: all 0.15s;
+    text-transform: capitalize;
+  }
+  .filter-chip.active {
+    background: var(--ink); color: var(--surface); border-color: var(--ink);
+  }
+
+  /* INSIGHT LIST */
+  .insight-row {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: center;
+    transition: background 0.15s;
+    margin: 0 -1.75rem;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+  .insight-row:last-child { border-bottom: none; }
+  .insight-row.is-draft { background: var(--draft-bg); }
+  .insight-row.editing {
+    background: var(--edit-bg);
+    border-left: 3px solid var(--edit-accent);
+    padding-left: calc(1.75rem - 3px);
+  }
+  .insight-row .thumb {
+    width: 60px; height: 60px; border-radius: 3px;
+    background: var(--line) center/cover no-repeat;
+  }
+  .insight-row .info strong {
+    display: block; font-weight: 500; margin-bottom: 0.3rem;
+  }
+  .insight-row .info .sub {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.7rem; color: var(--ink-soft);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;
+    margin-bottom: 0.25rem;
+  }
+  .insight-row .modes-strip { display: flex; gap: 0.3rem; margin-top: 0.3rem; }
+  .mode-dot {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.6rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 10px;
+    background: var(--line);
+    color: var(--ink-faint);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .mode-dot.on { background: var(--success); color: var(--surface); }
+  .mode-dot.hidden { background: var(--warn); color: var(--surface); }
+  .insight-row .actions { display: flex; gap: 0.4rem; }
+
+  .badge {
+    display: inline-block;
+    padding: 0.1rem 0.5rem;
+    border-radius: 2px;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  .badge.featured { background: var(--ink); color: var(--surface); }
+  .badge.draft { background: var(--warn); color: var(--surface); }
+  .badge.published { background: var(--success); color: var(--surface); }
+  .badge.cat {
+    background: var(--line); color: var(--ink);
+    text-transform: capitalize; letter-spacing: 0.03em;
+  }
+
+  /* PREVIEW */
+  .preview-card {
+    border: 1px solid var(--line); border-radius: 4px;
+    overflow: hidden; background: var(--surface);
+  }
+  .preview-card .preview-img {
+    width: 100%; height: 160px;
+    background: var(--line) center/cover no-repeat;
+  }
+  .preview-card .preview-body { padding: 1.25rem; }
+  .preview-card .preview-cats {
+    display: flex; gap: 0.3rem; flex-wrap: wrap; margin-bottom: 0.6rem;
+  }
+  .preview-card h3 { margin: 0 0 0.5rem; font-size: 1.15rem; font-weight: 500; }
+  .preview-card p { margin: 0 0 0.85rem; font-size: 0.9rem; color: var(--ink-soft); }
+  .preview-modes {
+    display: flex; gap: 0.4rem; flex-wrap: wrap;
+    padding-top: 0.85rem; border-top: 1px solid var(--line-soft);
+  }
+  .preview-mode-btn {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    background: transparent; color: var(--ink);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .preview-mode-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* MISC */
+  .empty {
+    text-align: center; padding: 2rem 1rem;
+    color: var(--ink-faint);
+    font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.85rem;
+  }
+  details summary {
+    cursor: pointer;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.85rem; color: var(--ink-soft);
+    margin-bottom: 0.75rem;
+  }
+  details summary:hover { color: var(--ink); }
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--ink); color: var(--surface);
+    padding: 0.75rem 1.25rem; border-radius: 3px;
+    font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.85rem;
+    opacity: 0; transition: opacity 0.2s; pointer-events: none;
+    z-index: 100;
+  }
+  .toast.show { opacity: 1; }
+  .toast.error { background: var(--danger); }
+  .toast.success { background: var(--success); }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-view" class="login-wrap">
+  <div class="card">
+    <h2>Admin Login</h2>
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="email" id="email" autocomplete="username" />
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" autocomplete="current-password" />
+    </div>
+    <button id="login-btn" style="width:100%;">Sign in</button>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="admin-view" class="hidden">
+  <header>
+    <h1>WillemsWorld <span class="tag">Admin</span></h1>
+    <div class="meta">
+      <span id="user-email"></span>
+      <button class="ghost small" id="logout-btn">Sign out</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="form-card-stack">
+
+      <div class="edit-banner">
+        <span>✎ <strong id="editing-title">Editing</strong></span>
+        <button class="small ghost" onclick="cancelEdit()" style="border-color: var(--edit-accent); color: var(--edit-accent);">+ New insight instead</button>
+      </div>
+
+      <div class="card">
+        <h2><span id="form-mode-label">New insight</span></h2>
+
+        <div class="field">
+          <label for="title">Title</label>
+          <input type="text" id="title" maxlength="120" placeholder="e.g. Earth to home: a journey of resources" />
+          <div class="char-count" id="title-count">0 / 120</div>
+        </div>
+
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea id="description" maxlength="500" placeholder="A short blurb describing the insight."></textarea>
+          <div class="char-count" id="description-count">0 / 500</div>
+        </div>
+
+        <div class="field">
+          <label>Categories <span style="text-transform:none; color:var(--ink-faint);">(click to toggle, multiple allowed)</span></label>
+          <div class="category-picker" id="category-picker"></div>
+        </div>
+
+        <div class="field">
+          <label>Thumbnail image</label>
+          <input type="file" id="image-input" accept="image/*" style="display:none;" />
+          <div class="image-drop" onclick="document.getElementById('image-input').click()">
+            <span class="icon">↑</span>
+            Click to upload, or drag a file<br>
+            <small style="color: var(--ink-faint);">PNG, JPG, or WebP — max 2MB</small>
+          </div>
+          <div class="image-current" id="image-current">
+            <img id="current-thumb" src="" alt="" />
+            <span id="image-current-label">Current image — upload a new one to replace it</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label>Overall status</label>
+            <div class="toggle-group" id="status-toggle">
+              <label class="active" data-val="draft">Draft</label>
+              <label data-val="published">Published</label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Show on homepage</label>
+            <div class="toggle-group" id="featured-toggle">
+              <label class="active" data-val="false">No</label>
+              <label data-val="true">Featured</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Modes of consumption <span class="count">6 available</span></h2>
+
+        <div class="modes-intro">
+          Each insight can be consumed in up to 6 ways. <strong>Paste a URL</strong> for any mode you want available. Modes without URLs are automatically hidden. Use the <em>visible / hidden</em> toggle to publish a mode independently.
+        </div>
+
+        <div class="mode-block" data-mode="experience">
+          <div class="mode-header">
+            <div><span class="mode-name">Experience</span></div>
+            <span class="mode-type">HTML page or sub-site</span>
+          </div>
+          <input type="url" placeholder="/experiences/your-insight/  or  https://..." />
+          <div class="mode-toggle-row">
+            <span style="color: var(--ink-soft);">On the live site:</span>
+            <div class="mini-toggle">
+              <label class="active" data-val="true">Visible</label>
+              <label data-val="false">Hidden</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="mode-block" data-mode="summary">
+          <div class="mode-header">
+            <div><span class="mode-name">Summary</span></div>
+            <span class="mode-type">HTML page</span>
+          </div>
+          <input type="url" placeholder="/summaries/your-insight/  or  https://..." />
+          <div class="mode-toggle-row">
+            <span style="color: var(--ink-soft);">On the live site:</span>
+            <div class="mini-toggle">
+              <label class="active" data-val="true">Visible</label>
+              <label data-val="false">Hidden</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="mode-block" data-mode="dashboard">
+          <div class="mode-header">
+            <div><span class="mode-name">Dashboard</span></div>
+            <span class="mode-type">HTML page or Power BI embed URL</span>
+          </div>
+          <input type="url" placeholder="/dashboards/your-insight/  or  Power BI embed URL" />
+          <div class="mode-toggle-row">
+            <span style="color: var(--ink-soft);">On the live site:</span>
+            <div class="mini-toggle">
+              <label class="active" data-val="true">Visible</label>
+              <label data-val="false">Hidden</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="mode-block" data-mode="walk_short">
+          <div class="mode-header">
+            <div><span class="mode-name">Walkthrough — Short</span></div>
+            <span class="mode-type">YouTube URL</span>
+          </div>
+          <input type="url" placeholder="https://youtube.com/watch?v=..." />
+          <div class="mode-toggle-row">
+            <span style="color: var(--ink-soft);">On the live site:</span>
+            <div class="mini-toggle">
+              <label class="active" data-val="true">Visible</label>
+              <label data-val="false">Hidden</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="mode-block" data-mode="walk_mid">
+          <div class="mode-header">
+            <div><span class="mode-name">Walkthrough — Mid</span></div>
+            <span class="mode-type">YouTube URL</span>
+          </div>
+          <input type="url" placeholder="https://youtube.com/watch?v=..." />
+          <div class="mode-toggle-row">
+            <span style="color: var(--ink-soft);">On the live site:</span>
+            <div class="mini-toggle">
+              <label class="active" data-val="true">Visible</label>
+              <label data-val="false">Hidden</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="mode-block" data-mode="walk_long">
+          <div class="mode-header">
+            <div><span class="mode-name">Walkthrough — Long</span></div>
+            <span class="mode-type">YouTube URL</span>
+          </div>
+          <input type="url" placeholder="https://youtube.com/watch?v=..." />
+          <div class="mode-toggle-row">
+            <span style="color: var(--ink-soft);">On the live site:</span>
+            <div class="mini-toggle">
+              <label class="active" data-val="true">Visible</label>
+              <label data-val="false">Hidden</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row" style="margin-top: 1.75rem;">
+          <button id="save-btn" class="add-mode-only">Save insight</button>
+          <button id="save-add-btn" class="secondary add-mode-only">Save & add another</button>
+          <button id="save-edit-btn" class="edit-mode-only">Save changes</button>
+          <button class="ghost edit-mode-only" onclick="cancelEdit()">Cancel edit</button>
+          <button id="delete-btn" class="danger edit-mode-only">Delete insight</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Live preview <span class="count">As it appears on the site</span></h2>
+        <div class="preview-card">
+          <div class="preview-img" id="preview-img"></div>
+          <div class="preview-body">
+            <div class="preview-cats" id="preview-cats">
+              <span style="color: var(--ink-faint); font-family: ui-sans-serif; font-size: 0.75rem;">no categories</span>
+            </div>
+            <h3 id="preview-title">Untitled insight</h3>
+            <p id="preview-desc">Add a description…</p>
+            <div class="preview-modes" id="preview-modes"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2>Existing insights <span class="count" id="insight-count">0</span></h2>
+        <input type="text" class="search-box" id="search-box" placeholder="Search by title…" />
+        <details>
+          <summary>Filters</summary>
+          <div class="filters" id="filter-chips">
+            <span class="filter-chip active" data-filter="all">All</span>
+            <span class="filter-chip" data-filter="published">Published</span>
+            <span class="filter-chip" data-filter="draft">Drafts</span>
+            <span class="filter-chip" data-filter="featured">Featured</span>
+          </div>
+        </details>
+        <div id="insight-list">
+          <div class="empty">Loading…</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+// ============================================
+// CONFIG — replace with your own Supabase values
+// Find these at: https://supabase.com/dashboard
+// → Your project → Project Settings → API
+// ============================================
+const SUPABASE_URL      = 'https://mjbcxnxdiscubjukhzri.supabase.co/rest/v1/';
+const SUPABASE_ANON_KEY = 'sb_publishable_fFByBl_QEPqNqYf5g57LTg_OjtRnxQB';
+// ============================================
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const MODES = ['experience','summary','dashboard','walk_short','walk_mid','walk_long'];
+const MODE_LABELS = {
+  experience:'Experience', summary:'Summary', dashboard:'Dashboard',
+  walk_short:'Walk · Short', walk_mid:'Walk · Mid', walk_long:'Walk · Long'
+};
+const MODE_KEYS_SHORT = {
+  experience:'EXP', summary:'SUM', dashboard:'DASH',
+  walk_short:'SHORT', walk_mid:'MID', walk_long:'LONG'
+};
+
+const $ = id => document.getElementById(id);
+
+let allInsights = [];
+let allCategories = [];
+let editingId = null;
+let pendingImageFile = null;
+let currentFilter = 'all';
+
+// ===========================
+// UTILITIES
+// ===========================
+function showToast(msg, type='') {
+  const t = $('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(() => { t.className = 'toast ' + type; }, 2800);
+}
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str ?? '';
+  return div.innerHTML;
+}
+function slugify(s) {
+  return s.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g,'');
+}
+
+// ===========================
+// AUTH
+// ===========================
+async function checkSession() {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (session) showAdmin(session.user);
+  else showLogin();
+}
+function showLogin() {
+  $('login-view').classList.remove('hidden');
+  $('admin-view').classList.add('hidden');
+}
+async function showAdmin(user) {
+  $('login-view').classList.add('hidden');
+  $('admin-view').classList.remove('hidden');
+  $('user-email').textContent = user.email;
+  await loadCategories();
+  await loadInsights();
+  resetForm();
+  attachToggleHandlers();
+  attachInputHandlers();
+  updatePreview();
+}
+
+$('login-btn').addEventListener('click', async () => {
+  const email = $('email').value.trim();
+  const password = $('password').value;
+  if (!email || !password) { showToast('Email and password required', 'error'); return; }
+  $('login-btn').disabled = true;
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  $('login-btn').disabled = false;
+  if (error) { showToast(error.message, 'error'); return; }
+  showAdmin(data.user);
+});
+
+$('logout-btn').addEventListener('click', async () => {
+  await supabase.auth.signOut();
+  showLogin();
+});
+
+// ===========================
+// CATEGORIES
+// ===========================
+async function loadCategories() {
+  const { data, error } = await supabase
+    .from('categories').select('*').order('name');
+  if (error) { showToast('Failed to load categories: ' + error.message, 'error'); return; }
+  allCategories = data || [];
+  renderCategoryPicker();
+}
+
+function renderCategoryPicker(selectedSlugs = []) {
+  const picker = $('category-picker');
+  picker.innerHTML = '';
+  allCategories.forEach(cat => {
+    const pill = document.createElement('span');
+    pill.className = 'cat-pill' + (selectedSlugs.includes(cat.slug) ? ' selected' : '');
+    pill.dataset.slug = cat.slug;
+    pill.dataset.id = cat.id;
+    pill.textContent = cat.name;
+    pill.onclick = () => { pill.classList.toggle('selected'); updatePreview(); };
+    picker.appendChild(pill);
+  });
+  // Add-new button
+  const addBtn = document.createElement('button');
+  addBtn.className = 'cat-add-btn';
+  addBtn.textContent = '+ New category';
+  addBtn.onclick = () => {
+    addBtn.style.display = 'none';
+    input.style.display = '';
+    input.focus();
+  };
+  picker.appendChild(addBtn);
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'cat-add-input';
+  input.placeholder = 'Name…';
+  input.style.display = 'none';
+  input.onkeydown = async (e) => {
+    if (e.key === 'Enter') {
+      const name = input.value.trim();
+      if (!name) return;
+      const slug = slugify(name);
+      if (allCategories.some(c => c.slug === slug)) {
+        showToast('That category already exists', 'error');
+        return;
+      }
+      input.disabled = true;
+      const { data, error } = await supabase
+        .from('categories').insert({ slug, name }).select().single();
+      input.disabled = false;
+      if (error) { showToast(error.message, 'error'); return; }
+      allCategories.push(data);
+      input.value = '';
+      const currentlySelected = Array.from(document.querySelectorAll('.cat-pill.selected'))
+        .map(p => p.dataset.slug);
+      currentlySelected.push(data.slug);
+      renderCategoryPicker(currentlySelected);
+      updatePreview();
+      showToast('Category added', 'success');
+    } else if (e.key === 'Escape') {
+      input.value = '';
+      input.style.display = 'none';
+      addBtn.style.display = '';
+    }
+  };
+  picker.appendChild(input);
+}
+
+function getSelectedCategoryIds() {
+  return Array.from(document.querySelectorAll('.cat-pill.selected'))
+    .map(p => p.dataset.id);
+}
+function getSelectedCategorySlugs() {
+  return Array.from(document.querySelectorAll('.cat-pill.selected'))
+    .map(p => p.dataset.slug);
+}
+
+// ===========================
+// INSIGHTS — LOAD & RENDER LIST
+// ===========================
+async function loadInsights() {
+  const { data, error } = await supabase
+    .from('insights')
+    .select(`
+      *,
+      insight_categories ( category_id, categories ( id, slug, name ) )
+    `)
+    .order('created_at', { ascending: false });
+  if (error) {
+    $('insight-list').innerHTML = `<div class="empty">Error: ${error.message}</div>`;
+    return;
+  }
+  allInsights = (data || []).map(ins => ({
+    ...ins,
+    categories: (ins.insight_categories || []).map(ic => ic.categories).filter(Boolean)
+  }));
+  renderInsightList();
+}
+
+function renderInsightList() {
+  const list = $('insight-list');
+  $('insight-count').textContent = allInsights.length;
+
+  const search = ($('search-box').value || '').toLowerCase().trim();
+
+  const filtered = allInsights.filter(ins => {
+    if (search && !ins.title.toLowerCase().includes(search)) return false;
+    if (currentFilter === 'published' && ins.status !== 'published') return false;
+    if (currentFilter === 'draft' && ins.status !== 'draft') return false;
+    if (currentFilter === 'featured' && !ins.featured) return false;
+    return true;
+  });
+
+  if (!filtered.length) {
+    list.innerHTML = '<div class="empty">No insights match.</div>';
+    return;
+  }
+
+  list.innerHTML = filtered.map(ins => {
+    const isDraft = ins.status === 'draft';
+    const isEditing = ins.id === editingId;
+    const cats = ins.categories.map(c =>
+      `<span class="badge cat">${escapeHtml(c.name)}</span>`).join('');
+    const dots = MODES.map(m => {
+      const url = ins[m + '_url'];
+      const visible = ins[m + '_visible'];
+      let cls = '';
+      if (url && visible) cls = 'on';
+      else if (url && !visible) cls = 'hidden';
+      return `<span class="mode-dot ${cls}">${MODE_KEYS_SHORT[m]}</span>`;
+    }).join('');
+    const thumb = ins.thumbnail_url
+      ? `<div class="thumb" style="background-image:url('${escapeHtml(ins.thumbnail_url)}')"></div>`
+      : `<div class="thumb"></div>`;
+    return `
+      <div class="insight-row ${isDraft?'is-draft':''} ${isEditing?'editing':''}">
+        ${thumb}
+        <div class="info">
+          <strong>${escapeHtml(ins.title)}</strong>
+          <div class="sub">
+            <span class="badge ${ins.status}">${ins.status}</span>
+            ${ins.featured ? '<span class="badge featured">Featured</span>' : ''}
+            ${cats}
+          </div>
+          <div class="modes-strip">${dots}</div>
+        </div>
+        <div class="actions">
+          <button class="ghost small" data-edit="${ins.id}">Edit</button>
+          <button class="danger small" data-delete="${ins.id}">Delete</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  list.querySelectorAll('[data-edit]').forEach(b =>
+    b.addEventListener('click', () => startEdit(b.dataset.edit)));
+  list.querySelectorAll('[data-delete]').forEach(b =>
+    b.addEventListener('click', () => deleteInsight(b.dataset.delete)));
+}
+
+// search & filters
+$('search-box').addEventListener('input', renderInsightList);
+$('filter-chips').addEventListener('click', (e) => {
+  const chip = e.target.closest('.filter-chip');
+  if (!chip) return;
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  currentFilter = chip.dataset.filter;
+  renderInsightList();
+});
+
+// ===========================
+// FORM — RESET / EDIT / PREVIEW
+// ===========================
+function resetForm() {
+  editingId = null;
+  pendingImageFile = null;
+  document.body.classList.remove('edit-mode');
+  $('form-mode-label').textContent = 'New insight';
+
+  $('title').value = '';
+  $('description').value = '';
+  $('image-input').value = '';
+  $('image-current').classList.remove('show');
+  updateCount('title', 120);
+  updateCount('description', 500);
+
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('selected'));
+  setToggleByVal($('status-toggle'), 'draft');
+  setToggleByVal($('featured-toggle'), 'false');
+
+  MODES.forEach(m => {
+    const block = document.querySelector(`.mode-block[data-mode="${m}"]`);
+    block.querySelector('input').value = '';
+    setToggleByVal(block.querySelector('.mini-toggle'), 'true');
+    refreshModeBlock(block);
+  });
+
+  updatePreview();
+  renderInsightList();
+}
+
+function startEdit(id) {
+  const ins = allInsights.find(i => i.id === id);
+  if (!ins) return;
+  editingId = id;
+  pendingImageFile = null;
+  document.body.classList.add('edit-mode');
+  $('form-mode-label').textContent = 'Editing insight';
+  $('editing-title').textContent = 'Editing: ' + ins.title;
+
+  $('title').value = ins.title;
+  $('description').value = ins.description;
+  updateCount('title', 120);
+  updateCount('description', 500);
+
+  // categories
+  const slugs = ins.categories.map(c => c.slug);
+  renderCategoryPicker(slugs);
+
+  // image
+  if (ins.thumbnail_url) {
+    $('current-thumb').src = ins.thumbnail_url;
+    $('image-current').classList.add('show');
+  } else {
+    $('image-current').classList.remove('show');
+  }
+  $('image-input').value = '';
+
+  // status & featured
+  setToggleByVal($('status-toggle'), ins.status);
+  setToggleByVal($('featured-toggle'), ins.featured ? 'true' : 'false');
+
+  // modes
+  MODES.forEach(m => {
+    const block = document.querySelector(`.mode-block[data-mode="${m}"]`);
+    block.querySelector('input').value = ins[m + '_url'] || '';
+    setToggleByVal(block.querySelector('.mini-toggle'), ins[m + '_visible'] ? 'true' : 'false');
+    refreshModeBlock(block);
+  });
+
+  updatePreview();
+  renderInsightList();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+window.cancelEdit = resetForm;
+
+function setToggleByVal(group, val) {
+  group.querySelectorAll('label').forEach(l => {
+    l.classList.toggle('active', l.dataset.val === String(val));
+  });
+}
+function getToggleVal(group) {
+  const active = group.querySelector('label.active');
+  return active ? active.dataset.val : null;
+}
+function refreshModeBlock(block) {
+  const url = block.querySelector('input').value.trim();
+  const visible = getToggleVal(block.querySelector('.mini-toggle')) === 'true';
+  block.classList.remove('has-content', 'is-hidden');
+  if (url) {
+    block.classList.add('has-content');
+    if (!visible) block.classList.add('is-hidden');
+  }
+}
+
+function updateCount(id, max) {
+  $(id+'-count').textContent = `${$(id).value.length} / ${max}`;
+}
+
+function updatePreview() {
+  $('preview-title').textContent = $('title').value || 'Untitled insight';
+  $('preview-desc').textContent = $('description').value || 'Add a description…';
+
+  // categories on preview
+  const cats = Array.from(document.querySelectorAll('.cat-pill.selected'));
+  $('preview-cats').innerHTML = cats.length
+    ? cats.map(p => `<span class="badge cat">${escapeHtml(p.textContent)}</span>`).join('')
+    : '<span style="color: var(--ink-faint); font-family: ui-sans-serif; font-size: 0.75rem;">no categories</span>';
+
+  // mode buttons
+  $('preview-modes').innerHTML = MODES.map(m => {
+    const block = document.querySelector(`.mode-block[data-mode="${m}"]`);
+    const url = block.querySelector('input').value.trim();
+    const visible = getToggleVal(block.querySelector('.mini-toggle')) === 'true';
+    const live = url && visible;
+    return `<button class="preview-mode-btn" ${live?'':'disabled'}>${MODE_LABELS[m]}</button>`;
+  }).join('');
+
+  // image preview
+  if (pendingImageFile) {
+    const reader = new FileReader();
+    reader.onload = e => $('preview-img').style.backgroundImage = `url('${e.target.result}')`;
+    reader.readAsDataURL(pendingImageFile);
+  } else if (editingId) {
+    const ins = allInsights.find(i => i.id === editingId);
+    $('preview-img').style.backgroundImage = ins?.thumbnail_url
+      ? `url('${ins.thumbnail_url}')` : 'none';
+  } else {
+    $('preview-img').style.backgroundImage = 'none';
+  }
+}
+
+// ===========================
+// EVENT WIRING
+// ===========================
+function attachToggleHandlers() {
+  // top-level toggles + mode mini-toggles
+  document.querySelectorAll('.toggle-group, .mini-toggle').forEach(group => {
+    group.addEventListener('click', (e) => {
+      const lbl = e.target.closest('label');
+      if (!lbl) return;
+      group.querySelectorAll('label').forEach(l => l.classList.remove('active'));
+      lbl.classList.add('active');
+      const block = lbl.closest('.mode-block');
+      if (block) refreshModeBlock(block);
+      updatePreview();
+    });
+  });
+}
+function attachInputHandlers() {
+  $('title').addEventListener('input', () => { updateCount('title',120); updatePreview(); });
+  $('description').addEventListener('input', () => { updateCount('description',500); updatePreview(); });
+
+  document.querySelectorAll('.mode-block input[type="url"]').forEach(inp => {
+    inp.addEventListener('input', () => {
+      refreshModeBlock(inp.closest('.mode-block'));
+      updatePreview();
+    });
+  });
+
+  $('image-input').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (file.size > 2 * 1024 * 1024) {
+      showToast('Image too large — max 2MB', 'error');
+      e.target.value = '';
+      return;
+    }
+    pendingImageFile = file;
+    updatePreview();
+  });
+}
+
+// ===========================
+// SAVE / UPDATE / DELETE
+// ===========================
+async function uploadImage(file) {
+  const ext = file.name.split('.').pop().toLowerCase();
+  const filename = `${Date.now()}-${Math.random().toString(36).slice(2,8)}.${ext}`;
+  const { error } = await supabase.storage
+    .from('insight-thumbnails')
+    .upload(filename, file, { cacheControl: '3600', upsert: false });
+  if (error) throw error;
+  const { data } = supabase.storage.from('insight-thumbnails').getPublicUrl(filename);
+  return data.publicUrl;
+}
+
+function readForm() {
+  const data = {
+    title: $('title').value.trim(),
+    description: $('description').value.trim(),
+    status: getToggleVal($('status-toggle')),
+    featured: getToggleVal($('featured-toggle')) === 'true'
+  };
+  MODES.forEach(m => {
+    const block = document.querySelector(`.mode-block[data-mode="${m}"]`);
+    data[m + '_url'] = block.querySelector('input').value.trim() || null;
+    data[m + '_visible'] = getToggleVal(block.querySelector('.mini-toggle')) === 'true';
+  });
+  return data;
+}
+
+async function saveInsight(addAnother = false) {
+  const formData = readForm();
+  if (!formData.title || !formData.description) {
+    showToast('Title and description are required', 'error');
+    return;
+  }
+  const categoryIds = getSelectedCategoryIds();
+
+  const buttons = ['save-btn','save-add-btn','save-edit-btn'].map($);
+  buttons.forEach(b => b.disabled = true);
+
+  try {
+    let thumbnail_url = null;
+    if (pendingImageFile) thumbnail_url = await uploadImage(pendingImageFile);
+
+    let insightId;
+    if (editingId) {
+      const update = { ...formData };
+      if (thumbnail_url) update.thumbnail_url = thumbnail_url;
+      const { error } = await supabase.from('insights')
+        .update(update).eq('id', editingId);
+      if (error) throw error;
+      insightId = editingId;
+
+      // replace category links
+      await supabase.from('insight_categories').delete().eq('insight_id', insightId);
+    } else {
+      const insert = { ...formData };
+      if (thumbnail_url) insert.thumbnail_url = thumbnail_url;
+      const { data, error } = await supabase.from('insights')
+        .insert(insert).select().single();
+      if (error) throw error;
+      insightId = data.id;
+    }
+
+    // attach categories
+    if (categoryIds.length) {
+      const links = categoryIds.map(cid => ({ insight_id: insightId, category_id: cid }));
+      const { error } = await supabase.from('insight_categories').insert(links);
+      if (error) throw error;
+    }
+
+    showToast(editingId ? 'Changes saved' : 'Insight added', 'success');
+    await loadInsights();
+    if (addAnother) {
+      resetForm();
+    } else if (editingId) {
+      // stay on the edited one
+      const id = editingId;
+      resetForm();
+      startEdit(id);
+    } else {
+      resetForm();
+    }
+  } catch (err) {
+    console.error(err);
+    showToast(err.message || 'Save failed', 'error');
+  } finally {
+    buttons.forEach(b => b.disabled = false);
+  }
+}
+
+async function deleteInsight(id) {
+  const ins = allInsights.find(i => i.id === id);
+  if (!ins) return;
+  if (!confirm(`Delete "${ins.title}"? This cannot be undone.`)) return;
+  const { error } = await supabase.from('insights').delete().eq('id', id);
+  if (error) { showToast(error.message, 'error'); return; }
+  if (editingId === id) resetForm();
+  showToast('Insight deleted', 'success');
+  await loadInsights();
+}
+
+$('save-btn').addEventListener('click', () => saveInsight(false));
+$('save-add-btn').addEventListener('click', () => saveInsight(true));
+$('save-edit-btn').addEventListener('click', () => saveInsight(false));
+$('delete-btn').addEventListener('click', () => editingId && deleteInsight(editingId));
+
+// boot
+checkSession();
+</script>
+</body>
+</html>
