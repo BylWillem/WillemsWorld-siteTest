@@ -255,6 +255,9 @@
     .card-domain.sports  { color: #6B21A8; border: 1px solid rgba(107,33,168,0.25); background: rgba(107,33,168,0.05); }
     .card-domain.nature  { color: #0F766E; border: 1px solid rgba(15,118,110,0.25); background: rgba(15,118,110,0.05); }
     .card-domain.industry{ color: #9A4F19; border: 1px solid rgba(154,79,25,0.25);  background: rgba(154,79,25,0.05); }
+    .card-domain.environment    { color: #0F766E; border: 1px solid rgba(15,118,110,0.25); background: rgba(15,118,110,0.05); }
+    .card-domain.nature-nurture { color: #0F766E; border: 1px solid rgba(15,118,110,0.25); background: rgba(15,118,110,0.05); }
+    .card-domain.other   { color: #999999; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.03); }
     .card-domain.default { color: #555555; border: 1px solid rgba(0,0,0,0.12); }
 
     .card-date {
@@ -858,69 +861,24 @@
 })();
 
 /* ═══════════════════════════════════════════════
-   PROJECT FEED
+   PROJECT FEED — live data from Supabase
+   Shows only insights marked "featured" in the admin.
 ═══════════════════════════════════════════════ */
-const SAMPLE_PROJECTS = [
-  {
-    id: 0,
-    tags: ['Industry & Supply Chain'],
-    title: 'Earth to Home',
-    desc: 'The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.',
-    date: '2026-04-30',
-    experienceUrl: 'https://willemsworld.fyi/earth-to-home.html',
-    videoUrl: null,
-    summaryUrl: null,
-    dashboardUrl: null,
-  },
-  {
-    id: 1,
-    tags: ['Industry & Supply Chain'],
-    title: 'Why is your Supply Chain Breaking?',
-    desc: "The rippling effects of inconsistency. Supply and Demand is a cat and mouse game, not 2 smooth curves your college professor draws on the board. It's noisy, inconsistent, but predictable.",
-    date: '2026-04-22',
-    experienceUrl: null,
-    videoUrl: null,
-    summaryUrl: 'https://willemsworld.fyi/supply.html',
-    dashboardUrl: null,
-  },
-  {
-    id: 2,
-    tags: ['Sports', 'Nature vs. Nurture'],
-    title: 'Are Pro Athletes born with it? No, they are born at the right time.',
-    desc: 'We evaluated 5,405 athletes across 6 leagues and multiple continents. The hidden pattern about your birth month that no one talks about!',
-    date: '2025-04-03',
-    experienceUrl: 'https://birthdays.willemsworld.fyi',
-    videoUrl: null,
-    summaryUrl: 'https://birthdays.willemsworld.fyi/summary.html',
-    dashboardUrl: null,
-  },
-  {
-    id: 3, tags: ['Economy'],
-    title: 'US GDP Growth: Quarterly Breakdown 2020–2024',
-    desc: 'Examining the pandemic shock, recovery trajectory, and normalisation of US real GDP across 16 consecutive quarters.',
-    date: '2024-03-15', experienceUrl: null, videoUrl: null, summaryUrl: null,
-  },
-  {
-    id: 4, tags: ['Jobs'],
-    title: 'Job Openings vs Unemployment: The Great Mismatch',
-    desc: 'JOLTS data reveals a persistent gap between open positions and job seekers — structural or cyclical?',
-    date: '2024-03-08', experienceUrl: null, videoUrl: null, summaryUrl: null,
-  },
-  {
-    id: 5, tags: ['Health'],
-    title: 'Global Disease Burden Shift: NCDs Rising',
-    desc: 'WHO DALY data across 20 years shows cardiovascular and metabolic diseases now account for 36% of global burden.',
-    date: '2024-02-28', experienceUrl: null, videoUrl: null, summaryUrl: null,
-  },
-];
+
+// ── CONFIG (same values as admin.html) ─────────
+const SUPABASE_URL      = 'https://mjbcxnxdiscubjukhzri.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_fFByBl_QEPqNqYf5g57LTg_OjtRnxQB';
+// ───────────────────────────────────────────────
 
 const TAG_COLORS = {
-  'Economy':                'economy',
-  'Jobs':                   'jobs',
-  'Health':                 'health',
-  'Sports':                 'sports',
-  'Nature vs. Nurture':     'nature',
-  'Industry & Supply Chain':'industry',
+  'economy':        'economy',
+  'jobs':           'jobs',
+  'health':         'health',
+  'sports':         'sports',
+  'nature-nurture': 'nature-nurture',
+  'industry':       'industry',
+  'environment':    'environment',
+  'other':          'other',
 };
 
 function fmtDate(d) {
@@ -928,11 +886,11 @@ function fmtDate(d) {
 }
 
 function openModal(type, url, title) {
-  /* Experience and Summary open in new tab */
   if ((type === 'experience' || type === 'summary') && url) {
     window.open(url, '_blank'); return;
   }
   const overlay = document.getElementById(`${type}-modal`);
+  if (!overlay) { if (url) window.open(url, '_blank'); return; }
   document.getElementById(`${type}-modal-title`).textContent = title;
   const body = document.getElementById(`${type}-modal-body`);
   if (!url) {
@@ -952,7 +910,8 @@ function openModal(type, url, title) {
 
 function closeModal(id) {
   document.getElementById(id).classList.remove('open');
-  document.getElementById(id.replace('-modal', '-modal-body')).innerHTML = '';
+  const body = document.getElementById(id.replace('-modal', '-modal-body'));
+  if (body) body.innerHTML = '';
 }
 
 document.querySelectorAll('.modal-overlay').forEach(el => {
@@ -963,14 +922,71 @@ document.addEventListener('keydown', e => {
     document.querySelectorAll('.modal-overlay.open').forEach(el => closeModal(el.id));
 });
 
+const ICONS = {
+  experience: '<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M6 8 Q8 5 10 8 Q8 11 6 8Z" fill="currentColor" stroke="none"/></svg>',
+  video:      '<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polygon points="6.5,5.5 11,8 6.5,10.5" fill="currentColor" stroke="none"/></svg>',
+  summary:    '<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="1"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg>',
+  dashboard:  '<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="8" width="3" height="6"/><rect x="6" y="4" width="3" height="10"/><rect x="11" y="1" width="3" height="13"/></svg>',
+};
+
+function block(iconType, url, title, label, modalKind, primary) {
+  const safeTitle = title.replace(/'/g, "\\'");
+  const urlArg = url ? `'${url.replace(/'/g, "\\'")}'` : 'null';
+  const cls = primary ? 'card-block primary' : 'card-block';
+  return `<div class="${cls}" data-tip="${label}"
+    onclick="openModal('${modalKind}', ${urlArg}, '${safeTitle}')">
+    <div class="block-icon">${ICONS[iconType]}</div>
+    <div class="block-label">${label}</div>
+  </div>`;
+}
+
+function buildWalkthroughs(p) {
+  const walks = [
+    { label:'Walk · S', url: p.walk_short_url },
+    { label:'Walk · M', url: p.walk_mid_url   },
+    { label:'Walk · L', url: p.walk_long_url  },
+  ].filter(w => w.url);
+
+  // 0 or 1 URL → single "Walkthrough" button (matches old design)
+  // 2+ URLs    → separate Short/Mid/Long buttons
+  if (walks.length <= 1) {
+    const url = walks.length === 1 ? walks[0].url : null;
+    return block('video', url, p.title, 'Walkthrough', 'video', false);
+  }
+  return walks.map(w => block('video', w.url, p.title, w.label, 'video', false)).join('');
+}
+
+function mapInsight(row) {
+  const cats = (row.insight_categories || []).map(ic => ic.categories).filter(Boolean);
+  return {
+    id:    row.id,
+    title: row.title,
+    desc:  row.description,
+    date:  row.created_at,
+    tagSlugs: cats.map(c => c.slug),
+    tagNames: cats.map(c => c.name),
+    experienceUrl: (row.experience_visible && row.experience_url) ? row.experience_url : null,
+    summaryUrl:    (row.summary_visible    && row.summary_url)    ? row.summary_url    : null,
+    dashboardUrl:  (row.dashboard_visible  && row.dashboard_url)  ? row.dashboard_url  : null,
+    walk_short_url:(row.walk_short_visible && row.walk_short_url) ? row.walk_short_url : null,
+    walk_mid_url:  (row.walk_mid_visible   && row.walk_mid_url)   ? row.walk_mid_url   : null,
+    walk_long_url: (row.walk_long_visible  && row.walk_long_url)  ? row.walk_long_url  : null,
+  };
+}
+
 function renderFeed(projects) {
   document.getElementById('feed-count').textContent = `${projects.length} published`;
 
   document.getElementById('feed-scroll').innerHTML = projects.map((p, i) => {
-    const tagsHtml = p.tags.map(t =>
-      `<span class="card-domain ${TAG_COLORS[t] || t.toLowerCase()}">${t}</span>`
+    const tagsHtml = p.tagSlugs.map((slug, idx) =>
+      `<span class="card-domain ${TAG_COLORS[slug] || 'default'}">${p.tagNames[idx]}</span>`
     ).join('');
-    const safeTitle = p.title.replace(/'/g, "\\'");
+
+    const expBlock   = block('experience', p.experienceUrl, p.title, 'Experience', 'experience', true);
+    const walkBlocks = buildWalkthroughs(p);
+    const sumBlock   = block('summary',   p.summaryUrl,    p.title, 'Summary',    'summary',    false);
+    const dashBlock  = block('dashboard', p.dashboardUrl,  p.title, 'Dashboard',  'dashboard',  false);
+
     return `
     <div class="project-card" style="animation-delay:${i * 0.07}s">
       <div class="card-meta">
@@ -979,33 +995,38 @@ function renderFeed(projects) {
       </div>
       <h3 class="card-title">${p.title}</h3>
       <p class="card-desc">${p.desc}</p>
-      <div class="card-blocks">
-        <div class="card-block primary" data-tip="Experience"
-          onclick="openModal('experience', ${p.experienceUrl ? `'${p.experienceUrl}'` : 'null'}, '${safeTitle}')">
-          <div class="block-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M6 8 Q8 5 10 8 Q8 11 6 8Z" fill="currentColor" stroke="none"/></svg></div>
-          <div class="block-label">Experience</div>
-        </div>
-        <div class="card-block" data-tip="Walkthrough"
-          onclick="openModal('video', ${p.videoUrl ? `'${p.videoUrl}'` : 'null'}, '${safeTitle}')">
-          <div class="block-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polygon points="6.5,5.5 11,8 6.5,10.5" fill="currentColor" stroke="none"/></svg></div>
-          <div class="block-label">Walkthrough</div>
-        </div>
-        <div class="card-block" data-tip="Summary"
-          onclick="openModal('summary', ${p.summaryUrl ? `'${p.summaryUrl}'` : 'null'}, '${safeTitle}')">
-          <div class="block-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="1"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg></div>
-          <div class="block-label">Summary</div>
-        </div>
-        <div class="card-block" data-tip="Dashboard"
-          onclick="openModal('dashboard', ${p.dashboardUrl ? `'${p.dashboardUrl}'` : 'null'}, '${safeTitle}')">
-          <div class="block-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="8" width="3" height="6"/><rect x="6" y="4" width="3" height="10"/><rect x="11" y="1" width="3" height="13"/></svg></div>
-          <div class="block-label">Dashboard</div>
-        </div>
-      </div>
+      <div class="card-blocks">${expBlock}${walkBlocks}${sumBlock}${dashBlock}</div>
     </div>`;
   }).join('');
 }
 
-renderFeed(SAMPLE_PROJECTS);
+async function loadFeaturedInsights() {
+  const url = `${SUPABASE_URL}/rest/v1/insights` +
+    `?select=*,insight_categories(categories(slug,name))` +
+    `&status=eq.published` +
+    `&featured=eq.true` +
+    `&order=created_at.desc`;
+
+  try {
+    const res = await fetch(url, {
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      }
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const rows = await res.json();
+    const projects = rows.map(mapInsight);
+    renderFeed(projects);
+  } catch (err) {
+    console.error('Failed to load insights:', err);
+    document.getElementById('feed-scroll').innerHTML =
+      '<div style="padding:2rem;color:#888;font-family:var(--mono);font-size:0.7rem;">Could not load insights. Refresh to try again.</div>';
+    document.getElementById('feed-count').textContent = '— published';
+  }
+}
+
+loadFeaturedInsights();
 </script>
 </body>
 </html>
