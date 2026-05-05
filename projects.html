@@ -145,6 +145,8 @@
     .pc-domain.sports         { color: #6B21A8; border-color: rgba(107,33,168,0.3); background: rgba(107,33,168,0.05); }
     .pc-domain.nature-nurture { color: #0F766E; border-color: rgba(15,118,110,0.3); background: rgba(15,118,110,0.05); }
     .pc-domain.industry       { color: #9A4F19; border-color: rgba(154,79,25,0.3);  background: rgba(154,79,25,0.05); }
+    .pc-domain.environment    { color: #0F766E; border-color: rgba(15,118,110,0.3); background: rgba(15,118,110,0.05); }
+    .pc-domain.other          { color: #555555; border-color: rgba(0,0,0,0.18);     background: rgba(0,0,0,0.03); }
 
     .pc-tags { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
 
@@ -155,6 +157,19 @@
       line-height: 1.35; color: #111111; margin-bottom: 0.45rem;
     }
     .pc-desc { font-size: 0.74rem; color: #666666; line-height: 1.65; flex: 1; margin-bottom: 1rem; }
+
+    /* Thumbnail — sits between description and modes of consumption */
+    .pc-thumb {
+      margin-bottom: 1rem;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #F0F0F0;
+      border: 1px solid rgba(0,0,0,0.06);
+      aspect-ratio: 1200 / 630;
+    }
+    .pc-thumb img {
+      display: block; width: 100%; height: 100%; object-fit: cover;
+    }
 
     .pc-blocks {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -427,53 +442,24 @@ function onLand(lat,lng){return LAND_POLYS.some(p=>ptInPoly(lat,lng,p));}
   draw();
 })();
 
-/* ── PROJECTS ───────────────────────────────────────── */
-const ALL_PROJECTS=[
-  {
-    id:0,
-    tags:['industry'],
-    title:'Earth to Home',
-    desc:'The global supply chain is delicate and complicated. Follow 3 products through my 8 simple stages of supply chain and understand the obstacles, benefits, and insights of each stage.',
-    date:'2026-04-30',
-    experienceUrl:'https://willemsworld.fyi/earth-to-home.html',
-    videoUrl:null,
-    summaryUrl:null,
-    dashboardUrl:null
-  },
-  {
-    id:1,
-    tags:['industry'],
-    title:'Why is your Supply Chain Breaking?',
-    desc:"The rippling effects of inconsistency. Supply and Demand is a cat and mouse game, not 2 smooth curves your college professor draws on the board. It's noisy, inconsistent, but predictable.",
-    date:'2026-04-22',
-    experienceUrl:null,
-    videoUrl:null,
-    summaryUrl:'https://willemsworld.fyi/supply.html',
-    dashboardUrl:null
-  },
-  {
-    id:2,
-    tags:['sports','nature-nurture'],
-    title:'Are Pro Athletes born with it? No, they are born at the right time.',
-    desc:'We evaluated 5,405 athletes across 6 leagues and multiple continents. The hidden pattern about your birth month that no one talks about!',
-    date:'2025-04-03',
-    experienceUrl:'https://birthdays.willemsworld.fyi',
-    videoUrl:null,
-    summaryUrl:'https://birthdays.willemsworld.fyi/summary.html',
-    dashboardUrl:null,
-    dashboardUrl:null
-  },
-  {id:3,tags:['economy'],title:'US GDP Growth: Quarterly Breakdown 2020–2024',desc:'Examining the pandemic shock, recovery trajectory, and normalisation of US real GDP across 16 consecutive quarters.',date:'2024-03-15',experienceUrl:null,videoUrl:null,summaryUrl:null,dashboardUrl:null},
-  {id:4,tags:['jobs'],title:'Job Openings vs Unemployment: The Great Mismatch',desc:'JOLTS data reveals a persistent gap between open positions and job seekers — structural or cyclical?',date:'2024-03-08',experienceUrl:null,videoUrl:null,summaryUrl:null,dashboardUrl:null},
-  {id:5,tags:['health'],title:'Global Disease Burden Shift: NCDs Rising',desc:'WHO DALY data across 20 years shows cardiovascular and metabolic diseases now account for 36% of burden.',date:'2024-02-28',experienceUrl:null,videoUrl:null,summaryUrl:null,dashboardUrl:null},
-  {id:6,tags:['economy'],title:'Unemployment Rate: A 10-Year Retrospective',desc:'Post-GFC recovery to COVID-19 shock to current tightness — charted in full with recession overlays.',date:'2024-02-15',experienceUrl:null,videoUrl:null,summaryUrl:null,dashboardUrl:null},
-  {id:7,tags:['jobs'],title:'Hiring Rate vs Quit Rate: Labour Market Momentum',desc:'When people quit voluntarily, it signals confidence. This chart tracks what workers are actually doing.',date:'2024-01-30',experienceUrl:null,videoUrl:null,summaryUrl:null,dashboardUrl:null},
-];
+/* ── PROJECTS — live data from Supabase ───────────── */
+
+// ── CONFIG (same as admin.html and index.html) ─────
+const SUPABASE_URL      = 'https://mjbcxnxdiscubjukhzri.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_fFByBl_QEPqNqYf5g57LTg_OjtRnxQB';
+// ───────────────────────────────────────────────────
+
+let ALL_PROJECTS = [];
 
 const TAG_LABELS = {
-  'economy':'Economy','jobs':'Jobs','health':'Health',
-  'sports':'Sports','nature-nurture':'Nature vs. Nurture',
-  'industry':'Industry & Supply Chain'
+  'economy':        'Economy',
+  'jobs':           'Jobs',
+  'health':         'Health',
+  'sports':         'Sports',
+  'nature-nurture': 'Nature vs. Nurture',
+  'industry':       'Industry & Supply Chain',
+  'environment':    'Environment',
+  'other':          'Other',
 };
 
 let currentFilter='all', currentSearch='';
@@ -484,6 +470,7 @@ function openModal(type,url,title){
   if((type==='experience'||type==='summary')&&url){ window.open(url,'_blank'); return; }
   const modalId = type==='experience'?'chart-modal':type==='summary'?'chart-modal':`${type}-modal`;
   const overlay=document.getElementById(modalId);
+  if (!overlay) { if (url) window.open(url,'_blank'); return; }
   document.getElementById(`${modalId.replace('-modal','')}-modal-title`).textContent=title;
   const body=document.getElementById(`${modalId.replace('-modal','')}-modal-body`);
   const labels={experience:'Data Experience',video:'Video Walkthrough',summary:'Written Summary',dashboard:'Live Dashboard'};
@@ -495,31 +482,93 @@ function closeModal(id){document.getElementById(id).classList.remove('open');con
 document.querySelectorAll('.modal-overlay').forEach(el=>{el.addEventListener('click',e=>{if(e.target===el)closeModal(el.id);});});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(el=>closeModal(el.id));});
 
+const ICONS_P = {
+  experience: '<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M6 8 Q8 5 10 8 Q8 11 6 8Z" fill="currentColor" stroke="none"/></svg>',
+  video:      '<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polygon points="6.5,5.5 11,8 6.5,10.5" fill="currentColor" stroke="none"/></svg>',
+  summary:    '<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="1"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg>',
+  dashboard:  '<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="8" width="4" height="6"/><rect x="6" y="4" width="4" height="10"/><rect x="11" y="1" width="4" height="13"/></svg>',
+};
+
+function pcBlock(iconType, url, title, label, modalKind, primary) {
+  const safe = title.replace(/'/g, "\\'");
+  const urlArg = url ? `'${url.replace(/'/g, "\\'")}'` : 'null';
+  const cls = primary ? 'pc-block primary' : 'pc-block';
+  return `<div class="${cls}" data-tip="${label}"
+    onclick="openModal('${modalKind}', ${urlArg}, '${safe}')">
+    <div class="pb-icon">${ICONS_P[iconType]}</div>
+    <div class="pb-label">${label}</div>
+  </div>`;
+}
+
+function buildWalkthroughsP(p) {
+  const walks = [
+    { label:'Walk · S', url: p.walk_short_url },
+    { label:'Walk · M', url: p.walk_mid_url   },
+    { label:'Walk · L', url: p.walk_long_url  },
+  ].filter(w => w.url);
+
+  if (walks.length <= 1) {
+    const url = walks.length === 1 ? walks[0].url : null;
+    return pcBlock('video', url, p.title, 'Walkthrough', 'video', false);
+  }
+  return walks.map(w => pcBlock('video', w.url, p.title, w.label, 'video', false)).join('');
+}
+
+function mapInsightP(row) {
+  const cats = (row.insight_categories || []).map(ic => ic.categories).filter(Boolean);
+  return {
+    id:        row.id,
+    title:     row.title,
+    desc:      row.description,
+    date:      row.created_at,
+    thumbnail: row.thumbnail_url,
+    tagSlugs:  cats.map(c => c.slug),
+    experienceUrl: (row.experience_visible && row.experience_url) ? row.experience_url : null,
+    summaryUrl:    (row.summary_visible    && row.summary_url)    ? row.summary_url    : null,
+    dashboardUrl:  (row.dashboard_visible  && row.dashboard_url)  ? row.dashboard_url  : null,
+    walk_short_url:(row.walk_short_visible && row.walk_short_url) ? row.walk_short_url : null,
+    walk_mid_url:  (row.walk_mid_visible   && row.walk_mid_url)   ? row.walk_mid_url   : null,
+    walk_long_url: (row.walk_long_visible  && row.walk_long_url)  ? row.walk_long_url  : null,
+  };
+}
+
 function renderGrid(projects){
   document.getElementById('result-count').textContent=`${projects.length} project${projects.length!==1?'s':''}`;
   const grid=document.getElementById('projects-grid');
   if(!projects.length){grid.innerHTML=`<div class="empty-state"><div class="empty-icon">🌐</div><div>No projects match</div></div>`;return;}
+
   grid.innerHTML=projects.map((p,i)=>{
-    const tagsHtml = p.tags.map(t=>`<span class="pc-domain ${t}">${TAG_LABELS[t]||t}</span>`).join('');
-    const safeTitle = p.title.replace(/'/g,"\\'");
-    const expBlock  = `<div class="pc-block primary" data-tip="Experience" onclick="openModal('experience',${p.experienceUrl?`'${p.experienceUrl}'`:'null'},'${safeTitle}')"><div class="pb-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M6 8 Q8 5 10 8 Q8 11 6 8Z" fill="currentColor" stroke="none"/></svg></div><div class="pb-label">Experience</div></div>`;
-    const vidBlock  = `<div class="pc-block" data-tip="Walkthrough" onclick="openModal('video',${p.videoUrl?`'${p.videoUrl}'`:'null'},'${safeTitle}')"><div class="pb-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polygon points="6.5,5.5 11,8 6.5,10.5" fill="currentColor" stroke="none"/></svg></div><div class="pb-label">Walkthrough</div></div>`;
-    const sumBlock  = `<div class="pc-block" data-tip="Summary" onclick="openModal('summary',${p.summaryUrl?`'${p.summaryUrl}'`:'null'},'${safeTitle}')"><div class="pb-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="1"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg></div><div class="pb-label">Summary</div></div>`;
-    const dashBlock = `<div class="pc-block" data-tip="Dashboard" onclick="openModal('dashboard',${p.dashboardUrl?`'${p.dashboardUrl}'`:'null'},'${safeTitle}')"><div class="pb-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="8" width="4" height="6"/><rect x="6" y="4" width="4" height="10"/><rect x="11" y="1" width="4" height="13"/></svg></div><div class="pb-label">Dashboard</div></div>`;
+    const tagsHtml = p.tagSlugs.map(slug =>
+      `<span class="pc-domain ${slug}">${TAG_LABELS[slug] || slug}</span>`
+    ).join('');
+
+    const expBlock   = pcBlock('experience', p.experienceUrl, p.title, 'Experience', 'experience', true);
+    const walkBlocks = buildWalkthroughsP(p);
+    const sumBlock   = pcBlock('summary',   p.summaryUrl,    p.title, 'Summary',    'summary',    false);
+    const dashBlock  = pcBlock('dashboard', p.dashboardUrl,  p.title, 'Dashboard',  'dashboard',  false);
+
+    const walkCount = [p.walk_short_url, p.walk_mid_url, p.walk_long_url].filter(Boolean).length;
+    const blockCount = 3 + Math.max(walkCount, 1);
+
+    const thumbHtml = p.thumbnail
+      ? `<div class="pc-thumb"><img src="${p.thumbnail}" alt="" loading="lazy"/></div>`
+      : '';
+
     return `<div class="project-card" style="animation-delay:${i*0.05}s">
       <div class="pc-tags">${tagsHtml}<span class="pc-date">${fmtDate(p.date)}</span></div>
       <h3 class="pc-title">${p.title}</h3>
       <p class="pc-desc">${p.desc}</p>
-      <div class="pc-blocks" style="grid-template-columns:repeat(4,1fr)">${expBlock}${vidBlock}${sumBlock}${dashBlock}</div>
+      ${thumbHtml}
+      <div class="pc-blocks" style="grid-template-columns:repeat(${blockCount},1fr)">${expBlock}${walkBlocks}${sumBlock}${dashBlock}</div>
     </div>`;
   }).join('');
 }
 
 function applyFilters(){
   const filtered=ALL_PROJECTS.filter(p=>{
-    const dm=currentFilter==='all'||p.tags.includes(currentFilter);
+    const dm=currentFilter==='all'||p.tagSlugs.includes(currentFilter);
     const q=currentSearch.toLowerCase();
-    const sr=!q||p.title.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)||p.tags.some(t=>t.includes(q));
+    const sr=!q||p.title.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)||p.tagSlugs.some(t=>t.includes(q));
     return dm&&sr;
   });
   renderGrid(filtered);
@@ -529,20 +578,48 @@ document.getElementById('filter-chips').addEventListener('click',e=>{
   const chip=e.target.closest('.chip');if(!chip)return;
   document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
   chip.classList.add('active');currentFilter=chip.dataset.filter;
-  document.getElementById('filter-dropdown').value=currentFilter;
+  const dd=document.getElementById('filter-dropdown'); if(dd) dd.value=currentFilter;
   applyFilters();
 });
-document.getElementById('filter-dropdown').addEventListener('change',e=>{
-  currentFilter=e.target.value;
-  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  const match=document.querySelector(`.chip[data-filter="${currentFilter}"]`);
-  if(match) match.classList.add('active');
-  applyFilters();
-});
+const filterDropdown=document.getElementById('filter-dropdown');
+if(filterDropdown){
+  filterDropdown.addEventListener('change',e=>{
+    currentFilter=e.target.value;
+    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+    const match=document.querySelector(`.chip[data-filter="${currentFilter}"]`);
+    if(match) match.classList.add('active');
+    applyFilters();
+  });
+}
 document.getElementById('search-input').addEventListener('input',e=>{currentSearch=e.target.value;applyFilters();});
 window.addEventListener('scroll',()=>{document.getElementById('search-bar').classList.toggle('scrolled',window.scrollY>60);});
 
-renderGrid(ALL_PROJECTS);
+async function loadAllInsights() {
+  const url = `${SUPABASE_URL}/rest/v1/insights` +
+    `?select=*,insight_categories(categories(slug,name))` +
+    `&status=eq.published` +
+    `&order=created_at.desc`;
+
+  try {
+    const res = await fetch(url, {
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      }
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const rows = await res.json();
+    ALL_PROJECTS = rows.map(mapInsightP);
+    applyFilters();
+  } catch (err) {
+    console.error('Failed to load projects:', err);
+    document.getElementById('projects-grid').innerHTML =
+      '<div class="empty-state"><div class="empty-icon">⚠</div><div>Could not load projects. Refresh to try again.</div></div>';
+    document.getElementById('result-count').textContent = '0 projects';
+  }
+}
+
+loadAllInsights();
 </script>
 </body>
 </html>
