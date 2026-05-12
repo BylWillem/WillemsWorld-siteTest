@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receipts § 04: Birth Control · WillemsWorld</title>
+<meta name="description" content="Who uses birth control, what they use, why they don't, and what universal access would cost.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --ink-2: #4a4a48;
+    --ink-3: #8a8985;
+    --line: #e8e6df;
+    --line-strong: #d3d1c7;
+    --accent: #1d4e7a;
+    --accent-warm: #b8651e;
+    --highlight: #f3efe5;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* NAV */
+  .nav { max-width: 1200px; margin: 0 auto; padding: 1.75rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); }
+  .logo { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+  .logo .ww-w { color: var(--ink); font-weight: 500; }
+  .logo .ww-o { color: var(--ink-3); font-weight: 400; letter-spacing: 0.18em; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; padding: 0; margin: 0; font-size: 13px; letter-spacing: 0.06em; }
+  .nav-links a { color: var(--ink-2); text-transform: uppercase; }
+  .nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+  .series-tag { max-width: 1100px; margin: 1.5rem auto 0; padding: 0 2rem; text-align: right; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
+  .series-tag .dot { color: var(--accent-warm); }
+
+  /* HERO */
+  .hero { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 2rem; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 1.5rem; }
+  .eyebrow .num { color: var(--accent-warm); font-weight: 600; }
+  h1.title { font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 5vw, 3.75rem); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 0.5rem; max-width: 900px; }
+  h1.title em { font-style: italic; font-weight: 400; color: var(--accent); }
+  .subtitle { font-family: 'Fraunces', serif; font-size: 1.5rem; font-style: italic; font-weight: 400; color: var(--ink-2); margin: 0 0 1.5rem; line-height: 1.3; }
+  .meta { display: flex; gap: 1.5rem; font-size: 13px; color: var(--ink-3); padding: 1.5rem 0 0; border-top: 1px solid var(--line); margin-top: 2rem; }
+
+  /* PILLS */
+  .pills { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem; display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+  .pills::-webkit-scrollbar { display: none; }
+  .pill { flex-shrink: 0; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; color: var(--ink-2); background: var(--surface); transition: all 0.15s ease; white-space: nowrap; }
+  .pill:hover { color: var(--ink); border-color: var(--line-strong); text-decoration: none; }
+  .pill.active { background: var(--ink); color: white; border-color: var(--ink); }
+  .pill .num { color: var(--ink-3); margin-right: 0.5rem; font-variant-numeric: tabular-nums; }
+  .pill.active .num { color: rgba(255,255,255,0.55); }
+
+  /* CONTENT */
+  .content { max-width: 1100px; margin: 0 auto; padding: 1rem 2rem 4rem; }
+  h2.section-title { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 500; letter-spacing: -0.015em; margin: 4rem 0 1.5rem; line-height: 1.15; }
+  h2.section-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+  h2.section-title:first-of-type { margin-top: 1rem; }
+
+  /* CARD */
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 1.75rem 1.5rem; display: flex; flex-direction: column; margin-bottom: 1rem; }
+  .card .label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 0.5rem; }
+  .card .chart-title { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 500; margin: 0 0 1.25rem; line-height: 1.3; }
+  .card .source { font-size: 11px; color: var(--ink-3); font-style: italic; margin: 1rem 0 0; line-height: 1.5; padding-top: 1rem; border-top: 1px solid var(--line); }
+  .card .source a { color: var(--ink-3); text-decoration: underline; }
+  .card .source a:hover { color: var(--ink-2); }
+
+  /* BIG PCT CARDS */
+  .scale-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0.5rem 0 1.25rem; }
+  .scale-card {
+    background: var(--bg);
+    padding: 1.5rem 1.25rem;
+    border-radius: 4px;
+    text-align: left;
+  }
+  .scale-card .scale-num {
+    font-family: 'Fraunces', serif;
+    font-size: 3rem;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .scale-card.using .scale-num { color: var(--accent); }
+  .scale-card.notusing .scale-num { color: var(--ink-3); }
+  .scale-card .scale-lbl {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.45;
+  }
+
+  /* DOT GRID for "of 100 women" */
+  .dot-grid {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 4px;
+    margin: 0.5rem 0 1rem;
+    max-width: 500px;
+  }
+  .dot {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--highlight);
+    border: 1px solid var(--line);
+  }
+  .dot.using { background: var(--accent); border: none; }
+  .dot.less { background: #c5b89a; border: none; }
+  .dot-legend {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 13px;
+    color: var(--ink-2);
+    margin-bottom: 0.5rem;
+  }
+  .dot-legend-item { display: flex; align-items: center; gap: 8px; }
+  .dot-legend-swatch { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+  /* AGE BREAKDOWN */
+  .age-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin: 1.5rem 0 0.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .age-bars-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .age-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 60px;
+    align-items: center;
+    gap: 1rem;
+  }
+  .age-row-label {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  .age-row-track {
+    position: relative;
+    height: 22px;
+    background: var(--bg);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .age-row-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+  .age-row-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+
+  /* INCOME BUTTERFLY */
+  .income-callback {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    margin: 0 0 1.25rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--bg);
+    border-radius: 4px;
+    border-left: 3px solid var(--accent);
+  }
+  .income-callback a { font-weight: 500; }
+  .butterfly { margin: 1rem 0 0.5rem; }
+  .butterfly-header {
+    display: grid;
+    grid-template-columns: 1fr 160px 1fr;
+    gap: 0;
+    align-items: center;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .bf-left-header {
+    text-align: right;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .bf-right-header {
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    font-weight: 500;
+  }
+  .bf-axis-header {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+  }
+  .bf-row {
+    display: grid;
+    grid-template-columns: 1fr 160px 1fr;
+    gap: 0;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+  .bf-bar-wrap-left {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+  }
+  .bf-bar-wrap-right {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+  }
+  .bf-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    flex-shrink: 0;
+    min-width: 36px;
+  }
+  .bf-pct.left { text-align: right; }
+  .bf-pct.right { text-align: left; }
+  .bf-bar {
+    height: 22px;
+    border-radius: 2px;
+  }
+  .bf-bar-left { background: #1d4e7a; }
+  .bf-bar-right { background: #b8651e; }
+  .bf-axis {
+    font-size: 12px;
+    color: var(--ink-2);
+    text-align: center;
+    padding: 0 0.5rem;
+    line-height: 1.3;
+  }
+  .bf-axis .bf-axis-sub {
+    display: block;
+    font-size: 10px;
+    color: var(--ink-3);
+    margin-top: 2px;
+  }
+
+  /* METHOD BUBBLES */
+  .method-bubbles-wrap {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .method-bubbles-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  .method-bubbles-sub {
+    font-size: 12px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    max-width: 720px;
+  }
+  .method-bubbles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  .mb {
+    padding: 0.65rem 0.95rem 0.5rem;
+    border-radius: 22px;
+    min-width: 86px;
+    text-align: center;
+    transition: transform 0.15s ease;
+  }
+  .mb-effective {
+    background: rgba(184, 101, 30, 0.08);
+    border: 1.5px solid #b8651e;
+  }
+  .mb-other {
+    background: #1d4e7a;
+    border: 1.5px solid #1d4e7a;
+  }
+  .mb-name {
+    font-family: 'Fraunces', serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+  .mb-effective .mb-name { color: #8b3a18; }
+  .mb-other .mb-name { color: white; }
+  .mb-fail {
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+  .mb-effective .mb-fail { color: #b8651e; opacity: 0.8; }
+  .mb-other .mb-fail { color: rgba(255,255,255,0.8); }
+  .method-bubbles-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+    font-size: 12px;
+    color: var(--ink-2);
+    padding-top: 0.25rem;
+  }
+  .mb-legend-item { display: flex; align-items: center; gap: 8px; }
+  .mb-legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .mb-legend-effective {
+    background: rgba(184, 101, 30, 0.08);
+    border: 2px solid #b8651e;
+  }
+  .mb-legend-other {
+    background: #1d4e7a;
+  }
+  .mb-legend-fail {
+    margin-left: auto;
+    font-style: italic;
+    color: var(--ink-3);
+  }
+
+  /* TAKEAWAY BOX */
+  .takeaway {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: #fbf2e8;
+    border: 1px solid #e8c8a0;
+    border-left: 3px solid var(--accent-warm);
+    border-radius: 4px;
+  }
+  .takeaway-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8b3a18;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .takeaway-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .takeaway-text strong {
+    font-style: normal;
+    font-weight: 500;
+    color: #8b3a18;
+  }
+
+  /* TYPES OF BIRTH CONTROL — method ranking */
+  .types-intro {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    margin: 0 0 1.25rem;
+    max-width: 720px;
+  }
+  .method-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 0.5rem 0 1.5rem;
+  }
+  .method-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 80px;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .method-row:last-child { border-bottom: none; }
+  .method-row-label .method-row-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+  .method-row-label .method-row-detail {
+    font-size: 11px;
+    color: var(--ink-3);
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+  .method-row-track {
+    position: relative;
+    height: 28px;
+    background: var(--bg);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .method-row-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+  }
+  .tier-effective .method-row-bar { background: #b8651e; }
+  .tier-less .method-row-bar { background: #1d4e7a; }
+  .method-row-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    font-variant-numeric: tabular-nums;
+  }
+  .method-row-fail {
+    text-align: center;
+    background: var(--bg);
+    padding: 0.35rem 0.5rem;
+    border-radius: 3px;
+  }
+  .mfail-num {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .mfail-lbl {
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  /* TIER BREAKDOWN — bottom stacked bar */
+  .tier-breakdown {
+    margin: 1.25rem 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .tier-breakdown-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+  .tier-breakdown-bar {
+    display: flex;
+    height: 56px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .tier-seg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    transition: opacity 0.15s ease;
+  }
+  .tier-seg-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .tier-seg-lbl {
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .tier-seg-effective { background: #b8651e; }
+  .tier-seg-less { background: #1d4e7a; }
+  .tier-seg-not { background: #c5b89a; color: #4a4a48; }
+  .tier-seg-not .tier-seg-pct { color: var(--ink); }
+
+  /* BARRIER LIST — why women don't use preferred method */
+  .barrier-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 0.5rem 0 1.5rem;
+  }
+  .barrier-row {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .barrier-row:last-child { border-bottom: none; }
+  .barrier-label .barrier-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .barrier-label .barrier-detail {
+    font-size: 11px;
+    color: var(--ink-3);
+    line-height: 1.4;
+    margin-top: 3px;
+  }
+  .barrier-track {
+    position: relative;
+    height: 28px;
+    background: var(--bg);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .barrier-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+  }
+  .barrier-major { background: #8b3a18; }
+  .barrier-mid { background: #b8651e; }
+  .barrier-minor { background: #c5b89a; }
+  .barrier-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    font-variant-numeric: tabular-nums;
+  }
+  .barrier-minor .barrier-pct { color: var(--ink); }
+
+  /* SYSTEM FAILURE CARDS */
+  .system-fail {
+    margin: 1.25rem 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .system-fail-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 0.85rem;
+  }
+  .system-fail-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .system-fail-card {
+    background: var(--bg);
+    padding: 1.25rem 1.1rem;
+    border-radius: 4px;
+    border-left: 3px solid var(--accent);
+  }
+  .system-fail-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.25rem;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .system-fail-text {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .system-fail-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* LARC VS PILL HEAD-TO-HEAD */
+  .vs-grid {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0 0.5rem;
+  }
+  .vs-header-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 1fr;
+    gap: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--line);
+    margin-bottom: 0.25rem;
+  }
+  .vs-header-cell {
+    padding: 0.25rem 0;
+  }
+  .vs-method-header {
+    text-align: center;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+  }
+  .vs-method-pill {
+    background: #1d4e7a;
+    color: white;
+  }
+  .vs-method-larc {
+    background: #b8651e;
+    color: white;
+  }
+  .vs-method-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .vs-method-fail {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    opacity: 0.85;
+    text-transform: uppercase;
+  }
+  .vs-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 1fr;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line);
+    align-items: stretch;
+  }
+  .vs-row:last-of-type {
+    border-bottom: none;
+  }
+  .vs-row-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 0.5rem;
+  }
+  .vs-row-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  .vs-row-sub {
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .vs-cell {
+    background: var(--bg);
+    padding: 1rem 1.1rem;
+    border-radius: 4px;
+    border-left: 3px solid transparent;
+  }
+  .vs-cell-pill {
+    border-left-color: #1d4e7a;
+  }
+  .vs-cell-larc {
+    border-left-color: #b8651e;
+  }
+  .vs-cell-headline {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 0.6rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .vs-cell-headline-text {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--accent);
+  }
+  .vs-cell-larc .vs-cell-headline-text {
+    color: var(--accent-warm);
+  }
+  .vs-cell-unit {
+    font-size: 0.85rem;
+    color: var(--ink-3);
+    font-weight: 400;
+    margin-left: 4px;
+    font-style: italic;
+  }
+  .vs-cell-detail {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .vs-cell-detail strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .vs-cell-note {
+    font-size: 11.5px;
+    font-style: italic;
+    color: var(--ink-3);
+    line-height: 1.5;
+    display: inline-block;
+  }
+
+  /* CONTINUE / FOOTER */
+  .continue { max-width: 1100px; margin: 4rem auto 0; padding: 0 2rem; text-align: center; }
+  .continue a { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: var(--ink); color: white; border-radius: 999px; font-size: 13px; letter-spacing: 0.04em; transition: transform 0.15s ease; }
+  .continue a:hover { transform: translateY(-2px); text-decoration: none; }
+  footer { max-width: 1100px; margin: 5rem auto 0; padding: 2rem; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+
+  /* MOBILE */
+  @media (max-width: 720px) {
+    .nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1rem; font-size: 12px; }
+    .hero { padding: 2rem 1.25rem 1.5rem; }
+    .pills { padding: 1rem 1.25rem; }
+    .content { padding: 1rem 1.25rem 3rem; }
+    h2.section-title { font-size: 1.5rem; margin: 3rem 0 1rem; }
+    .subtitle { font-size: 1.15rem; }
+    .card { padding: 1.5rem 1.25rem; }
+    .scale-grid { grid-template-columns: 1fr; }
+    .scale-card .scale-num { font-size: 2.25rem; }
+    .dot-grid { grid-template-columns: repeat(20, 1fr); gap: 3px; }
+    .age-row { grid-template-columns: 70px 1fr 45px; gap: 0.6rem; }
+    .age-row-label, .age-row-pct { font-size: 12px; }
+    .butterfly-header, .bf-row { grid-template-columns: 1fr 110px 1fr; }
+    .bf-pct { font-size: 0.9rem; min-width: 28px; }
+    .bf-axis { font-size: 10px; }
+    .bf-axis .bf-axis-sub { font-size: 9px; }
+    .takeaway { padding: 1rem 1.1rem; }
+    .takeaway-text { font-size: 0.95rem; }
+    .method-bubbles { gap: 6px; }
+    .mb { min-width: 70px; padding: 0.5rem 0.7rem 0.4rem; }
+    .mb-name { font-size: 0.8rem; }
+    .mb-fail { font-size: 9px; }
+    .method-bubbles-legend { gap: 0.75rem; font-size: 11px; }
+    .mb-legend-fail { margin-left: 0; width: 100%; }
+    .method-row { grid-template-columns: 1fr 60px; gap: 0.5rem 0.6rem; row-gap: 0.4rem; }
+    .method-row-label { grid-column: 1 / -1; }
+    .method-row-track { grid-column: 1; }
+    .method-row-fail { grid-column: 2; grid-row: 2; }
+    .method-row-name { font-size: 13px; }
+    .method-row-detail { font-size: 10px; }
+    .method-row-track { height: 22px; }
+    .method-row-pct { font-size: 12px; }
+    .tier-breakdown-bar { height: 70px; }
+    .tier-seg-pct { font-size: 0.85rem; }
+    .tier-seg-lbl { font-size: 9px; }
+    .barrier-row { grid-template-columns: 1fr; gap: 0.4rem; }
+    .barrier-track { height: 22px; }
+    .barrier-pct { font-size: 12px; }
+    .system-fail-grid { grid-template-columns: 1fr; }
+    .system-fail-num { font-size: 1.75rem; }
+    .vs-header-row { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .vs-header-row .vs-header-cell:first-child { display: none; }
+    .vs-row { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.25rem 0 1rem; }
+    .vs-row-label { padding-right: 0; padding-bottom: 0.25rem; }
+    .vs-row-name { font-size: 1.1rem; }
+    .vs-cell { padding: 0.85rem 1rem; }
+    .vs-cell-headline { font-size: 1.25rem; }
+    .vs-cell-headline-text { font-size: 1rem; }
+    .vs-cell-detail { font-size: 12px; }
+    .vs-method-name { font-size: 1rem; }
+    .vs-method-fail { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="logo">
+    <span class="ww-w">WILLEMS</span><span class="ww-o">WORLD</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Insights</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+</nav>
+
+<div class="series-tag"><span class="dot">&bull;</span> Series</div>
+
+<header class="hero">
+  <div class="eyebrow">Insight № 05 · <span class="num">Section 04 of 06</span></div>
+  <h1 class="title">Birth <em>Control</em></h1>
+  <div class="subtitle">Who uses it, who doesn't, and why it matters</div>
+  <div class="meta">
+    <span>Published May 2026</span>
+    <span>·</span>
+    <span>The upstream intervention that determines downstream demand</span>
+  </div>
+</header>
+
+<div class="pills">
+  <a href="abortion-01-overview.html" class="pill"><span class="num">01</span>Overview</a>
+  <a href="abortion-02-adoption.html" class="pill"><span class="num">02</span>Adoption</a>
+  <a href="abortion-03-foster-care.html" class="pill"><span class="num">03</span>Foster Care</a>
+  <span class="pill active"><span class="num">04</span>Birth Control</span>
+  <a href="#" class="pill"><span class="num">05</span>The Forecast</a>
+  <a href="abortion-06-common-ground.html" class="pill"><span class="num">06</span>Common Ground</a>
+</div>
+
+<main class="content">
+
+  <!-- 1. SCALE — % OF WOMEN ON BC -->
+  <h2 class="section-title">How many women use <em>contraception</em>?</h2>
+
+  <div class="card">
+    <div class="label">U.S. women ages 15&ndash;49 &middot; 2022&ndash;2023 (most recent NSFG)</div>
+    <div class="chart-title">A snapshot of proactive &amp; effective contraceptive use</div>
+
+    <div class="scale-grid">
+      <div class="scale-card using">
+        <div class="scale-num">41.3%</div>
+        <div class="scale-lbl">of women 15&ndash;49 use proactive &amp; effective contraception &mdash; LARC, sterilization, pill, patch, ring, or injectable</div>
+      </div>
+      <div class="scale-card notusing">
+        <div class="scale-num">58.7%</div>
+        <div class="scale-lbl">do not &mdash; either using less effective methods (condoms, withdrawal), or not currently using anything</div>
+      </div>
+    </div>
+
+    <div class="dot-legend">
+      <div class="dot-legend-item">
+        <span class="dot-legend-swatch" style="background: #1d4e7a;"></span>
+        <span>Proactive &amp; effective</span>
+      </div>
+      <div class="dot-legend-item">
+        <span class="dot-legend-swatch" style="background: #c5b89a;"></span>
+        <span>Less effective methods</span>
+      </div>
+      <div class="dot-legend-item">
+        <span class="dot-legend-swatch" style="background: #f3efe5; border: 1px solid #e8e6df;"></span>
+        <span>Not currently using anything</span>
+      </div>
+    </div>
+    <div class="dot-grid" id="users-grid"></div>
+
+    <div class="age-bars">
+      <div class="age-bars-label">Contraceptive use by age</div>
+      <div class="age-row">
+        <div class="age-row-label">15&ndash;19</div>
+        <div class="age-row-track"><div class="age-row-bar" style="width: 25.5%;"></div></div>
+        <div class="age-row-pct">25.5%</div>
+      </div>
+      <div class="age-row">
+        <div class="age-row-label">20&ndash;29</div>
+        <div class="age-row-track"><div class="age-row-bar" style="width: 52.4%;"></div></div>
+        <div class="age-row-pct">52.4%</div>
+      </div>
+      <div class="age-row">
+        <div class="age-row-label">30&ndash;39</div>
+        <div class="age-row-track"><div class="age-row-bar" style="width: 59.8%;"></div></div>
+        <div class="age-row-pct">59.8%</div>
+      </div>
+      <div class="age-row">
+        <div class="age-row-label">40&ndash;49</div>
+        <div class="age-row-track"><div class="age-row-bar" style="width: 64.9%;"></div></div>
+        <div class="age-row-pct">64.9%</div>
+      </div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-eyebrow">A note on the headline number</div>
+      <div class="takeaway-text">The 41.3% figure is a snapshot of <strong>any given month</strong>, not lifetime use. <strong>99% of sexually experienced women</strong> have used some form of contraception at some point in their lives. The remaining 58.7% includes women using less effective methods (condoms, withdrawal, fertility awareness) and those not currently using anything &mdash; most of whom are pregnant, postpartum, trying to conceive, or not sexually active. The number of women who are sexually active, want to avoid pregnancy, and are not using any method is roughly <strong>1 in 6</strong>.</div>
+    </div>
+
+    <p class="source">Sources: <a href="https://www.cdc.gov/nchs/products/databriefs/db539.htm" target="_blank" rel="noopener">CDC NCHS Data Brief No. 539, August 2025</a> &mdash; National Survey of Family Growth (NSFG) 2022&ndash;2023, n=5,586 females; <a href="https://www.plannedparenthoodaction.org/issues/birth-control/facts-birth-control-coverage" target="_blank" rel="noopener">Planned Parenthood Action Fund</a> &mdash; 99% lifetime use figure; <a href="https://www.kff.org/womens-health-policy/contraception-in-the-united-states-a-closer-look-at-experiences-preferences-and-coverage/" target="_blank" rel="noopener">KFF, Contraception in the United States (Sept 2025)</a> &mdash; 17% of sexually active non-pregnant women not using contraception.</p>
+  </div>
+
+  <!-- 2. BY INCOME — connects back to Section 01 -->
+  <h2 class="section-title">Use by <em>income</em></h2>
+
+  <div class="card">
+    <div class="label">Sexually active women not seeking pregnancy &middot; by federal poverty level</div>
+    <div class="chart-title">Almost everyone uses contraception. But what they use varies.</div>
+
+    <div class="income-callback">
+      <strong>A callback to Section 01.</strong> In our income breakdown of abortion patients, women below 200% FPL made up <strong>71% of abortion patients</strong> while being just <strong>33% of the female population</strong>. The contraceptive numbers tell a different story than you might expect.
+    </div>
+
+    <div class="butterfly">
+      <div class="butterfly-header">
+        <div class="bf-left-header">Have used any contraception</div>
+        <div class="bf-axis-header">Income bracket</div>
+        <div class="bf-right-header">Uses proactive &amp; effective contraception</div>
+      </div>
+
+      <div class="bf-row">
+        <div class="bf-bar-wrap-left">
+          <span class="bf-pct left">87%</span>
+          <div class="bf-bar bf-bar-left" style="width: 95.6%;"></div>
+        </div>
+        <div class="bf-axis">Below poverty<span class="bf-axis-sub">&lt;100% FPL</span></div>
+        <div class="bf-bar-wrap-right">
+          <div class="bf-bar bf-bar-right" style="width: 47.3%;"></div>
+          <span class="bf-pct right">43%</span>
+        </div>
+      </div>
+
+      <div class="bf-row">
+        <div class="bf-bar-wrap-left">
+          <span class="bf-pct left">89%</span>
+          <div class="bf-bar bf-bar-left" style="width: 97.8%;"></div>
+        </div>
+        <div class="bf-axis">Near-poor<span class="bf-axis-sub">100&ndash;199% FPL</span></div>
+        <div class="bf-bar-wrap-right">
+          <div class="bf-bar bf-bar-right" style="width: 56.0%;"></div>
+          <span class="bf-pct right">51%</span>
+        </div>
+      </div>
+
+      <div class="bf-row">
+        <div class="bf-bar-wrap-left">
+          <span class="bf-pct left">90%</span>
+          <div class="bf-bar bf-bar-left" style="width: 98.9%;"></div>
+        </div>
+        <div class="bf-axis">Moderate income<span class="bf-axis-sub">200&ndash;299% FPL</span></div>
+        <div class="bf-bar-wrap-right">
+          <div class="bf-bar bf-bar-right" style="width: 64.8%;"></div>
+          <span class="bf-pct right">59%</span>
+        </div>
+      </div>
+
+      <div class="bf-row">
+        <div class="bf-bar-wrap-left">
+          <span class="bf-pct left">91%</span>
+          <div class="bf-bar bf-bar-left" style="width: 100%;"></div>
+        </div>
+        <div class="bf-axis">Higher income<span class="bf-axis-sub">300%+ FPL</span></div>
+        <div class="bf-bar-wrap-right">
+          <div class="bf-bar bf-bar-right" style="width: 75.8%;"></div>
+          <span class="bf-pct right">69%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-eyebrow">What this reveals</div>
+      <div class="takeaway-text">Women across every income level use contraception at remarkably similar rates &mdash; <strong>87% at the bottom, 91% at the top</strong>. The gap isn't whether women try to prevent pregnancy. The gap is in <strong>effectiveness</strong>: low-income women rely more on pills, condoms, and female sterilization; higher-income women have IUDs, implants, and partner vasectomies. <strong>40% of low-income women say they would use a different method if cost weren't a factor.</strong></div>
+    </div>
+
+    <!-- METHOD BUBBLES -->
+    <div class="method-bubbles-wrap">
+      <div class="method-bubbles-title">What counts as &ldquo;proactive &amp; effective&rdquo;</div>
+      <div class="method-bubbles-sub">All contraceptive methods are shown below. Methods outlined in orange are classified as &ldquo;proactive &amp; effective&rdquo; &mdash; they require deliberate setup and have low failure rates with typical use.</div>
+      <div class="method-bubbles">
+        <div class="mb mb-effective">
+          <div class="mb-name">IUD</div>
+          <div class="mb-fail">&lt;1%</div>
+        </div>
+        <div class="mb mb-effective">
+          <div class="mb-name">Implant</div>
+          <div class="mb-fail">&lt;1%</div>
+        </div>
+        <div class="mb mb-effective">
+          <div class="mb-name">Sterilization</div>
+          <div class="mb-fail">&lt;1%</div>
+        </div>
+        <div class="mb mb-effective">
+          <div class="mb-name">Vasectomy</div>
+          <div class="mb-fail">&lt;1%</div>
+        </div>
+        <div class="mb mb-effective">
+          <div class="mb-name">Injectable</div>
+          <div class="mb-fail">4%</div>
+        </div>
+        <div class="mb mb-effective">
+          <div class="mb-name">Pill</div>
+          <div class="mb-fail">7%</div>
+        </div>
+        <div class="mb mb-effective">
+          <div class="mb-name">Patch</div>
+          <div class="mb-fail">7%</div>
+        </div>
+        <div class="mb mb-effective">
+          <div class="mb-name">Ring</div>
+          <div class="mb-fail">7%</div>
+        </div>
+        <div class="mb mb-other">
+          <div class="mb-name">Condom</div>
+          <div class="mb-fail">13%</div>
+        </div>
+        <div class="mb mb-other">
+          <div class="mb-name">Withdrawal</div>
+          <div class="mb-fail">20%</div>
+        </div>
+        <div class="mb mb-other">
+          <div class="mb-name">Fertility awareness</div>
+          <div class="mb-fail">15%</div>
+        </div>
+        <div class="mb mb-other">
+          <div class="mb-name">Diaphragm</div>
+          <div class="mb-fail">17%</div>
+        </div>
+        <div class="mb mb-other">
+          <div class="mb-name">Sponge</div>
+          <div class="mb-fail">14&ndash;27%</div>
+        </div>
+        <div class="mb mb-other">
+          <div class="mb-name">Spermicide</div>
+          <div class="mb-fail">21%</div>
+        </div>
+        <div class="mb mb-other">
+          <div class="mb-name">Plan B / EC</div>
+          <div class="mb-fail">backup</div>
+        </div>
+      </div>
+      <div class="method-bubbles-legend">
+        <div class="mb-legend-item">
+          <span class="mb-legend-swatch mb-legend-effective"></span>
+          <span>Proactive &amp; effective</span>
+        </div>
+        <div class="mb-legend-item">
+          <span class="mb-legend-swatch mb-legend-other"></span>
+          <span>Less effective or reactive</span>
+        </div>
+        <div class="mb-legend-fail">% = typical-use failure rate per year</div>
+      </div>
+    </div>
+
+    <p class="source">Sources: <a href="https://www.guttmacher.org/fact-sheet/contraceptive-use-united-states" target="_blank" rel="noopener">Guttmacher Institute, Contraceptive Use in the United States by Demographics</a> &mdash; usage rates by FPL; <a href="https://www.guttmacher.org/news-release/2022/cost-related-barriers-prevent-low-income-women-united-states-using-their-preferred" target="_blank" rel="noopener">Guttmacher, &ldquo;Cost-Related Barriers Prevent Low-Income Women...&rdquo;</a> &mdash; 40% would use different method if not for cost; <a href="https://www.guttmacher.org/article/2019/12/health-insurance-coverage-and-contraceptive-use-state-level-findings-2017-behavioral" target="_blank" rel="noopener">Guttmacher (2019), Health insurance and contraceptive use at state level</a> &mdash; effective-method use by coverage status. &ldquo;Most or moderately effective methods&rdquo; include LARC (IUD, implant), sterilization (female and partner vasectomy), pill, patch, ring, and injectable.</p>
+  </div>
+
+  <!-- 3. TYPES OF BIRTH CONTROL -->
+  <h2 class="section-title">What women <em>actually use</em></h2>
+
+  <div class="card">
+    <div class="label">U.S. women 15&ndash;49 &middot; current method, 2022&ndash;2023 NSFG</div>
+    <div class="chart-title">The full method mix, ranked by popularity</div>
+
+    <p class="types-intro">Of the 54.3% of women currently using any method, here is how they break down. The bar color reflects each method's effectiveness tier &mdash; the same orange-vs-blue distinction from the chart above.</p>
+
+    <div class="method-list">
+
+      <!-- Female sterilization -->
+      <div class="method-row tier-effective">
+        <div class="method-row-label">
+          <div class="method-row-name">Female sterilization</div>
+          <div class="method-row-detail">Tubal ligation, salpingectomy &middot; permanent surgical procedure</div>
+        </div>
+        <div class="method-row-track">
+          <div class="method-row-bar" style="width: 95.8%;">
+            <span class="method-row-pct">11.5%</span>
+          </div>
+        </div>
+        <div class="method-row-fail">
+          <div class="mfail-num">&lt;1%</div>
+          <div class="mfail-lbl">fail rate</div>
+        </div>
+      </div>
+
+      <!-- Pill -->
+      <div class="method-row tier-effective">
+        <div class="method-row-label">
+          <div class="method-row-name">The pill</div>
+          <div class="method-row-detail">Oral contraceptive &middot; taken daily, prescription required</div>
+        </div>
+        <div class="method-row-track">
+          <div class="method-row-bar" style="width: 95.0%;">
+            <span class="method-row-pct">11.4%</span>
+          </div>
+        </div>
+        <div class="method-row-fail">
+          <div class="mfail-num">7%</div>
+          <div class="mfail-lbl">fail rate</div>
+        </div>
+      </div>
+
+      <!-- LARC -->
+      <div class="method-row tier-effective">
+        <div class="method-row-label">
+          <div class="method-row-name">LARC (IUD + implant)</div>
+          <div class="method-row-detail">Long-acting reversible &middot; lasts 3&ndash;12 years, low maintenance</div>
+        </div>
+        <div class="method-row-track">
+          <div class="method-row-bar" style="width: 87.5%;">
+            <span class="method-row-pct">10.5%</span>
+          </div>
+        </div>
+        <div class="method-row-fail">
+          <div class="mfail-num">&lt;1%</div>
+          <div class="mfail-lbl">fail rate</div>
+        </div>
+      </div>
+
+      <!-- Male condom -->
+      <div class="method-row tier-less">
+        <div class="method-row-label">
+          <div class="method-row-name">Male condom</div>
+          <div class="method-row-detail">Barrier method &middot; OTC, used at the moment of intercourse</div>
+        </div>
+        <div class="method-row-track">
+          <div class="method-row-bar" style="width: 59.2%;">
+            <span class="method-row-pct">7.1%</span>
+          </div>
+        </div>
+        <div class="method-row-fail">
+          <div class="mfail-num">13%</div>
+          <div class="mfail-lbl">fail rate</div>
+        </div>
+      </div>
+
+      <!-- Vasectomy -->
+      <div class="method-row tier-effective">
+        <div class="method-row-label">
+          <div class="method-row-name">Partner vasectomy</div>
+          <div class="method-row-detail">Male sterilization &middot; permanent, outpatient surgical procedure</div>
+        </div>
+        <div class="method-row-track">
+          <div class="method-row-bar" style="width: 46.7%;">
+            <span class="method-row-pct">5.6%</span>
+          </div>
+        </div>
+        <div class="method-row-fail">
+          <div class="mfail-num">&lt;1%</div>
+          <div class="mfail-lbl">fail rate</div>
+        </div>
+      </div>
+
+      <!-- Withdrawal -->
+      <div class="method-row tier-less">
+        <div class="method-row-label">
+          <div class="method-row-name">Withdrawal</div>
+          <div class="method-row-detail">Pull-out method &middot; behavioral, no cost, requires partner cooperation</div>
+        </div>
+        <div class="method-row-track">
+          <div class="method-row-bar" style="width: 28.3%;">
+            <span class="method-row-pct">3.4%</span>
+          </div>
+        </div>
+        <div class="method-row-fail">
+          <div class="mfail-num">20%</div>
+          <div class="mfail-lbl">fail rate</div>
+        </div>
+      </div>
+
+      <!-- Injectable/ring/patch -->
+      <div class="method-row tier-effective">
+        <div class="method-row-label">
+          <div class="method-row-name">Injectable, ring, or patch</div>
+          <div class="method-row-detail">Hormonal &middot; weekly to quarterly use, prescription required</div>
+        </div>
+        <div class="method-row-track">
+          <div class="method-row-bar" style="width: 19.2%;">
+            <span class="method-row-pct">2.3%</span>
+          </div>
+        </div>
+        <div class="method-row-fail">
+          <div class="mfail-num">4&ndash;7%</div>
+          <div class="mfail-lbl">fail rate</div>
+        </div>
+      </div>
+
+      <!-- Fertility awareness -->
+      <div class="method-row tier-less">
+        <div class="method-row-label">
+          <div class="method-row-name">Fertility awareness</div>
+          <div class="method-row-detail">Cycle tracking &middot; behavioral, no cost, requires careful monitoring</div>
+        </div>
+        <div class="method-row-track">
+          <div class="method-row-bar" style="width: 16.7%;">
+            <span class="method-row-pct">2.0%</span>
+          </div>
+        </div>
+        <div class="method-row-fail">
+          <div class="mfail-num">15%</div>
+          <div class="mfail-lbl">fail rate</div>
+        </div>
+      </div>
+
+      <!-- Other -->
+      <div class="method-row tier-less">
+        <div class="method-row-label">
+          <div class="method-row-name">Other methods</div>
+          <div class="method-row-detail">Emergency contraception, female condom, diaphragm, sponge, spermicide</div>
+        </div>
+        <div class="method-row-track">
+          <div class="method-row-bar" style="width: 5.0%;">
+            <span class="method-row-pct">0.6%</span>
+          </div>
+        </div>
+        <div class="method-row-fail">
+          <div class="mfail-num">14&ndash;28%</div>
+          <div class="mfail-lbl">fail rate</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tier breakdown ratio -->
+    <div class="tier-breakdown">
+      <div class="tier-breakdown-label">All current contraceptive use, by tier</div>
+      <div class="tier-breakdown-bar">
+        <div class="tier-seg tier-seg-effective" style="flex: 41.3;" title="Proactive & effective: 41.3%">
+          <span class="tier-seg-pct">41.3%</span>
+          <span class="tier-seg-lbl">Proactive &amp; effective</span>
+        </div>
+        <div class="tier-seg tier-seg-less" style="flex: 13.1;" title="Less effective methods: 13.1%">
+          <span class="tier-seg-pct">13.1%</span>
+          <span class="tier-seg-lbl">Less effective</span>
+        </div>
+        <div class="tier-seg tier-seg-not" style="flex: 45.7;" title="Not currently using: 45.7%">
+          <span class="tier-seg-pct">45.7%</span>
+          <span class="tier-seg-lbl">Not using</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-eyebrow">The two surprises</div>
+      <div class="takeaway-text"><strong>Female sterilization is more common than the pill.</strong> Most people assume the pill is the most-used method &mdash; it's not. <strong>11.5% of women 15&ndash;49 are surgically sterilized</strong>, compared to 11.4% on the pill. And <strong>vasectomy is used by 5.6% of partners</strong> &mdash; more than fertility awareness, withdrawal, and emergency contraception combined.</div>
+    </div>
+
+    <p class="source">Source: <a href="https://www.cdc.gov/nchs/products/databriefs/db539.htm" target="_blank" rel="noopener">CDC NCHS Data Brief No. 539, August 2025</a> &mdash; 2022&ndash;2023 National Survey of Family Growth, n=5,586 women. Failure rates from <a href="https://www.cdc.gov/reproductivehealth/contraception/index.htm" target="_blank" rel="noopener">CDC Reproductive Health</a> &mdash; typical-use failure rate per year (% of women who become pregnant within 1 year of method use). LARC = long-acting reversible contraceptive, including intrauterine devices (IUDs) and contraceptive implants. Bar widths show each method's % use relative to the largest category (female sterilization). Women using more than one method are classified by their most effective method, per NSFG convention.</p>
+  </div>
+
+  <!-- 3B. LARC VS PILL HEAD-TO-HEAD -->
+  <h2 class="section-title">LARC vs. the <em>pill</em></h2>
+
+  <div class="card">
+    <div class="label">A head-to-head on the two most popular proactive methods</div>
+    <div class="chart-title">Why the choice between them is the choice that matters most</div>
+
+    <p class="types-intro">The pill and LARC (IUD + implant) are both classified as proactive &amp; effective &mdash; and they're used by roughly equal shares of American women (11.4% and 10.5% respectively). But they're not equivalent. The choice between them comes down to three trade-offs.</p>
+
+    <div class="vs-grid">
+
+      <!-- COLUMN HEADERS -->
+      <div class="vs-header-row">
+        <div class="vs-header-cell"></div>
+        <div class="vs-header-cell vs-method-header vs-method-pill">
+          <div class="vs-method-name">The pill</div>
+          <div class="vs-method-fail">7% failure rate</div>
+        </div>
+        <div class="vs-header-cell vs-method-header vs-method-larc">
+          <div class="vs-method-name">LARC (IUD or implant)</div>
+          <div class="vs-method-fail">&lt;1% failure rate</div>
+        </div>
+      </div>
+
+      <!-- COST ROW -->
+      <div class="vs-row">
+        <div class="vs-row-label">
+          <div class="vs-row-name">Cost</div>
+          <div class="vs-row-sub">With and without insurance</div>
+        </div>
+        <div class="vs-cell vs-cell-pill">
+          <div class="vs-cell-headline">$0&ndash;$50<span class="vs-cell-unit">/month</span></div>
+          <div class="vs-cell-detail">
+            <strong>Insured:</strong> $0/month under ACA<br>
+            <strong>Uninsured:</strong> $10&ndash;50/month for generic, $50&ndash;200 for brand-name<br>
+            <strong>Annual cash cost:</strong> $120&ndash;$600
+          </div>
+        </div>
+        <div class="vs-cell vs-cell-larc">
+          <div class="vs-cell-headline">$0&ndash;$1,300<span class="vs-cell-unit">upfront</span></div>
+          <div class="vs-cell-detail">
+            <strong>Insured:</strong> $0 under ACA (after 2014, 87% have full coverage)<br>
+            <strong>Uninsured:</strong> $500&ndash;1,300 device + $100&ndash;400 insertion<br>
+            <strong>Lasts 3&ndash;12 years</strong> &mdash; amortized cost lower than the pill
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDE EFFECTS ROW -->
+      <div class="vs-row">
+        <div class="vs-row-label">
+          <div class="vs-row-name">Side effects</div>
+          <div class="vs-row-sub">What women actually experience</div>
+        </div>
+        <div class="vs-cell vs-cell-pill">
+          <div class="vs-cell-headline vs-cell-headline-text">Systemic</div>
+          <div class="vs-cell-detail">
+            Hormones travel through the whole body. Common: nausea, headaches, mood changes, decreased libido, breast tenderness, breakthrough bleeding. <strong>Serious risk:</strong> elevated blood clot risk &mdash; especially with smoking or after age 35. Daily compliance creates room for human error.
+          </div>
+        </div>
+        <div class="vs-cell vs-cell-larc">
+          <div class="vs-cell-headline vs-cell-headline-text">Localized</div>
+          <div class="vs-cell-detail">
+            Hormonal IUDs release hormones locally; copper IUDs use no hormones at all. <strong>Adjustment phase:</strong> insertion pain, cramping, irregular bleeding for 3&ndash;6 months. Hormonal IUDs often eliminate periods; copper IUDs can make them heavier. Rare risks: uterine perforation (~1 in 1,000) or expulsion.
+          </div>
+        </div>
+      </div>
+
+      <!-- WEIGHT GAIN ROW -->
+      <div class="vs-row">
+        <div class="vs-row-label">
+          <div class="vs-row-name">Average weight gain</div>
+          <div class="vs-row-sub">From Cochrane reviews and meta-analyses</div>
+        </div>
+        <div class="vs-cell vs-cell-pill">
+          <div class="vs-cell-headline">~0&ndash;2 kg<span class="vs-cell-unit">first year</span></div>
+          <div class="vs-cell-detail">
+            <strong>Combined pills:</strong> Cochrane review of 49 trials found <em>no meaningful weight gain</em> &mdash; weight-neutral on average. Perceived gains are mostly fluid retention (estrogen-driven), not fat.<br><br>
+            <strong>Progestin-only pills:</strong> ~2 kg (4.4 lb) over 6&ndash;12 months in some studies. Mixed evidence.
+          </div>
+        </div>
+        <div class="vs-cell vs-cell-larc">
+          <div class="vs-cell-headline">0&ndash;2 kg<span class="vs-cell-unit">in most studies</span></div>
+          <div class="vs-cell-detail">
+            <strong>Hormonal IUD:</strong> Cochrane found limited evidence of weight change &mdash; less than 2 kg in most studies, similar to non-hormonal groups.<br><br>
+            <strong>Copper IUD:</strong> Hormone-free, no documented weight effect.<br><br>
+            <span class="vs-cell-note">Note: the injectable shot (DMPA, not pictured) is the real outlier &mdash; averaging ~6 kg (13.7 lb) over 5 years.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DEPRESSION ROW -->
+      <div class="vs-row">
+        <div class="vs-row-label">
+          <div class="vs-row-name">Depression &amp; mood</div>
+          <div class="vs-row-sub">From Danish national cohort, n=1M+</div>
+        </div>
+        <div class="vs-cell vs-cell-pill">
+          <div class="vs-cell-headline">RR 1.23<span class="vs-cell-unit">combined pill</span></div>
+          <div class="vs-cell-detail">
+            <strong>Combined pill:</strong> RR 1.23 &mdash; 23% higher risk of first antidepressant use vs. non-users.<br>
+            <strong>Progestin-only pill:</strong> RR 1.34 &mdash; 34% higher.<br>
+            <strong>Adolescents (15&ndash;19):</strong> Roughly doubled &mdash; RR 1.8 (combined) and 2.2 (progestin-only).<br><br>
+            <span class="vs-cell-note">RR = relative risk vs. non-users. Risk peaks ~6 months after starting and declines with continued use. A separate U.S. study found a protective effect in women 25&ndash;34.</span>
+          </div>
+        </div>
+        <div class="vs-cell vs-cell-larc">
+          <div class="vs-cell-headline">RR 1.40<span class="vs-cell-unit">hormonal IUD</span></div>
+          <div class="vs-cell-detail">
+            <strong>Hormonal IUD (LNG):</strong> RR 1.40 &mdash; 40% higher risk &mdash; notably higher than the combined pill, despite local hormone delivery.<br>
+            <strong>Patch/ring:</strong> RR 1.6&ndash;2.0 &mdash; 60&ndash;100% higher.<br>
+            <strong>Copper IUD:</strong> Hormone-free. No documented mood effect.<br><br>
+            <span class="vs-cell-note">The local-delivery assumption underestimates systemic effects. Adolescents using non-oral hormonal methods had RR &gt; 3 (three times the risk).</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACCESS ROW -->
+      <div class="vs-row">
+        <div class="vs-row-label">
+          <div class="vs-row-name">Access &amp; effort</div>
+          <div class="vs-row-sub">What it takes to use</div>
+        </div>
+        <div class="vs-cell vs-cell-pill">
+          <div class="vs-cell-headline vs-cell-headline-text">Continuous</div>
+          <div class="vs-cell-detail">
+            Daily pill at the same time. Monthly refills. Annual prescription renewal. <strong>One pill (Opill) is now OTC</strong> as of 2023 &mdash; the rest require a prescription. Missing a single dose can break the cycle and reduce effectiveness.
+          </div>
+        </div>
+        <div class="vs-cell vs-cell-larc">
+          <div class="vs-cell-headline vs-cell-headline-text">One-and-done</div>
+          <div class="vs-cell-detail">
+            Single outpatient insertion appointment, often with a preceding consult. <strong>Then nothing</strong> for 3&ndash;12 years. Removal requires another appointment. Provider availability is uneven &mdash; not all OB-GYNs insert IUDs, and some require multiple visits before placement.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-eyebrow">What the comparison reveals</div>
+      <div class="takeaway-text">On every dimension, <strong>LARC is more effective, more durable, and cheaper over time</strong>. But it requires <strong>a single, expensive moment</strong> &mdash; a procedure with upfront cost (insured or uninsured) and an OB-GYN appointment that not every provider performs. The pill is the opposite: lower friction at each step, but lower effectiveness and higher cost over time. <strong>This is exactly why the income gap exists.</strong> Women without the resources to navigate that single expensive moment land on the pill instead &mdash; even when an IUD would serve them better.</div>
+    </div>
+
+    <p class="source">Sources: <a href="https://www.cdc.gov/reproductivehealth/contraception/index.htm" target="_blank" rel="noopener">CDC, Contraception Effectiveness</a> &mdash; failure rates; <a href="https://www.goodrx.com/conditions/birth-control/annual-cost-of-birth-control" target="_blank" rel="noopener">GoodRx, Annual Cost of Birth Control</a> &mdash; out-of-pocket prices; <a href="https://www.valuepenguin.com/health-insurance-coverage-contraceptives" target="_blank" rel="noopener">ValuePenguin, Birth Control Prices With and Without Insurance</a>; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4780678/" target="_blank" rel="noopener">Changes in Out-of-Pocket Costs for Hormonal IUDs After ACA</a> &mdash; 87% of insured women now have full IUD coverage post-ACA (up from 42% in 2012); <a href="https://www.webmd.com/sex/birth-control/birth-control-pills-vs-iud" target="_blank" rel="noopener">WebMD, IUD vs. Pill</a>; <a href="https://www.fda.gov/news-events/press-announcements/fda-approves-first-nonprescription-daily-oral-contraceptive" target="_blank" rel="noopener">FDA approval of Opill OTC</a> (July 2023). <strong>Weight gain:</strong> <a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD003987.pub5/full" target="_blank" rel="noopener">Gallo et al. (Cochrane 2014, 49 trials)</a> &mdash; combined hormonal contraceptives weight-neutral on average; <a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD008815.pub4/full" target="_blank" rel="noopener">Lopez et al. (Cochrane 2016, 22 studies)</a> &mdash; progestin-only methods, mean weight gain &lt;2 kg over 6&ndash;12 months. <strong>Depression:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/27680324/" target="_blank" rel="noopener">Skovlund et al., JAMA Psychiatry (2016)</a> &mdash; Danish cohort of 1M+ women aged 15&ndash;34; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11829607/" target="_blank" rel="noopener">Hormonal Contraceptive Use and Affective Disorders Review (2024)</a>; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10294242/" target="_blank" rel="noopener">Population-based cohort study replication (2023)</a> &mdash; risk peaks ~6 months after initiation, declines with continued use. RR = relative risk vs non-users; absolute risk remains low.</p>
+  </div>
+
+  <!-- 4. WHY WOMEN DON'T USE THEIR PREFERRED METHOD -->
+  <h2 class="section-title">Why women don't use the <em>right</em> method</h2>
+
+  <div class="card">
+    <div class="label">Among women currently using contraception &middot; KFF national survey, 2024</div>
+    <div class="chart-title">1 in 4 women using contraception isn't using their preferred method</div>
+
+    <p class="types-intro">When we look at <em>which</em> method women use rather than <em>whether</em> they use one, the gaps emerge. Roughly <strong>25% of contraceptive users say they would prefer a different method.</strong> Among those who would change &mdash; and those who stopped a method entirely &mdash; these are the reasons.</p>
+
+    <div class="barrier-list">
+
+      <div class="barrier-row">
+        <div class="barrier-label">
+          <div class="barrier-name">Concerns about side effects or health risks</div>
+          <div class="barrier-detail">Weight gain, mood changes, blood clots, fertility concerns</div>
+        </div>
+        <div class="barrier-track">
+          <div class="barrier-bar barrier-major" style="width: 65%;">
+            <span class="barrier-pct">65%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="barrier-row">
+        <div class="barrier-label">
+          <div class="barrier-name">Financial or logistical reasons</div>
+          <div class="barrier-detail">Cost, transportation, time off work, child care for appointments</div>
+        </div>
+        <div class="barrier-track">
+          <div class="barrier-bar barrier-major" style="width: 42%;">
+            <span class="barrier-pct">42%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="barrier-row">
+        <div class="barrier-label">
+          <div class="barrier-name">Currently experiencing side effects</div>
+          <div class="barrier-detail">31% have side effects; 52% say more severe than expected</div>
+        </div>
+        <div class="barrier-track">
+          <div class="barrier-bar barrier-mid" style="width: 31%;">
+            <span class="barrier-pct">31%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="barrier-row">
+        <div class="barrier-label">
+          <div class="barrier-name">Cost barrier (among uninsured)</div>
+          <div class="barrier-detail">Stopped a method because they couldn't afford it</div>
+        </div>
+        <div class="barrier-track">
+          <div class="barrier-bar barrier-mid" style="width: 20%;">
+            <span class="barrier-pct">20%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="barrier-row">
+        <div class="barrier-label">
+          <div class="barrier-name">Cost as leading reason (low-income women)</div>
+          <div class="barrier-detail">Cite cost as the primary reason for not using preferred method</div>
+        </div>
+        <div class="barrier-track">
+          <div class="barrier-bar barrier-mid" style="width: 17%;">
+            <span class="barrier-pct">17%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="barrier-row">
+        <div class="barrier-label">
+          <div class="barrier-name">Other reasons</div>
+          <div class="barrier-detail">Partner preference, religious or cultural reasons, fear of procedures, family expectations</div>
+        </div>
+        <div class="barrier-track">
+          <div class="barrier-bar barrier-minor" style="width: 15%;">
+            <span class="barrier-pct">~15%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SYSTEM FAILURES — three stat cards -->
+    <div class="system-fail">
+      <div class="system-fail-label">The system failures behind the numbers</div>
+      <div class="system-fail-grid">
+        <div class="system-fail-card">
+          <div class="system-fail-num">41%</div>
+          <div class="system-fail-text">of women of reproductive age <strong>don't know</strong> that most insurance plans are required to cover birth control with no out-of-pocket cost</div>
+        </div>
+        <div class="system-fail-card">
+          <div class="system-fail-num">70%</div>
+          <div class="system-fail-text">say they <strong>did not receive all the information</strong> they needed before choosing their birth control method</div>
+        </div>
+        <div class="system-fail-card">
+          <div class="system-fail-num">25%</div>
+          <div class="system-fail-text">of women with private insurance still <strong>paid out-of-pocket</strong> for their most recent contraceptive, despite ACA requirements</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INCOME DISPARITY CALLOUT -->
+    <div class="income-callback" style="margin-top: 1.5rem;">
+      <strong>The cost barrier compounds with income.</strong> <strong>40%</strong> of low-income women not currently using contraception say they would start using a method if cost weren't a barrier. <strong>23%</strong> of low-income current users say they would switch to a more effective method if cost weren't an issue. The pattern from <a href="abortion-04-birth-control.html">subsection 2</a> &mdash; that women across incomes use contraception at similar <em>rates</em> but with different <em>effectiveness</em> &mdash; is the direct downstream effect of these access gaps.
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-eyebrow">The two-part problem</div>
+      <div class="takeaway-text">The data points to a <strong>side-effect problem</strong> and an <strong>access problem</strong> happening simultaneously. Side effects (65% cite concerns, 31% currently experiencing) suggest the methods themselves still have real costs to women's bodies and lives that the system underacknowledges. But the access problem is more solvable: <strong>cost, information, and insurance friction</strong> account for nearly half of why women don't use their preferred method. A system that closed the access gap wouldn't solve everything &mdash; but it would close half of the gap, and most of the half that's tractable.</div>
+    </div>
+
+    <p class="source">Sources: <a href="https://www.kff.org/womens-health-policy/contraception-in-the-united-states-a-closer-look-at-experiences-preferences-and-coverage/" target="_blank" rel="noopener">KFF, &ldquo;Contraception in the United States: A Closer Look at Experiences, Preferences, and Coverage&rdquo;</a> (Sept 2025) &mdash; side effect concerns, financial/logistical barriers, insurance awareness, information gaps, out-of-pocket costs; <a href="https://www.guttmacher.org/news-release/2022/cost-related-barriers-prevent-low-income-women-united-states-using-their-preferred" target="_blank" rel="noopener">Guttmacher Institute, &ldquo;Cost-Related Barriers Prevent Low-Income Women from Using Their Preferred Contraceptive Method&rdquo;</a> (2022) &mdash; 40% would start using a method, 23% would switch methods if cost weren't a factor; <a href="https://www.guttmacher.org/news-release/2023/cost-continues-pose-significant-barriers-contraceptive-access" target="_blank" rel="noopener">Guttmacher Reproductive Health Impact Study</a> (2023). Some reasons can be cited simultaneously (a woman concerned about side effects may also cite cost), so percentages do not sum to 100%.</p>
+  </div>
+
+</main>
+
+<div class="continue">
+  <a href="#">Continue to Section 04 (cont.) &mdash; The cost equation &rarr;</a>
+</div>
+
+<footer>
+  <div>WILLEMS<span style="color: var(--ink-3); letter-spacing: 0.18em;">WORLD</span></div>
+  <div>Insight № 05 · Section 04 of 06</div>
+</footer>
+
+<script>
+// Build the 100-women dot grid: 41 proactive&effective, 13 less effective, 46 not using
+(function(){
+  const el = document.getElementById('users-grid');
+  if (!el) return;
+  const positions = new Array(100);
+  // Place 41 "using" dots evenly across positions
+  for (let i = 0; i < 41; i++) {
+    let p = Math.floor(i * (100 / 41));
+    while (positions[p]) p = (p + 1) % 100;
+    positions[p] = 'using';
+  }
+  // Place 13 "less" dots interleaved
+  for (let i = 0; i < 13; i++) {
+    let p = (Math.floor(i * (100 / 13)) + 4) % 100;
+    while (positions[p]) p = (p + 1) % 100;
+    positions[p] = 'less';
+  }
+  // Fill remainder with "not"
+  for (let i = 0; i < 100; i++) {
+    if (!positions[i]) positions[i] = '';
+  }
+  positions.forEach(cat => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (cat ? ' ' + cat : '');
+    el.appendChild(d);
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receipts § 06: Common Ground · WillemsWorld</title>
+<meta name="description" content="Common ground on abortion, foster care, and family policy: what the data — and Colorado — actually point toward.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --ink-2: #4a4a48;
+    --ink-3: #8a8985;
+    --line: #e8e6df;
+    --line-strong: #d3d1c7;
+    --accent: #1d4e7a;
+    --accent-warm: #b8651e;
+    --highlight: #f3efe5;
+    --green: #2d7a4f;
+    --green-bg: #eaf4ed;
+    --green-border: #a8d4b8;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* NAV */
+  .nav { max-width: 1200px; margin: 0 auto; padding: 1.75rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); }
+  .logo { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+  .logo .ww-w { color: var(--ink); font-weight: 500; }
+  .logo .ww-o { color: var(--ink-3); font-weight: 400; letter-spacing: 0.18em; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; padding: 0; margin: 0; font-size: 13px; letter-spacing: 0.06em; }
+  .nav-links a { color: var(--ink-2); text-transform: uppercase; }
+  .nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+  .series-tag { max-width: 1100px; margin: 1.5rem auto 0; padding: 0 2rem; text-align: right; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
+  .series-tag .dot { color: var(--accent-warm); }
+
+  /* HERO */
+  .hero { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 2rem; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 1.5rem; }
+  .eyebrow .num { color: var(--accent-warm); font-weight: 600; }
+  h1.title { font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 5vw, 3.75rem); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 0.5rem; max-width: 900px; }
+  h1.title em { font-style: italic; font-weight: 400; color: var(--accent); }
+  .subtitle { font-family: 'Fraunces', serif; font-size: 1.5rem; font-style: italic; font-weight: 400; color: var(--ink-2); margin: 0 0 1.5rem; line-height: 1.3; }
+  .meta { display: flex; gap: 1.5rem; font-size: 13px; color: var(--ink-3); padding: 1.5rem 0 0; border-top: 1px solid var(--line); margin-top: 2rem; }
+
+  /* PILLS */
+  .pills { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem; display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+  .pills::-webkit-scrollbar { display: none; }
+  .pill { flex-shrink: 0; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; color: var(--ink-2); background: var(--surface); transition: all 0.15s ease; white-space: nowrap; }
+  .pill:hover { color: var(--ink); border-color: var(--line-strong); text-decoration: none; }
+  .pill.active { background: var(--ink); color: white; border-color: var(--ink); }
+  .pill .num { color: var(--ink-3); margin-right: 0.5rem; font-variant-numeric: tabular-nums; }
+  .pill.active .num { color: rgba(255,255,255,0.55); }
+
+  /* CONTENT */
+  .content { max-width: 1100px; margin: 0 auto; padding: 1rem 2rem 4rem; }
+  h2.section-title { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 500; letter-spacing: -0.015em; margin: 4rem 0 1.5rem; line-height: 1.15; }
+  h2.section-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+  h2.section-title:first-of-type { margin-top: 1rem; }
+
+  /* OPENING ARGUMENT BLOCK */
+  .opening {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 2rem 1.75rem;
+    margin: 0.5rem 0 2rem;
+  }
+  .opening-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+  }
+  .opening-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+    margin: 0 0 1.25rem;
+    max-width: 760px;
+  }
+  .opening-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .opening-text {
+    font-size: 15px;
+    color: var(--ink-2);
+    line-height: 1.7;
+    max-width: 820px;
+    margin: 0 0 1rem;
+  }
+  .opening-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .opening-text:last-child { margin-bottom: 0; }
+
+  /* ANCHOR CARDS — six recap cards */
+  .anchors-section {
+    margin-bottom: 3rem;
+  }
+  .anchors-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+  }
+  .anchor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .anchor-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .anchor-card-num {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .anchor-card-stat {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .anchor-card-stat .anchor-card-stat-sm {
+    font-size: 1.2rem;
+    color: var(--ink-2);
+  }
+  .anchor-card-headline {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
+  .anchor-card-detail {
+    font-size: 12.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    flex: 1;
+  }
+  .anchor-card-detail strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .anchor-card-source {
+    font-size: 10.5px;
+    color: var(--ink-3);
+    font-style: italic;
+    margin-top: 0.85rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--line);
+  }
+  .anchor-card-source a {
+    color: var(--ink-3);
+    text-decoration: underline;
+  }
+
+  /* SYNTHESIS BLOCK — the unifying argument */
+  .synthesis {
+    background: #fbf2e8;
+    border: 1px solid #e8c8a0;
+    border-left: 3px solid var(--accent-warm);
+    border-radius: 4px;
+    padding: 2rem 1.75rem;
+    margin: 1.5rem 0;
+  }
+  .synthesis-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8b3a18;
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+  }
+  .synthesis-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+    margin: 0 0 1.25rem;
+    max-width: 760px;
+  }
+  .synthesis-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .synthesis-text {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    line-height: 1.7;
+    margin: 0 0 1rem;
+  }
+  .synthesis-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .synthesis-text:last-child { margin-bottom: 0; }
+
+  /* COLORADO CALLOUT — the closest evidence */
+  .colorado-block {
+    background: #eaf4ed;
+    border: 1px solid #a8d4b8;
+    border-left: 3px solid var(--green);
+    border-radius: 4px;
+    padding: 1.5rem 1.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .colorado-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #1a5a37;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .colorado-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.35;
+    margin: 0 0 1rem;
+  }
+  .colorado-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .colorado-stat {
+    text-align: left;
+  }
+  .colorado-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #1a5a37;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .colorado-stat-lbl {
+    font-size: 11.5px;
+    color: var(--ink-2);
+    line-height: 1.45;
+  }
+  .colorado-detail {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin: 0.75rem 0 0;
+  }
+  .colorado-detail strong { color: var(--ink); font-weight: 500; }
+
+  /* PROJECTION ROW — three-step before/after with arrows */
+  .projection-row {
+    display: grid;
+    grid-template-columns: 1fr 28px 1fr 28px 1fr;
+    gap: 0;
+    align-items: stretch;
+    margin: 1.5rem 0 0;
+  }
+  .proj-step {
+    padding: 1.25rem 1.1rem;
+    background: var(--bg);
+    border-radius: 4px;
+    border-left: 3px solid var(--ink-3);
+  }
+  .proj-step-mid {
+    background: #fbf2e8;
+    border-left-color: var(--accent-warm);
+  }
+  .proj-step-end {
+    background: var(--green-bg);
+    border-left-color: var(--green);
+  }
+  .proj-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .proj-step-mid .proj-label { color: #8b3a18; }
+  .proj-step-end .proj-label { color: #1a5a37; }
+  .proj-num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.85rem;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .proj-step-mid .proj-num { color: #8b3a18; }
+  .proj-step-end .proj-num { color: #1a5a37; }
+  .proj-detail {
+    font-size: 11.5px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .proj-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-3);
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+  }
+
+  /* COST-BENEFIT CARD */
+  .cb-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 2rem 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .cb-card .label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .cb-card .chart-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0 0 1.25rem;
+  }
+  .cb-card .intro {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.65;
+    margin: 0 0 1.5rem;
+    max-width: 820px;
+  }
+  .cb-card .intro strong { color: var(--ink); font-weight: 500; }
+
+  /* COST AND SAVINGS TWO-COLUMN */
+  .cb-balance {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .cb-side {
+    padding: 1.5rem 1.5rem;
+    border-radius: 4px;
+  }
+  .cb-cost {
+    background: #fbf2e8;
+    border-left: 3px solid var(--accent-warm);
+  }
+  .cb-savings {
+    background: var(--green-bg);
+    border-left: 3px solid var(--green);
+  }
+  .cb-side-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .cb-cost .cb-side-label { color: #8b3a18; }
+  .cb-savings .cb-side-label { color: #1a5a37; }
+  .cb-side-big {
+    font-family: 'Fraunces', serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 0.6rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .cb-cost .cb-side-big { color: #8b3a18; }
+  .cb-savings .cb-side-big { color: #1a5a37; }
+  .cb-side-sub {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  .cb-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .cb-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 12.5px;
+    color: var(--ink-2);
+    line-height: 1.4;
+    gap: 0.75rem;
+  }
+  .cb-line-amt {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .cb-cost .cb-line-amt { color: #8b3a18; }
+  .cb-savings .cb-line-amt { color: #1a5a37; }
+  .cb-line-conservative { opacity: 0.95; }
+  .cb-line-indirect {
+    font-style: italic;
+    color: var(--ink-3);
+  }
+  .cb-line-indirect .cb-line-amt { color: var(--ink-3); }
+  .cb-line-total {
+    padding-top: 0.6rem;
+    margin-top: 0.3rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 13px;
+  }
+
+  /* ROI HIGHLIGHTS */
+  .roi-block {
+    margin: 1.5rem 0;
+    padding: 1.5rem 1.5rem;
+    background: var(--bg);
+    border-radius: 4px;
+  }
+  .roi-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .roi-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .roi-scenario {
+    background: var(--surface);
+    padding: 1.1rem 1.25rem;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+  .roi-scenario-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .roi-scenario-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .roi-scenario-detail {
+    font-size: 12px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+
+  /* CLOSING */
+  .closing {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 2rem 1.75rem;
+    margin: 2rem 0 0;
+  }
+  .closing-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+  }
+  .closing-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+    margin: 0 0 1.25rem;
+    max-width: 760px;
+  }
+  .closing-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .closing-text {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    line-height: 1.7;
+    margin: 0 0 1rem;
+    max-width: 820px;
+  }
+  .closing-text strong { color: var(--ink); font-weight: 500; }
+  .closing-text:last-child { margin-bottom: 0; }
+
+  .source-block {
+    font-size: 11px;
+    color: var(--ink-3);
+    font-style: italic;
+    margin: 1.5rem 0 0;
+    padding: 1rem 1.25rem;
+    background: var(--bg);
+    border-radius: 4px;
+    line-height: 1.55;
+  }
+  .source-block a {
+    color: var(--ink-3);
+    text-decoration: underline;
+  }
+  .source-block a:hover { color: var(--ink-2); }
+
+  /* CONTINUE / FOOTER */
+  .continue { max-width: 1100px; margin: 4rem auto 0; padding: 0 2rem; text-align: center; }
+  .continue a { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: var(--ink); color: white; border-radius: 999px; font-size: 13px; letter-spacing: 0.04em; transition: transform 0.15s ease; }
+  .continue a:hover { transform: translateY(-2px); text-decoration: none; }
+  footer { max-width: 1100px; margin: 5rem auto 0; padding: 2rem; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+
+  /* MOBILE */
+  @media (max-width: 720px) {
+    .nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1rem; font-size: 12px; }
+    .hero { padding: 2rem 1.25rem 1.5rem; }
+    .pills { padding: 1rem 1.25rem; }
+    .content { padding: 1rem 1.25rem 3rem; }
+    h2.section-title { font-size: 1.5rem; margin: 3rem 0 1rem; }
+    .subtitle { font-size: 1.15rem; }
+    .opening, .synthesis, .closing { padding: 1.5rem 1.25rem; }
+    .opening-title, .synthesis-title, .closing-title { font-size: 1.35rem; }
+    .anchor-grid { grid-template-columns: 1fr; }
+    .anchor-card { padding: 1.25rem 1.25rem; }
+    .anchor-card-stat { font-size: 1.7rem; }
+    .colorado-stats { grid-template-columns: 1fr 1fr; }
+    .colorado-stat-num { font-size: 1.3rem; }
+    .projection-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .proj-arrow { transform: rotate(90deg); padding: 0.25rem 0; }
+    .proj-num { font-size: 1.55rem; }
+    .cb-card { padding: 1.5rem 1.25rem; }
+    .cb-balance { grid-template-columns: 1fr; }
+    .cb-side-big { font-size: 2rem; }
+    .roi-row { grid-template-columns: 1fr; }
+    .roi-scenario-num { font-size: 1.65rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="logo">
+    <span class="ww-w">WILLEMS</span><span class="ww-o">WORLD</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Insights</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+</nav>
+
+<div class="series-tag"><span class="dot">&bull;</span> Series</div>
+
+<header class="hero">
+  <div class="eyebrow">Insight № 05 · <span class="num">Section 06 of 06</span></div>
+  <h1 class="title">Common <em>Ground</em></h1>
+  <div class="subtitle">The math the data actually points toward.</div>
+  <div class="meta">
+    <span>Published May 2026</span>
+    <span>·</span>
+    <span>The closing argument</span>
+  </div>
+</header>
+
+<div class="pills">
+  <a href="abortion-01-overview.html" class="pill"><span class="num">01</span>Overview</a>
+  <a href="abortion-02-adoption.html" class="pill"><span class="num">02</span>Adoption</a>
+  <a href="abortion-03-foster-care.html" class="pill"><span class="num">03</span>Foster Care</a>
+  <a href="abortion-04-birth-control.html" class="pill"><span class="num">04</span>Birth Control</a>
+  <a href="abortion-05-forecast.html" class="pill"><span class="num">05</span>The Forecast</a>
+  <span class="pill active"><span class="num">06</span>Common Ground</span>
+</div>
+
+<main class="content">
+
+  <!-- OPENING ARGUMENT -->
+  <div class="opening">
+    <div class="opening-eyebrow">The closing argument</div>
+    <h2 class="opening-title">Five sections of data point toward <em>one underused lever</em>.</h2>
+    <p class="opening-text">Sections 01&ndash;05 measured a system under strain. <strong>1.124 million abortions per year. 167,000 children entering foster care. ~$34 billion already spent on a system performing at half-capacity.</strong> The argument over what abortion <em>should</em> be has consumed fifty years of American politics. The data tells a different story: under every plausible policy direction &mdash; stricter, looser, or unchanged &mdash; one upstream intervention reduces the strain on every downstream system at the same time.</p>
+    <p class="opening-text">That intervention is <strong>universal access to proactive, effective contraception</strong>. Not as a moral position, but as a measurable lever. The closest thing the United States has to a controlled experiment on this question already happened &mdash; in Colorado, between 2009 and 2019, with rigorously documented results. This section walks through what those results were, what they would look like at national scale, and what they would cost.</p>
+  </div>
+
+  <!-- SIX ANCHOR CARDS — recap of evidence from previous sections -->
+  <h2 class="section-title">Six things <em>the data shows</em></h2>
+
+  <div class="anchors-section">
+    <div class="anchors-label">From Sections 01&ndash;05 &middot; the foundation of the argument</div>
+
+    <div class="anchor-grid">
+
+      <!-- ANCHOR 1: Abortion rate -->
+      <div class="anchor-card">
+        <div class="anchor-card-num">Anchor 01 &middot; Sec. 01</div>
+        <div class="anchor-card-stat">1 in 4</div>
+        <div class="anchor-card-headline">U.S. women will have an abortion in their lifetime.</div>
+        <div class="anchor-card-detail">A rate this high implies that the current system isn't preventing unintended pregnancies; it's processing them after the fact. <strong>1.124 million abortions per year</strong> is what that processing looks like.</div>
+        <div class="anchor-card-source">Source: <a href="https://www.guttmacher.org/fact-sheet/induced-abortion-united-states" target="_blank" rel="noopener">Guttmacher Institute, 2024</a></div>
+      </div>
+
+      <!-- ANCHOR 2: Foster PTSD -->
+      <div class="anchor-card">
+        <div class="anchor-card-num">Anchor 02 &middot; Sec. 03</div>
+        <div class="anchor-card-stat">21.5%</div>
+        <div class="anchor-card-headline">Foster alumni meet clinical PTSD criteria &mdash; roughly twice the rate of Iraq War veterans.</div>
+        <div class="anchor-card-detail">Children entering the foster system carry trauma not just from what brought them in, but from the placement instability and disruption the system itself produces. <strong>1 in 5</strong> alumni reach adulthood with diagnosable PTSD.</div>
+        <div class="anchor-card-source">Source: <a href="https://www.casey.org/media/AlumniStudy_US_Report_MentalHealth.pdf" target="_blank" rel="noopener">Casey Family Programs, 2005</a> (n=1,087 alumni); Iraq comparison from Hoge et al., NEJM 2004</div>
+      </div>
+
+      <!-- ANCHOR 3: Caseworker conditions -->
+      <div class="anchor-card">
+        <div class="anchor-card-num">Anchor 03 &middot; Sec. 03</div>
+        <div class="anchor-card-stat">$37K<span class="anchor-card-stat-sm"> / 22 cases</span></div>
+        <div class="anchor-card-headline">A foster care caseworker earns $37,000 to manage 22 children &mdash; double the recommended caseload.</div>
+        <div class="anchor-card-detail">Each child carries roughly <strong>~100 potential placement and permanency outcomes</strong>. The system was not designed to be evaluated by adults who can hold that much complexity at that scale, for that pay. Turnover has reached <strong>~25%</strong> annually.</div>
+        <div class="anchor-card-source">Source: <a href="https://www.bls.gov/ooh/community-and-social-service/social-workers.htm" target="_blank" rel="noopener">BLS, 2024</a> (entry-level wages); <a href="https://www.cwla.org/our-work/practice-excellence-center/workforce-2/caseload-workload/" target="_blank" rel="noopener">CWLA Standards</a> (recommended 12&ndash;15 ratio)</div>
+      </div>
+
+      <!-- ANCHOR 4: Contraception access disparity -->
+      <div class="anchor-card">
+        <div class="anchor-card-num">Anchor 04 &middot; Sec. 04</div>
+        <div class="anchor-card-stat">25% &rarr; 65%</div>
+        <div class="anchor-card-headline">Proactive contraception use rises with income &mdash; access, not preference, drives the gap.</div>
+        <div class="anchor-card-detail">9 out of 10 women have tried <em>some</em> form of contraception. But the share using <strong>effective, proactive methods</strong> climbs from 25% among women below the poverty line to 65% among women above 200% of poverty &mdash; tracking the income line, not the moral one.</div>
+        <div class="anchor-card-source">Source: <a href="https://www.guttmacher.org/fact-sheet/contraceptive-use-united-states" target="_blank" rel="noopener">Guttmacher Institute, Contraceptive Use in the U.S.</a></div>
+      </div>
+
+      <!-- ANCHOR 5: Foster trajectory -->
+      <div class="anchor-card">
+        <div class="anchor-card-num">Anchor 05 &middot; Sec. 05</div>
+        <div class="anchor-card-stat">$52&ndash;$62B</div>
+        <div class="anchor-card-headline">The foster system's projected budget by FY 2036, if it operates at published standards.</div>
+        <div class="anchor-card-detail">Forecasting forward from Section 05: meeting CWLA staffing ratios, FFPSA prevention targets, and Casey trauma-services recommendations against the +11% intake projection produces a <strong>$52B center, $62B high-end</strong> figure. The current spend is <strong>$34B</strong>.</div>
+        <div class="anchor-card-source">Source: <a href="abortion-05-forecast.html">Section 05 forecast</a>; <a href="https://www.childtrends.org/publications/state-child-welfare-spending" target="_blank" rel="noopener">Child Trends</a>; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10628841/" target="_blank" rel="noopener">JAMA Pediatrics, 2023</a></div>
+      </div>
+
+      <!-- ANCHOR 6: Colorado -->
+      <div class="anchor-card" style="border-left-color: var(--green);">
+        <div class="anchor-card-num">Anchor 06 &middot; The natural experiment</div>
+        <div class="anchor-card-stat" style="color: var(--green);">50% &darr;</div>
+        <div class="anchor-card-headline">Colorado's free-LARC program cut the teen abortion rate in half &mdash; and saved $5.85 per $1 spent.</div>
+        <div class="anchor-card-detail">Between 2009 and 2019, Colorado funded universal access to long-acting reversible contraception through Title X clinics. Teen birth and abortion rates fell <strong>~50%</strong>; adult abortion rates fell <strong>~20%</strong>. Every <strong>$1</strong> in program spending returned <strong>$5.85</strong> in avoided Medicaid birth costs alone.</div>
+        <div class="anchor-card-source">Source: <a href="https://cdphe.colorado.gov/fpp/about-us/colorados-success-long-acting-reversible-contraception-larc" target="_blank" rel="noopener">Colorado Department of Public Health and Environment</a>; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10461486/" target="_blank" rel="noopener">American Journal of Public Health, 2022</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SYNTHESIS BLOCK — pulling the six anchors together -->
+  <h2 class="section-title">Pulling the <em>threads</em> together</h2>
+
+  <div class="synthesis">
+    <div class="synthesis-eyebrow">The pattern underneath</div>
+    <h3 class="synthesis-title">The same population shows up in every dataset.</h3>
+    <p class="synthesis-text">Read the six anchors together. <strong>75% of women seeking abortion</strong> are below 200% of the federal poverty line. The same income tier shows the lowest proactive contraception use (<strong>25%</strong>). The same demographic supplies most foster care intake when economic strain triggers housing-inadequacy removals. The same alumni population shows up later in PTSD statistics, incarceration rates, and unemployment data.</p>
+    <p class="synthesis-text">This isn't a moral problem. It's a <strong>distribution problem</strong>. The interventions women above the poverty line use every day &mdash; IUDs, implants, and other long-acting methods &mdash; are the same interventions that don't reach the population most likely to feed every downstream system. Colorado closed that gap inside one state, with one funding source, over ten years. The result was measurable: <strong>fewer abortions, fewer unintended births, lower public spending, and higher graduation rates</strong>.</p>
+    <p class="synthesis-text">The closing question of this piece is whether the same intervention, scaled nationally, produces the same effect.</p>
+  </div>
+
+  <!-- COLORADO BLOCK — the evidence base in detail -->
+  <div class="colorado-block">
+    <div class="colorado-eyebrow">The Colorado evidence in detail</div>
+    <h3 class="colorado-title">What 10 years of universal LARC access actually did, 2009&ndash;2019</h3>
+
+    <div class="colorado-stats">
+      <div class="colorado-stat">
+        <div class="colorado-stat-num">&minus;50%</div>
+        <div class="colorado-stat-lbl">Teen abortion rate (ages 15&ndash;19)</div>
+      </div>
+      <div class="colorado-stat">
+        <div class="colorado-stat-num">&minus;20%</div>
+        <div class="colorado-stat-lbl">Adult abortion rate (ages 20&ndash;24)</div>
+      </div>
+      <div class="colorado-stat">
+        <div class="colorado-stat-num">&minus;38%</div>
+        <div class="colorado-stat-lbl">Births to women without HS diploma</div>
+      </div>
+      <div class="colorado-stat">
+        <div class="colorado-stat-num">$5.85</div>
+        <div class="colorado-stat-lbl">Medicaid dollars saved per $1 spent</div>
+      </div>
+    </div>
+
+    <p class="colorado-detail">The Colorado Family Planning Initiative funded <strong>69 Title X clinics</strong> to provide IUDs and implants at no cost to low-income women. Over ten years it served roughly <strong>45,000 women</strong>. By 2019, the adolescent abortion rate had fallen from <strong>39.6 per 1,000</strong> to <strong>13.5 per 1,000</strong> &mdash; the steepest decline of any state. Independent analyses confirmed the program <em>caused</em> the decline rather than tracking a national trend: counties within 7 miles of a clinic saw the effects; further counties did not. The program also raised the high school graduation rate by <strong>4 percentage points</strong>.</p>
+  </div>
+
+  <!-- THE PROJECTION ROW — three step from today to projected -->
+  <h2 class="section-title">What it would <em>look like</em> at national scale</h2>
+
+  <div class="cb-card">
+    <div class="label">Applying Colorado's measured outcomes to national baselines</div>
+    <div class="chart-title">Abortion rate, foster intake, foster budget &mdash; projected with universal access</div>
+    <p class="intro">The projection below applies Colorado's measured outcomes (50% teen rate, 20% adult rate, blended to a conservative national estimate of <strong>~30&ndash;40%</strong>) to current national figures. The forecast band reflects the range between the adult-only and teen-included scenarios.</p>
+
+    <!-- ABORTION PROJECTION -->
+    <div class="projection-row">
+      <div class="proj-step">
+        <div class="proj-label">Today</div>
+        <div class="proj-num">1.12M</div>
+        <div class="proj-detail">Annual abortions in the U.S. (Guttmacher 2024)</div>
+      </div>
+      <div class="proj-arrow">&rarr;</div>
+      <div class="proj-step proj-step-mid">
+        <div class="proj-label">Conservative (Colorado adult rate)</div>
+        <div class="proj-num">~800K</div>
+        <div class="proj-detail">A 28% reduction applied at the lower-bound rate. Roughly 320,000 fewer abortions per year.</div>
+      </div>
+      <div class="proj-arrow">&rarr;</div>
+      <div class="proj-step proj-step-end">
+        <div class="proj-label">Aggressive (Colorado teen rate)</div>
+        <div class="proj-num">~600K</div>
+        <div class="proj-detail">A 47% reduction at the upper-bound rate. Roughly 520,000 fewer abortions per year.</div>
+      </div>
+    </div>
+
+    <!-- FOSTER PROJECTION -->
+    <h3 style="font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 500; margin: 2rem 0 0.75rem 0;">Foster care: budget projection by FY 2036</h3>
+    <div class="projection-row">
+      <div class="proj-step">
+        <div class="proj-label">Section 05 forecast</div>
+        <div class="proj-num">$52B</div>
+        <div class="proj-detail">FY 2036 center projection at standards-meeting baseline plus +11% intake forecast</div>
+      </div>
+      <div class="proj-arrow">&rarr;</div>
+      <div class="proj-step proj-step-mid">
+        <div class="proj-label">With contraception access</div>
+        <div class="proj-num">~$40B</div>
+        <div class="proj-detail">Fewer unintended pregnancies upstream means fewer housing-inadequacy removals downstream. Conservative estimate based on Colorado's measured effect on poverty-tier births.</div>
+      </div>
+      <div class="proj-arrow">&rarr;</div>
+      <div class="proj-step proj-step-end">
+        <div class="proj-label">Annual savings</div>
+        <div class="proj-num">~$12B</div>
+        <div class="proj-detail">Foster system savings by FY 2036, not including indirect costs (incarceration, unemployment, Medicaid).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COST-BENEFIT CARD -->
+  <h2 class="section-title">The <em>math</em></h2>
+
+  <div class="cb-card">
+    <div class="label">Annual cost vs. annual savings &middot; at full national scale</div>
+    <div class="chart-title">What the program would cost &mdash; and what it would save</div>
+    <p class="intro">A nationally-scaled version of the Colorado program would extend free access to long-acting contraception (IUDs, implants, tubal ligations, vasectomies) through the existing <strong>Title X</strong> network and Medicaid, plus a one-time clinical training expansion. Costs and savings are <strong>annualized</strong> and shown in current dollars.</p>
+
+    <div class="cb-balance">
+
+      <!-- COST SIDE -->
+      <div class="cb-side cb-cost">
+        <div class="cb-side-label">Annual program cost</div>
+        <div class="cb-side-big">~$3B</div>
+        <div class="cb-side-sub">Universal access through existing Title X infrastructure. Phase-in adds roughly $8&ndash;15B in one-time clinical capacity expansion over 3&ndash;5 years.</div>
+        <div class="cb-breakdown">
+          <div class="cb-line">
+            <span>LARC devices &amp; insertion (~5M annually)</span>
+            <span class="cb-line-amt">~$1.5B</span>
+          </div>
+          <div class="cb-line">
+            <span>Clinic operations &amp; staff expansion</span>
+            <span class="cb-line-amt">~$800M</span>
+          </div>
+          <div class="cb-line">
+            <span>Training, outreach &amp; counseling</span>
+            <span class="cb-line-amt">~$400M</span>
+          </div>
+          <div class="cb-line">
+            <span>Sterilization access (voluntary)</span>
+            <span class="cb-line-amt">~$300M</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAVINGS SIDE -->
+      <div class="cb-side cb-savings">
+        <div class="cb-side-label">Annual savings (two scenarios)</div>
+        <div class="cb-side-big">$12B &rarr; $20B</div>
+        <div class="cb-side-sub">Conservative shows <strong>direct savings only</strong>. Full scenario adds indirect savings as fewer foster alumni reach adulthood with the trauma profile and outcome gaps documented in Section 03.</div>
+        <div class="cb-breakdown">
+          <div class="cb-line cb-line-conservative">
+            <span>Medicaid birth costs avoided</span>
+            <span class="cb-line-amt">~$5B</span>
+          </div>
+          <div class="cb-line cb-line-conservative">
+            <span>Foster system savings (by FY 2036)</span>
+            <span class="cb-line-amt">~$5B</span>
+          </div>
+          <div class="cb-line cb-line-conservative">
+            <span>Abortion-related medical costs avoided</span>
+            <span class="cb-line-amt">~$2B</span>
+          </div>
+          <div class="cb-line cb-line-conservative cb-line-total">
+            <span>Conservative subtotal (direct only)</span>
+            <span class="cb-line-amt">~$12B</span>
+          </div>
+          <div class="cb-line cb-line-indirect">
+            <span>+ Incarceration costs avoided (29% &rarr; 6%)</span>
+            <span class="cb-line-amt">~$3B</span>
+          </div>
+          <div class="cb-line cb-line-indirect">
+            <span>+ Unemployment &amp; SNAP costs avoided</span>
+            <span class="cb-line-amt">~$3B</span>
+          </div>
+          <div class="cb-line cb-line-indirect">
+            <span>+ Mental health system costs avoided</span>
+            <span class="cb-line-amt">~$2B</span>
+          </div>
+          <div class="cb-line cb-line-total">
+            <span>Full scenario (incl. indirect savings)</span>
+            <span class="cb-line-amt">~$20B</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROI BLOCK -->
+    <div class="roi-block">
+      <div class="roi-label">Return on investment &middot; both scenarios</div>
+      <div class="roi-row">
+        <div class="roi-scenario">
+          <div class="roi-scenario-label">Conservative (direct savings only)</div>
+          <div class="roi-scenario-num">$4 returned per $1 spent</div>
+          <div class="roi-scenario-detail">$12B in direct savings against $3B in annual program cost. Even the conservative scenario substantially outperforms Colorado's documented $5.85/$1 return because national scale captures Medicaid efficiencies Colorado couldn't.</div>
+        </div>
+        <div class="roi-scenario">
+          <div class="roi-scenario-label">Full scenario (with indirect savings)</div>
+          <div class="roi-scenario-num">$7 returned per $1 spent</div>
+          <div class="roi-scenario-detail">$20B against $3B. Indirect savings include reduced incarceration, unemployment support, and mental health treatment for the population that would otherwise enter the foster system. These materialize over 20&ndash;30 years.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="source-block">Sources: <a href="https://cdphe.colorado.gov/fpp/about-us/colorados-success-long-acting-reversible-contraception-larc" target="_blank" rel="noopener">Colorado Department of Public Health, Taking the Unintended Out of Pregnancy</a> &mdash; $5.85 ROI on Medicaid birth costs, 50% teen abortion reduction; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10461486/" target="_blank" rel="noopener">Goldzahl et al., American Journal of Public Health (2022)</a> &mdash; adolescent abortion rate from 39.6 to 13.5 per 1,000; <a href="https://www.sciencedirect.com/science/article/abs/pii/S0047272720301523" target="_blank" rel="noopener">Lindo &amp; Packham, &ldquo;The Power of the IUD,&rdquo; Journal of Public Economics</a> &mdash; causal identification; <a href="https://www.guttmacher.org/fact-sheet/contraceptive-use-united-states" target="_blank" rel="noopener">Guttmacher, Contraceptive Use in the U.S.</a> &mdash; 25%/65% income-tier proactive use; <a href="https://www.colorado.edu/today/2021/05/05/greater-access-birth-control-boosts-high-school-graduation-rates" target="_blank" rel="noopener">CU Boulder analysis</a> &mdash; HS graduation impact; <a href="https://www.casey.org/media/AlumniStudy_US_Report_MentalHealth.pdf" target="_blank" rel="noopener">Casey Family Programs, Mental Health Outcomes</a> &mdash; foster alumni incarceration, employment, mental health rates. Direct cost estimates based on Colorado per-client cost ($310&ndash;$700) extended to ~25M target population in the U.S. with phased delivery. Annual program cost reflects steady-state operations after initial scale-up. Indirect savings projections rely on the Casey alumni outcome differential (29% incarceration vs. 6% general population) and standard fiscal multipliers; they materialize over 20&ndash;30 years rather than immediately.</p>
+  </div>
+
+  <!-- CLOSING ARGUMENT — bipartisan ROI frame -->
+  <h2 class="section-title">The <em>argument</em></h2>
+
+  <div class="closing">
+    <div class="closing-eyebrow">Common ground</div>
+    <h3 class="closing-title">A policy that returns $4 for every $1 spent should clear every test &mdash; <em>fiscal, moral, practical</em>.</h3>
+    <p class="closing-text">The data in Sections 01&ndash;05 does not require agreement on when life begins. It does not require agreement on the proper scope of state authority over reproduction. It does not require agreement on the moral status of abortion itself.</p>
+    <p class="closing-text">It requires agreement on one observation: <strong>women below the poverty line use proactive contraception at one-third the rate of women above 200% of poverty &mdash; not because they want to, but because they can't easily access it</strong>. Close that gap and the data points toward measurable consequences in every direction. Fewer abortions. Fewer foster care entries. Lower public spending. Higher graduation rates. A foster system that can actually function within its budget. <strong>Children who don't reach adulthood with the trauma profile of combat veterans.</strong></p>
+    <p class="closing-text">This is the only intervention measured in this piece that improves every metric simultaneously, costs less than it saves, and doesn't require resolving the abortion debate to be worth doing. The data does not tell anyone what to believe about abortion. <strong>It tells everyone what to do about the system we have.</strong></p>
+  </div>
+
+</main>
+
+<div class="continue">
+  <a href="abortion-01-overview.html">Return to Section 01 &mdash; Overview &rarr;</a>
+</div>
+
+<footer>
+  <div>WILLEMS<span style="color: var(--ink-3); letter-spacing: 0.18em;">WORLD</span></div>
+  <div>Insight № 05 · Section 06 of 06</div>
+</footer>
+
+</body>
+</html>

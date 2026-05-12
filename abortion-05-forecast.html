@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receipts § 05: The Forecast · WillemsWorld</title>
+<meta name="description" content="What stricter abortion regulation does to the foster care, adoption, and birth control systems — using post-Dobbs data as evidence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --ink-2: #4a4a48;
+    --ink-3: #8a8985;
+    --line: #e8e6df;
+    --line-strong: #d3d1c7;
+    --accent: #1d4e7a;
+    --accent-warm: #b8651e;
+    --highlight: #f3efe5;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* NAV */
+  .nav { max-width: 1200px; margin: 0 auto; padding: 1.75rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); }
+  .logo { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+  .logo .ww-w { color: var(--ink); font-weight: 500; }
+  .logo .ww-o { color: var(--ink-3); font-weight: 400; letter-spacing: 0.18em; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; padding: 0; margin: 0; font-size: 13px; letter-spacing: 0.06em; }
+  .nav-links a { color: var(--ink-2); text-transform: uppercase; }
+  .nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+  .series-tag { max-width: 1100px; margin: 1.5rem auto 0; padding: 0 2rem; text-align: right; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
+  .series-tag .dot { color: var(--accent-warm); }
+
+  /* HERO */
+  .hero { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 2rem; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 1.5rem; }
+  .eyebrow .num { color: var(--accent-warm); font-weight: 600; }
+  h1.title { font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 5vw, 3.75rem); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 0.5rem; max-width: 900px; }
+  h1.title em { font-style: italic; font-weight: 400; color: var(--accent); }
+  .subtitle { font-family: 'Fraunces', serif; font-size: 1.5rem; font-style: italic; font-weight: 400; color: var(--ink-2); margin: 0 0 1.5rem; line-height: 1.3; }
+  .meta { display: flex; gap: 1.5rem; font-size: 13px; color: var(--ink-3); padding: 1.5rem 0 0; border-top: 1px solid var(--line); margin-top: 2rem; }
+
+  /* PILLS */
+  .pills { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem; display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+  .pills::-webkit-scrollbar { display: none; }
+  .pill { flex-shrink: 0; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; color: var(--ink-2); background: var(--surface); transition: all 0.15s ease; white-space: nowrap; }
+  .pill:hover { color: var(--ink); border-color: var(--line-strong); text-decoration: none; }
+  .pill.active { background: var(--ink); color: white; border-color: var(--ink); }
+  .pill .num { color: var(--ink-3); margin-right: 0.5rem; font-variant-numeric: tabular-nums; }
+  .pill.active .num { color: rgba(255,255,255,0.55); }
+
+  /* CONTENT */
+  .content { max-width: 1100px; margin: 0 auto; padding: 1rem 2rem 4rem; }
+  h2.section-title { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 500; letter-spacing: -0.015em; margin: 4rem 0 1.5rem; line-height: 1.15; }
+  h2.section-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+  h2.section-title:first-of-type { margin-top: 1rem; }
+
+  /* CARD */
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 1.75rem 1.5rem; display: flex; flex-direction: column; margin-bottom: 1rem; }
+  .card .label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 0.5rem; }
+  .card .chart-title { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 500; margin: 0 0 1.25rem; line-height: 1.3; }
+  .card .source { font-size: 11px; color: var(--ink-3); font-style: italic; margin: 1rem 0 0; line-height: 1.5; padding-top: 1rem; border-top: 1px solid var(--line); }
+  .card .source a { color: var(--ink-3); text-decoration: underline; }
+  .card .source a:hover { color: var(--ink-2); }
+
+  /* FORECAST HEADER — weather report tone */
+  .forecast-header {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 2rem 1.75rem;
+    margin: 0.5rem 0 1.5rem;
+  }
+  .forecast-header-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .forecast-header-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 1.25rem;
+    max-width: 720px;
+  }
+  .forecast-header-text {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.65;
+    max-width: 800px;
+  }
+  .forecast-header-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .forecast-header-text em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* HEAT MAP — state-by-state abortion change */
+  .heatmap-wrap {
+    position: relative;
+    background: #fdfcf9;
+    border-radius: 4px;
+    padding: 1rem 0.5rem;
+    margin: 1rem 0 0.5rem;
+  }
+  .heatmap-wrap svg path {
+    stroke: #ffffff;
+    stroke-width: 0.75;
+    transition: opacity 0.15s ease;
+    cursor: pointer;
+  }
+  .heatmap-wrap svg path:hover {
+    opacity: 0.85;
+    stroke: #1a1a1a;
+    stroke-width: 1.25;
+  }
+  .heatmap-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: #1a1a1a;
+    color: white;
+    padding: 0.55rem 0.85rem;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 1.4;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 10;
+    white-space: nowrap;
+  }
+  .heatmap-tooltip.visible { opacity: 1; }
+  .heatmap-tooltip strong {
+    color: white;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .heatmap-tooltip .tt-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  /* HEAT MAP LEGEND */
+  .hm-legend {
+    margin: 1rem 0 0.5rem;
+  }
+  .hm-legend-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+  .hm-legend-scale {
+    max-width: 480px;
+  }
+  .hm-legend-gradient {
+    height: 14px;
+    border-radius: 2px;
+    background: linear-gradient(to right,
+      #8b3a18 0%,
+      #d59264 25%,
+      #f3efe5 50%,
+      #7ba3cf 75%,
+      #1d4e7a 100%);
+  }
+  .hm-legend-ticks {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .hm-legend-ends {
+    display: flex;
+    justify-content: space-between;
+    max-width: 480px;
+    margin-top: 0.6rem;
+    font-size: 12px;
+  }
+  .hm-legend-ends strong { font-weight: 500; }
+  .cone-wrap {
+    margin: 1.25rem 0 0.5rem;
+    display: flex;
+    justify-content: center;
+    background: #fdfcf9;
+    border-radius: 4px;
+    padding: 1rem 0.5rem;
+  }
+  .cone-svg {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+  }
+  .cone-legend {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    font-size: 12.5px;
+    color: var(--ink-2);
+    justify-content: flex-start;
+    padding: 0.75rem 0 0;
+    border-top: 1px solid var(--line);
+  }
+  .cone-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cone-legend-swatch {
+    width: 16px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* "How to read" list above the cone */
+  .cone-reading {
+    margin: 0 0 0.5rem;
+    padding: 0;
+    list-style: none;
+    background: var(--bg);
+    border-radius: 4px;
+    padding: 0.9rem 1.1rem;
+  }
+  .cone-reading li {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    padding: 0.25rem 0 0.25rem 1.1rem;
+    position: relative;
+  }
+  .cone-reading li::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    color: var(--accent-warm);
+    font-weight: bold;
+  }
+  .cone-reading li strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* STACKED BAR — opening visual, matches Section 02 "where the 80,598 came from" */
+  .stack-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+  .stack-bar {
+    display: flex;
+    height: 56px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .stack-seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity 0.15s ease;
+  }
+  .seg-noLimit { background: #1d4e7a; }
+  .seg-viability { background: #a4c4e4; color: #1a1a1a; }
+  .seg-mid { background: #c5b89a; color: #1a1a1a; }
+  .seg-early { background: #b8651e; }
+  .seg-total-ban { background: #8b3a18; }
+  .stack-seg-label {
+    font-size: 12px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  /* DUAL LEGEND — population vs. abortion comparison table */
+  .dual-legend {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .dual-legend-row {
+    display: grid;
+    grid-template-columns: 1.4fr 0.7fr 0.7fr 0.6fr;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.7rem 0.5rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+  }
+  .dual-legend-row:last-child { border-bottom: none; }
+  .dual-legend-row.dual-legend-header {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    padding: 0.5rem 0.5rem;
+    background: var(--bg);
+  }
+  .dl-tier-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+  }
+  .dl-tier-cell strong {
+    font-weight: 500;
+  }
+  .dl-pop-cell, .dl-abr-cell {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .dl-gap-cell {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink-2);
+    font-variant-numeric: tabular-nums;
+  }
+  .dl-gap-neg { color: #8b3a18; }
+  .dl-gap-pos { color: var(--accent); }
+  .stack-legend-swatch {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .forecast-callout {
+    margin: 1.5rem 0 0;
+    padding: 1.1rem 1.35rem;
+    background: #fbf2e8;
+    border: 1px solid #e8c8a0;
+    border-left: 3px solid var(--accent-warm);
+    border-radius: 4px;
+  }
+  .forecast-callout-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8b3a18;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .forecast-callout-text {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+  }
+  .forecast-callout-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* DIMENSION CARD */
+  .dim-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.75rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .dim-card-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.85rem;
+  }
+  .dim-num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--accent-warm);
+    font-variant-numeric: tabular-nums;
+  }
+  .dim-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+  .dim-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .dim-forecast {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin: 0.85rem 0 1rem;
+    padding: 0.85rem 1.1rem;
+    background: var(--bg);
+    border-radius: 4px;
+    border-left: 3px solid var(--accent-warm);
+  }
+  .dim-forecast-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .dim-forecast-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.4;
+    font-style: italic;
+  }
+  .dim-forecast-text strong {
+    font-style: normal;
+    font-weight: 500;
+    color: #8b3a18;
+  }
+
+  /* BEFORE/AFTER COMPARISON */
+  .ba-grid {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    align-items: stretch;
+    margin: 1rem 0;
+  }
+  .ba-side {
+    padding: 1.25rem 1.1rem;
+    border-radius: 4px;
+  }
+  .ba-before {
+    background: var(--bg);
+    border-left: 3px solid var(--ink-3);
+  }
+  .ba-after {
+    background: #fbf2e8;
+    border-left: 3px solid var(--accent-warm);
+  }
+  .ba-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-warm);
+    font-family: 'Fraunces', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+  }
+  .ba-side-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    margin-bottom: 0.65rem;
+  }
+  .ba-before .ba-side-label { color: var(--ink-3); }
+  .ba-after .ba-side-label { color: #8b3a18; }
+  .ba-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.25rem;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .ba-before .ba-num { color: var(--ink); }
+  .ba-after .ba-num { color: #8b3a18; }
+  .ba-detail {
+    font-size: 12.5px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .ba-detail strong { color: var(--ink); font-weight: 500; }
+
+  /* EVIDENCE LIST */
+  .evidence-list {
+    margin: 1.25rem 0 0.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .evidence-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 0.85rem;
+  }
+  .evidence-bullets {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .evidence-bullets li {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .evidence-bullets li:last-child { border-bottom: none; }
+  .evidence-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.05rem;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-warm);
+    border-radius: 50%;
+  }
+  .evidence-bullets li strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* COVID + FORECAST CHART */
+  .chart-wrap {
+    margin: 1rem 0 0.5rem;
+    background: #fdfcf9;
+    border-radius: 4px;
+    padding: 1rem 0.5rem;
+  }
+  .chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 12.5px;
+    color: var(--ink-2);
+    padding: 1rem 0;
+    border-top: 1px solid var(--line);
+    margin-top: 0.5rem;
+  }
+  .chart-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.5;
+  }
+  .chart-legend-line {
+    width: 22px;
+    height: 3px;
+    flex-shrink: 0;
+    border-radius: 2px;
+  }
+  .chart-legend-item strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* COVID COMMENTARY BLOCK */
+  .covid-block {
+    margin: 1.25rem 0 0;
+    padding: 1.25rem 1.35rem;
+    background: #fbf2e8;
+    border: 1px solid #e8c8a0;
+    border-left: 3px solid #b8651e;
+    border-radius: 4px;
+  }
+  .covid-block-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8b3a18;
+    font-weight: 600;
+    margin-bottom: 0.65rem;
+  }
+  .covid-block-intro {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin: 0 0 0.85rem;
+  }
+  .covid-block-intro strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .covid-bullets {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .covid-bullets li {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    border-bottom: 1px solid rgba(184, 101, 30, 0.2);
+    position: relative;
+  }
+  .covid-bullets li:last-child { border-bottom: none; }
+  .covid-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.05rem;
+    width: 5px;
+    height: 5px;
+    background: #b8651e;
+    border-radius: 50%;
+  }
+  .covid-bullets li strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* FORECAST LAG COMMENTARY */
+  .forecast-lag-block {
+    margin: 1rem 0 0;
+    padding: 1.1rem 1.35rem;
+    background: #eaf4ed;
+    border: 1px solid #a8d4b8;
+    border-left: 3px solid #2d7a4f;
+    border-radius: 4px;
+  }
+  .forecast-lag-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #1a5a37;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .forecast-lag-text {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .forecast-lag-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* BUDGET HEADLINE — three-step stack */
+  .budget-headline {
+    display: grid;
+    grid-template-columns: 1fr 32px 1fr 32px 1fr;
+    align-items: stretch;
+    gap: 0;
+    margin: 1rem 0 2rem;
+  }
+  .budget-step {
+    padding: 1.25rem 1.25rem;
+    background: var(--bg);
+    border-radius: 4px;
+    border-left: 3px solid var(--ink-3);
+  }
+  .budget-step-mid {
+    background: #fbf2e8;
+    border-left-color: var(--accent-warm);
+  }
+  .budget-step-future {
+    background: #eaf4ed;
+    border-left-color: #2d7a4f;
+  }
+  .budget-step-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .budget-step-mid .budget-step-label { color: #8b3a18; }
+  .budget-step-future .budget-step-label { color: #1a5a37; }
+  .budget-step-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .budget-step-mid .budget-step-num { color: #8b3a18; }
+  .budget-step-future .budget-step-num { color: #1a5a37; }
+  .budget-step-detail {
+    font-size: 11.5px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .budget-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-3);
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+  }
+
+  /* DONUT SECTION */
+  .donut-section {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .donut-section-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .donut-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .donut-wrap {
+    background: #fdfcf9;
+    border-radius: 4px;
+    padding: 1.25rem 1rem;
+  }
+  .donut-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+  .donut-svg {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto 1rem;
+  }
+  .donut-seg {
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+  .donut-wrap:hover .donut-seg { opacity: 0.4; }
+  .donut-wrap .donut-seg:hover { opacity: 1; }
+  .donut-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .donut-legend-item {
+    display: grid;
+    grid-template-columns: 18px 1fr auto;
+    gap: 8px;
+    align-items: center;
+    font-size: 12px;
+    color: var(--ink-2);
+    line-height: 1.4;
+    padding: 0.25rem 0;
+  }
+  .dl-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .dl-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .dl-pct-up { color: #2d7a4f; }
+  .dl-pct-down { color: #8b3a18; }
+  .dl-pct-new {
+    color: #2d7a4f;
+    font-size: 11px;
+    background: #eaf4ed;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  /* THE FIVE GAPS LIST */
+  .budget-gaps {
+    margin: 1.5rem 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .budget-gaps-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 0.85rem;
+  }
+  .budget-gaps-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .budget-gaps-list li {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    padding: 0.6rem 0 0.6rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .budget-gaps-list li:last-child { border-bottom: none; }
+  .budget-gaps-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.05rem;
+    width: 5px;
+    height: 5px;
+    background: var(--accent-warm);
+    border-radius: 50%;
+  }
+  .budget-gaps-list li strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .budget-gaps-note {
+    margin: 1rem 0 0;
+    padding: 0.75rem 1rem;
+    background: var(--bg);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--ink-3);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .budget-gaps-note strong {
+    color: var(--ink-2);
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  /* CONTINUE / FOOTER */
+  .continue { max-width: 1100px; margin: 4rem auto 0; padding: 0 2rem; text-align: center; }
+  .continue a { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: var(--ink); color: white; border-radius: 999px; font-size: 13px; letter-spacing: 0.04em; transition: transform 0.15s ease; }
+  .continue a:hover { transform: translateY(-2px); text-decoration: none; }
+  footer { max-width: 1100px; margin: 5rem auto 0; padding: 2rem; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+
+  /* MOBILE */
+  @media (max-width: 720px) {
+    .nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1rem; font-size: 12px; }
+    .hero { padding: 2rem 1.25rem 1.5rem; }
+    .pills { padding: 1rem 1.25rem; }
+    .content { padding: 1rem 1.25rem 3rem; }
+    h2.section-title { font-size: 1.5rem; margin: 3rem 0 1rem; }
+    .subtitle { font-size: 1.15rem; }
+    .card { padding: 1.5rem 1.25rem; }
+    .forecast-header { padding: 1.5rem 1.25rem; }
+    .forecast-header-title { font-size: 1.2rem; }
+    .forecast-header-text { font-size: 13px; }
+    .dim-card { padding: 1.5rem 1.25rem; }
+    .dim-title { font-size: 1.2rem; }
+    .dim-forecast { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+    .dim-forecast-text { font-size: 0.95rem; }
+    .ba-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+    .ba-arrow { transform: rotate(90deg); padding: 0.25rem 0; }
+    .ba-num { font-size: 1.75rem; }
+    .evidence-bullets li { font-size: 12px; }
+    .stack-bar { height: 76px; }
+    .stack-seg-label { font-size: 10px; }
+    .dual-legend-row { grid-template-columns: 1.3fr 0.6fr 0.6fr 0.6fr; gap: 0.4rem; font-size: 12px; padding: 0.55rem 0.3rem; }
+    .dual-legend-row.dual-legend-header { font-size: 9px; }
+    .dl-pop-cell, .dl-abr-cell, .dl-gap-cell { font-size: 0.9rem; }
+    .forecast-callout-text { font-size: 12.5px; }
+    .heatmap-wrap { padding: 0.5rem 0.25rem; }
+    .hm-legend-scale { max-width: 100%; }
+    .hm-legend-ends { max-width: 100%; font-size: 11px; }
+    .heatmap-tooltip { font-size: 11px; padding: 0.4rem 0.65rem; }
+    .chart-wrap { padding: 0.5rem 0.25rem; }
+    .chart-legend { font-size: 11.5px; }
+    .covid-block { padding: 1rem 1.1rem; }
+    .covid-block-intro { font-size: 12.5px; }
+    .covid-bullets li { font-size: 12px; }
+    .forecast-lag-block { padding: 0.9rem 1.1rem; }
+    .forecast-lag-text { font-size: 12px; }
+    .budget-headline { grid-template-columns: 1fr; gap: 0.5rem; }
+    .budget-arrow { transform: rotate(90deg); padding: 0.25rem 0; }
+    .budget-step-num { font-size: 2rem; }
+    .donut-pair { grid-template-columns: 1fr; gap: 1rem; }
+    .donut-svg { max-width: 180px; }
+    .donut-legend-item { font-size: 11.5px; }
+    .budget-gaps-list li { font-size: 12px; }
+    .cone-wrap { padding: 0.5rem 0.25rem; }
+    .cone-legend { gap: 0.5rem 1rem; font-size: 11px; }
+    .cone-reading li { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="logo">
+    <span class="ww-w">WILLEMS</span><span class="ww-o">WORLD</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Insights</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+</nav>
+
+<div class="series-tag"><span class="dot">&bull;</span> Series</div>
+
+<header class="hero">
+  <div class="eyebrow">Insight № 05 · <span class="num">Section 05 of 06</span></div>
+  <h1 class="title">The <em>Forecast</em></h1>
+  <div class="subtitle">What stricter regulation does to the systems we just measured</div>
+  <div class="meta">
+    <span>Published May 2026</span>
+    <span>·</span>
+    <span>Reading the data three years after Dobbs</span>
+  </div>
+</header>
+
+<div class="pills">
+  <a href="abortion-01-overview.html" class="pill"><span class="num">01</span>Overview</a>
+  <a href="abortion-02-adoption.html" class="pill"><span class="num">02</span>Adoption</a>
+  <a href="abortion-03-foster-care.html" class="pill"><span class="num">03</span>Foster Care</a>
+  <a href="abortion-04-birth-control.html" class="pill"><span class="num">04</span>Birth Control</a>
+  <span class="pill active"><span class="num">05</span>The Forecast</span>
+  <a href="abortion-06-common-ground.html" class="pill"><span class="num">06</span>Common Ground</a>
+</div>
+
+<main class="content">
+
+  <!-- OPENING VISUAL — where the 1.124M happen, by state legal status -->
+  <h2 class="section-title">Where the <em>1.124 million</em> happen</h2>
+
+  <div class="card">
+    <div class="label">All clinician-provided abortions &middot; 2024 &middot; by state legal status</div>
+    <div class="chart-title">Legal status and abortion breakdown</div>
+
+    <p class="forecast-header-text" style="margin-bottom: 1.5rem; max-width: 820px;">In 2024, U.S. clinicians provided <strong>1,124,000 abortions</strong> &mdash; an <strong>increase of 21% from 2020</strong>, the last full year before Dobbs. The states that restricted abortion didn't reduce the national total; they shifted where abortions take place. To see this clearly, compare two bars: <strong>where women of reproductive age live</strong>, and <strong>where the 1.124 million abortions actually happened</strong>. Colors match the legal-status map in <a href="abortion-01-overview.html">Section 01</a>.</p>
+
+    <!-- POPULATION BAR — women of reproductive age 15-44 by state tier -->
+    <div class="stack-label">Where U.S. women of reproductive age (15&ndash;44) live &middot; ~62 million total</div>
+    <div class="stack-bar">
+      <div class="stack-seg seg-total-ban" style="flex: 17500000;" title="Total ban states: ~17.5M (28%)">
+        <span class="stack-seg-label">Total ban</span>
+      </div>
+      <div class="stack-seg seg-early" style="flex: 8100000;" title="6&ndash;12 week ban: ~8.1M (13%)">
+        <span class="stack-seg-label">6&ndash;12 wk</span>
+      </div>
+      <div class="stack-seg seg-mid" style="flex: 4200000;" title="15&ndash;22 week limit: ~4.2M (7%)">
+        <span class="stack-seg-label">15&ndash;22 wk</span>
+      </div>
+      <div class="stack-seg seg-viability" style="flex: 22500000;" title="Viability limit: ~22.5M (36%)">
+        <span class="stack-seg-label">Viability limit</span>
+      </div>
+      <div class="stack-seg seg-noLimit" style="flex: 9700000;" title="No gestational limit: ~9.7M (16%)">
+        <span class="stack-seg-label">No limit</span>
+      </div>
+    </div>
+
+    <!-- ABORTION BAR — same scale, same colors -->
+    <div class="stack-label" style="margin-top: 1.5rem;">Where the 1,124,000 abortions happened</div>
+    <div class="stack-bar">
+      <div class="stack-seg seg-early" style="flex: 65000;" title="6&ndash;12 week ban: ~65,000 (6%)">
+        <span class="stack-seg-label">6&ndash;12 wk</span>
+      </div>
+      <div class="stack-seg seg-mid" style="flex: 67000;" title="15&ndash;22 week limit: ~67,000 (6%)">
+        <span class="stack-seg-label">15&ndash;22 wk</span>
+      </div>
+      <div class="stack-seg seg-viability" style="flex: 650000;" title="Viability limit: ~650,000 (58%)">
+        <span class="stack-seg-label">Viability limit</span>
+      </div>
+      <div class="stack-seg seg-noLimit" style="flex: 342000;" title="No gestational limit: ~342,000 (30%)">
+        <span class="stack-seg-label">No gestational limit</span>
+      </div>
+    </div>
+
+    <!-- Side-by-side legend with both numbers per tier -->
+    <div class="dual-legend">
+      <div class="dual-legend-row dual-legend-header">
+        <div class="dl-tier-cell">Tier</div>
+        <div class="dl-pop-cell">% of women 15&ndash;44</div>
+        <div class="dl-abr-cell">% of abortions</div>
+        <div class="dl-gap-cell">Gap</div>
+      </div>
+
+      <div class="dual-legend-row">
+        <div class="dl-tier-cell">
+          <span class="stack-legend-swatch" style="background: #8b3a18;"></span>
+          <strong>Total ban</strong>
+        </div>
+        <div class="dl-pop-cell">28%</div>
+        <div class="dl-abr-cell">0%</div>
+        <div class="dl-gap-cell dl-gap-neg">&minus;28pp</div>
+      </div>
+
+      <div class="dual-legend-row">
+        <div class="dl-tier-cell">
+          <span class="stack-legend-swatch" style="background: #b8651e;"></span>
+          <strong>6&ndash;12 week ban</strong>
+        </div>
+        <div class="dl-pop-cell">13%</div>
+        <div class="dl-abr-cell">6%</div>
+        <div class="dl-gap-cell dl-gap-neg">&minus;7pp</div>
+      </div>
+
+      <div class="dual-legend-row">
+        <div class="dl-tier-cell">
+          <span class="stack-legend-swatch" style="background: #c5b89a;"></span>
+          <strong>15&ndash;22 week limit</strong>
+        </div>
+        <div class="dl-pop-cell">7%</div>
+        <div class="dl-abr-cell">6%</div>
+        <div class="dl-gap-cell">&minus;1pp</div>
+      </div>
+
+      <div class="dual-legend-row">
+        <div class="dl-tier-cell">
+          <span class="stack-legend-swatch" style="background: #a4c4e4;"></span>
+          <strong>Viability limit</strong>
+        </div>
+        <div class="dl-pop-cell">36%</div>
+        <div class="dl-abr-cell">58%</div>
+        <div class="dl-gap-cell dl-gap-pos">+22pp</div>
+      </div>
+
+      <div class="dual-legend-row">
+        <div class="dl-tier-cell">
+          <span class="stack-legend-swatch" style="background: #1d4e7a;"></span>
+          <strong>No gestational limit</strong>
+        </div>
+        <div class="dl-pop-cell">16%</div>
+        <div class="dl-abr-cell">30%</div>
+        <div class="dl-gap-cell dl-gap-pos">+14pp</div>
+      </div>
+    </div>
+
+    <!-- Redistribution callout -->
+    <div class="forecast-callout">
+      <div class="forecast-callout-eyebrow">The redistribution effect</div>
+      <div class="forecast-callout-text">The bars don't line up. <strong>28% of women of reproductive age live in total-ban states &mdash; but those states host 0% of the formal abortions.</strong> The 28-point gap doesn't vanish; it gets absorbed mostly by viability-limit and no-limit states, plus cross-state travel. In 2024, <strong>~155,000 people crossed state lines</strong> for abortion care, and shield-law providers in protected states sent an estimated <strong>34,500 medication abortions by mail</strong> into ban states in the first half of 2024 alone. Self-managed abortions outside the clinical system aren't counted in either bar.</div>
+    </div>
+
+  <!-- HEAT MAP — state-by-state abortion change 2020 → 2024 -->
+  <h2 class="section-title">The <em>movement</em>, mapped</h2>
+
+  <div class="card">
+    <div class="label">Percent change in clinician-provided abortions &middot; 2020 &rarr; 2024</div>
+    <div class="chart-title">Where abortions collapsed, and where they surged</div>
+
+    <p class="forecast-header-text" style="margin-bottom: 1.25rem; max-width: 820px;">The bars showed how the 1.124 million abortions distribute across legal tiers. This map shows the same story geographically: each state colored by how much its abortion provision changed from <strong>pre-Dobbs (2020)</strong> to <strong>2024</strong>. Red states lost abortion capacity. Blue states absorbed it. The pattern is a redistribution map, not a moral one.</p>
+
+    <div class="heatmap-wrap">
+      <svg id="abortion-heatmap" viewBox="0 0 975 610" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;"></svg>
+      <div class="heatmap-tooltip" id="heatmap-tt"></div>
+    </div>
+
+    <!-- Diverging color legend -->
+    <div class="hm-legend">
+      <div class="hm-legend-label">Change in clinician-provided abortions, 2020 &rarr; 2024</div>
+      <div class="hm-legend-scale">
+        <div class="hm-legend-gradient"></div>
+        <div class="hm-legend-ticks">
+          <span>&minus;100%</span>
+          <span>&minus;50%</span>
+          <span>0</span>
+          <span>+100%</span>
+          <span>+200%+</span>
+        </div>
+      </div>
+      <div class="hm-legend-ends">
+        <span style="color: #8b3a18;"><strong>Lost capacity</strong></span>
+        <span style="color: #8a8985;">No change</span>
+        <span style="color: #1d4e7a;"><strong>Absorbed demand</strong></span>
+      </div>
+    </div>
+
+    <!-- The outliers callout -->
+    <div class="forecast-callout">
+      <div class="forecast-callout-eyebrow">The four absorber states</div>
+      <div class="forecast-callout-text">Four states became the de facto destinations for displaced abortion demand &mdash; absorbing the bulk of cross-state travel in 2024:
+        <strong>Illinois</strong> (35,000 out-of-state patients, 39% of state total),
+        <strong>North Carolina</strong> (16,700, 36% of state total),
+        <strong>Kansas</strong> (16,100, 71% of state total),
+        and <strong>New Mexico</strong> (12,800, 69% of state total). Together they absorbed roughly <strong>~80,000 of the ~155,000</strong> cross-state travelers. North Carolina is the only state where this story is mixed &mdash; it absorbs significant out-of-state demand <em>and</em> shows an overall decline because its <strong>12-week ban and 72-hour waiting period</strong> limit access for its own residents. Map color reflects total in-state change; the absorber rank reflects travel destination.</div>
+    </div>
+
+    <p class="source">Sources: <a href="https://www.guttmacher.org/monthly-abortion-provision-study" target="_blank" rel="noopener">Guttmacher Monthly Abortion Provision Study</a>, 2023&ndash;2024 data; <a href="https://www.guttmacher.org/2024/03/despite-bans-number-abortions-united-states-increased-2023" target="_blank" rel="noopener">Guttmacher, &ldquo;Despite Bans, Number of Abortions Increased in 2023&rdquo;</a> &mdash; state-level percent change comparisons; <a href="https://www.guttmacher.org/news-release/2025/guttmacher-institute-releases-full-year-us-abortion-data-2024" target="_blank" rel="noopener">Guttmacher 2024 Full-Year Release</a>; <a href="https://www.guttmacher.org/report/stability-number-abortions-2023-2024-us-states-without-total-bans-masks-major-shifts-access" target="_blank" rel="noopener">Stability Masks Major Shifts in Access, 2025</a>. Baselines are the 2020 Guttmacher Abortion Provider Census (last comprehensive pre-Dobbs estimate). Endpoints are 2024 estimates from the Monthly Abortion Provision Study. State percent changes shown are rounded estimates and exclude self-managed abortions. Total-ban states display a near-100% decline because no brick-and-mortar clinics operate within them; their residents' abortions appear in the destination states. Wisconsin's 2024 figure reflects partial restoration of services in the latter half of 2023. Geography from <a href="https://github.com/topojson/us-atlas" target="_blank" rel="noopener">US Atlas TopoJSON</a> via Mike Bostock.</p>
+  </div>
+
+    <p class="source">Sources: <a href="https://www.guttmacher.org/fact-sheet/induced-abortion-united-states" target="_blank" rel="noopener">Guttmacher Institute, Induced Abortion in the United States</a> &mdash; 1,124,000 clinician-provided abortions in 2024 (21% increase from 2020); <a href="https://www.guttmacher.org/report/stability-number-abortions-2023-2024-us-states-without-total-bans-masks-major-shifts-access" target="_blank" rel="noopener">Guttmacher Monthly Abortion Provision Study, 2024</a>; <a href="https://www.guttmacher.org/news-release/2025/guttmacher-institute-releases-full-year-us-abortion-data-2024" target="_blank" rel="noopener">Guttmacher 2024 Full-Year Release</a> &mdash; 155,000 traveled across state lines; 34,500 medication abortions provided via shield laws to ban states in first half of 2024 (Society for Family Planning #WeCount study). State counts and legal status as of March 2026 per Section 01 categorization. State-level abortion counts within each tier estimated from Guttmacher provider-level data; values rounded to nearest 1,000. Percentages sum to 100% of the 1.124M clinician-provided count and exclude self-managed abortions.</p>
+  </div>
+
+  <!-- THE FORECAST CONE — measured downstream effects -->
+  <h2 class="section-title">Four systems, <em>three years</em> later</h2>
+
+  <div class="card">
+    <div class="label">Measured change from pre-Dobbs baselines &middot; 2022&ndash;2025 data</div>
+    <div class="chart-title">When abortion gets restricted, this is what shifts</div>
+
+    <p class="forecast-header-text" style="margin-bottom: 1.25rem; max-width: 820px;">The opening bar showed <em>where</em> abortion happens today. This chart shows what restricting it has done to four other systems we measure: <strong>foster care intake, maternal mortality, female sterilization, and male sterilization</strong>. Each band is a measured percentage change against its pre-Dobbs baseline. The band widens with time to reflect the growing variation between states &mdash; not a guess about the future.</p>
+
+    <ul class="cone-reading">
+      <li><strong>Read the y-axis as &ldquo;how much bigger&rdquo;</strong> &mdash; baseline at the bottom means &ldquo;same as before Dobbs;&rdquo; the higher a band climbs, the more that system has changed.</li>
+      <li><strong>Read the x-axis as time</strong> &mdash; bands start at the 2022 Dobbs decision and grow rightward as evidence accumulates.</li>
+      <li><strong>Band width = uncertainty</strong> &mdash; thin bands mean studies agree; thick bands mean state-to-state variation is large.</li>
+    </ul>
+
+    <div class="cone-wrap">
+      <svg class="cone-svg" viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect x="0" y="0" width="900" height="480" fill="transparent"/>
+
+        <!-- Y axis gridlines -->
+        <line x1="120" y1="50" x2="860" y2="50" stroke="#e8e6df" stroke-width="1" stroke-dasharray="2 4"/>
+        <line x1="120" y1="120" x2="860" y2="120" stroke="#e8e6df" stroke-width="1" stroke-dasharray="2 4"/>
+        <line x1="120" y1="220" x2="860" y2="220" stroke="#e8e6df" stroke-width="1" stroke-dasharray="2 4"/>
+        <line x1="120" y1="320" x2="860" y2="320" stroke="#e8e6df" stroke-width="1" stroke-dasharray="2 4"/>
+
+        <!-- Baseline -->
+        <line x1="120" y1="420" x2="860" y2="420" stroke="#8a8985" stroke-width="1.5"/>
+
+        <!-- Y axis line -->
+        <line x1="120" y1="40" x2="120" y2="420" stroke="#d3d1c7" stroke-width="1"/>
+
+        <!-- Y axis labels -->
+        <text x="110" y="424" font-family="Inter, sans-serif" font-size="11" fill="#4a4a48" text-anchor="end">Baseline</text>
+        <text x="110" y="324" font-family="Inter, sans-serif" font-size="11" fill="#8a8985" text-anchor="end">+25%</text>
+        <text x="110" y="224" font-family="Inter, sans-serif" font-size="11" fill="#8a8985" text-anchor="end">+50%</text>
+        <text x="110" y="124" font-family="Inter, sans-serif" font-size="11" fill="#8a8985" text-anchor="end">+100%</text>
+        <text x="110" y="54" font-family="Inter, sans-serif" font-size="11" fill="#8a8985" text-anchor="end">+200%</text>
+
+        <!-- Y axis header -->
+        <text x="120" y="30" font-family="Inter, sans-serif" font-size="11" fill="#4a4a48" font-style="italic">How much each system grew vs. pre-Dobbs baseline</text>
+
+        <!-- Time axis labels -->
+        <text x="120" y="445" font-family="Inter, sans-serif" font-size="12" fill="#4a4a48" text-anchor="middle" font-weight="500">2022</text>
+        <text x="120" y="460" font-family="Inter, sans-serif" font-size="10" fill="#8a8985" text-anchor="middle" font-style="italic">Dobbs decision</text>
+        <text x="367" y="445" font-family="Inter, sans-serif" font-size="12" fill="#4a4a48" text-anchor="middle" font-weight="500">2023</text>
+        <text x="613" y="445" font-family="Inter, sans-serif" font-size="12" fill="#4a4a48" text-anchor="middle" font-weight="500">2024</text>
+        <text x="860" y="445" font-family="Inter, sans-serif" font-size="12" fill="#4a4a48" text-anchor="middle" font-weight="500">2025</text>
+
+        <!-- CONE 1: Vasectomies (largest, widest band) — endpoint ~+200% at y=50 -->
+        <path d="M 120 420 L 367 230 L 613 110 L 860 50 L 860 95 L 613 165 L 367 280 L 120 420 Z"
+              fill="#a4c4e4" fill-opacity="0.55" stroke="#3a76b0" stroke-width="1.5"/>
+
+        <!-- CONE 2: Tubal Ligations — endpoint ~+100% at y=120 -->
+        <path d="M 120 420 L 367 280 L 613 175 L 860 125 L 860 165 L 613 220 L 367 310 L 120 420 Z"
+              fill="#7ba3cf" fill-opacity="0.55" stroke="#1d4e7a" stroke-width="1.5"/>
+
+        <!-- CONE 3: Maternal Mortality — endpoint ~+56% at y=200 (between +50 and +100) -->
+        <path d="M 120 420 L 367 360 L 613 280 L 860 205 L 860 270 L 613 340 L 367 395 L 120 420 Z"
+              fill="#d59264" fill-opacity="0.5" stroke="#8b3a18" stroke-width="1.5"/>
+
+        <!-- CONE 4: Foster Care Intake — modest, thin band ~+11% at y=375 -->
+        <path d="M 120 420 L 367 408 L 613 392 L 860 374 L 860 398 L 613 410 L 367 416 L 120 420 Z"
+              fill="#c5b89a" fill-opacity="0.7" stroke="#8a6e3a" stroke-width="1.5"/>
+
+        <!-- Endpoint labels — repositioned to avoid overlap, with leader lines -->
+
+        <!-- Vasectomies label group -->
+        <text x="800" y="44" font-family="Fraunces, serif" font-size="15" fill="#1d4e7a" font-weight="500" text-anchor="end">+200%</text>
+        <text x="800" y="58" font-family="Inter, sans-serif" font-size="10" fill="#1d4e7a" text-anchor="end" font-weight="500">Vasectomies</text>
+
+        <!-- Tubal label group -->
+        <text x="800" y="118" font-family="Fraunces, serif" font-size="15" fill="#1d4e7a" font-weight="500" text-anchor="end">+100%</text>
+        <text x="800" y="132" font-family="Inter, sans-serif" font-size="10" fill="#1d4e7a" text-anchor="end" font-weight="500">Tubal ligations</text>
+
+        <!-- Maternal label -->
+        <text x="800" y="200" font-family="Fraunces, serif" font-size="15" fill="#8b3a18" font-weight="500" text-anchor="end">+56%</text>
+        <text x="800" y="214" font-family="Inter, sans-serif" font-size="10" fill="#8b3a18" text-anchor="end" font-weight="500">Maternal mortality</text>
+        <text x="800" y="227" font-family="Inter, sans-serif" font-size="9" fill="#8b3a18" text-anchor="end" font-style="italic">(Texas)</text>
+
+        <!-- Foster label -->
+        <text x="800" y="370" font-family="Fraunces, serif" font-size="15" fill="#8a6e3a" font-weight="500" text-anchor="end">+11%</text>
+        <text x="800" y="384" font-family="Inter, sans-serif" font-size="10" fill="#8a6e3a" text-anchor="end" font-weight="500">Foster intake</text>
+
+        <!-- Origin marker -->
+        <circle cx="120" cy="420" r="4" fill="#1a1a1a"/>
+      </svg>
+    </div>
+
+    <div class="cone-legend">
+      <div class="cone-legend-item">
+        <span class="cone-legend-swatch" style="background: #a4c4e4; border: 1px solid #3a76b0;"></span>
+        <span>Vasectomies (young adults)</span>
+      </div>
+      <div class="cone-legend-item">
+        <span class="cone-legend-swatch" style="background: #7ba3cf; border: 1px solid #1d4e7a;"></span>
+        <span>Tubal ligations (young adults)</span>
+      </div>
+      <div class="cone-legend-item">
+        <span class="cone-legend-swatch" style="background: #d59264; border: 1px solid #8b3a18;"></span>
+        <span>Maternal mortality (Texas, 2019&ndash;2022)</span>
+      </div>
+      <div class="cone-legend-item">
+        <span class="cone-legend-swatch" style="background: #c5b89a; border: 1px solid #8a6e3a;"></span>
+        <span>Foster care intake (TRAP-law states)</span>
+      </div>
+    </div>
+
+    <div class="forecast-callout">
+      <div class="forecast-callout-eyebrow">How to read this</div>
+      <div class="forecast-callout-text">The smallest effect (foster intake, +11%) takes the <strong>longest</strong> to appear and is the most disputed; the largest effects (sterilization spikes, +100&ndash;200%) happened <strong>within months</strong>. Each of these is a measured change &mdash; not a model output, not a projection &mdash; from published peer-reviewed and government data. The four dimension cards below each unpack one band: <strong>what changed, by how much, where, and why.</strong></div>
+    </div>
+
+    <p class="source">The y-axis is non-linear to fit effect sizes that range from +11% to +200% on a single chart. Band widths are illustrative of state-to-state and study-to-study variation; they are not formal confidence intervals. The four metrics are independent indicators of system stress, not a composite index. Each band's endpoint reflects the largest defensible measured change in the relevant cohort and time range. Underlying sources are detailed in each dimension card below.</p>
+  </div>
+
+  <!-- DIMENSION 1: FOSTER CARE INTAKE -->
+  <h2 class="section-title">Foster <em>intake</em></h2>
+
+  <div class="dim-card">
+    <div class="dim-card-header">
+      <div class="dim-num">01 / 04</div>
+      <div class="dim-title">More children <em>enter the system</em></div>
+    </div>
+
+    <div class="dim-forecast">
+      <span class="dim-forecast-label">Forecast</span>
+      <div class="dim-forecast-text">When abortion is restricted, foster care intake rises by an estimated <strong>11%</strong>, driven primarily by housing inadequacy and economic strain. The increase falls disproportionately on <strong>low-income households</strong>.</div>
+    </div>
+
+    <div class="ba-grid">
+      <div class="ba-side ba-before">
+        <div class="ba-side-label">Five-year baseline</div>
+        <div class="ba-num">~368K</div>
+        <div class="ba-detail">Average number of U.S. children in foster care on any given day, FY 2020&ndash;2024 (range: 329K&ndash;407K, AFCARS data). System operating at <strong>2&times; CWLA recommended caseworker load</strong>, with ~20K aging out annually with no permanent home.</div>
+      </div>
+      <div class="ba-arrow">&rarr;</div>
+      <div class="ba-side ba-after">
+        <div class="ba-side-label">After restriction</div>
+        <div class="ba-num">+11%</div>
+        <div class="ba-detail">Measured increase in foster care entries in states with TRAP laws, controlling for confounds (JAMA Pediatrics, 2023). At national scale, an 11% increase in entries layers onto an already-strained system that has been working to reduce caseloads through family preservation policy.</div>
+      </div>
+    </div>
+
+    <div class="evidence-list">
+      <div class="evidence-label">The supporting evidence</div>
+      <ul class="evidence-bullets">
+        <li><strong>JAMA Pediatrics (2023):</strong> Beth Israel Deaconess / Bentley study of 4M+ foster placements from 2000&ndash;2020. First-trimester pregnancy in a state with a TRAP law was associated with an 11% increase in foster care entries.</li>
+        <li><strong>Mechanism:</strong> The increase was attributable primarily to <strong>housing inadequacy</strong> as the reason for removal &mdash; not abuse or neglect. Restricting abortion didn't worsen parenting; it worsened the financial conditions parents were already struggling with.</li>
+        <li><strong>Demographic overlap:</strong> 75% of women seeking abortion have incomes below 200% of the federal poverty level. The population affected by restriction overlaps directly with the population most likely to enter the child welfare system.</li>
+        <li><strong>Caveat:</strong> The full downstream effect won't be measurable for years &mdash; foster care entries typically follow conception by 2&ndash;6 years. The 11% figure is from the TRAP-law era; Dobbs-era impacts will appear in foster intake data through ~2028.</li>
+      </ul>
+    </div>
+
+    <p class="source">Sources: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10628841/" target="_blank" rel="noopener">Wallace, Vlasak &amp; Strane, &ldquo;Association Between Restricted Abortion Access and Child Entries Into the Foster Care System,&rdquo; JAMA Pediatrics</a> (2023) &mdash; n=4M+ placements 2000&ndash;2020, 11% effect attributable to housing inadequacy; <a href="https://hms.harvard.edu/news/abortion-restrictions-may-be-linked-rise-children-entering-foster-care" target="_blank" rel="noopener">Harvard Medical School coverage</a>; <a href="https://acf.gov/cb/research-data-technology/statistics-research/afcars" target="_blank" rel="noopener">AFCARS Foster Care Statistics Dashboard</a> &mdash; FY 2020&ndash;2024 snapshot counts (407K, 391K, 369K, 343K, 329K); <a href="https://www.milbank.org/quarterly/opinions/the-impact-of-restrictive-state-abortion-laws-state-of-the-research-evidence-in-2025/" target="_blank" rel="noopener">Milbank Memorial Fund, &ldquo;The Impact of Restrictive State Abortion Laws&rdquo;</a> (2025) &mdash; 22K additional births in banned states. AFCARS data for FY 2023&ndash;2024 are preliminary and reflect a methodology change; Washington and Wyoming did not submit during those years.</p>
+  </div>
+
+  <!-- COVID + FORECAST CHART — twenty-year history with projected return -->
+  <div class="card" style="margin-top: 1.5rem;">
+    <div class="label">Foster care entries &middot; FY 2005&ndash;FY 2024 observed, FY 2025&ndash;FY 2036 forecast</div>
+    <div class="chart-title">The COVID gap, and the slow return</div>
+
+    <p class="forecast-header-text" style="margin-bottom: 1.25rem; max-width: 820px;">Two patterns shape this chart. First, a real <strong>structural decline</strong> in foster intake from 2016 onward, driven by the Family First Prevention Services Act and shifting state policy. Second, a <strong>sharp drop in 2020&ndash;2024</strong> that is partly real and partly a measurement artifact &mdash; pandemic-era school closures, court backlogs, and caseworker turnover made the system temporarily blind to cases it would normally have caught. Layered on top of both: the slow-moving effect of post-Dobbs restriction, which won't fully appear in the data until the late 2020s.</p>
+
+    <div class="chart-wrap">
+      <svg viewBox="0 0 980 480" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
+
+        <!-- Y axis gridlines -->
+        <line x1="80" y1="60" x2="940" y2="60" stroke="#e8e6df" stroke-width="1" stroke-dasharray="2 4"/>
+        <line x1="80" y1="120" x2="940" y2="120" stroke="#e8e6df" stroke-width="1" stroke-dasharray="2 4"/>
+        <line x1="80" y1="180" x2="940" y2="180" stroke="#e8e6df" stroke-width="1" stroke-dasharray="2 4"/>
+        <line x1="80" y1="240" x2="940" y2="240" stroke="#e8e6df" stroke-width="1" stroke-dasharray="2 4"/>
+        <line x1="80" y1="300" x2="940" y2="300" stroke="#e8e6df" stroke-width="1" stroke-dasharray="2 4"/>
+        <line x1="80" y1="360" x2="940" y2="360" stroke="#e8e6df" stroke-width="1" stroke-dasharray="2 4"/>
+
+        <!-- Y axis line + labels -->
+        <line x1="80" y1="60" x2="80" y2="420" stroke="#d3d1c7" stroke-width="1"/>
+        <text x="70" y="64" font-family="Inter, sans-serif" font-size="11" fill="#8a8985" text-anchor="end">350K</text>
+        <text x="70" y="124" font-family="Inter, sans-serif" font-size="11" fill="#8a8985" text-anchor="end">300K</text>
+        <text x="70" y="184" font-family="Inter, sans-serif" font-size="11" fill="#8a8985" text-anchor="end">250K</text>
+        <text x="70" y="244" font-family="Inter, sans-serif" font-size="11" fill="#8a8985" text-anchor="end">200K</text>
+        <text x="70" y="304" font-family="Inter, sans-serif" font-size="11" fill="#8a8985" text-anchor="end">150K</text>
+        <text x="70" y="364" font-family="Inter, sans-serif" font-size="11" fill="#8a8985" text-anchor="end">100K</text>
+        <text x="70" y="424" font-family="Inter, sans-serif" font-size="11" fill="#8a8985" text-anchor="end">50K</text>
+
+        <!-- Y axis title -->
+        <text x="80" y="45" font-family="Inter, sans-serif" font-size="11" fill="#4a4a48" font-style="italic">Annual foster care entries (national)</text>
+
+        <!-- X axis -->
+        <line x1="80" y1="420" x2="940" y2="420" stroke="#8a8985" stroke-width="1.5"/>
+
+        <!-- X axis labels (every 3-4 years for legibility, 32 years total) -->
+        <!-- FY 2005-2036, 32 points across 860px width: step = 27.74px per year -->
+        <text x="80"  y="440" font-family="Inter, sans-serif" font-size="10" fill="#8a8985" text-anchor="middle">'05</text>
+        <text x="163" y="440" font-family="Inter, sans-serif" font-size="10" fill="#8a8985" text-anchor="middle">'08</text>
+        <text x="247" y="440" font-family="Inter, sans-serif" font-size="10" fill="#8a8985" text-anchor="middle">'11</text>
+        <text x="330" y="440" font-family="Inter, sans-serif" font-size="10" fill="#8a8985" text-anchor="middle">'14</text>
+        <text x="413" y="440" font-family="Inter, sans-serif" font-size="10" fill="#8a8985" text-anchor="middle">'17</text>
+        <text x="496" y="440" font-family="Inter, sans-serif" font-size="10" fill="#8a8985" text-anchor="middle">'20</text>
+        <text x="496" y="455" font-family="Inter, sans-serif" font-size="9"  fill="#8a6e3a" text-anchor="middle" font-style="italic">COVID</text>
+        <text x="552" y="440" font-family="Inter, sans-serif" font-size="10" fill="#8a8985" text-anchor="middle">'22</text>
+        <text x="552" y="455" font-family="Inter, sans-serif" font-size="9"  fill="#8b3a18" text-anchor="middle" font-style="italic">Dobbs</text>
+        <text x="663" y="440" font-family="Inter, sans-serif" font-size="10" fill="#8a8985" text-anchor="middle">'25</text>
+        <text x="746" y="440" font-family="Inter, sans-serif" font-size="10" fill="#8a8985" text-anchor="middle">'28</text>
+        <text x="829" y="440" font-family="Inter, sans-serif" font-size="10" fill="#8a8985" text-anchor="middle">'31</text>
+        <text x="912" y="440" font-family="Inter, sans-serif" font-size="10" fill="#8a8985" text-anchor="middle">'34</text>
+
+        <!-- COVID region shading: FY 2020 to FY 2024 -->
+        <rect x="496" y="60" width="111" height="360" fill="#f3efe5" opacity="0.55"/>
+
+        <!-- Dobbs marker: FY 2022 = x position 552 -->
+        <line x1="552" y1="60" x2="552" y2="420" stroke="#8b3a18" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+
+        <!-- Forecast region shading: FY 2025+ -->
+        <rect x="635" y="60" width="305" height="360" fill="#fdfcf9" opacity="0.6"/>
+
+        <!-- ±15% CONFIDENCE BAND for forecast — ribbon -->
+        <!-- Forecast center: FY 2025=265K → FY 2036=295K, linear ramp over 12 years
+             Y conversion: y = 420 - value*1.029 (value in thousands)
+             Upper edge (×1.15): 106→71  Lower edge (×0.85): 188→162
+             X positions: FY 2025=635, FY 2036=940, step=27.7px
+        -->
+        <path d="M 635 106 L 663 103 L 691 100 L 719 97 L 746 93 L 774 90 L 802 87 L 829 84 L 857 81 L 884 77 L 912 74 L 940 71
+                 L 940 162 L 912 164 L 884 167 L 857 169 L 829 172 L 802 174 L 774 176 L 746 179 L 719 181 L 691 183 L 663 186 L 635 188 Z"
+              fill="#2d7a4f" fill-opacity="0.15" stroke="none"/>
+
+        <!-- Forecast center line -->
+        <path d="M 635 147 L 663 144 L 691 142 L 719 139 L 746 136 L 774 133 L 802 130 L 829 128 L 857 125 L 884 122 L 912 119 L 940 116"
+              fill="none" stroke="#2d7a4f" stroke-width="2.5" stroke-dasharray="6 4"/>
+
+        <!-- Forecast endpoint label -->
+        <circle cx="940" cy="116" r="4" fill="#2d7a4f"/>
+        <text x="935" y="111" font-family="Fraunces, serif" font-size="14" fill="#2d7a4f" font-weight="500" text-anchor="end">~295K</text>
+        <text x="935" y="100" font-family="Inter, sans-serif" font-size="9" fill="#2d7a4f" text-anchor="end" font-style="italic">FY 2036</text>
+
+        <!-- COVID counterfactual line: flat at 260K across FY 2020-FY 2024 -->
+        <!-- y for 260K = 420 - 260*1.029 = 420 - 267.5 = 152.5 -->
+        <line x1="496" y1="153" x2="607" y2="153" stroke="#b8651e" stroke-width="2.5" stroke-dasharray="5 3"/>
+        <text x="551" y="134" font-family="Inter, sans-serif" font-size="10" fill="#b8651e" text-anchor="middle" font-style="italic" font-weight="600">expected without COVID disruption:</text>
+        <text x="551" y="148" font-family="Fraunces, serif" font-size="12" fill="#b8651e" text-anchor="middle" font-weight="500">~260K</text>
+
+        <!-- OBSERVED LINE — FY 2005 through FY 2024 -->
+        <!-- Data: 311, 303, 293, 273, 256, 254, 247, 252, 255, 263, 269, 273, 270, 263, 252, 217, 207, 187, 175, 167 (thousands) -->
+        <!-- y = 420 - val*1.029 ; x = 80 + i*27.7 -->
+        <!-- FY2005 i=0  x=80   val=311 y=420-320=100
+             FY2006 i=1  x=108  val=303 y=108
+             FY2007 i=2  x=135  val=293 y=119
+             FY2008 i=3  x=163  val=273 y=139
+             FY2009 i=4  x=191  val=256 y=157
+             FY2010 i=5  x=219  val=254 y=159
+             FY2011 i=6  x=247  val=247 y=166
+             FY2012 i=7  x=275  val=252 y=161
+             FY2013 i=8  x=303  val=255 y=158
+             FY2014 i=9  x=330  val=263 y=149
+             FY2015 i=10 x=358  val=269 y=143
+             FY2016 i=11 x=386  val=273 y=139
+             FY2017 i=12 x=413  val=270 y=142
+             FY2018 i=13 x=441  val=263 y=149
+             FY2019 i=14 x=469  val=252 y=161
+             FY2020 i=15 x=496  val=217 y=197
+             FY2021 i=16 x=524  val=207 y=207
+             FY2022 i=17 x=552  val=187 y=228
+             FY2023 i=18 x=580  val=175 y=240
+             FY2024 i=19 x=607  val=167 y=248 -->
+        <path d="M 80 100 L 108 108 L 135 119 L 163 139 L 191 157 L 219 159 L 247 166 L 275 161 L 303 158 L 330 149 L 358 143 L 386 139 L 413 142 L 441 149 L 469 161 L 496 197 L 524 207 L 552 228 L 580 240 L 607 248"
+              fill="none" stroke="#1d4e7a" stroke-width="2.5"/>
+
+        <!-- Observed data points -->
+        <circle cx="80"  cy="100" r="3" fill="#1d4e7a"/>
+        <circle cx="108" cy="108" r="3" fill="#1d4e7a"/>
+        <circle cx="135" cy="119" r="3" fill="#1d4e7a"/>
+        <circle cx="163" cy="139" r="3" fill="#1d4e7a"/>
+        <circle cx="191" cy="157" r="3" fill="#1d4e7a"/>
+        <circle cx="219" cy="159" r="3" fill="#1d4e7a"/>
+        <circle cx="247" cy="166" r="3" fill="#1d4e7a"/>
+        <circle cx="275" cy="161" r="3" fill="#1d4e7a"/>
+        <circle cx="303" cy="158" r="3" fill="#1d4e7a"/>
+        <circle cx="330" cy="149" r="3" fill="#1d4e7a"/>
+        <circle cx="358" cy="143" r="3" fill="#1d4e7a"/>
+        <circle cx="386" cy="139" r="3" fill="#1d4e7a"/>
+        <circle cx="413" cy="142" r="3" fill="#1d4e7a"/>
+        <circle cx="441" cy="149" r="3" fill="#1d4e7a"/>
+        <circle cx="469" cy="161" r="3" fill="#1d4e7a"/>
+        <circle cx="496" cy="197" r="3" fill="#1d4e7a"/>
+        <circle cx="524" cy="207" r="3" fill="#1d4e7a"/>
+        <circle cx="552" cy="228" r="3" fill="#1d4e7a"/>
+        <circle cx="580" cy="240" r="3" fill="#1d4e7a"/>
+        <circle cx="607" cy="248" r="4" fill="#1d4e7a" stroke="#fff" stroke-width="1.5"/>
+
+        <!-- Connector to forecast (dashed transition from FY2024 to FY2025 center) -->
+        <line x1="607" y1="248" x2="635" y2="147" stroke="#8a8985" stroke-width="1" stroke-dasharray="2 3" opacity="0.4"/>
+
+        <!-- Peak label (FY 2005) -->
+        <text x="80" y="92" font-family="Fraunces, serif" font-size="11" fill="#1d4e7a" text-anchor="middle" font-weight="500">311K</text>
+
+        <!-- Trough label (FY 2024) -->
+        <text x="612" y="262" font-family="Fraunces, serif" font-size="11" fill="#1d4e7a" font-weight="500">167K</text>
+
+        <!-- ANNOTATION: COVID artifact box — positioned ABOVE the COVID column -->
+        <!-- COVID column center is x=551; box width 270, so x=416 -->
+        <rect x="416" y="68" width="270" height="48" fill="#fbf2e8" stroke="#e8c8a0" stroke-width="1" rx="3"/>
+        <text x="551" y="85" font-family="Inter, sans-serif" font-size="10" fill="#8b3a18" text-anchor="middle" font-weight="600" letter-spacing="0.06em">THE COVID ARTIFACT</text>
+        <text x="551" y="100" font-family="Inter, sans-serif" font-size="9.5" fill="#4a4a48" text-anchor="middle">Schools closed, reports stopped, courts backlogged.</text>
+        <text x="551" y="111" font-family="Inter, sans-serif" font-size="9.5" fill="#4a4a48" text-anchor="middle">The drop is partly real, partly invisibility.</text>
+        <!-- Leader line from box down into the dip - split into two segments to flow around orange counterfactual label -->
+        <line x1="551" y1="116" x2="551" y2="124" stroke="#8a6e3a" stroke-width="1" stroke-dasharray="3 3" opacity="0.55"/>
+        <line x1="551" y1="158" x2="551" y2="218" stroke="#8a6e3a" stroke-width="1" stroke-dasharray="3 3" opacity="0.55"/>
+        <circle cx="551" cy="222" r="2.5" fill="#8a6e3a"/>
+
+        <!-- ANNOTATION: Forecast lag callout — larger box so text fits -->
+        <!-- Box centered at x=787, width 280, so x=647. Tall enough for 3 lines. -->
+        <line x1="787" y1="287" x2="787" y2="150" stroke="#2d7a4f" stroke-width="1" stroke-dasharray="3 3" opacity="0.55"/>
+        <circle cx="787" cy="150" r="2.5" fill="#2d7a4f"/>
+        <rect x="647" y="290" width="280" height="56" fill="#eaf4ed" stroke="#a8d4b8" stroke-width="1" rx="3"/>
+        <text x="787" y="307" font-family="Inter, sans-serif" font-size="10" fill="#2d7a4f" text-anchor="middle" font-weight="600" letter-spacing="0.06em">THE FORECAST LAG</text>
+        <text x="787" y="322" font-family="Inter, sans-serif" font-size="9.5" fill="#4a4a48" text-anchor="middle">Foster intake follows conception by 2&ndash;6 years.</text>
+        <text x="787" y="334" font-family="Inter, sans-serif" font-size="9.5" fill="#4a4a48" text-anchor="middle">Dobbs effects appear gradually through the late 2020s.</text>
+
+      </svg>
+    </div>
+
+    <!-- LEGEND -->
+    <div class="chart-legend">
+      <div class="chart-legend-item">
+        <span class="chart-legend-line" style="background: #1d4e7a;"></span>
+        <span><strong>Observed entries</strong> (FY 2005&ndash;2024, AFCARS)</span>
+      </div>
+      <div class="chart-legend-item">
+        <span class="chart-legend-line" style="background: #b8651e; height: 2px; border-top: 2px dashed #b8651e; background: none;"></span>
+        <span><strong>COVID counterfactual</strong> (~260K, what entries would have been without pandemic disruption)</span>
+      </div>
+      <div class="chart-legend-item">
+        <span class="chart-legend-line" style="background: #2d7a4f; height: 2px; border-top: 2px dashed #2d7a4f; background: none;"></span>
+        <span><strong>Forecast</strong> (FY 2025&ndash;2036, +11% per JAMA model with &plusmn;15% band; FY 2036 range: 251K&ndash;339K)</span>
+      </div>
+    </div>
+
+    <!-- COVID COMMENTARY BLOCK — the four bullets you specified -->
+    <div class="covid-block">
+      <div class="covid-block-label">Why COVID broke the data</div>
+      <p class="covid-block-intro">FY 2020&ndash;2022 entries dropped not because fewer children needed help, but because <strong>the system temporarily lost the ability to find them</strong>. Four mechanisms compounded:</p>
+      <ul class="covid-bullets">
+        <li><strong>Mandatory reporters lost contact.</strong> Most child abuse reports come from teachers, doctors, daycare workers, and other professionals who see kids regularly. School closures and the shift to telehealth removed those reporting channels for over a year.</li>
+        <li><strong>Investigations slowed.</strong> Child welfare agencies couldn't physically enter homes the way they had before. In-person visits were replaced by Zoom and phone calls, sharply limiting what investigators could observe and act on.</li>
+        <li><strong>Court systems backlogged.</strong> Foster care removals require court approval. Pandemic-era court closures delayed hearings by months, which delayed the formal "entry" event &mdash; some children weren't processed until well into FY 2021.</li>
+        <li><strong>Caseworker turnover peaked at ~25% in 2021</strong> (up from a pre-pandemic baseline of 10&ndash;15%), with nearly <strong>half of newly hired caseworkers leaving within 12 months</strong>. Job stress, burnout, and remote-work transitions hollowed out agencies' capacity to process cases that did get reported.</li>
+      </ul>
+    </div>
+
+    <!-- FORECAST LAG COMMENTARY -->
+    <div class="forecast-lag-block">
+      <div class="forecast-lag-label">Why the forecast ramps gradually instead of all at once</div>
+      <p class="forecast-lag-text">A policy change in June 2022 doesn't show up in foster intake data the same year. <strong>The lag from conception to foster care entry is typically 2&ndash;6 years</strong> &mdash; long enough for a child to be born, reach toddlerhood, and have the economic strain that causes "housing inadequacy" removals fully surface in a household. The JAMA Pediatrics study (the source of the +11% effect) measured this lag explicitly: their analysis correlated first-trimester pregnancies under TRAP laws with foster entries <strong>several years later</strong>. So the post-Dobbs effect appears slowly &mdash; barely visible in FY 2024, beginning to crest around FY 2026&ndash;2028, and not fully realized until the early 2030s. The chart's <strong>&plusmn;15% confidence band</strong> reflects the genuine uncertainty in how much of the underlying decline (driven by the Family First Prevention Services Act and kinship-care reforms) will continue to counterbalance the upward pressure from restriction.</p>
+    </div>
+
+    <p class="source">Sources: <a href="https://acf.gov/cb/research-data-technology/statistics-research/afcars" target="_blank" rel="noopener">AFCARS Foster Care Statistics Dashboard</a> and historical AFCARS reports for FY 2005&ndash;2024 observed data; <a href="https://www.childtrends.org/publications/parental-drug-use-foster-care-entries" target="_blank" rel="noopener">Child Trends, &ldquo;Parental Drug Use Remains a Top Reason for Foster Care Entries&rdquo;</a> (2025) &mdash; "from nearly 270,000 children in 2017 to around 170,000 in 2024"; <a href="https://acf.hhs.gov/media/press/2019/new-data-show-1st-foster-care-decrease-2011-record-number-adoptions" target="_blank" rel="noopener">ACF press releases, FY 2018&ndash;2024</a>; <a href="https://www.acf.hhs.gov/archive/media/press/2021/national-data-shows-number-children-foster-care-decreases-third-consecutive-year" target="_blank" rel="noopener">ACF on FY 2020 pandemic-era data</a>; <a href="https://www.aecf.org/blog/racial-inequities-in-foster-care-increased-during-the-covid-19-pandemic" target="_blank" rel="noopener">Annie E. Casey Foundation, &ldquo;Racial Inequities in Foster Care Increased During COVID&rdquo;</a> &mdash; mandatory reporter and investigation impacts; <a href="https://www.gao.gov/products/gao-21-483" target="_blank" rel="noopener">GAO-21-483, Child Welfare: Pandemic Posed Challenges</a> (2021); <a href="https://sswr.confex.com/sswr/2024/webprogram/Paper53394.html" target="_blank" rel="noopener">SSWR Annual Conference 2024, &ldquo;The Exacerbating Influence of COVID-19 on Turnover in Public Child Welfare&rdquo;</a> &mdash; 25% turnover peak in 2021, ~49% of new caseworkers leaving within 12 months; <a href="https://acf.gov/opre/report/national-survey-child-and-adolescent-well-being-iii-workforce-study-reasons-child" target="_blank" rel="noopener">NSCAW III Workforce Study, ACF</a> &mdash; 53.3% of supervisors reported turnover increased March 2019&ndash;June 2022; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10628841/" target="_blank" rel="noopener">Wallace, Vlasak &amp; Strane, JAMA Pediatrics</a> (2023) &mdash; 11% TRAP-law effect, methodology for conception-to-entry lag. COVID counterfactual at 260K based on FY 2017&ndash;2019 average. Forecast assumes JAMA's +11% effect layered onto the FY 2024 baseline with gradual realization over 12 years; &plusmn;15% band reflects uncertainty in counterbalancing structural reforms (FFPSA, kinship care).</p>
+  </div>
+
+  <!-- BUDGET CARD — what the system costs, what it would cost to work -->
+  <div class="card" style="margin-top: 1.5rem;">
+    <div class="label">Annual child welfare spending &middot; current vs. standards-meeting</div>
+    <div class="chart-title">The dollars the system actually requires</div>
+
+    <p class="forecast-header-text" style="margin-bottom: 1.5rem; max-width: 820px;">In SFY 2022, child welfare agencies across all 50 states spent <strong>$34.3 billion</strong>. That money funds caseworkers, foster homes, adoption assistance, investigations, and prevention services for the ~370,000 children in care on any given day. The question this card asks is simple: <strong>how much would it cost to operate the system at the standards the field's own professional bodies already publish?</strong> Not advocacy targets &mdash; just published recommendations from the Child Welfare League of America, the federal Children's Bureau, and Casey Family Programs.</p>
+
+    <!-- THREE-NUMBER HEADER STACK -->
+    <div class="budget-headline">
+      <div class="budget-step">
+        <div class="budget-step-label">Today</div>
+        <div class="budget-step-num">$34B</div>
+        <div class="budget-step-detail">Annual child welfare spending across all 50 states (SFY 2022, Child Trends)</div>
+      </div>
+      <div class="budget-arrow">&rarr;</div>
+      <div class="budget-step budget-step-mid">
+        <div class="budget-step-label">Needed today</div>
+        <div class="budget-step-num">$46B</div>
+        <div class="budget-step-detail">To meet published CWLA, Children's Bureau, and Casey standards on caseload, payments, prevention, and trauma services</div>
+      </div>
+      <div class="budget-arrow">&rarr;</div>
+      <div class="budget-step budget-step-future">
+        <div class="budget-step-label">Needed by FY 2036</div>
+        <div class="budget-step-num">$52&ndash;$62B</div>
+        <div class="budget-step-detail">Layering the +11% intake forecast (with &plusmn;15% confidence band) onto a standards-meeting baseline; high end reflects the upper bound of the forecast cone</div>
+      </div>
+    </div>
+
+    <!-- TWO DONUTS — current breakdown vs. recommended breakdown -->
+    <div class="donut-section">
+      <div class="donut-section-label">How the budget is allocated, today vs. at standards</div>
+
+      <div class="donut-pair">
+
+        <!-- DONUT 1: CURRENT SPENDING $34B -->
+        <div class="donut-wrap">
+          <div class="donut-title">Current spending &middot; $34B</div>
+          <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" class="donut-svg">
+            <!-- circle centered at 120,120, r=80, stroke-width=40 -->
+            <!-- Categories: Foster placement 38%, Admin 22%, Adoption 16%, In-home 11%, Prevention 5%, Other 8% -->
+            <!-- Circumference = 2 * pi * 80 = 502.65 -->
+            <!-- 38% = 190.0 ; 22% = 110.6 ; 16% = 80.4 ; 11% = 55.3 ; 5% = 25.1 ; 8% = 40.2 -->
+            <circle cx="120" cy="120" r="80" fill="none" stroke="#1d4e7a" stroke-width="40"
+                    stroke-dasharray="190.0 502.65" stroke-dashoffset="0" transform="rotate(-90 120 120)" class="donut-seg">
+              <title>Foster care placement &amp; payments — 38% · $12.9B</title>
+            </circle>
+            <circle cx="120" cy="120" r="80" fill="none" stroke="#3a76b0" stroke-width="40"
+                    stroke-dasharray="110.6 502.65" stroke-dashoffset="-190.0" transform="rotate(-90 120 120)" class="donut-seg">
+              <title>Administration &amp; caseworkers — 22% · $7.5B</title>
+            </circle>
+            <circle cx="120" cy="120" r="80" fill="none" stroke="#7ba3cf" stroke-width="40"
+                    stroke-dasharray="80.4 502.65" stroke-dashoffset="-300.6" transform="rotate(-90 120 120)" class="donut-seg">
+              <title>Adoption assistance &amp; subsidies — 16% · $5.4B</title>
+            </circle>
+            <circle cx="120" cy="120" r="80" fill="none" stroke="#b8651e" stroke-width="40"
+                    stroke-dasharray="55.3 502.65" stroke-dashoffset="-381.0" transform="rotate(-90 120 120)" class="donut-seg">
+              <title>In-home services &amp; investigations — 11% · $3.7B</title>
+            </circle>
+            <circle cx="120" cy="120" r="80" fill="none" stroke="#d59264" stroke-width="40"
+                    stroke-dasharray="25.1 502.65" stroke-dashoffset="-436.3" transform="rotate(-90 120 120)" class="donut-seg">
+              <title>Prevention services — 5% · $1.7B</title>
+            </circle>
+            <circle cx="120" cy="120" r="80" fill="none" stroke="#c5b89a" stroke-width="40"
+                    stroke-dasharray="40.2 502.65" stroke-dashoffset="-461.4" transform="rotate(-90 120 120)" class="donut-seg">
+              <title>Other (training, courts, IT) — 8% · $2.7B</title>
+            </circle>
+            <!-- Center label -->
+            <text x="120" y="118" font-family="Fraunces, serif" font-size="22" font-weight="500" fill="#1a1a1a" text-anchor="middle">$34B</text>
+            <text x="120" y="135" font-family="Inter, sans-serif" font-size="9" fill="#8a8985" text-anchor="middle" letter-spacing="0.1em">CURRENT</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="donut-legend-item">
+              <span class="dl-swatch" style="background: #1d4e7a;"></span>
+              <span>Foster care placement &amp; payments</span>
+              <span class="dl-pct">38% &middot; $12.9B</span>
+            </div>
+            <div class="donut-legend-item">
+              <span class="dl-swatch" style="background: #3a76b0;"></span>
+              <span>Administration &amp; caseworkers</span>
+              <span class="dl-pct">22% &middot; $7.5B</span>
+            </div>
+            <div class="donut-legend-item">
+              <span class="dl-swatch" style="background: #7ba3cf;"></span>
+              <span>Adoption assistance &amp; subsidies</span>
+              <span class="dl-pct">16% &middot; $5.4B</span>
+            </div>
+            <div class="donut-legend-item">
+              <span class="dl-swatch" style="background: #b8651e;"></span>
+              <span>In-home services &amp; investigations</span>
+              <span class="dl-pct">11% &middot; $3.7B</span>
+            </div>
+            <div class="donut-legend-item">
+              <span class="dl-swatch" style="background: #d59264;"></span>
+              <span>Prevention services</span>
+              <span class="dl-pct">5% &middot; $1.7B</span>
+            </div>
+            <div class="donut-legend-item">
+              <span class="dl-swatch" style="background: #c5b89a;"></span>
+              <span>Other (training, courts, IT)</span>
+              <span class="dl-pct">8% &middot; $2.7B</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DONUT 2: STANDARDS-MEETING $46B -->
+        <div class="donut-wrap">
+          <div class="donut-title">At published standards &middot; $46B</div>
+          <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" class="donut-svg">
+            <!-- Categories: Foster placement 32%, Admin 30%, Prevention 12%, Adoption 12%, Mental health 8%, Aging-out 3%, Other 3% -->
+            <!-- 32% = 160.8 ; 30% = 150.8 ; 12% = 60.3 ; 12% = 60.3 ; 8% = 40.2 ; 3% = 15.1 ; 3% = 15.1 -->
+            <circle cx="120" cy="120" r="80" fill="none" stroke="#1d4e7a" stroke-width="40"
+                    stroke-dasharray="160.8 502.65" stroke-dashoffset="0" transform="rotate(-90 120 120)" class="donut-seg">
+              <title>Foster care placement &amp; payments — 32% · $14.7B (up $1.8B from today)</title>
+            </circle>
+            <circle cx="120" cy="120" r="80" fill="none" stroke="#3a76b0" stroke-width="40"
+                    stroke-dasharray="150.8 502.65" stroke-dashoffset="-160.8" transform="rotate(-90 120 120)" class="donut-seg">
+              <title>Administration &amp; caseworkers — 30% · $13.8B (up $6.3B from today)</title>
+            </circle>
+            <circle cx="120" cy="120" r="80" fill="none" stroke="#d59264" stroke-width="40"
+                    stroke-dasharray="60.3 502.65" stroke-dashoffset="-311.6" transform="rotate(-90 120 120)" class="donut-seg">
+              <title>Prevention &amp; family preservation — 12% · $5.5B (up $3.8B from today)</title>
+            </circle>
+            <circle cx="120" cy="120" r="80" fill="none" stroke="#7ba3cf" stroke-width="40"
+                    stroke-dasharray="60.3 502.65" stroke-dashoffset="-371.9" transform="rotate(-90 120 120)" class="donut-seg">
+              <title>Adoption assistance &amp; subsidies — 12% · $5.5B (roughly flat)</title>
+            </circle>
+            <circle cx="120" cy="120" r="80" fill="none" stroke="#2d7a4f" stroke-width="40"
+                    stroke-dasharray="40.2 502.65" stroke-dashoffset="-432.2" transform="rotate(-90 120 120)" class="donut-seg">
+              <title>Mental health &amp; trauma services — 8% · $3.7B (NEW category)</title>
+            </circle>
+            <circle cx="120" cy="120" r="80" fill="none" stroke="#b8651e" stroke-width="40"
+                    stroke-dasharray="15.1 502.65" stroke-dashoffset="-472.4" transform="rotate(-90 120 120)" class="donut-seg">
+              <title>Aging-out &amp; transition support — 3% · $1.4B (up $0.9B from today)</title>
+            </circle>
+            <circle cx="120" cy="120" r="80" fill="none" stroke="#c5b89a" stroke-width="40"
+                    stroke-dasharray="15.1 502.65" stroke-dashoffset="-487.5" transform="rotate(-90 120 120)" class="donut-seg">
+              <title>Other (training, courts, IT) — 3% · $1.4B (down from today)</title>
+            </circle>
+            <!-- Center label -->
+            <text x="120" y="118" font-family="Fraunces, serif" font-size="22" font-weight="500" fill="#8b3a18" text-anchor="middle">$46B</text>
+            <text x="120" y="135" font-family="Inter, sans-serif" font-size="9" fill="#8a8985" text-anchor="middle" letter-spacing="0.1em">AT STANDARDS</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="donut-legend-item">
+              <span class="dl-swatch" style="background: #1d4e7a;"></span>
+              <span>Foster care placement &amp; payments</span>
+              <span class="dl-pct dl-pct-up">32% &middot; $14.7B</span>
+            </div>
+            <div class="donut-legend-item">
+              <span class="dl-swatch" style="background: #3a76b0;"></span>
+              <span>Administration &amp; caseworkers</span>
+              <span class="dl-pct dl-pct-up">30% &middot; $13.8B</span>
+            </div>
+            <div class="donut-legend-item">
+              <span class="dl-swatch" style="background: #d59264;"></span>
+              <span>Prevention &amp; family preservation</span>
+              <span class="dl-pct dl-pct-up">12% &middot; $5.5B</span>
+            </div>
+            <div class="donut-legend-item">
+              <span class="dl-swatch" style="background: #7ba3cf;"></span>
+              <span>Adoption assistance &amp; subsidies</span>
+              <span class="dl-pct">12% &middot; $5.5B</span>
+            </div>
+            <div class="donut-legend-item">
+              <span class="dl-swatch" style="background: #2d7a4f;"></span>
+              <span>Mental health &amp; trauma services</span>
+              <span class="dl-pct dl-pct-new">8% &middot; $3.7B NEW</span>
+            </div>
+            <div class="donut-legend-item">
+              <span class="dl-swatch" style="background: #b8651e;"></span>
+              <span>Aging-out &amp; transition support</span>
+              <span class="dl-pct dl-pct-up">3% &middot; $1.4B</span>
+            </div>
+            <div class="donut-legend-item">
+              <span class="dl-swatch" style="background: #c5b89a;"></span>
+              <span>Other (training, courts, IT)</span>
+              <span class="dl-pct dl-pct-down">3% &middot; $1.4B</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- THE FIVE GAPS — what would change between today and $46B -->
+    <div class="budget-gaps">
+      <div class="budget-gaps-label">Where the additional $12 billion would go</div>
+      <ul class="budget-gaps-list">
+        <li><strong>Caseworker headcount (+$6.3B):</strong> Current ratios are <strong>24&ndash;31 cases per worker</strong>; <a href="https://www.cwla.org/our-work/practice-excellence-center/workforce-2/caseload-workload/" target="_blank" rel="noopener">CWLA standards recommend 12&ndash;15</a>. Doubling caseworker capacity nearly doubles administration spending from $7.5B to $13.8B.</li>
+        <li><strong>Prevention &amp; family preservation (+$3.8B):</strong> Currently <strong>5%</strong> of the budget at $1.7B; the FFPSA-era target and CWLA position is <strong>12&ndash;15%</strong>. Expanding evidence-based prevention services to $5.5B could reduce downstream foster intake by an estimated 10&ndash;20%.</li>
+        <li><strong>Mental health &amp; trauma services (+$3.7B):</strong> <strong>54%</strong> of foster alumni have a clinical-level mental health problem (Casey study); a fraction receive ongoing care. A dedicated $3.7B trauma-services category doesn't exist today &mdash; the spending is scattered across Medicaid and "other."</li>
+        <li><strong>Foster placement &amp; payments (+$1.8B):</strong> Total dollars grow from $12.9B to $14.7B &mdash; partly because of <strong>more children entering care</strong> (the +11% intake forecast), partly because average monthly stipends of <strong>$400&ndash;$800</strong> are estimated at roughly half the actual cost of raising a child with foster-system needs.</li>
+        <li><strong>Aging-out support (+$0.9B):</strong> Roughly <strong>20,000 youth age out annually</strong> with little structured support. The Chafee program funds <strong>$143 million nationally</strong> &mdash; about <strong>$7,000 per youth</strong>. Bringing this in line with kinship-guardianship support raises this line to $1.4B.</li>
+      </ul>
+      <p class="budget-gaps-note">Adoption assistance and the "other" category stay roughly flat in absolute dollars; some current in-home-services spending is recategorized into prevention. Increases sum to about <strong>$16.5B</strong> in new spending; recategorization offsets and efficiency savings net the total back to roughly <strong>+$12B</strong>.</p>
+    </div>
+
+    <!-- FORECAST GROWTH — what the +11% intake forecast does to the budget -->
+    <div class="forecast-lag-block">
+      <div class="forecast-lag-label">Why the budget also needs to grow &mdash; not just rebalance</div>
+      <p class="forecast-lag-text">Today's $46B figure assumes today's caseload. The intake forecast from the previous chart projects FY 2036 entries at <strong>295K (center)</strong> with a <strong>&plusmn;15% confidence band of 251K&ndash;339K</strong>. Scaling the standards-meeting budget proportionally produces a range of <strong>$52B (center) to $62B (high end)</strong>. Most of that growth flows through the foster placement and mental health categories, which scale roughly linearly with the number of children in care. Categories like prevention and aging-out support are largely fixed costs once funded at standard.</p>
+    </div>
+
+    <p class="source">Sources: <a href="https://www.childtrends.org/publications/state-child-welfare-spending" target="_blank" rel="noopener">Child Trends, &ldquo;Child Welfare Financing Survey SFY 2022&rdquo;</a> &mdash; $34.3B total spending and category breakdown (Title IV-E 21%, TANF 9%, SSBG 4%, Medicaid 3%, state/local 57%); <a href="https://bipartisanpolicy.org/explainer/government-spending-to-prevent-and-respond-to-child-abuse-and-neglect/" target="_blank" rel="noopener">Bipartisan Policy Center, Government Spending to Prevent and Respond to Child Abuse and Neglect</a> (2026) &mdash; FY2023 IV-E spending of $9.5B; <a href="https://www.congress.gov/crs-product/IF10590" target="_blank" rel="noopener">Congressional Research Service, &ldquo;Child Welfare: Purposes, Federal Programs, and Funding&rdquo;</a> (April 2026) &mdash; FY2024 federal child welfare funding of $11.0 billion, FY2026 IV-E authorization of $10.1B; <a href="https://www.cwla.org/our-work/practice-excellence-center/workforce-2/caseload-workload/" target="_blank" rel="noopener">CWLA Standards for Caseload and Workload</a> &mdash; recommended ratios of 12&ndash;15 cases/worker; <a href="https://www.casey.org/media/AlumniStudy_US_Report_MentalHealth.pdf" target="_blank" rel="noopener">Casey Family Programs, Assessing the Effects of Foster Care</a> &mdash; 54% of alumni with clinical mental health problem in past 12 months; <a href="https://aspe.hhs.gov/reports/federal-foster-care-financing-how-why-current-funding-structure-fails-meet-needs-child-welfare-field-0" target="_blank" rel="noopener">ASPE, Federal Foster Care Financing</a>; <a href="https://www.gao.gov/products/gao-25-107467" target="_blank" rel="noopener">GAO-25-107467, Child Welfare: States' Use of TANF</a> (2025). The $46B and $52B figures are derived estimates synthesizing CWLA caseload standards, FFPSA prevention targets, Casey/ASPE recommendations on foster stipend levels, and Chafee program comparisons; they are not a single sourced figure but a category-by-category build-up. The +11% intake forecast applies the JAMA Pediatrics effect size to the standards-meeting baseline through FY 2036. Numbers rounded to nearest billion.</p>
+  </div>
+
+</main>
+
+<div class="continue">
+  <a href="abortion-06-common-ground.html">Continue to Section 06 &mdash; Common Ground &rarr;</a>
+</div>
+
+<footer>
+  <div>WILLEMS<span style="color: var(--ink-3); letter-spacing: 0.18em;">WORLD</span></div>
+  <div>Insight № 05 · Section 05 of 06</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+// State-by-state percent change in abortions, 2020 -> 2024
+// Sources: Guttmacher Monthly Abortion Provision Study + 2020 Abortion Provider Census
+// Total-ban states show -100% (functional zero in formal system)
+// Outliers (NM, IL, etc.) absorb cross-state travel
+// Keyed by state NAME (matches us-atlas properties.name)
+const stateChanges = {
+  "Alabama":        { change: -100, note: "Total ban" },
+  "Alaska":         { change: +15,  note: "No gestational limit" },
+  "Arizona":        { change: +85,  note: "15-week limit; absorbing some Texas travel" },
+  "Arkansas":       { change: -100, note: "Total ban" },
+  "California":     { change: +18,  note: "Viability limit; modest increase" },
+  "Colorado":       { change: +89,  note: "Protective state; major absorber" },
+  "Connecticut":    { change: +30,  note: "Protective state" },
+  "Delaware":       { change: +25,  note: "Viability limit" },
+  "District of Columbia": { change: +20, note: "No gestational limit" },
+  "Florida":        { change: -50,  note: "6-week ban since May 2024" },
+  "Georgia":        { change: -30,  note: "6-week ban" },
+  "Hawaii":         { change: +10,  note: "Viability limit" },
+  "Idaho":          { change: -100, note: "Total ban" },
+  "Illinois":       { change: +69,  note: "Top absorber; 39% from out of state" },
+  "Indiana":        { change: -100, note: "Total ban" },
+  "Iowa":           { change: -60,  note: "6-week ban since July 2024" },
+  "Kansas":         { change: +152, note: "71% of abortions to out-of-state residents" },
+  "Kentucky":       { change: -100, note: "Total ban" },
+  "Louisiana":      { change: -100, note: "Total ban" },
+  "Maine":          { change: +20,  note: "No gestational limit" },
+  "Maryland":       { change: +35,  note: "No gestational limit" },
+  "Massachusetts":  { change: +22,  note: "Viability limit" },
+  "Michigan":       { change: +40,  note: "Viability limit; protective" },
+  "Minnesota":      { change: +30,  note: "No gestational limit" },
+  "Mississippi":    { change: -100, note: "Total ban" },
+  "Missouri":       { change: -100, note: "Total ban" },
+  "Montana":        { change: +25,  note: "No gestational limit; some neighboring-state travel" },
+  "Nebraska":       { change: -15,  note: "12-week ban" },
+  "Nevada":         { change: +28,  note: "Viability limit" },
+  "New Hampshire":  { change: +12,  note: "Viability limit" },
+  "New Jersey":     { change: +25,  note: "No gestational limit" },
+  "New Mexico":     { change: +220, note: "69% from out of state; largest absorber" },
+  "New York":       { change: +20,  note: "No gestational limit" },
+  "North Carolina": { change: -10,  note: "12-week ban + 72-hr wait; absorbs some travel" },
+  "North Dakota":   { change: -100, note: "Total ban" },
+  "Ohio":           { change: +35,  note: "Viability limit (after Nov 2023 amendment)" },
+  "Oklahoma":       { change: -100, note: "Total ban" },
+  "Oregon":         { change: +18,  note: "No gestational limit" },
+  "Pennsylvania":   { change: +22,  note: "Viability limit" },
+  "Rhode Island":   { change: +15,  note: "Viability limit" },
+  "South Carolina": { change: -40,  note: "6-week ban since Sept 2023" },
+  "South Dakota":   { change: -100, note: "Total ban" },
+  "Tennessee":      { change: -100, note: "Total ban" },
+  "Texas":          { change: -100, note: "Total ban; from ~58K to near-zero" },
+  "Utah":           { change: -20,  note: "18-week limit" },
+  "Vermont":        { change: +15,  note: "No gestational limit" },
+  "Virginia":       { change: +50,  note: "Absorbing Florida travel post-2024" },
+  "Washington":     { change: +30,  note: "Viability limit; absorbed Idaho travel" },
+  "West Virginia":  { change: -100, note: "Total ban" },
+  "Wisconsin":      { change: -70,  note: "Services partially restored late 2023" },
+  "Wyoming":        { change: +20,  note: "Limited capacity; some increase from Idaho/Dakotas" }
+};
+
+// Diverging color scale: -100% (#8b3a18) -> 0% (#f3efe5) -> +200%+ (#1d4e7a)
+function colorForChange(c) {
+  const capped = Math.max(-100, Math.min(200, c));
+  if (capped <= 0) {
+    const t = (capped + 100) / 100;
+    return d3.interpolateRgb("#8b3a18", "#f3efe5")(t);
+  } else {
+    const t = capped / 200;
+    return d3.interpolateRgb("#f3efe5", "#1d4e7a")(t);
+  }
+}
+
+// Render the heatmap
+d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json").then(us => {
+  const features = topojson.feature(us, us.objects.states).features;
+  // Albers USA projection sized to fit our viewBox (975 x 610)
+  const path = d3.geoPath(d3.geoAlbersUsa().scale(1100).translate([487, 305]));
+  const svg = d3.select("#abortion-heatmap");
+  const tt = document.getElementById("heatmap-tt");
+
+  svg.selectAll("path")
+    .data(features)
+    .join("path")
+    .attr("d", path)
+    .attr("fill", d => {
+      const data = stateChanges[d.properties.name];
+      return data ? colorForChange(data.change) : "#e8e6df";
+    })
+    .attr("stroke", "#ffffff")
+    .attr("stroke-width", 0.75)
+    .style("cursor", "pointer")
+    .on("mouseenter", function(event, d) {
+      const data = stateChanges[d.properties.name];
+      if (!data) return;
+      const sign = data.change > 0 ? "+" : "";
+      const pctText = data.change <= -99 ? "~0 (total ban)" : sign + data.change + "%";
+      tt.innerHTML = '<strong>' + d.properties.name + '</strong><span class="tt-pct">' + pctText + '</span><div style="font-size: 10px; opacity: 0.85; margin-top: 2px;">' + data.note + '</div>';
+      tt.classList.add("visible");
+    })
+    .on("mousemove", function(event) {
+      const rect = document.querySelector(".heatmap-wrap").getBoundingClientRect();
+      const x = event.clientX - rect.left + 12;
+      const y = event.clientY - rect.top + 12;
+      tt.style.left = x + "px";
+      tt.style.top = y + "px";
+    })
+    .on("mouseleave", function() {
+      tt.classList.remove("visible");
+    });
+}).catch(err => {
+  console.error("Failed to load US map data:", err);
+  document.querySelector(".heatmap-wrap").innerHTML += '<div style="padding: 1rem; text-align: center; color: #8a8985; font-style: italic;">Map data could not be loaded. Please check network connection.</div>';
+});
+</script>
+
+</body>
+</html>

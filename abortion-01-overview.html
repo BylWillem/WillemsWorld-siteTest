@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forget the Debate, Here are the Receipts · WillemsWorld</title>
+<meta name="description" content="The untold story and scale of abortion in the USA. Everyone can agree the system is broken. There is a common ground to pave a better future.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --ink-2: #4a4a48;
+    --ink-3: #8a8985;
+    --line: #e8e6df;
+    --line-strong: #d3d1c7;
+    --accent: #1d4e7a;
+    --accent-warm: #b8651e;
+    --accent-muted: #c5b89a;
+    --highlight: #f3efe5;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* NAV — match WillemsWorld logo from screenshot */
+  .nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-block;
+  }
+  .logo .ww-w { color: var(--ink); font-weight: 500; }
+  .logo .ww-o { color: var(--ink-3); font-weight: 400; letter-spacing: 0.18em; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; padding: 0; margin: 0; font-size: 13px; letter-spacing: 0.06em; }
+  .nav-links a { color: var(--ink-2); text-transform: uppercase; }
+  .nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+  /* SERIES TAG */
+  .series-tag {
+    max-width: 1100px;
+    margin: 1.5rem auto 0;
+    padding: 0 2rem;
+    text-align: right;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .series-tag .dot { color: var(--accent-warm); }
+
+  /* HERO */
+  .hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 2rem 2rem;
+  }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+  .eyebrow .num { color: var(--accent-warm); font-weight: 600; }
+  h1.title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.75rem;
+    max-width: 900px;
+  }
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink-2);
+    margin: 0 0 1.5rem;
+    line-height: 1.4;
+    max-width: 820px;
+  }
+  @media (max-width: 720px) {
+    .subtitle { font-size: 1.1rem; }
+  }
+  .meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 13px;
+    color: var(--ink-3);
+    padding: 1.5rem 0 0;
+    border-top: 1px solid var(--line);
+    margin-top: 2rem;
+  }
+
+  /* SECTION PILLS */
+  .pills {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .pills::-webkit-scrollbar { display: none; }
+  .pill {
+    flex-shrink: 0;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--ink-2);
+    background: var(--surface);
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+  .pill:hover { color: var(--ink); border-color: var(--line-strong); text-decoration: none; }
+  .pill.active {
+    background: var(--ink);
+    color: white;
+    border-color: var(--ink);
+  }
+  .pill .num { color: var(--ink-3); margin-right: 0.5rem; font-variant-numeric: tabular-nums; }
+  .pill.active .num { color: rgba(255,255,255,0.55); }
+
+  /* MAIN GRID */
+  .content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 2rem 4rem;
+  }
+
+  h2.section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin: 4rem 0 1.5rem;
+    line-height: 1.15;
+  }
+  h2.section-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+  h2.section-title:first-of-type { margin-top: 1rem; }
+
+  /* DUO GRID — used for 1) scale + opinion, 2) two dot grids, 4) two heat maps */
+  .duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* CARD BASE */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .card .label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .card .chart-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0 0 1.25rem;
+    line-height: 1.3;
+  }
+  .card .source {
+    font-size: 11px;
+    color: var(--ink-3);
+    font-style: italic;
+    margin: 1rem 0 0;
+    line-height: 1.5;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+  .card .source a { color: var(--ink-3); text-decoration: underline; }
+  .card .source a:hover { color: var(--ink-2); }
+
+  /* THE SCALE — Big number */
+  .scale-card .big-number {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 7vw, 4.5rem);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin: 0.5rem 0 1rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .scale-card .scale-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: auto;
+  }
+  .scale-card .scale-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .scale-card .scale-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .scale-card .scale-key {
+    font-size: 13px;
+    color: var(--ink-2);
+  }
+  .scale-card .scale-val {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* OPINION DONUT */
+  .opinion-card #poll-chart { width: 100%; height: 220px; flex-shrink: 0; }
+  .opinion-card .poll-stats { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+  .opinion-card .poll-stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+  }
+  .opinion-card .poll-stat .left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-2);
+  }
+  .opinion-card .poll-stat .swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .opinion-card .poll-stat .pct {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ABSOLUTISTS BREAKDOWN */
+  .absolutists {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .absolutists-label {
+    font-size: 13px;
+    color: var(--ink-2);
+    margin-bottom: 0.85rem;
+  }
+  .absolutists-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+  }
+  .absolutists-stat {
+    background: var(--bg);
+    padding: 0.85rem 1rem;
+    border-radius: 4px;
+  }
+  .abs-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .abs-lbl {
+    font-size: 12px;
+    color: var(--ink-2);
+  }
+  .abs-lbl em { font-style: italic; }
+  .absolutists-foot {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+
+  /* DOT GRID */
+  .dot-card .stat {
+    font-family: 'Fraunces', serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin: 0 0 1rem;
+    line-height: 1;
+  }
+  .dot-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 4px;
+    margin: 0.5rem 0 1rem;
+    aspect-ratio: 1;
+  }
+  .dot {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--highlight);
+    border: 1px solid var(--line);
+  }
+  .dot.filled {
+    background: var(--accent-warm);
+    border: none;
+  }
+
+  /* TIME SERIES */
+  .timeseries-card { margin-bottom: 1rem; }
+  #rate-chart { width: 100%; height: 380px; }
+
+  /* BUTTERFLY (population pyramid) */
+  .butterfly-card { margin-bottom: 1rem; }
+  .butterfly {
+    margin: 1rem 0 0.5rem;
+  }
+  .butterfly-header {
+    display: grid;
+    grid-template-columns: 1fr 140px 1fr;
+    gap: 0;
+    align-items: center;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .bf-left-header {
+    text-align: right;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1d4e7a;
+    font-weight: 500;
+  }
+  .bf-right-header {
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #b8651e;
+    font-weight: 500;
+  }
+  .bf-axis-header {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+  }
+  .bf-row {
+    display: grid;
+    grid-template-columns: 1fr 140px 1fr;
+    gap: 0;
+    align-items: center;
+    padding: 0.4rem 0;
+  }
+  .bf-bar-wrap-left {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+  }
+  .bf-bar-wrap-right {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+  }
+  .bf-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    flex-shrink: 0;
+    min-width: 32px;
+  }
+  .bf-pct.left { text-align: right; }
+  .bf-pct.right { text-align: left; }
+  .bf-bar {
+    height: 22px;
+    border-radius: 2px;
+    transition: opacity 0.15s ease;
+  }
+  .bf-bar-left {
+    background: #1d4e7a;
+  }
+  .bf-bar-right {
+    background: #b8651e;
+  }
+  .bf-axis {
+    font-size: 12px;
+    color: var(--ink-2);
+    text-align: center;
+    padding: 0 0.5rem;
+    line-height: 1.3;
+  }
+  .bf-axis .bf-axis-sub {
+    display: block;
+    font-size: 10px;
+    color: var(--ink-3);
+    margin-top: 2px;
+  }
+
+  /* MAPS */
+  .map-card .map-wrap { width: 100%; position: relative; }
+  .map-card svg { display: block; width: 100%; }
+  .map-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    font-size: 11px;
+    color: var(--ink-2);
+    flex-wrap: wrap;
+  }
+  .map-legend-item { display: flex; align-items: center; gap: 6px; }
+  .map-legend-swatch { width: 16px; height: 10px; border-radius: 2px; }
+
+  /* LEGAL MAP KEY — replaces flat legend with an explanatory list */
+  .legal-key {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .legal-key-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .legal-key-swatch {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    margin-top: 4px;
+  }
+  .legal-key-text {
+    font-size: 12.5px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .legal-key-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .legal-key-states {
+    color: var(--ink-3);
+    font-style: italic;
+  }
+
+  /* CONTINUE */
+  .continue {
+    max-width: 1100px;
+    margin: 4rem auto 0;
+    padding: 0 2rem;
+    text-align: center;
+  }
+  .continue a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: var(--ink);
+    color: white;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    transition: transform 0.15s ease;
+  }
+  .continue a:hover { transform: translateY(-2px); text-decoration: none; }
+
+  /* FOOTER */
+  footer {
+    max-width: 1100px;
+    margin: 5rem auto 0;
+    padding: 2rem;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--ink-3);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* AGE BAR CHART */
+  .age-intro {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    margin: 0 0 1.5rem;
+    max-width: 720px;
+  }
+  .age-bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 0.5rem 0 1.5rem;
+  }
+  .age-bar-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .age-bar-row:last-child { border-bottom: none; }
+  .age-bar-label .age-bar-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+  }
+  .age-bar-label .age-bar-sub {
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-top: 2px;
+  }
+  .age-bar-track {
+    position: relative;
+    height: 28px;
+    background: var(--bg);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .age-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+  }
+  .age-bar-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    font-variant-numeric: tabular-nums;
+  }
+  .age-bar[style*="background: #c5b89a"] .age-bar-pct {
+    color: var(--ink);
+  }
+  .age-stat-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .age-stat-card {
+    background: var(--bg);
+    padding: 1.1rem 1.1rem;
+    border-radius: 4px;
+    border-left: 3px solid var(--accent);
+  }
+  .age-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .age-stat-lbl {
+    font-size: 12px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .age-stat-lbl strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* REPEAT ABORTIONS — stacked bar + stats */
+  .repeat-stacked-bar {
+    display: flex;
+    height: 76px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0.5rem 0 1.5rem;
+  }
+  .repeat-seg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 0.5rem 0.5rem;
+  }
+  .repeat-seg-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .repeat-seg-lbl {
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .repeat-first { background: #1d4e7a; }
+  .repeat-second { background: #b8651e; }
+  .repeat-third { background: #8b3a18; }
+
+  .repeat-stat-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .repeat-stat-card {
+    background: var(--bg);
+    padding: 1.1rem 1.1rem;
+    border-radius: 4px;
+    border-left: 3px solid var(--accent-warm);
+  }
+  .repeat-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--accent-warm);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .repeat-stat-lbl {
+    font-size: 12px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .repeat-stat-lbl strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .callout-warm {
+    margin-top: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: #fbf2e8;
+    border: 1px solid #e8c8a0;
+    border-left: 3px solid var(--accent-warm);
+    border-radius: 4px;
+  }
+  .callout-warm-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8b3a18;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .callout-warm-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .callout-warm-text strong {
+    font-style: normal;
+    font-weight: 500;
+    color: #8b3a18;
+  }
+
+  /* MOBILE */
+  @media (max-width: 720px) {
+    .nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1rem; font-size: 12px; }
+    .hero { padding: 2rem 1.25rem 1.5rem; }
+    .pills { padding: 1rem 1.25rem; }
+    .content { padding: 1rem 1.25rem 3rem; }
+    .duo { grid-template-columns: 1fr; }
+    h2.section-title { font-size: 1.5rem; margin: 3rem 0 1rem; }
+    .card { padding: 1.5rem 1.25rem; }
+    #rate-chart { height: 300px; }
+    .butterfly-header,
+    .bf-row {
+      grid-template-columns: 1fr 100px 1fr;
+    }
+    .bf-pct { font-size: 0.9rem; min-width: 26px; }
+    .bf-axis { font-size: 10px; }
+    .bf-axis .bf-axis-sub { font-size: 9px; }
+    .age-bar-row { grid-template-columns: 100px 1fr; gap: 0.6rem; }
+    .age-bar-name { font-size: 0.95rem; }
+    .age-bar-sub { font-size: 10px; }
+    .age-bar-track { height: 22px; }
+    .age-bar-pct { font-size: 12px; }
+    .age-stat-cards { grid-template-columns: 1fr; }
+    .age-stat-num { font-size: 1.6rem; }
+    .repeat-stacked-bar { height: 90px; }
+    .repeat-seg-pct { font-size: 1.2rem; }
+    .repeat-seg-lbl { font-size: 11px; }
+    .repeat-stat-cards { grid-template-columns: 1fr; }
+    .repeat-stat-num { font-size: 1.6rem; }
+    .callout-warm { padding: 1rem 1.1rem; }
+    .callout-warm-text { font-size: 0.95rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV — WILLEMSWORLD logo styled like screenshot -->
+<nav class="nav">
+  <a href="index.html" class="logo">
+    <span class="ww-w">WILLEMS</span><span class="ww-o">WORLD</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Insights</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+</nav>
+
+<!-- SERIES TAG -->
+<div class="series-tag"><span class="dot">&bull;</span> Series</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="eyebrow">Insight № 05 · <span class="num">Section 01 of 06</span></div>
+  <h1 class="title">Forget the Debate, <em>Here are the Receipts.</em></h1>
+  <div class="subtitle">The untold story and scale of abortion in the USA. Everyone can agree the system is broken. There is a common ground to pave a better future.</div>
+  <div class="meta">
+    <span>Published May 2026</span>
+    <span>·</span>
+    <span>A six-section forecast on abortion, adoption, foster care, and the systems around them</span>
+  </div>
+</header>
+
+<!-- SECTION PILLS -->
+<div class="pills">
+  <span class="pill active"><span class="num">01</span>Overview</span>
+  <a href="#" class="pill"><span class="num">02</span>Adoption</a>
+  <a href="#" class="pill"><span class="num">03</span>Foster Care</a>
+  <a href="#" class="pill"><span class="num">04</span>Birth Control</a>
+  <a href="#" class="pill"><span class="num">05</span>The Forecast</a>
+  <a href="abortion-06-common-ground.html" class="pill"><span class="num">06</span>Common Ground</a>
+</div>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <!-- 1. THE SCALE + NATIONAL OPINION -->
+  <h2 class="section-title">The <em>scale</em> &amp; national opinion</h2>
+
+  <div class="duo">
+
+    <!-- THE SCALE -->
+    <div class="card scale-card">
+      <div class="label">2024 · United States</div>
+      <div class="chart-title">Abortions in America</div>
+      <div class="big-number">1.12M</div>
+      <div class="scale-stats">
+        <div class="scale-row">
+          <span class="scale-key">Per 1,000 women aged 15&ndash;44, per year</span>
+          <span class="scale-val">16.7</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-key">Pregnancies ending in abortion</span>
+          <span class="scale-val">~1 in 5</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-key">Growth in abortions since 2020</span>
+          <span class="scale-val">+16%</span>
+        </div>
+      </div>
+      <p class="source">Source: Guttmacher Institute, <a href="https://www.guttmacher.org/news-release/2025/guttmacher-institute-releases-full-year-us-abortion-data-2024" target="_blank" rel="noopener">Monthly Abortion Provision Study, 2024 full-year release</a> (April 2025). National counts include clinician-provided abortions, including those via telehealth; excludes self-managed abortions.</p>
+    </div>
+
+    <!-- NATIONAL OPINION -->
+    <div class="card opinion-card">
+      <div class="label">January 2026 · n=5,123 U.S. adults</div>
+      <div class="chart-title">National opinion</div>
+      <div id="poll-chart"></div>
+      <div class="poll-stats">
+        <div class="poll-stat">
+          <div class="left"><span class="swatch" style="background: #1d4e7a;"></span>Legal in all/most cases</div>
+          <div class="pct">60%</div>
+        </div>
+        <div class="poll-stat">
+          <div class="left"><span class="swatch" style="background: #b8651e;"></span>Illegal in all/most cases</div>
+          <div class="pct">38%</div>
+        </div>
+        <div class="poll-stat">
+          <div class="left"><span class="swatch" style="background: #c5b89a;"></span>Unsure / no answer</div>
+          <div class="pct">2%</div>
+        </div>
+      </div>
+
+      <!-- ABSOLUTISTS BREAKDOWN -->
+      <div class="absolutists">
+        <div class="absolutists-label">But the absolutists are a minority on both sides</div>
+        <div class="absolutists-grid">
+          <div class="absolutists-stat">
+            <div class="abs-pct">25%</div>
+            <div class="abs-lbl">say legal in <em>all</em> cases</div>
+          </div>
+          <div class="absolutists-stat">
+            <div class="abs-pct">8%</div>
+            <div class="abs-lbl">say illegal in <em>all</em> cases</div>
+          </div>
+        </div>
+        <div class="absolutists-foot">Two-thirds of Americans hold a position somewhere in between &mdash; legal in some cases, illegal in others.</div>
+      </div>
+
+      <p class="source">Source: Pew Research Center, <a href="https://www.pewresearch.org/religion/fact-sheet/public-opinion-on-abortion/" target="_blank" rel="noopener">Public Opinion on Abortion</a> fact sheet, survey of U.S. adults conducted January 20&ndash;26, 2026.</p>
+    </div>
+
+  </div>
+
+  <!-- 2. HOW COMMON IS IT — TWO DOT GRIDS -->
+  <h2 class="section-title">How <em>common</em> is it?</h2>
+
+  <div class="duo">
+
+    <div class="card dot-card">
+      <div class="label">Per 100 pregnancies (2020)</div>
+      <div class="chart-title">Abortions per pregnancy</div>
+      <div class="stat">~17 in 100</div>
+      <div class="dot-grid" id="grid-pregnancy"></div>
+      <p class="source">Source: Guttmacher Institute, <a href="https://www.guttmacher.org/fact-sheet/pregnancy-trends-united-states" target="_blank" rel="noopener">Pregnancy Trends in the United States</a> (2025). Of 5.36 million U.S. pregnancies in 2020: 67% live birth, 17% abortion, 15% fetal loss.</p>
+    </div>
+
+    <div class="card dot-card">
+      <div class="label">Per 100 women, lifetime (by age 45)</div>
+      <div class="chart-title">Women who have had an abortion</div>
+      <div class="stat">~24 in 100</div>
+      <div class="dot-grid" id="grid-lifetime"></div>
+      <p class="source">Source: Guttmacher Institute, <a href="https://www.guttmacher.org/fact-sheet/induced-abortion-united-states" target="_blank" rel="noopener">Induced Abortion in the United States</a> fact sheet. Lifetime probability calculated from 2020 abortion rates projected over reproductive years.</p>
+    </div>
+
+  </div>
+
+  <!-- 3. FIFTY-YEAR VIEW -->
+  <h2 class="section-title">A <em>fifty-year</em> view</h2>
+
+  <div class="card timeseries-card">
+    <div class="label">1973 &ndash; 2024</div>
+    <div class="chart-title">U.S. abortion rate per 1,000 women aged 15&ndash;44</div>
+    <div id="rate-chart"></div>
+    <p class="source">Source: Guttmacher Institute, <a href="https://www.guttmacher.org/report/pregnancies-births-abortions-in-united-states-1973-2020" target="_blank" rel="noopener">Pregnancies, Births and Abortions in the United States, 1973&ndash;2020</a> (national series); Guttmacher Monthly Abortion Provision Study (2021&ndash;2024). The dashed segment marks the post-Dobbs period (June 2022 onward).</p>
+  </div>
+
+  <!-- 4. INCOME COMPARISON BUTTERFLY -->
+  <h2 class="section-title">By <em>income</em></h2>
+
+  <div class="card butterfly-card">
+    <div class="label">Distribution by federal poverty level (FPL)</div>
+    <div class="chart-title">U.S. women 18&ndash;49 vs. abortion patients</div>
+
+    <div class="butterfly">
+      <div class="butterfly-header">
+        <div class="bf-side bf-left-header">All U.S. women 18&ndash;49</div>
+        <div class="bf-axis-header">Income bracket</div>
+        <div class="bf-side bf-right-header">Abortion patients</div>
+      </div>
+      <div id="butterfly-rows"></div>
+    </div>
+
+    <p class="source">Sources: <a href="https://www.guttmacher.org/fact-sheet/induced-abortion-united-states" target="_blank" rel="noopener">Guttmacher Institute Abortion Patient Survey, 2021&ndash;2022</a> (n=6,698 abortion patients across 56 facilities); <a href="https://www.kff.org/state-health-policy-data/state-indicator/distribution-of-women-of-reproductive-age-18-49-by-federal-poverty-level/" target="_blank" rel="noopener">KFF analysis of U.S. Census ACS data</a>, women aged 18&ndash;49 by FPL. The federal poverty level in 2022 was $13,590 for an individual, $27,750 for a family of four.</p>
+  </div>
+
+  <!-- 4B. AVERAGE AGE -->
+  <h2 class="section-title">By <em>age</em></h2>
+
+  <div class="card">
+    <div class="label">U.S. abortion patients &middot; age distribution, 2021&ndash;2022</div>
+    <div class="chart-title">Most abortion patients aren't teenagers</div>
+
+    <p class="age-intro">Cultural framing often imagines abortion as something teenagers do. The actual distribution is older. <strong>Roughly 9 in 10 abortion patients are 20 or over</strong>, and the median age is around 27. More than half are already mothers seeking to limit family size.</p>
+
+    <div class="age-bar-chart">
+
+      <div class="age-bar-row">
+        <div class="age-bar-label">
+          <div class="age-bar-name">Under 20</div>
+          <div class="age-bar-sub">Adolescents</div>
+        </div>
+        <div class="age-bar-track">
+          <div class="age-bar" style="width: 27.3%; background: #c5b89a;">
+            <span class="age-bar-pct">9%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="age-bar-row">
+        <div class="age-bar-label">
+          <div class="age-bar-name">20&ndash;24</div>
+          <div class="age-bar-sub">Early twenties</div>
+        </div>
+        <div class="age-bar-track">
+          <div class="age-bar age-bar-peak" style="width: 100%; background: #1d4e7a;">
+            <span class="age-bar-pct">33%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="age-bar-row">
+        <div class="age-bar-label">
+          <div class="age-bar-name">25&ndash;29</div>
+          <div class="age-bar-sub">Late twenties</div>
+        </div>
+        <div class="age-bar-track">
+          <div class="age-bar" style="width: 84.8%; background: #3a76b0;">
+            <span class="age-bar-pct">28%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="age-bar-row">
+        <div class="age-bar-label">
+          <div class="age-bar-name">30&ndash;34</div>
+          <div class="age-bar-sub">Early thirties</div>
+        </div>
+        <div class="age-bar-track">
+          <div class="age-bar" style="width: 57.6%; background: #3a76b0;">
+            <span class="age-bar-pct">19%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="age-bar-row">
+        <div class="age-bar-label">
+          <div class="age-bar-name">35&ndash;39</div>
+          <div class="age-bar-sub">Late thirties</div>
+        </div>
+        <div class="age-bar-track">
+          <div class="age-bar" style="width: 24.2%; background: #c5b89a;">
+            <span class="age-bar-pct">8%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="age-bar-row">
+        <div class="age-bar-label">
+          <div class="age-bar-name">40+</div>
+          <div class="age-bar-sub">Forty or older</div>
+        </div>
+        <div class="age-bar-track">
+          <div class="age-bar" style="width: 9.1%; background: #c5b89a;">
+            <span class="age-bar-pct">3%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="age-stat-cards">
+      <div class="age-stat-card">
+        <div class="age-stat-num">~27</div>
+        <div class="age-stat-lbl">Median age of an abortion patient</div>
+      </div>
+      <div class="age-stat-card">
+        <div class="age-stat-num">61%</div>
+        <div class="age-stat-lbl">Are <strong>aged 25 or older</strong></div>
+      </div>
+      <div class="age-stat-card">
+        <div class="age-stat-num">55%</div>
+        <div class="age-stat-lbl">Already have <strong>at least one child</strong></div>
+      </div>
+    </div>
+
+    <p class="source">Sources: <a href="https://www.guttmacher.org/fact-sheet/induced-abortion-united-states" target="_blank" rel="noopener">Guttmacher Institute Abortion Patient Survey, 2021&ndash;2022</a>; <a href="https://www.cdc.gov/reproductive-health/data-statistics/abortion-surveillance-findings-reports.html" target="_blank" rel="noopener">CDC Abortion Surveillance, 2022</a> &mdash; women in their 20s accounted for 56.5% of abortions reported to CDC. Guttmacher and CDC use different methodologies and report slightly different age distributions; percentages shown are rounded composites. The 55% with prior births is from the Guttmacher Patient Survey.</p>
+  </div>
+
+  <!-- 4C. REPEAT ABORTIONS -->
+  <h2 class="section-title">Repeat <em>abortions</em></h2>
+
+  <div class="card">
+    <div class="label">U.S. abortion patients &middot; prior abortion history</div>
+    <div class="chart-title">About half of abortions are someone's first</div>
+
+    <p class="age-intro">A common assumption is that repeat abortions are rare. They aren't. Among abortion patients, <strong>roughly 1 in 2 has had at least one prior abortion</strong>. This proportion has remained stable since 1993, suggesting the pattern reflects contraceptive failure and access friction rather than any cultural shift.</p>
+
+    <!-- Stacked bar -->
+    <div class="repeat-stacked-bar">
+      <div class="repeat-seg repeat-first" style="flex: 55;" title="First abortion: 55%">
+        <span class="repeat-seg-pct">55%</span>
+        <span class="repeat-seg-lbl">First abortion</span>
+      </div>
+      <div class="repeat-seg repeat-second" style="flex: 26;" title="Second abortion: 26%">
+        <span class="repeat-seg-pct">26%</span>
+        <span class="repeat-seg-lbl">Second</span>
+      </div>
+      <div class="repeat-seg repeat-third" style="flex: 19;" title="Third or more: 19%">
+        <span class="repeat-seg-pct">19%</span>
+        <span class="repeat-seg-lbl">Third or more</span>
+      </div>
+    </div>
+
+    <div class="repeat-stat-cards">
+      <div class="repeat-stat-card">
+        <div class="repeat-stat-num">45%</div>
+        <div class="repeat-stat-lbl">Of abortion patients have had <strong>at least one prior abortion</strong></div>
+      </div>
+      <div class="repeat-stat-card">
+        <div class="repeat-stat-num">~8%</div>
+        <div class="repeat-stat-lbl">Have had <strong>three or more</strong> prior abortions</div>
+      </div>
+      <div class="repeat-stat-card">
+        <div class="repeat-stat-num">Stable</div>
+        <div class="repeat-stat-lbl">Repeat-abortion rate has been steady <strong>since 1993</strong></div>
+      </div>
+    </div>
+
+    <div class="callout-warm">
+      <div class="callout-warm-eyebrow">Why this matters</div>
+      <div class="callout-warm-text">A repeat abortion isn't typically a failure of intention &mdash; it's most often a failure of contraceptive method. Women with prior abortions are <strong>more likely to be using a less-effective method</strong> like condoms or withdrawal, often because of cost or access barriers to better options. This is the same income/effectiveness pattern Section 04 explores in depth: the cheapest contraceptive options fail most often, and the women using them are most likely to need an abortion when they do.</div>
+    </div>
+
+    <p class="source">Sources: <a href="https://www.guttmacher.org/sites/default/files/report_pdf/or29.pdf" target="_blank" rel="noopener">Jones &amp; Singh, &ldquo;Repeat Abortion in the United States,&rdquo; Guttmacher Institute</a>; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5771530/" target="_blank" rel="noopener">Jones, Jerman &amp; Ingerick, &ldquo;Which Abortion Patients Have Had a Prior Abortion?&rdquo;</a> (Journal of Women's Health, 2018) &mdash; based on 2014 APS, n=8,380; <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6289084/" target="_blank" rel="noopener">CDC Abortion Surveillance 2015</a> &mdash; 43.6% with 1+ prior abortion. Guttmacher and CDC report slightly different repeat-abortion rates; the consensus range is 44&ndash;50% with 1+ prior. Repeat-abortion proportion has been stable since the early 1990s per Guttmacher longitudinal analysis.</p>
+  </div>
+
+  <!-- 5. TWO HEAT MAPS -->
+  <h2 class="section-title">The <em>geography</em></h2>
+
+  <div class="duo">
+
+    <!-- LEGAL LANDSCAPE MAP -->
+    <div class="card map-card">
+      <div class="label">As of March 2026</div>
+      <div class="chart-title">Legal status by state</div>
+      <div class="map-wrap" id="legal-map"></div>
+      <div class="legal-key">
+        <div class="legal-key-row">
+          <span class="legal-key-swatch" style="background: #7a3f10;"></span>
+          <div class="legal-key-text"><strong>Total ban.</strong> Abortion is illegal at any stage. Narrow exceptions exist (life of mother, sometimes rape/incest) but are difficult to use in practice. <span class="legal-key-states">13 states.</span></div>
+        </div>
+        <div class="legal-key-row">
+          <span class="legal-key-swatch" style="background: #b8651e;"></span>
+          <div class="legal-key-text"><strong>6&ndash;12 week ban.</strong> Abortion is illegal once cardiac activity is detected (~6 wks) or after 12 wks &mdash; often before many people know they are pregnant. <span class="legal-key-states">7 states.</span></div>
+        </div>
+        <div class="legal-key-row">
+          <span class="legal-key-swatch" style="background: #d4cca5;"></span>
+          <div class="legal-key-text"><strong>15&ndash;22 week limit.</strong> Abortion is legal earlier in pregnancy but banned after a fixed gestational age (15, 18, or 22 weeks). <span class="legal-key-states">3 states.</span></div>
+        </div>
+        <div class="legal-key-row">
+          <span class="legal-key-swatch" style="background: #85b7eb;"></span>
+          <div class="legal-key-text"><strong>Viability limit.</strong> Abortion is legal until fetal viability (~24&ndash;26 wks); after that, only with medical exception. <span class="legal-key-states">19 states.</span></div>
+        </div>
+        <div class="legal-key-row">
+          <span class="legal-key-swatch" style="background: #1d4e7a;"></span>
+          <div class="legal-key-text"><strong>No gestational limit.</strong> No state-imposed cutoff; later abortions are governed by clinical judgment. <span class="legal-key-states">9 states &amp; D.C.</span></div>
+        </div>
+      </div>
+      <p class="source">Source: Guttmacher Institute, <a href="https://www.guttmacher.org/state-policy/explore/state-policies-abortion-bans" target="_blank" rel="noopener">State Bans on Abortion Throughout Pregnancy</a> (April 2026); cross-referenced with KFF, Center for Reproductive Rights, and Pew Research Center state law trackers (March 2026). Most bans include narrow exceptions; categories reflect the most restrictive limit currently in effect.</p>
+    </div>
+
+    <!-- RATE MAP -->
+    <div class="card map-card">
+      <div class="label">2021 · last full year before Dobbs</div>
+      <div class="chart-title">Abortion rate per 1,000 women in 2021</div>
+      <div class="map-wrap" id="rate-map"></div>
+      <div class="legal-key">
+        <div class="legal-key-row">
+          <span class="legal-key-swatch" style="background: #f1efe9; border: 1px solid var(--line);"></span>
+          <div class="legal-key-text"><strong>0&ndash;5 per 1,000.</strong> Very low rate &mdash; typically reflects either pre-existing legal restrictions or low clinic availability.</div>
+        </div>
+        <div class="legal-key-row">
+          <span class="legal-key-swatch" style="background: #c9c6bd;"></span>
+          <div class="legal-key-text"><strong>5&ndash;10 per 1,000.</strong> Below the 2021 national average.</div>
+        </div>
+        <div class="legal-key-row">
+          <span class="legal-key-swatch" style="background: #8a8985;"></span>
+          <div class="legal-key-text"><strong>10&ndash;15 per 1,000.</strong> Around or just above the 2021 national average of 11.6.</div>
+        </div>
+        <div class="legal-key-row">
+          <span class="legal-key-swatch" style="background: #3d3c39;"></span>
+          <div class="legal-key-text"><strong>15+ per 1,000.</strong> Among the highest rates in the country.</div>
+        </div>
+        <div class="legal-key-row">
+          <span class="legal-key-swatch" style="background: repeating-linear-gradient(45deg, #e8e6df 0 3px, #b4b2a9 3px 5px); border: 1px solid var(--line);"></span>
+          <div class="legal-key-text"><strong>Not reported.</strong> California, Maryland, New Hampshire, and New Jersey did not voluntarily report 2021 data to the CDC.</div>
+        </div>
+      </div>
+      <p class="source">Source: CDC, <a href="https://www.cdc.gov/mmwr/volumes/72/ss/ss7209a1.htm" target="_blank" rel="noopener">Abortion Surveillance &mdash; United States, 2021</a> (MMWR, Nov 2023), Table 2. California, Maryland, New Hampshire, and New Jersey did not report 2021 data.</p>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- CONTINUE -->
+<div class="continue">
+  <a href="#">Continue to Section 02 &mdash; Adoption &rarr;</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>WILLEMS<span style="color: var(--ink-3); letter-spacing: 0.18em;">WORLD</span></div>
+  <div>Insight № 05 · Section 01 of 06</div>
+</footer>
+
+<script>
+// ---------- DOT GRIDS ----------
+function buildGrid(id, count) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  for (let i = 0; i < 100; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i < count ? ' filled' : '');
+    el.appendChild(dot);
+  }
+}
+buildGrid('grid-pregnancy', 17);
+buildGrid('grid-lifetime', 24);
+
+// ---------- INCOME BUTTERFLY ----------
+// Left = general U.S. women 18-49 (KFF/ACS); Right = abortion patients (Guttmacher 2021-22)
+const butterflyRows = [
+  { bracket: 'Below poverty line',     sub: '<100% FPL',     left: 16, right: 41 },
+  { bracket: 'Near-poor',              sub: '100\u2013199% FPL', left: 17, right: 30 },
+  { bracket: 'Moderate income',        sub: '200\u2013399% FPL', left: 28, right: 21 },
+  { bracket: 'Higher income',          sub: '400%+ FPL',     left: 39, right: 9  }
+];
+(function buildButterfly() {
+  const container = document.getElementById('butterfly-rows');
+  if (!container) return;
+  // Find max value for scaling — biggest single bar across both sides
+  const maxVal = Math.max(...butterflyRows.flatMap(r => [r.left, r.right]));
+  const scale = 100 / maxVal;  // bar width as % of half-row
+  butterflyRows.forEach(r => {
+    const row = document.createElement('div');
+    row.className = 'bf-row';
+    row.innerHTML =
+      '<div class="bf-bar-wrap-left">' +
+        '<span class="bf-pct left">' + r.left + '%</span>' +
+        '<div class="bf-bar bf-bar-left" style="width:' + (r.left * scale) + '%"></div>' +
+      '</div>' +
+      '<div class="bf-axis">' + r.bracket +
+        '<span class="bf-axis-sub">' + r.sub + '</span>' +
+      '</div>' +
+      '<div class="bf-bar-wrap-right">' +
+        '<div class="bf-bar bf-bar-right" style="width:' + (r.right * scale) + '%"></div>' +
+        '<span class="bf-pct right">' + r.right + '%</span>' +
+      '</div>';
+    container.appendChild(row);
+  });
+})();
+
+// ---------- POLL DONUT ----------
+const pollChart = echarts.init(document.getElementById('poll-chart'), null, { renderer: 'svg' });
+pollChart.setOption({
+  tooltip: {
+    trigger: 'item',
+    backgroundColor: '#1a1a1a',
+    borderWidth: 0,
+    textStyle: { color: '#fff', fontFamily: 'Inter, sans-serif', fontSize: 12 },
+    formatter: '{b}: {c}%'
+  },
+  series: [{
+    type: 'pie',
+    radius: ['58%', '88%'],
+    avoidLabelOverlap: false,
+    label: { show: false },
+    labelLine: { show: false },
+    data: [
+      { value: 60, name: 'Legal in all/most cases', itemStyle: { color: '#1d4e7a' } },
+      { value: 38, name: 'Illegal in all/most cases', itemStyle: { color: '#b8651e' } },
+      { value: 2,  name: 'Unsure', itemStyle: { color: '#c5b89a' } }
+    ]
+  }]
+});
+window.addEventListener('resize', () => pollChart.resize());
+
+// ---------- TIME SERIES ----------
+const years = [1973,1975,1977,1979,1981,1983,1985,1987,1989,1991,1993,1995,1997,1999,2001,2003,2005,2007,2009,2011,2013,2015,2017,2019,2020,2021,2022,2023,2024];
+const rates = [16.3,21.7,26.4,28.2,29.3,28.5,28.0,26.9,27.5,26.3,25.4,22.9,22.2,21.4,20.5,19.5,17.8,19.5,17.0,16.9,15.0,14.6,13.5,14.4,14.4,15.6,15.7,15.7,16.7];
+const dobbsIdx = years.indexOf(2022);
+const preData = rates.map((v,i) => i <= dobbsIdx ? v : null);
+const postData = rates.map((v,i) => i >= dobbsIdx ? v : null);
+
+const rateChart = echarts.init(document.getElementById('rate-chart'), null, { renderer: 'svg' });
+rateChart.setOption({
+  grid: { left: 50, right: 30, top: 30, bottom: 50, containLabel: true },
+  tooltip: {
+    trigger: 'axis',
+    backgroundColor: '#1a1a1a',
+    borderWidth: 0,
+    textStyle: { color: '#fff', fontFamily: 'Inter, sans-serif', fontSize: 12 },
+    formatter: (params) => {
+      const valid = params.find(p => p.value != null);
+      if (!valid) return '';
+      return '<strong>' + valid.axisValue + '</strong><br>' + valid.value + ' per 1,000 women';
+    }
+  },
+  xAxis: {
+    type: 'category',
+    data: years,
+    axisLine: { lineStyle: { color: '#d3d1c7' } },
+    axisTick: { show: false },
+    axisLabel: {
+      color: '#8a8985',
+      fontSize: 11,
+      fontFamily: 'Inter, sans-serif',
+      interval: function(idx, val) { return [1973,1980,1990,2000,2010,2020,2024].includes(parseInt(val)); }
+    }
+  },
+  yAxis: {
+    type: 'value',
+    min: 0,
+    max: 32,
+    splitLine: { lineStyle: { color: '#e8e6df', type: 'dashed' } },
+    axisLine: { show: false },
+    axisTick: { show: false },
+    axisLabel: { color: '#8a8985', fontSize: 11, fontFamily: 'Inter, sans-serif' }
+  },
+  series: [
+    {
+      name: 'Pre-Dobbs',
+      type: 'line',
+      data: preData,
+      smooth: 0.3,
+      symbol: 'none',
+      lineStyle: { color: '#1d4e7a', width: 2.5 },
+      areaStyle: { color: 'rgba(29, 78, 122, 0.08)' },
+      connectNulls: false,
+      markPoint: {
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: { color: '#1d4e7a' },
+        label: {
+          fontFamily: 'Fraunces, serif',
+          fontSize: 11,
+          color: '#1a1a1a',
+          backgroundColor: '#fff',
+          borderColor: '#d3d1c7',
+          borderWidth: 1,
+          padding: [4, 8],
+          borderRadius: 3,
+          formatter: (p) => p.name
+        },
+        data: [
+          { name: 'Peak: 29.3 (1981)', xAxis: '1981', yAxis: 29.3 },
+          { name: 'Low: 13.5 (2017)', xAxis: '2017', yAxis: 13.5 }
+        ]
+      }
+    },
+    {
+      name: 'Post-Dobbs',
+      type: 'line',
+      data: postData,
+      smooth: 0.3,
+      symbol: 'none',
+      lineStyle: { color: '#1d4e7a', width: 2.5, type: 'dashed' },
+      connectNulls: false,
+      markPoint: {
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: { color: '#b8651e' },
+        label: {
+          fontFamily: 'Fraunces, serif',
+          fontSize: 11,
+          color: '#1a1a1a',
+          backgroundColor: '#fff',
+          borderColor: '#d3d1c7',
+          borderWidth: 1,
+          padding: [4, 8],
+          borderRadius: 3,
+          formatter: (p) => p.name
+        },
+        data: [
+          { name: '16.7 (2024)', xAxis: '2024', yAxis: 16.7 }
+        ]
+      }
+    }
+  ]
+});
+window.addEventListener('resize', () => rateChart.resize());
+
+// ---------- MAP DATA ----------
+// Legal landscape: current state abortion law status (as of March 2026)
+// 5 = Total ban (or near-total)
+// 4 = 6-12 week ban
+// 3 = 15-22 week limit
+// 2 = Viability limit (~24-26 weeks)
+// 1 = No gestational limit / protected
+// Sources: Guttmacher (April 2026), KFF, Center for Reproductive Rights, Pew March 2026
+const legalLevels = {
+  // Total bans
+  'Alabama': 5, 'Arkansas': 5, 'Idaho': 5, 'Indiana': 5, 'Kentucky': 5,
+  'Louisiana': 5, 'Mississippi': 5, 'Missouri': 5, 'Oklahoma': 5,
+  'South Dakota': 5, 'Tennessee': 5, 'Texas': 5, 'West Virginia': 5,
+  // 6-12 week bans
+  'Florida': 4, 'Georgia': 4, 'Iowa': 4, 'South Carolina': 4,
+  'Nebraska': 4, 'North Carolina': 4, 'North Dakota': 4,
+  // 15-22 week limits
+  'Arizona': 3, 'Utah': 3, 'Wisconsin': 3,
+  // Viability limits (~24-26 weeks)
+  'Pennsylvania': 2, 'Virginia': 2, 'Ohio': 2, 'Kansas': 2, 'Wyoming': 2,
+  'Michigan': 2, 'Nevada': 2, 'Montana': 2, 'New York': 2,
+  'Washington': 2, 'Massachusetts': 2, 'Connecticut': 2, 'Rhode Island': 2,
+  'Hawaii': 2, 'Delaware': 2, 'Illinois': 2, 'Minnesota': 2, 'Maine': 2,
+  'California': 2,
+  // No gestational limit / protected
+  'Alaska': 1, 'Colorado': 1, 'New Hampshire': 1, 'New Jersey': 1,
+  'New Mexico': 1, 'Oregon': 1, 'Vermont': 1, 'Maryland': 1,
+  'District of Columbia': 1
+};
+const legalColors = {
+  5: '#7a3f10',  // dark brown — total ban
+  4: '#b8651e',  // warm orange — 6-12 wk
+  3: '#d4cca5',  // pale tan — 15-22 wk
+  2: '#85b7eb',  // light blue — viability
+  1: '#1d4e7a'   // deep blue — no limit
+};
+const legalLabels = {
+  5: 'Total ban',
+  4: '6-12 week ban',
+  3: '15-22 week limit',
+  2: 'Viability limit (~24-26 wks)',
+  1: 'No gestational limit'
+};
+
+// Rate map: CDC 2021 abortion rates per 1,000 women 15-44 (Table 2 of MMWR ss7209a1)
+// CA, MD, NH, NJ did not report — null/gray
+const rateData = {
+  'Alabama': 6.0, 'Alaska': 9.7, 'Arizona': 9.0, 'Arkansas': 5.5, 'California': null,
+  'Colorado': 12.1, 'Connecticut': 14.5, 'Delaware': 10.0, 'District of Columbia': 21.8,
+  'Florida': 16.7, 'Georgia': 16.6, 'Hawaii': 11.4, 'Idaho': 1.7, 'Illinois': 19.4,
+  'Indiana': 7.8, 'Iowa': 6.8, 'Kansas': 13.4, 'Kentucky': 5.6, 'Louisiana': 7.2,
+  'Maine': 8.3, 'Maryland': null, 'Massachusetts': 11.6, 'Michigan': 14.9, 'Minnesota': 10.4,
+  'Mississippi': 4.4, 'Missouri': 0.1, 'Montana': 7.2, 'Nebraska': 5.7, 'Nevada': 16.4,
+  'New Hampshire': null, 'New Jersey': null, 'New Mexico': 17.7, 'New York': 18.1,
+  'North Carolina': 14.6, 'North Dakota': 2.5, 'Ohio': 9.7, 'Oklahoma': 6.5, 'Oregon': 10.5,
+  'Pennsylvania': 13.7, 'Rhode Island': 11.0, 'South Carolina': 6.8, 'South Dakota': 1.0,
+  'Tennessee': 7.7, 'Texas': 8.1, 'Utah': 4.6, 'Vermont': 9.0, 'Virginia': 11.8,
+  'Washington': 12.9, 'West Virginia': 4.4, 'Wisconsin': 5.9, 'Wyoming': 1.1
+};
+function rateColor(v) {
+  if (v == null) return '#e8e6df';   // Not reported — slightly tinted neutral
+  if (v < 5)    return '#f1efe9';    // very light gray
+  if (v < 10)   return '#c9c6bd';    // light gray
+  if (v < 15)   return '#8a8985';    // mid gray
+  return '#3d3c39';                   // dark gray (15+)
+}
+
+// ---------- DRAW BOTH MAPS ----------
+d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json').then(us => {
+  const features = topojson.feature(us, us.objects.states).features;
+  const path = d3.geoPath(d3.geoAlbersUsa().scale(900).translate([450, 280]));
+
+  function drawMap(containerId, getFill, getTooltip) {
+    const container = document.getElementById(containerId);
+    container.style.position = 'relative';
+    const svg = d3.select('#' + containerId).append('svg')
+      .attr('viewBox', '0 0 900 560')
+      .attr('width', '100%')
+      .style('display', 'block');
+
+    // Diagonal-stripe pattern for 'not reported' states (used by rate map)
+    const defs = svg.append('defs');
+    defs.append('pattern')
+      .attr('id', 'stripe-' + containerId)
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 6)
+      .attr('height', 6)
+      .attr('patternTransform', 'rotate(45)')
+      .html('<rect width="6" height="6" fill="#e8e6df"/><line x1="0" y1="0" x2="0" y2="6" stroke="#b4b2a9" stroke-width="2"/>');
+
+    const tooltip = d3.select('#' + containerId).append('div')
+      .style('position', 'absolute')
+      .style('pointer-events', 'none')
+      .style('background', '#1a1a1a')
+      .style('color', 'white')
+      .style('padding', '6px 10px')
+      .style('border-radius', '4px')
+      .style('font-size', '12px')
+      .style('font-family', 'Inter, sans-serif')
+      .style('opacity', '0')
+      .style('transition', 'opacity 120ms')
+      .style('z-index', '10');
+
+    svg.selectAll('path')
+      .data(features)
+      .join('path')
+      .attr('d', path)
+      .attr('fill', d => getFill(d.properties.name))
+      .attr('stroke', '#fff')
+      .attr('stroke-width', 0.7)
+      .style('cursor', 'pointer')
+      .on('mousemove', function(event, d) {
+        tooltip.style('opacity', '1')
+          .html('<strong>' + d.properties.name + '</strong><br>' + getTooltip(d.properties.name))
+          .style('left', (event.offsetX + 12) + 'px')
+          .style('top', (event.offsetY + 12) + 'px');
+      })
+      .on('mouseleave', () => tooltip.style('opacity', '0'));
+  }
+
+  drawMap('legal-map',
+    name => legalColors[legalLevels[name]] || '#d3d1c7',
+    name => legalLabels[legalLevels[name]] || 'No data'
+  );
+
+  drawMap('rate-map',
+    name => {
+      const v = rateData[name];
+      if (v == null) return 'url(#stripe-rate-map)';
+      if (v < 5)   return '#f1efe9';
+      if (v < 10)  return '#c9c6bd';
+      if (v < 15)  return '#8a8985';
+      return '#3d3c39';
+    },
+    name => {
+      const v = rateData[name];
+      return v == null ? 'Did not report' : v + ' per 1,000 women';
+    }
+  );
+});
+</script>
+
+</body>
+</html>

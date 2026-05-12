@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receipts § 02: Adoption · WillemsWorld</title>
+<meta name="description" content="Adoption in America by the numbers: scale, outcomes, cost, wait times, and where the system fails.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --ink-2: #4a4a48;
+    --ink-3: #8a8985;
+    --line: #e8e6df;
+    --line-strong: #d3d1c7;
+    --accent: #1d4e7a;
+    --accent-warm: #b8651e;
+    --highlight: #f3efe5;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* NAV */
+  .nav { max-width: 1200px; margin: 0 auto; padding: 1.75rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); }
+  .logo { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+  .logo .ww-w { color: var(--ink); font-weight: 500; }
+  .logo .ww-o { color: var(--ink-3); font-weight: 400; letter-spacing: 0.18em; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; padding: 0; margin: 0; font-size: 13px; letter-spacing: 0.06em; }
+  .nav-links a { color: var(--ink-2); text-transform: uppercase; }
+  .nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+  /* SERIES TAG */
+  .series-tag { max-width: 1100px; margin: 1.5rem auto 0; padding: 0 2rem; text-align: right; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
+  .series-tag .dot { color: var(--accent-warm); }
+
+  /* HERO */
+  .hero { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 2rem; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 1.5rem; }
+  .eyebrow .num { color: var(--accent-warm); font-weight: 600; }
+  h1.title { font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 5vw, 3.75rem); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 1.5rem; max-width: 900px; }
+  h1.title em { font-style: italic; font-weight: 400; color: var(--accent); }
+  .meta { display: flex; gap: 1.5rem; font-size: 13px; color: var(--ink-3); padding: 1.5rem 0 0; border-top: 1px solid var(--line); margin-top: 2rem; }
+
+  /* PILLS */
+  .pills { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem; display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+  .pills::-webkit-scrollbar { display: none; }
+  .pill { flex-shrink: 0; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; color: var(--ink-2); background: var(--surface); transition: all 0.15s ease; white-space: nowrap; }
+  .pill:hover { color: var(--ink); border-color: var(--line-strong); text-decoration: none; }
+  .pill.active { background: var(--ink); color: white; border-color: var(--ink); }
+  .pill .num { color: var(--ink-3); margin-right: 0.5rem; font-variant-numeric: tabular-nums; }
+  .pill.active .num { color: rgba(255,255,255,0.55); }
+
+  /* CONTENT */
+  .content { max-width: 1100px; margin: 0 auto; padding: 1rem 2rem 4rem; }
+  h2.section-title { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 500; letter-spacing: -0.015em; margin: 4rem 0 1.5rem; line-height: 1.15; }
+  h2.section-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+  h2.section-title:first-of-type { margin-top: 1rem; }
+
+  /* CARD BASE */
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 1.75rem 1.5rem; display: flex; flex-direction: column; margin-bottom: 1rem; }
+  .card .label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 0.5rem; }
+  .card .chart-title { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 500; margin: 0 0 1.25rem; line-height: 1.3; }
+  .card .source { font-size: 11px; color: var(--ink-3); font-style: italic; margin: 1rem 0 0; line-height: 1.5; padding-top: 1rem; border-top: 1px solid var(--line); }
+  .card .source a { color: var(--ink-3); text-decoration: underline; }
+  .card .source a:hover { color: var(--ink-2); }
+
+  /* OUTCOME GRID (lifetime, multi-color) */
+  .outcome-grid {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 4px;
+    margin: 0.75rem 0 1.75rem;
+    max-width: 560px;
+  }
+  .outcome-grid .odot {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--highlight);
+  }
+  .outcome-grid .odot.parent { background: #e8e6df; border: 1px solid #d3d1c7; }
+  .outcome-grid .odot.bereaved { background: #c5b89a; }
+  .outcome-grid .odot.foster { background: #1d4e7a; }
+  .outcome-grid .odot.agedout { background: #1a1a1a; }
+  .outcome-grid .odot.kinship { background: #6b8c50; }
+  .outcome-grid .odot.adopted { background: #b8651e; }
+  .outcome-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-top: 0.5rem;
+  }
+  .outcome-legend-row {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    gap: 0.85rem;
+    align-items: baseline;
+  }
+  .outcome-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-top: 4px;
+  }
+  .outcome-text {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+  .outcome-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+  }
+  .outcome-label {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.45;
+  }
+
+  /* PIE CHART */
+  .pie-wrap {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin: 1rem 0 0.5rem;
+  }
+  #failure-pie {
+    width: 100%;
+    max-width: 280px;
+    display: block;
+  }
+  .pie-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .pie-legend-row {
+    display: grid;
+    grid-template-columns: 14px 50px 1fr;
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+  .pie-legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    margin-top: 4px;
+  }
+  .pie-legend-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+  .pie-legend-label {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.4;
+  }
+
+  /* SCALE BARS (opener) */
+  .scale-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0.75rem 0 1.75rem;
+  }
+  .scale-bar-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+  .scale-bar-label {
+    text-align: right;
+  }
+  .scale-bar-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .scale-bar-year {
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+  .scale-bar-note {
+    font-size: 10px;
+    color: var(--accent-warm);
+    font-style: italic;
+    margin-top: 1px;
+    letter-spacing: 0.02em;
+  }
+  .scale-bar-track {
+    position: relative;
+    height: 44px;
+    background: var(--bg);
+    border-radius: 4px;
+    overflow: visible;
+  }
+  .scale-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 14px;
+    overflow: hidden;
+  }
+  .scale-bar-births { background: #1d4e7a; }
+  .scale-bar-abortions { background: #b8651e; }
+  .scale-bar-adoptions { background: #3d3c39; }
+  .scale-bar-value {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .scale-bar-value-outside {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    position: absolute;
+    left: calc(2.22% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .scale-ratios {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .scale-ratio {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .scale-ratio-num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .scale-ratio-text {
+    font-size: 12px;
+    color: var(--ink-2);
+    line-height: 1.4;
+  }
+
+  /* RANGE CHART */
+  .range-rows { margin-top: 0.5rem; }
+  .range-row { display: grid; grid-template-columns: 180px 1fr 110px; align-items: center; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--line); }
+  .range-row:last-child { border-bottom: none; }
+  .range-label { font-size: 14px; color: var(--ink); font-weight: 500; }
+  .range-label .sub { display: block; font-size: 12px; color: var(--ink-3); font-weight: 400; margin-top: 2px; }
+  .range-track { position: relative; height: 14px; background: var(--bg); border-radius: 999px; overflow: hidden; }
+  .range-bar { position: absolute; top: 0; height: 100%; border-radius: 999px; }
+  .range-row.foster .range-bar { background: #1d4e7a; }
+  .range-row.private .range-bar { background: #3a76b0; }
+  .range-row.independent .range-bar { background: #8a8985; }
+  .range-row.international .range-bar { background: #b8651e; }
+  .range-value { font-family: 'Fraunces', serif; font-size: 14px; color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; text-align: right; }
+  .range-axis { display: grid; grid-template-columns: 180px 1fr 110px; gap: 1rem; margin-top: 0.5rem; }
+  .range-axis-tick { grid-column: 2; display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-3); padding: 0 4px; }
+
+  /* PCT GRID */
+  .pct-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .pct-grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .pct-stat { background: var(--bg); padding: 1.25rem; border-radius: 4px; }
+  .pct-stat .pct { font-family: 'Fraunces', serif; font-size: 2.5rem; font-weight: 500; line-height: 1; margin-bottom: 0.5rem; font-variant-numeric: tabular-nums; }
+  .pct-stat .lbl { font-size: 13px; color: var(--ink-2); line-height: 1.4; }
+
+  /* DOT GRID */
+  .dot-grid { display: grid; grid-template-columns: repeat(25, 1fr); gap: 3px; margin: 1rem 0; max-width: 600px; }
+  .dot { aspect-ratio: 1; border-radius: 50%; background: var(--highlight); border: 1px solid var(--line); }
+  .dot.filled { background: var(--accent-warm); border: none; }
+
+  /* BREAKDOWN BAR */
+  .breakdown-bar { display: flex; height: 36px; border-radius: 4px; overflow: hidden; background: var(--bg); }
+  .breakdown-segment { display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: 500; }
+  .breakdown-foster { background: #1d4e7a; }
+  .breakdown-private { background: #3a76b0; }
+  .breakdown-international { background: #b8651e; }
+  .breakdown-legend { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 13px; color: var(--ink-2); }
+  .breakdown-legend-item { display: flex; align-items: center; gap: 6px; }
+  .breakdown-legend-swatch { width: 12px; height: 12px; border-radius: 2px; }
+  .breakdown-legend-num { font-family: 'Fraunces', serif; color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
+
+  /* WORLD MAP */
+  .map-wrap { width: 100%; position: relative; }
+  .map-wrap svg { display: block; width: 100%; }
+  .map-legend { display: flex; justify-content: center; gap: 1rem; margin-top: 0.75rem; font-size: 11px; color: var(--ink-2); flex-wrap: wrap; }
+  .map-legend-item { display: flex; align-items: center; gap: 6px; }
+  .map-legend-swatch { width: 16px; height: 10px; border-radius: 2px; }
+
+  /* COUNTRY ROWS */
+  .country-row { display: grid; grid-template-columns: 200px 1fr 110px; align-items: center; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
+  .country-row:last-child { border-bottom: none; }
+  .country-row .country-label { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink); font-weight: 500; flex-wrap: wrap; }
+  .country-row .flag { font-size: 18px; line-height: 1; }
+  .country-row .range-bar { background: var(--accent-warm); }
+  .country-row.usa-row .range-bar { background: #1d4e7a; opacity: 0.85; }
+  .country-row.usa-row { padding-top: 1.5rem; }
+  .country-row.usa-row .range-track { overflow: visible; }
+  .avg-marker {
+    position: absolute;
+    top: -4px;
+    height: 22px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .avg-marker-dot {
+    width: 2px;
+    height: 22px;
+    background: var(--ink);
+    margin: 0 auto;
+  }
+  .avg-marker-label {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Fraunces', serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink);
+    white-space: nowrap;
+    background: var(--surface);
+    padding: 0 4px;
+  }
+  .country-row .note { color: var(--ink-3); font-weight: 400; font-style: italic; font-size: 11px; }
+  .country-axis { display: grid; grid-template-columns: 200px 1fr 110px; gap: 1rem; margin-top: 0.5rem; }
+  .country-axis-tick { grid-column: 2; display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-3); padding: 0 4px; }
+
+  /* CONTINUE / FOOTER */
+  .continue { max-width: 1100px; margin: 4rem auto 0; padding: 0 2rem; text-align: center; }
+  .continue a { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: var(--ink); color: white; border-radius: 999px; font-size: 13px; letter-spacing: 0.04em; transition: transform 0.15s ease; }
+  .continue a:hover { transform: translateY(-2px); text-decoration: none; }
+  footer { max-width: 1100px; margin: 5rem auto 0; padding: 2rem; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+
+  /* ADOPTED-CHILD OUTCOMES TABLE */
+  .success-intro {
+    max-width: 1100px;
+    margin: 0 auto 0;
+    padding: 0 2rem;
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.6;
+  }
+  .succ-table {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0 1rem;
+  }
+  .succ-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .succ-row:last-child { border-bottom: none; }
+  .succ-row.succ-header {
+    padding: 0.75rem 0 0.5rem;
+    border-bottom: 2px solid var(--line);
+    align-items: end;
+  }
+  .succ-baseline-label,
+  .succ-adopted-label,
+  .succ-foster-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .succ-baseline-label { color: var(--ink-2); }
+  .succ-adopted-label { color: var(--accent); }
+  .succ-foster-label { color: var(--accent-warm); }
+
+  .succ-metric .succ-metric-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 3px;
+  }
+  .succ-metric .succ-metric-sub {
+    font-size: 11px;
+    color: var(--ink-3);
+    line-height: 1.4;
+  }
+  .succ-bar-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+  }
+  .succ-bar {
+    height: 22px;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+  .succ-bar-baseline { background: #8a8985; }
+  .succ-bar-adopted { background: #1d4e7a; }
+  .succ-bar-foster { background: #b8651e; }
+  .succ-pct {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+  }
+  .succ-note {
+    font-size: 10.5px;
+    color: var(--ink-3);
+    font-style: italic;
+    line-height: 1.35;
+  }
+
+  .takeaway {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: #fbf2e8;
+    border: 1px solid #e8c8a0;
+    border-left: 3px solid var(--accent-warm);
+    border-radius: 4px;
+  }
+  .takeaway-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8b3a18;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .takeaway-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .takeaway-text strong {
+    font-style: normal;
+    font-weight: 500;
+    color: #8b3a18;
+  }
+
+  /* MOBILE */
+  @media (max-width: 720px) {
+    .nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1rem; font-size: 12px; }
+    .hero { padding: 2rem 1.25rem 1.5rem; }
+    .pills { padding: 1rem 1.25rem; }
+    .content { padding: 1rem 1.25rem 3rem; }
+    h2.section-title { font-size: 1.5rem; margin: 3rem 0 1rem; }
+    .card { padding: 1.5rem 1.25rem; }
+    .range-row, .range-axis, .country-row, .country-axis { grid-template-columns: 110px 1fr 75px; gap: 0.6rem; }
+    .range-label { font-size: 13px; }
+    .range-label .sub { font-size: 11px; }
+    .range-value { font-size: 12px; }
+    .country-row .country-label { font-size: 13px; }
+    .pct-grid { grid-template-columns: 1fr; }
+    .pct-grid-4 { grid-template-columns: 1fr 1fr; }
+    .pct-stat .pct { font-size: 2rem; }
+    .dot-grid { grid-template-columns: repeat(20, 1fr); }
+    .breakdown-segment { font-size: 10px; }
+    .scale-bar-row { grid-template-columns: 80px 1fr; gap: 0.6rem; }
+    .scale-bar-name { font-size: 12px; }
+    .scale-bar-year { font-size: 10px; }
+    .scale-bar-track { height: 36px; }
+    .scale-bar-value { font-size: 14px; }
+    .scale-bar-value-outside { font-size: 13px; }
+    .scale-ratios { grid-template-columns: 1fr; gap: 0.75rem; }
+    .scale-ratio-num { font-size: 1.4rem; }
+    .outcome-grid { grid-template-columns: repeat(20, 1fr); gap: 3px; }
+    .outcome-text { grid-template-columns: 38px 1fr; gap: 0.5rem; }
+    .outcome-pct { font-size: 1.05rem; }
+    .outcome-label { font-size: 12px; }
+    .pie-wrap { grid-template-columns: 1fr; gap: 1rem; }
+    #failure-pie { margin: 0 auto; max-width: 240px; }
+    .pie-legend-row { grid-template-columns: 12px 44px 1fr; gap: 0.5rem; }
+    .pie-legend-pct { font-size: 0.9rem; }
+    .pie-legend-label { font-size: 12px; }
+    .success-intro { padding: 0 1.25rem; font-size: 13px; }
+    .succ-row { grid-template-columns: 1fr; gap: 0.5rem; padding: 1rem 0; }
+    .succ-row.succ-header { display: none; }
+    .succ-bar-cell::before {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 2px;
+      display: block;
+    }
+    .succ-bar-cell:nth-of-type(2)::before { content: "General population"; color: var(--ink-2); }
+    .succ-bar-cell:nth-of-type(3)::before { content: "Adopted children"; color: var(--accent); }
+    .succ-bar-cell:nth-of-type(4)::before { content: "Foster care alumni"; color: var(--accent-warm); }
+    .succ-bar { height: 18px; }
+    .succ-pct { font-size: 0.95rem; }
+    .succ-note { font-size: 10px; }
+    .takeaway { padding: 1rem 1.1rem; }
+    .takeaway-text { font-size: 0.95rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="logo">
+    <span class="ww-w">WILLEMS</span><span class="ww-o">WORLD</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Insights</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+</nav>
+
+<div class="series-tag"><span class="dot">&bull;</span> Series</div>
+
+<header class="hero">
+  <div class="eyebrow">Insight № 05 · <span class="num">Section 02 of 06</span></div>
+  <h1 class="title">What adoption <em>looks like</em></h1>
+  <div class="meta">
+    <span>Published May 2026</span>
+    <span>·</span>
+    <span>Who gets adopted, what it costs, and when the system fails</span>
+  </div>
+</header>
+
+<div class="pills">
+  <a href="abortion-01-overview.html" class="pill"><span class="num">01</span>Overview</a>
+  <span class="pill active"><span class="num">02</span>Adoption</span>
+  <a href="#" class="pill"><span class="num">03</span>Foster Care</a>
+  <a href="#" class="pill"><span class="num">04</span>Birth Control</a>
+  <a href="#" class="pill"><span class="num">05</span>The Forecast</a>
+  <a href="abortion-06-common-ground.html" class="pill"><span class="num">06</span>Common Ground</a>
+</div>
+
+<main class="content">
+
+  <!-- 0. SCALE OF THE CONVERSATION — opener -->
+  <h2 class="section-title">The <em>scale</em> of the conversation</h2>
+
+  <div class="card">
+    <div class="label">United States · most recent annual figures</div>
+    <div class="chart-title">Births, abortions, and adoptions per year</div>
+
+    <div class="scale-bars">
+
+      <div class="scale-bar-row">
+        <div class="scale-bar-label">
+          <div class="scale-bar-name">Births</div>
+          <div class="scale-bar-year">2024</div>
+        </div>
+        <div class="scale-bar-track">
+          <div class="scale-bar-fill scale-bar-births" style="width: 100%;">
+            <span class="scale-bar-value">3,628,934</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scale-bar-row">
+        <div class="scale-bar-label">
+          <div class="scale-bar-name">Abortions</div>
+          <div class="scale-bar-year">2024</div>
+        </div>
+        <div class="scale-bar-track">
+          <div class="scale-bar-fill scale-bar-abortions" style="width: 30.97%;">
+            <span class="scale-bar-value">1,124,000</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scale-bar-row">
+        <div class="scale-bar-label">
+          <div class="scale-bar-name">Adoptions</div>
+          <div class="scale-bar-year">2022</div>
+          <div class="scale-bar-note">excl. stepparent</div>
+        </div>
+        <div class="scale-bar-track">
+          <div class="scale-bar-fill scale-bar-adoptions" style="width: 2.22%;">
+          </div>
+          <span class="scale-bar-value-outside">80,598</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="scale-ratios">
+      <div class="scale-ratio">
+        <span class="scale-ratio-num">45×</span>
+        <span class="scale-ratio-text">more births than adoptions</span>
+      </div>
+      <div class="scale-ratio">
+        <span class="scale-ratio-num">14×</span>
+        <span class="scale-ratio-text">more abortions than adoptions</span>
+      </div>
+      <div class="scale-ratio">
+        <span class="scale-ratio-num">3.2×</span>
+        <span class="scale-ratio-text">more births than abortions</span>
+      </div>
+    </div>
+
+    <p class="source">Sources: <a href="https://www.cdc.gov/nchs/products/databriefs/db535.htm" target="_blank" rel="noopener">CDC National Center for Health Statistics, Births in the United States, 2024</a>; <a href="https://www.guttmacher.org/news-release/2025/guttmacher-institute-releases-full-year-us-abortion-data-2024" target="_blank" rel="noopener">Guttmacher Institute, Monthly Abortion Provision Study (2024)</a>; <a href="https://lifetimeadoption.com/adoption-statistics/" target="_blank" rel="noopener">National Council for Adoption / Adoption by the Numbers (2022)</a>. Adoption figure excludes stepparent adoptions; including them, the 2022 total rises to 106,196. Adoption data has a 2-year reporting lag.</p>
+  </div>
+
+  <!-- 0b. LIFETIME OUTCOMES -->
+  <h2 class="section-title">Where the <em>3.6 million</em> end up</h2>
+
+  <div class="card">
+    <div class="label">Of every 100 children born · lifetime outcomes by age 18</div>
+    <div class="chart-title">Most are raised by their birth parents. Some aren't.</div>
+
+    <div class="outcome-grid" id="outcome-grid"></div>
+
+    <div class="outcome-legend">
+      <div class="outcome-legend-row">
+        <span class="outcome-swatch" style="background: #e8e6df;"></span>
+        <div class="outcome-text">
+          <span class="outcome-pct">~81</span>
+          <span class="outcome-label">Raised by birth parent(s) through age 18, no major disruption</span>
+        </div>
+      </div>
+      <div class="outcome-legend-row">
+        <span class="outcome-swatch" style="background: #c5b89a;"></span>
+        <div class="outcome-text">
+          <span class="outcome-pct">~8</span>
+          <span class="outcome-label">Lose a parent to death &mdash; but raised by surviving parent</span>
+        </div>
+      </div>
+      <div class="outcome-legend-row">
+        <span class="outcome-swatch" style="background: #1d4e7a;"></span>
+        <div class="outcome-text">
+          <span class="outcome-pct">~4</span>
+          <span class="outcome-label">Spend time in foster care &mdash; eventually exit to family or adoption</span>
+        </div>
+      </div>
+      <div class="outcome-legend-row">
+        <span class="outcome-swatch" style="background: #1a1a1a;"></span>
+        <div class="outcome-text">
+          <span class="outcome-pct">~1</span>
+          <span class="outcome-label">Spend most or all of childhood in foster care &mdash; age out at 18 with no permanent family</span>
+        </div>
+      </div>
+      <div class="outcome-legend-row">
+        <span class="outcome-swatch" style="background: #6b8c50;"></span>
+        <div class="outcome-text">
+          <span class="outcome-pct">~3</span>
+          <span class="outcome-label">Raised primarily by relatives in kinship care (no foster involvement)</span>
+        </div>
+      </div>
+      <div class="outcome-legend-row">
+        <span class="outcome-swatch" style="background: #b8651e;"></span>
+        <div class="outcome-text">
+          <span class="outcome-pct">~3</span>
+          <span class="outcome-label">Adopted &mdash; including foster-to-adopt, private domestic, intercountry, stepparent</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="source"><strong style="color: var(--ink-2); font-style: normal;">A note on overlap:</strong> these categories aren't perfectly exclusive &mdash; a child can be in foster care and then adopted, or lose a parent to death and then be raised by a grandparent. Numbers are rounded lifetime probabilities. Sources: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7144424/" target="_blank" rel="noopener">Wildeman et al., Cumulative Prevalence of Foster Care Placement (2020)</a> &mdash; 5.3% lifetime risk; <a href="https://www.aecf.org/blog/child-welfare-and-foster-care-statistics" target="_blank" rel="noopener">Annie E. Casey Foundation / AFCARS FY2024</a> &mdash; ~15,000 youth age out annually with no permanency; <a href="https://judishouse.org/research-tools/cbem/" target="_blank" rel="noopener">Judi's House Childhood Bereavement Estimation Model (2025)</a> &mdash; ~1 in 13 lose a parent or sibling by 18; <a href="https://www.gu.org/app/uploads/2025/10/SOGFK-2025-Update-Final.pdf" target="_blank" rel="noopener">Generations United, State of Grandfamilies 2025</a> &mdash; 2.5M children in kinship care; <a href="https://www.angeladoptioninc.com/adoption-statistics-studies/" target="_blank" rel="noopener">Adoption Network</a> &mdash; ~1 in 35 children adopted.</p>
+  </div>
+
+  <!-- 3. HOW MANY FAMILIES ADOPT -->
+  <h2 class="section-title">How <em>many</em> families adopt?</h2>
+
+  <div class="card">
+    <div class="label">U.S. families with children · most recent Census</div>
+    <div class="chart-title">Adoption is rare in absolute terms</div>
+
+    <div class="pct-grid">
+      <div class="pct-stat">
+        <div class="pct">~4%</div>
+        <div class="lbl">of U.S. families with children include an adopted child</div>
+      </div>
+      <div class="pct-stat">
+        <div class="pct">~5M</div>
+        <div class="lbl">Americans are adopted (about 1.5% of the population)</div>
+      </div>
+      <div class="pct-stat">
+        <div class="pct">80,598</div>
+        <div class="lbl">adoptions in 2022 (excluding stepparent adoptions)</div>
+      </div>
+    </div>
+
+    <div class="dot-grid" id="family-grid"></div>
+    <p style="font-size: 12px; color: var(--ink-3); margin: -0.25rem 0 0;">Each dot represents one U.S. family with children. About 1 in 25 includes an adopted child.</p>
+
+    <div style="margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--line);">
+      <div class="label" style="margin-bottom: 0.75rem;">Where the 80,598 came from</div>
+      <div class="breakdown-bar">
+        <div class="breakdown-segment breakdown-foster" style="flex: 53579;">Foster care</div>
+        <div class="breakdown-segment breakdown-private" style="flex: 25503;">Private domestic</div>
+        <div class="breakdown-segment breakdown-international" style="flex: 1517;"></div>
+      </div>
+      <div class="breakdown-legend" style="margin-top: 0.6rem;">
+        <div class="breakdown-legend-item"><span class="breakdown-legend-swatch" style="background: #1d4e7a;"></span>Foster care: <span class="breakdown-legend-num">53,579 (66%)</span></div>
+        <div class="breakdown-legend-item"><span class="breakdown-legend-swatch" style="background: #3a76b0;"></span>Private domestic: <span class="breakdown-legend-num">25,503 (32%)</span></div>
+        <div class="breakdown-legend-item"><span class="breakdown-legend-swatch" style="background: #b8651e;"></span>International: <span class="breakdown-legend-num">1,517 (2%)</span></div>
+      </div>
+    </div>
+
+    <p class="source">Sources: <a href="https://lifetimeadoption.com/adoption-statistics/" target="_blank" rel="noopener">National Council for Adoption / Lifetime Adoption</a> (2022 figures); <a href="https://adoptioncouncil.org/research/adoption-by-the-numbers/" target="_blank" rel="noopener">Adoption by the Numbers</a> 2022; <a href="https://adoptionnetwork.com/adoption-myths-facts/domestic-us-statistics/" target="_blank" rel="noopener">U.S. Census via Adoption Network</a>. Including stepparent adoptions, the 2022 total rises to 106,196.</p>
+  </div>
+
+  <!-- 3b. WHEN ADOPTIONS FAIL -->
+  <h2 class="section-title">When adoptions <em>don't work</em></h2>
+
+  <div class="card">
+    <div class="label">Most adoptions succeed. Some don't &mdash; and the failure modes matter.</div>
+    <div class="chart-title">Outcomes for adopted children</div>
+
+    <div class="pct-grid pct-grid-4">
+      <div class="pct-stat">
+        <div class="pct" style="color: #2d6b3f;">85%</div>
+        <div class="lbl">of adopted children rated in &ldquo;excellent or very good&rdquo; health</div>
+      </div>
+      <div class="pct-stat">
+        <div class="pct" style="color: #1d4e7a;">95%</div>
+        <div class="lbl">of finalized adoptions remain intact through adulthood</div>
+      </div>
+      <div class="pct-stat">
+        <div class="pct" style="color: #b8651e;">1&ndash;5%</div>
+        <div class="lbl">of finalized adoptions dissolve, returning child to the system</div>
+      </div>
+      <div class="pct-stat">
+        <div class="pct" style="color: #7a3f10;">10&ndash;25%</div>
+        <div class="lbl">of pre-finalization placements disrupt before legalization</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--line);">
+      <div class="label" style="margin-bottom: 0.75rem;">Why adoptions fail &middot; breakdown of the adoptions that dissolve or disrupt</div>
+
+      <div class="pie-wrap">
+        <svg viewBox="0 0 400 400" id="failure-pie" aria-label="Pie chart of why adoptions fail"></svg>
+        <div class="pie-legend" id="failure-pie-legend"></div>
+      </div>
+    </div>
+
+    <p class="source"><strong style="color: var(--ink-2); font-style: normal;">A note on the rare extreme:</strong> the &ldquo;abuse, neglect, or unsafe home&rdquo; slice includes rare but real cases of <em>unregulated custody transfer</em> (also called &ldquo;rehoming&rdquo;) &mdash; where adoptive parents transfer children to strangers via online forums without oversight. A 2013 <a href="https://www.reuters.com/investigates/adoption/" target="_blank" rel="noopener">Reuters investigation</a> identified roughly 5,000 cases over 5 years, with 70% involving internationally-adopted children. Sources: <a href="https://www.americanbar.org/groups/public_interest/child_law/resources/child_law_practiceonline/child_law_practice/vol_31/december_2012/adoption_disruptionanddissolution/" target="_blank" rel="noopener">American Bar Association, Child Law Practice (Adoption Disruption and Dissolution)</a>; <a href="https://professionals.adoptuskids.org/how-do-we-start-preventing-adoption-and-guardianship-disruption/" target="_blank" rel="noopener">AdoptUSKids on disruption prevention</a>; <a href="https://aspe.hhs.gov/national-survey-adoptive-parents-nsap" target="_blank" rel="noopener">National Survey of Adoptive Parents (NSAP)</a>; <a href="https://adoptioncouncil.org/blog/when-adoptions-fail/" target="_blank" rel="noopener">National Council for Adoption, &ldquo;When Adoptions Fail&rdquo;</a>. Reason percentages are estimates synthesized from literature reviews; no single national database tracks reasons for adoption failure.</p>
+  </div>
+
+  <!-- 3B. ADOPTED CHILD OUTCOMES -->
+  <h2 class="section-title">How adopted children <em>fare</em></h2>
+
+  <!-- EDUCATION CARD -->
+  <div class="card">
+    <div class="label">Educational outcomes by adult adulthood (~age 25)</div>
+    <div class="chart-title">Education: adopted children track close to the general population</div>
+
+    <div class="succ-table">
+
+      <!-- Headers -->
+      <div class="succ-row succ-header">
+        <div class="succ-metric"></div>
+        <div class="succ-bar-cell"><span class="succ-baseline-label">General population</span></div>
+        <div class="succ-bar-cell"><span class="succ-adopted-label">Adopted children</span></div>
+        <div class="succ-bar-cell"><span class="succ-foster-label">Foster care alumni</span></div>
+      </div>
+
+      <!-- High school diploma -->
+      <div class="succ-row">
+        <div class="succ-metric">
+          <div class="succ-metric-name">High school diploma</div>
+          <div class="succ-metric-sub">Formal credential by age 25</div>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-baseline" style="width: 86%;"></div>
+          <span class="succ-pct">~86%</span>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-adopted" style="width: 89%;"></div>
+          <span class="succ-pct">~89%</span>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-foster" style="width: 64%;"></div>
+          <span class="succ-pct">~64%</span>
+          <span class="succ-note">22% lower than the general population</span>
+        </div>
+      </div>
+
+      <!-- GED -->
+      <div class="succ-row">
+        <div class="succ-metric">
+          <div class="succ-metric-name">GED (alternative credential)</div>
+          <div class="succ-metric-sub">% of cohort whose highest credential is a GED</div>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-baseline" style="width: 5%; min-width: 6px;"></div>
+          <span class="succ-pct">~5%</span>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-adopted" style="width: 3%; min-width: 6px;"></div>
+          <span class="succ-pct">~3%</span>
+          <span class="succ-note">comparable to general population</span>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-foster" style="width: 22%;"></div>
+          <span class="succ-pct">~22%</span>
+          <span class="succ-note">6&times; the general population rate</span>
+        </div>
+      </div>
+
+      <!-- College graduation -->
+      <div class="succ-row">
+        <div class="succ-metric">
+          <div class="succ-metric-name">Four-year college degree</div>
+          <div class="succ-metric-sub">Bachelor's by age ~25</div>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-baseline" style="width: 39%;"></div>
+          <span class="succ-pct">~39%</span>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-adopted" style="width: 36%;"></div>
+          <span class="succ-pct">~36%</span>
+          <span class="succ-note">similar to general population</span>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-foster" style="width: 10%;"></div>
+          <span class="succ-pct">~10%</span>
+          <span class="succ-note">~1/4 the general population rate</span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="source">Sources: <a href="https://www.census.gov/library/stories/2023/02/educational-attainment.html" target="_blank" rel="noopener">U.S. Census Bureau Educational Attainment, 2022</a> &mdash; high school graduation and bachelor's degree rates for general population; <a href="https://aspe.hhs.gov/reports/adoption-usa-chartbook-based-2007-national-survey-adoptive-parents-0" target="_blank" rel="noopener">National Survey of Adoptive Parents (NSAP) Chartbook, 2007</a>; <a href="https://www.casey.org/media/AlumniStudy_US_Report_ExecutiveSummary.pdf" target="_blank" rel="noopener">Casey National Alumni Study, Executive Summary</a> &mdash; 86% high school completion via diploma+GED for Casey alumni; <a href="https://rte21.org/foster-care-statistics/" target="_blank" rel="noopener">Foster Care Statistics</a> &mdash; ~10% college graduation rate for foster alumni; <a href="https://www.casey.org/nw-youth-outcomes/" target="_blank" rel="noopener">Northwest Foster Care Alumni Study, Casey Family Programs</a>.</p>
+  </div>
+
+  <!-- LIFE OUTCOMES CARD -->
+  <div class="card">
+    <div class="label">Life outcomes in young adulthood</div>
+    <div class="chart-title">Life trajectory: where the gap widens</div>
+
+    <div class="succ-table">
+
+      <!-- Headers -->
+      <div class="succ-row succ-header">
+        <div class="succ-metric"></div>
+        <div class="succ-bar-cell"><span class="succ-baseline-label">General population</span></div>
+        <div class="succ-bar-cell"><span class="succ-adopted-label">Adopted children</span></div>
+        <div class="succ-bar-cell"><span class="succ-foster-label">Foster care alumni</span></div>
+      </div>
+
+      <!-- Incarceration -->
+      <div class="succ-row">
+        <div class="succ-metric">
+          <div class="succ-metric-name">Incarceration</div>
+          <div class="succ-metric-sub">Imprisoned at any point through young adulthood</div>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-baseline" style="width: 6%; min-width: 8px;"></div>
+          <span class="succ-pct">~6%</span>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-adopted" style="width: 6%; min-width: 8px;"></div>
+          <span class="succ-pct">~6%</span>
+          <span class="succ-note">no significant elevation</span>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-foster" style="width: 29%;"></div>
+          <span class="succ-pct">~29%</span>
+          <span class="succ-note">over 5&times; the general rate; ~35% for males</span>
+        </div>
+      </div>
+
+      <!-- Employment -->
+      <div class="succ-row">
+        <div class="succ-metric">
+          <div class="succ-metric-name">Employed full-time</div>
+          <div class="succ-metric-sub">In their twenties</div>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-baseline" style="width: 75%;"></div>
+          <span class="succ-pct">~75%</span>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-adopted" style="width: 72%;"></div>
+          <span class="succ-pct">~72%</span>
+          <span class="succ-note">comparable to general</span>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-foster" style="width: 50%;"></div>
+          <span class="succ-pct">~50%</span>
+          <span class="succ-note">median income ~$14,000/yr at age 25</span>
+        </div>
+      </div>
+
+      <!-- Suicide attempts -->
+      <div class="succ-row">
+        <div class="succ-metric">
+          <div class="succ-metric-name">Suicide attempts</div>
+          <div class="succ-metric-sub">Lifetime, by young adulthood</div>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-baseline" style="width: 4%; min-width: 8px;"></div>
+          <span class="succ-pct">~3&ndash;4%</span>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-adopted" style="width: 8%;"></div>
+          <span class="succ-pct">~7&ndash;8%</span>
+          <span class="succ-note">2&ndash;4&times; elevated risk vs. peers</span>
+        </div>
+        <div class="succ-bar-cell">
+          <div class="succ-bar succ-bar-foster" style="width: 27%;"></div>
+          <span class="succ-pct">~22&ndash;27%</span>
+          <span class="succ-note">6&ndash;11&times; elevated risk vs. peers</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-eyebrow">What the comparison reveals</div>
+      <div class="takeaway-text">Adoption produces life outcomes that <strong>track close to the general population</strong> on education, employment, and incarceration &mdash; and dramatically better than the alternative. The gap that remains is in <strong>mental health</strong>: adopted adolescents are 2&ndash;4 times more likely to attempt suicide than peers raised by biological parents, even when their adoptive families provide significant material and emotional resources. The most defensible explanation isn't adoption itself, but the <strong>cumulative effect of pre-adoption experience</strong> &mdash; loss, instability, and in many cases early trauma &mdash; carried into a new family. Adoption mitigates these effects substantially. It does not erase them.</div>
+    </div>
+
+    <p class="source">Sources for incarceration: <a href="https://bjs.ojp.gov/" target="_blank" rel="noopener">Bureau of Justice Statistics</a> general-population baseline; <a href="https://jlc.org/news/what-foster-care-prison-pipeline" target="_blank" rel="noopener">Juvenile Law Center</a> and <a href="https://rte21.org/foster-care-statistics/" target="_blank" rel="noopener">Foster Care Statistics</a> for foster alumni incarceration rates; <a href="https://pubmed.ncbi.nlm.nih.gov/40274421/" target="_blank" rel="noopener">Font et al., &ldquo;From foster care to incarceration&rdquo;</a> &mdash; adopted children showed lower risk than aged-out peers, similar to general population. Employment: <a href="https://www.bls.gov/" target="_blank" rel="noopener">Bureau of Labor Statistics</a>; <a href="https://www.casey.org/nw-youth-outcomes/" target="_blank" rel="noopener">Northwest Foster Care Alumni Study</a> &mdash; median income ~$14,000 at age 25 for foster alumni. Suicide attempts: <a href="https://pubmed.ncbi.nlm.nih.gov/11483840/" target="_blank" rel="noopener">Slap et al., Pediatrics (2001)</a> &mdash; 7.6% of adopted adolescents vs 3.1% of non-adopted (n=6,577); <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3784288/" target="_blank" rel="noopener">Keyes et al. (2013), Pediatrics</a> &mdash; OR 4.23 for suicide attempts among adoptees in Minnesota study; <a href="https://applications.emro.who.int/imemrf/549/Int-J-High-Risk-Behav-Addict-2020-9-4-1-5-e106880-eng.pdf" target="_blank" rel="noopener">2020 meta-analysis</a> &mdash; pooled RR ~3.0 across cohort studies; <a href="https://www.casey.org/media/AlumniStudy_US_Report_MentalHealth.pdf" target="_blank" rel="noopener">Casey Mental Health Outcomes</a> and <a href="https://www.sciencedirect.com/science/article/abs/pii/S0190740906000703" target="_blank" rel="noopener">Northwest Alumni Study (2006)</a> &mdash; 6&ndash;11&times; elevated suicide attempt risk for foster alumni. Adopted-children outcomes are aggregates across domestic, international, and foster-to-adopt pathways; outcomes vary substantially by age at adoption and pre-adoption experience.</p>
+  </div>
+
+  <!-- 4. COST -->
+  <h2 class="section-title">The <em>cost</em></h2>
+
+  <div class="card">
+    <div class="label">By pathway · 2024 average ranges</div>
+    <div class="chart-title">What adoption costs in the U.S.</div>
+
+    <div class="range-rows">
+      <div class="range-row foster">
+        <div class="range-label">Foster care<span class="sub">Public child welfare system</span></div>
+        <div class="range-track"><div class="range-bar" style="left: 0%; width: 3.6%;"></div></div>
+        <div class="range-value">$0&ndash;$2,500</div>
+      </div>
+      <div class="range-row private">
+        <div class="range-label">Private domestic<span class="sub">Agency-led infant adoption</span></div>
+        <div class="range-track"><div class="range-bar" style="left: 42.9%; width: 42.9%;"></div></div>
+        <div class="range-value">$30K&ndash;$60K</div>
+      </div>
+      <div class="range-row independent">
+        <div class="range-label">Independent<span class="sub">Attorney-facilitated</span></div>
+        <div class="range-track"><div class="range-bar" style="left: 35.7%; width: 21.4%;"></div></div>
+        <div class="range-value">$25K&ndash;$40K</div>
+      </div>
+      <div class="range-row international">
+        <div class="range-label">International<span class="sub">From another country</span></div>
+        <div class="range-track"><div class="range-bar" style="left: 50%; width: 50%;"></div></div>
+        <div class="range-value">$35K&ndash;$70K</div>
+      </div>
+    </div>
+    <div class="range-axis">
+      <div class="range-axis-tick">
+        <span>$0</span><span>$20K</span><span>$40K</span><span>$60K</span><span>$70K</span>
+      </div>
+    </div>
+
+    <p class="source">Sources: <a href="https://www.findlaw.com/family/adoption/costs-of-adopting-fact-sheet-for-families.html" target="_blank" rel="noopener">Child Welfare Information Gateway / FindLaw</a>; <a href="https://www.americanadoptions.com/adopt/the_costs_of_adopting" target="_blank" rel="noopener">American Adoptions</a>; <a href="https://familyequality.org/resources/average-adoption-costs-in-the-united-states/" target="_blank" rel="noopener">Family Equality</a>. The federal adoption tax credit (2024) is $16,810, non-refundable. Foster care often qualifies for state subsidies and Title IV-E reimbursement.</p>
+  </div>
+
+  <!-- 2. TIME -->
+  <h2 class="section-title">The <em>wait</em></h2>
+
+  <div class="card">
+    <div class="label">By pathway · typical timelines</div>
+    <div class="chart-title">How long adoption takes</div>
+
+    <div class="range-rows">
+      <div class="range-row foster">
+        <div class="range-label">Foster care<span class="sub">Once fostering begins</span></div>
+        <div class="range-track"><div class="range-bar" style="left: 0%; width: 25%;"></div></div>
+        <div class="range-value">6&ndash;15 mo.</div>
+      </div>
+      <div class="range-row private">
+        <div class="range-label">Private domestic<span class="sub">Home study to placement</span></div>
+        <div class="range-track"><div class="range-bar" style="left: 16.7%; width: 33.3%;"></div></div>
+        <div class="range-value">10&ndash;24 mo.</div>
+      </div>
+      <div class="range-row independent">
+        <div class="range-label">Independent<span class="sub">Attorney-facilitated</span></div>
+        <div class="range-track"><div class="range-bar" style="left: 16.7%; width: 41.7%;"></div></div>
+        <div class="range-value">10&ndash;30 mo.</div>
+      </div>
+      <div class="range-row international">
+        <div class="range-label">International<span class="sub">Application to homecoming</span></div>
+        <div class="range-track"><div class="range-bar" style="left: 33.3%; width: 66.7%;"></div></div>
+        <div class="range-value">20&ndash;60 mo.</div>
+      </div>
+    </div>
+    <div class="range-axis">
+      <div class="range-axis-tick">
+        <span>0</span><span>1 yr</span><span>2 yr</span><span>3 yr</span><span>4 yr</span><span>5 yr</span>
+      </div>
+    </div>
+
+    <p class="source">Sources: <a href="https://www.americanadoptions.com/adopt/how_long_is_the_wait" target="_blank" rel="noopener">American Adoptions wait times</a>; <a href="https://adoptionswithlove.org/adoptive-parents/how-long-does-it-take-to-adopt" target="_blank" rel="noopener">Adoptions With Love</a>; U.S. Department of State <a href="https://travel.state.gov/content/travel/en/Intercountry-Adoption.html" target="_blank" rel="noopener">Intercountry Adoption</a>. Foster-care timeline begins after placement; international timeline includes country-specific processing and varies dramatically by country of origin.</p>
+  </div>
+
+  <!-- 3. PERCENTAGE OF FAMILIES -->
+  <!-- 4. WORLD MAP -->
+  <h2 class="section-title">The <em>geography</em> of international adoption</h2>
+
+  <div class="card">
+    <div class="label">FY 2023 · 1,275 children adopted internationally</div>
+    <div class="chart-title">Where Americans adopted from</div>
+    <div class="map-wrap" id="world-map"></div>
+    <div class="map-legend">
+      <div class="map-legend-item"><span class="map-legend-swatch" style="background: #f3efe5;"></span>0 / no data</div>
+      <div class="map-legend-item"><span class="map-legend-swatch" style="background: #e8d4b3;"></span>1&ndash;25</div>
+      <div class="map-legend-item"><span class="map-legend-swatch" style="background: #d4a878;"></span>26&ndash;75</div>
+      <div class="map-legend-item"><span class="map-legend-swatch" style="background: #b8651e;"></span>76&ndash;150</div>
+      <div class="map-legend-item"><span class="map-legend-swatch" style="background: #7a3f10;"></span>150+</div>
+      <div class="map-legend-item"><span class="map-legend-swatch" style="background: #1d4e7a;"></span>Receiving country (USA)</div>
+    </div>
+
+    <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <div style="background: var(--bg); padding: 1.25rem; border-radius: 4px;">
+        <div class="label" style="margin-bottom: 0.4rem;">2004 peak</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 500; line-height: 1;">22,988</div>
+        <div style="font-size: 12px; color: var(--ink-2); margin-top: 0.4rem;">Mostly China, Russia, Guatemala</div>
+      </div>
+      <div style="background: var(--bg); padding: 1.25rem; border-radius: 4px;">
+        <div class="label" style="margin-bottom: 0.4rem;">2023 actual</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 500; line-height: 1;">1,275</div>
+        <div style="font-size: 12px; color: var(--ink-2); margin-top: 0.4rem;">A 94% decline in 20 years</div>
+      </div>
+    </div>
+
+    <p class="source">Source: <a href="https://travel.state.gov/content/travel/en/Intercountry-Adoption/adopt_ref/adoption-statistics.html" target="_blank" rel="noopener">U.S. Department of State, Annual Report on Intercountry Adoption (FY 2023)</a>; historical context from <a href="https://www.pewresearch.org/short-reads/2025/07/25/international-adoptions-to-the-us-have-slowed-to-a-trickle-matching-trends-in-other-countries/" target="_blank" rel="noopener">Pew Research</a>. China and Ethiopia banned foreign adoptions in 2024 and 2018 respectively; Russia banned U.S. adoptions in 2013; Guatemala halted its program in 2008.</p>
+  </div>
+
+  <!-- 5. COUNTRY COST -->
+  <h2 class="section-title">Cost by <em>country</em></h2>
+
+  <div class="card">
+    <div class="label">U.S. private domestic vs. top countries of origin · typical fee ranges</div>
+    <div class="chart-title">What adoption costs by country</div>
+
+    <div class="range-rows">
+      <div class="country-row usa-row">
+        <div class="country-label"><span class="flag">🇺🇸</span>United States <span class="note">(all pathways)</span></div>
+        <div class="range-track">
+          <div class="range-bar" style="left: 0%; width: 85.7%;"></div>
+          <div class="avg-marker" style="left: 61.4%;" title="Average: ~$43,000">
+            <div class="avg-marker-dot"></div>
+            <div class="avg-marker-label">avg ~$43K</div>
+          </div>
+        </div>
+        <div class="range-value">$0&ndash;$60K</div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="flag">🇰🇷</span>South Korea</div>
+        <div class="range-track"><div class="range-bar" style="left: 50%; width: 21.4%;"></div></div>
+        <div class="range-value">$35K&ndash;$50K</div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="flag">🇨🇴</span>Colombia</div>
+        <div class="range-track"><div class="range-bar" style="left: 42.9%; width: 21.4%;"></div></div>
+        <div class="range-value">$30K&ndash;$45K</div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="flag">🇮🇳</span>India</div>
+        <div class="range-track"><div class="range-bar" style="left: 42.9%; width: 14.3%;"></div></div>
+        <div class="range-value">$30K&ndash;$40K</div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="flag">🇧🇬</span>Bulgaria</div>
+        <div class="range-track"><div class="range-bar" style="left: 50%; width: 21.4%;"></div></div>
+        <div class="range-value">$35K&ndash;$50K</div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="flag">🇨🇳</span>China <span class="note">(banned 2024)</span></div>
+        <div class="range-track"><div class="range-bar" style="left: 50%; width: 7.1%;"></div></div>
+        <div class="range-value">$35K&ndash;$40K</div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="flag">🇺🇦</span>Ukraine <span class="note">(war-paused)</span></div>
+        <div class="range-track"><div class="range-bar" style="left: 42.9%; width: 14.3%;"></div></div>
+        <div class="range-value">$30K&ndash;$40K</div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="flag">🇭🇹</span>Haiti</div>
+        <div class="range-track"><div class="range-bar" style="left: 35.7%; width: 14.3%;"></div></div>
+        <div class="range-value">$25K&ndash;$35K</div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="flag">🇲🇽</span>Mexico</div>
+        <div class="range-track"><div class="range-bar" style="left: 35.7%; width: 21.4%;"></div></div>
+        <div class="range-value">$25K&ndash;$40K</div>
+      </div>
+    </div>
+    <div class="country-axis">
+      <div class="country-axis-tick">
+        <span>$0</span><span>$20K</span><span>$40K</span><span>$60K</span><span>$70K</span>
+      </div>
+    </div>
+
+    <p class="source">Sources: U.S. Department of State <a href="https://travel.state.gov/content/dam/NEWadoptionassets/FY%202023%20Annual%20Report%20on%20Intercountry%20Adoption.pdf" target="_blank" rel="noopener">FY 2023 Annual Report on Intercountry Adoption</a> (top countries by volume); <a href="https://www.americanadoptions.com/adopt/the_costs_of_adopting" target="_blank" rel="noopener">American Adoptions</a>, <a href="https://adoptionnetwork.com/adoptive-parents/how-to-adopt/adoption-costs/how-much-does-it-cost/" target="_blank" rel="noopener">Adoption Network Law Center</a> (cost ranges). Ranges include agency fees, foreign program fees, dossier and translation, USCIS processing, and travel; exclude post-placement readoption costs.</p>
+  </div>
+
+</main>
+
+<div class="continue">
+  <a href="#">Continue to Section 03 &mdash; Foster Care &rarr;</a>
+</div>
+
+<footer>
+  <div>WILLEMS<span style="color: var(--ink-3); letter-spacing: 0.18em;">WORLD</span></div>
+  <div>Insight № 05 · Section 02 of 06</div>
+</footer>
+
+<script>
+// Failure-mode pie chart
+(function(){
+  const svg = document.getElementById('failure-pie');
+  const legend = document.getElementById('failure-pie-legend');
+  if (!svg || !legend) return;
+
+  // Slices ordered largest first; colors graduate from blue (system/circumstance) through orange (severe outcomes)
+  const slices = [
+    { label: 'Behavioral & mental-health challenges',  pct: 40, color: '#1d4e7a',
+      detail: 'Trauma, attachment disorders, severe behaviors beyond adoptive family capacity' },
+    { label: 'Severe medical or disability needs',     pct: 20, color: '#3a76b0',
+      detail: 'Often undisclosed pre-adoption or diagnosed afterward' },
+    { label: 'Inadequate support or matching failure', pct: 15, color: '#6b8c50',
+      detail: 'System gaps: post-adoption services, training, sibling separation' },
+    { label: 'Abuse, neglect, or unsafe home',          pct: 10, color: '#b8651e',
+      detail: 'Includes the rare extreme of "rehoming" / unregulated custody transfer' },
+    { label: 'Birth-parent reclamation pre-finalization', pct: 8, color: '#c5b89a',
+      detail: 'Birth parents revoke consent within legal window' },
+    { label: 'Death or family crisis',                  pct: 4, color: '#7a3f10',
+      detail: 'Adoptive parent death, divorce, or major family disruption' },
+    { label: 'Other / undetermined',                    pct: 3, color: '#8a8985',
+      detail: 'Cases with no single clear cause documented' }
+  ];
+
+  // Build SVG donut
+  const cx = 200, cy = 200, r = 150, ir = 75;  // donut, not solid pie — easier to read
+  const ns = 'http://www.w3.org/2000/svg';
+  let cumAngle = -Math.PI / 2;  // start at 12 o'clock
+
+  // Center label inside donut hole — anchors the 100% denominator
+  const centerTop = document.createElementNS(ns, 'text');
+  centerTop.setAttribute('x', cx);
+  centerTop.setAttribute('y', cy - 8);
+  centerTop.setAttribute('text-anchor', 'middle');
+  centerTop.setAttribute('dominant-baseline', 'central');
+  centerTop.setAttribute('fill', '#4a4a48');
+  centerTop.setAttribute('font-family', 'Inter, sans-serif');
+  centerTop.setAttribute('font-size', '11');
+  centerTop.setAttribute('font-weight', '500');
+  centerTop.setAttribute('letter-spacing', '0.1em');
+  centerTop.textContent = 'OF FAILED';
+  svg.appendChild(centerTop);
+  const centerBot = document.createElementNS(ns, 'text');
+  centerBot.setAttribute('x', cx);
+  centerBot.setAttribute('y', cy + 8);
+  centerBot.setAttribute('text-anchor', 'middle');
+  centerBot.setAttribute('dominant-baseline', 'central');
+  centerBot.setAttribute('fill', '#4a4a48');
+  centerBot.setAttribute('font-family', 'Inter, sans-serif');
+  centerBot.setAttribute('font-size', '11');
+  centerBot.setAttribute('font-weight', '500');
+  centerBot.setAttribute('letter-spacing', '0.1em');
+  centerBot.textContent = 'ADOPTIONS';
+  svg.appendChild(centerBot);
+
+  slices.forEach((slice, i) => {
+    const angle = (slice.pct / 100) * Math.PI * 2;
+    const a0 = cumAngle;
+    const a1 = cumAngle + angle;
+
+    const x0 = cx + r * Math.cos(a0);
+    const y0 = cy + r * Math.sin(a0);
+    const x1 = cx + r * Math.cos(a1);
+    const y1 = cy + r * Math.sin(a1);
+
+    const xi0 = cx + ir * Math.cos(a0);
+    const yi0 = cy + ir * Math.sin(a0);
+    const xi1 = cx + ir * Math.cos(a1);
+    const yi1 = cy + ir * Math.sin(a1);
+
+    const largeArc = angle > Math.PI ? 1 : 0;
+
+    const d = [
+      `M ${x0} ${y0}`,
+      `A ${r} ${r} 0 ${largeArc} 1 ${x1} ${y1}`,
+      `L ${xi1} ${yi1}`,
+      `A ${ir} ${ir} 0 ${largeArc} 0 ${xi0} ${yi0}`,
+      'Z'
+    ].join(' ');
+
+    const path = document.createElementNS(ns, 'path');
+    path.setAttribute('d', d);
+    path.setAttribute('fill', slice.color);
+    path.setAttribute('stroke', '#ffffff');
+    path.setAttribute('stroke-width', '2');
+    path.style.transition = 'opacity 0.15s ease';
+    path.style.cursor = 'default';
+
+    // Add tooltip via title
+    const title = document.createElementNS(ns, 'title');
+    title.textContent = slice.label + ' — ' + slice.pct + '%\n' + slice.detail;
+    path.appendChild(title);
+
+    // Place a percentage label inside the slice (only for slices large enough)
+    if (slice.pct >= 8) {
+      const midAngle = (a0 + a1) / 2;
+      const labelR = (r + ir) / 2;
+      const lx = cx + labelR * Math.cos(midAngle);
+      const ly = cy + labelR * Math.sin(midAngle);
+      const text = document.createElementNS(ns, 'text');
+      text.setAttribute('x', lx);
+      text.setAttribute('y', ly);
+      text.setAttribute('text-anchor', 'middle');
+      text.setAttribute('dominant-baseline', 'central');
+      text.setAttribute('fill', '#ffffff');
+      text.setAttribute('font-family', 'Fraunces, serif');
+      text.setAttribute('font-size', '14');
+      text.setAttribute('font-weight', '500');
+      text.textContent = slice.pct + '%';
+      svg.appendChild(path);
+      svg.appendChild(text);
+    } else {
+      svg.appendChild(path);
+    }
+
+    cumAngle = a1;
+
+    // Build legend row
+    const row = document.createElement('div');
+    row.className = 'pie-legend-row';
+    row.innerHTML =
+      '<span class="pie-legend-swatch" style="background: ' + slice.color + ';"></span>' +
+      '<span class="pie-legend-pct">' + slice.pct + '%</span>' +
+      '<span class="pie-legend-label">' + slice.label + '</span>';
+    legend.appendChild(row);
+  });
+})();
+
+// Outcome dot grid — 100 children, colored by lifetime outcome
+(function(){
+  const el = document.getElementById('outcome-grid');
+  if (!el) return;
+  // Distribution (totals 104 due to honest overlap; 4 dots represent kids in 2 categories)
+  // For visual integrity, we render exactly 100 dots and color them by *primary* outcome
+  // ranked by severity: foster > adopted > kinship > bereaved > parent-raised
+  const dots = [];
+  for (let i = 0; i < 4; i++) dots.push('foster');
+  for (let i = 0; i < 1; i++) dots.push('agedout');
+  for (let i = 0; i < 3; i++) dots.push('adopted');
+  for (let i = 0; i < 3; i++) dots.push('kinship');
+  for (let i = 0; i < 8; i++) dots.push('bereaved');
+  while (dots.length < 100) dots.push('parent');
+  // Shuffle so the visual feels distributed, not blocked
+  for (let i = dots.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [dots[i], dots[j]] = [dots[j], dots[i]];
+  }
+  dots.forEach(type => {
+    const d = document.createElement('div');
+    d.className = 'odot ' + type;
+    el.appendChild(d);
+  });
+})();
+
+// "1 in 25 families" dot grid
+(function(){
+  const el = document.getElementById('family-grid');
+  if (!el) return;
+  for (let i = 0; i < 100; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i < 4 ? ' filled' : '');
+    el.appendChild(d);
+  }
+})();
+
+// World map — FY 2023 intercountry adoptions to U.S.
+const adoptionsByCountry = {
+  'Colombia': 221, 'South Korea': 141, 'India': 126, 'Bulgaria': 106,
+  'Ukraine': 82, 'China': 75, 'Haiti': 50, 'Nigeria': 42,
+  'Philippines': 38, 'Mexico': 35, 'Brazil': 28, 'Honduras': 22,
+  'Peru': 18, 'Thailand': 15, 'Poland': 12, 'Taiwan': 11, 'Liberia': 10,
+  'Vietnam': 8, 'Ghana': 7, 'Pakistan': 6, 'Japan': 5, 'Hungary': 5,
+  'Lithuania': 4, 'Bolivia': 4
+};
+
+function adoptionColor(v) {
+  if (v == null) return '#f3efe5';
+  if (v === 0) return '#f3efe5';
+  if (v <= 25) return '#e8d4b3';
+  if (v <= 75) return '#d4a878';
+  if (v <= 150) return '#b8651e';
+  return '#7a3f10';
+}
+
+d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(world => {
+  const features = topojson.feature(world, world.objects.countries).features;
+  const container = document.getElementById('world-map');
+  container.style.position = 'relative';
+  const svg = d3.select('#world-map').append('svg')
+    .attr('viewBox', '0 0 900 460')
+    .attr('width', '100%')
+    .style('display', 'block');
+  const projection = d3.geoNaturalEarth1().scale(170).translate([450, 230]);
+  const path = d3.geoPath(projection);
+
+  const tooltip = d3.select('#world-map').append('div')
+    .style('position', 'absolute')
+    .style('pointer-events', 'none')
+    .style('background', '#1a1a1a')
+    .style('color', 'white')
+    .style('padding', '6px 10px')
+    .style('border-radius', '4px')
+    .style('font-size', '12px')
+    .style('font-family', 'Inter, sans-serif')
+    .style('opacity', '0')
+    .style('transition', 'opacity 120ms')
+    .style('z-index', '10');
+
+  svg.selectAll('path')
+    .data(features)
+    .join('path')
+    .attr('d', path)
+    .attr('fill', d => {
+      const name = d.properties.name;
+      if (name === 'United States of America' || name === 'United States') return '#1d4e7a';
+      let v = adoptionsByCountry[name];
+      if (v === undefined && name === 'Dominican Rep.') v = 6;
+      return adoptionColor(v);
+    })
+    .attr('stroke', '#ffffff')
+    .attr('stroke-width', 0.5)
+    .style('cursor', 'pointer')
+    .on('mousemove', function(event, d) {
+      const name = d.properties.name;
+      const isUS = (name === 'United States of America' || name === 'United States');
+      let v = adoptionsByCountry[name];
+      const display = isUS ? 'Receiving country' :
+                      (v == null ? 'No adoptions reported' : v + ' adoptions');
+      tooltip.style('opacity', '1')
+        .html('<strong>' + name + '</strong><br>' + display)
+        .style('left', (event.offsetX + 12) + 'px')
+        .style('top', (event.offsetY + 12) + 'px');
+    })
+    .on('mouseleave', () => tooltip.style('opacity', '0'));
+});
+</script>
+
+</body>
+</html>
